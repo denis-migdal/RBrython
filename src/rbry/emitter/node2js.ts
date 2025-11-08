@@ -14,6 +14,3 @@ export function node2js(node: ASTNode): string {
 
     return handler(node);
 }
-
-let inClass = false;
-

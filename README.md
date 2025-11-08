@@ -9,7 +9,7 @@
 <i>Note: some features are not yet implemented but can be found in [SBrython](https://github.com/denis-migdal/SBrython).</i>
 
 RBrython distinguishes several processes:
-- <b>parser</b>: transform Python code into AST (<i>for now uses Brython</i>).
+- <b>[parser](./docs/parser/index.md)</b>: transform Python code into AST (<i>for now uses Brython</i>).
 - <b>checker</b>: deduce and check typehints in the AST (<i>not implemented</i>).
 - <b>optimizer</b>: transform the AST using deduced types as well as some assumptions (<i>not implemented</i>).
 - <b>[emitter](./docs/emitter/index.md)</b>: generate JS code from the AST.

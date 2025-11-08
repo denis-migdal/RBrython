@@ -1,4 +1,4 @@
-import { py2ast } from "@SBrython/rbry/py2ast";
+import parse from "@SBrython/rbry/parser";
 import { Results } from "../results";
 
 declare const $B: any;
@@ -30,7 +30,7 @@ export default function buildAST(code: string, results: Results, use_parser: boo
     } else {
 
         const beg = performance.now();
-        _ast.sbry = py2ast(code, "_");
+        _ast.sbry = parse(code, "_");
         const t0 = performance.now();
 
         results.sbry.times[results.sbry.offset++] += t0 - beg;
