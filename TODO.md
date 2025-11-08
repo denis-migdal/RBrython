@@ -2,9 +2,15 @@
     - post msg.
 - W2:
     - tools + full pipeline.
+        - compiler
+        - stubs
+        - sourcemap
 - W3:
-    - Imports
     - fct args + async
+    - @overload
+    - Imports
+
+- optimizer + flags (?) + test versions (?)
 
 - remove old code + document...
 
