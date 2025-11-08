@@ -43,8 +43,8 @@ const exclude_list = await loadExcludeList();
 const brython_tests = [
     'basic test suite',
     'numbers',
-    "classes" // ~726
-//    "strings",
+//    "classes" // ~726
+    "strings",
 //    "string methods"
 ];
 // strings ~616

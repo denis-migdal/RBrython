@@ -125,6 +125,9 @@ function node2js(node: ASTNode) {
         const args     = node.args;
         const keywords = node.keywords;
 
+        if( f.id === "__INCLUDE_JS__")
+            return node.args[0].value;
+
         //TODO: args parsing...
         let str = "";
         for(let i = 0; i < args.length; ++i)

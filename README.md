@@ -19,7 +19,7 @@ Theses processes depends on an AST structure, for now we use Brython's.
 
 RBrython also provides the following libraries:
 - <b>[runlib](./docs/runlib/index.md)</b>: a set of helpers used to execute the generated JS code (<i>todo link</i>).
-- <b>corelib</b>: an implementation of builtin Python functions and structures.
+- <b>[corelib](./docs/corelib/index.md)</b>: an implementation of builtin Python functions and structures.
 - <b>stdlib</b>: an implementation of standard Python libraries (<i>out of scope</i>).
 
 RBrython provides the following tools:
