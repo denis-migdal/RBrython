@@ -28,7 +28,7 @@ RBrython provides the following tools:
 - compiler (<i>not implemented</i>) ;
 - a documentation.
 
-Note: most of the code outside of `src/rbry` correspond to SBrython code that hasn't been cleaned yet. They are used as references during the development of RBrython.
+<i>Note: most of the code outside of `src/rbry` correspond to SBrython code that hasn't been cleaned yet. They are used as references during the development of RBrython.</i>
 
 ## Goals
 
