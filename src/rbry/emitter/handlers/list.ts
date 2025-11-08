@@ -45,3 +45,28 @@ Handlers["Expr"] = Expr as Handler;
 
 import {default as Name} from "./vars/Name";
 Handlers["Name"] = Name as Handler;
+
+import {default as JoinedStr} from "./vars/JoinedStr";
+Handlers["JoinedStr"] = JoinedStr as Handler;
+
+import {default as If} from "./controlflows/If";
+Handlers["If"] = If as Handler;
+
+import {default as While} from "./controlflows/While";
+Handlers["While"] = While as Handler;
+
+import {default as For} from "./controlflows/For";
+Handlers["For"] = For as Handler;
+
+import {default as Try} from "./controlflows/Try";
+Handlers["Try"] = Try as Handler;
+
+
+import {default as Continue} from "./keywords/Continue";
+Handlers["Continue"] = Continue as Handler;
+
+import {default as Break} from "./keywords/Break";
+Handlers["Break"] = Break as Handler;
+
+import {default as Raise} from "./keywords/Raise";
+Handlers["Raise"] = Raise as Handler;

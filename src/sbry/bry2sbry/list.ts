@@ -27,14 +27,14 @@ const LIST = {
 	FunctionDef: require("./functions/FunctionDef").default,
 	Call: require("./functions/Call").default,
 	Args: require("./functions/Args").default,
+	JoinedStr: require("./fstring/JoinedStr").default,
+	FormattedValue: require("./fstring/FormattedValue").default,
 	While: require("./controlflows/While").default,
 	Try: require("./controlflows/Try").default,
 	IfExp: require("./controlflows/IfExp").default,
 	If: require("./controlflows/If").default,
 	For: require("./controlflows/For").default,
 	ExceptHandler: require("./controlflows/ExceptHandler").default,
-	JoinedStr: require("./fstring/JoinedStr").default,
-	FormattedValue: require("./fstring/FormattedValue").default,
 }
 
 import ILIST from './index';

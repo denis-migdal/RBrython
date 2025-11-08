@@ -47,3 +47,14 @@ globalThis.abs = function( a: unknown) {
 globalThis.type = function(a: unknown) {
     return getClass(a); //TODO...
 }
+
+// @ts-ignore
+globalThis.range = function*(a: number) {
+    for(let i = 0; i < a; ++i)
+        yield i;
+}
+
+// @ts-ignore
+globalThis.Exception = function(msg: string) {
+    throw new Error(msg);
+}

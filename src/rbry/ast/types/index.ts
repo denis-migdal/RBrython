@@ -84,3 +84,35 @@ export type FunctionDefNode = {
     args: ASTNode[];
     body: BodyNode;
 }
+
+export type IfNode = {
+    test: ASTNode;
+    body: BodyNode;
+    orelse: ASTNode[];
+}
+
+export type WhileNode = {
+    test: ASTNode;
+    body: BodyNode;
+    //TODO: orelse
+}
+
+export type ForNode = {
+    target: ASTNode;
+    iter  : ASTNode;
+    body  : BodyNode;
+    //TODO: orelse
+}
+
+export type RaiseNode = {
+    exc: ASTNode;
+}
+
+export type TryNode = {
+    body: BodyNode;
+    handlers: ASTNode[];
+}
+
+export type JoinedStrNode = {
+    values: ASTNode[]
+}
