@@ -6,7 +6,7 @@
 
 ## Architecture
 
-Note: some features are not yet implemented but can be found in [SBrython](https://github.com/denis-migdal/SBrython).
+<i>Note: some features are not yet implemented but can be found in [SBrython](https://github.com/denis-migdal/SBrython).</i>
 
 RBrython distinguishes several processes:
 - <b>parser</b>: transform Python code into AST (<i>for now uses Brython</i>).
@@ -18,11 +18,11 @@ RBrython distinguishes several processes:
 Theses processes depends on an AST structure, for now we use Brython's.
 
 RBrython also provides the following libraries:
-- <b>runlib</b>: a set of helpers used to execute the generated JS code (<i>todo link</i>).
+- <b>[runlib](./docs/runlib/index.md)</b>: a set of helpers used to execute the generated JS code (<i>todo link</i>).
 - <b>corelib</b>: an implementation of builtin Python functions and structures.
 - <b>stdlib</b>: an implementation of standard Python libraries (<i>out of scope</i>).
 
-Brython provides the following tools:
+RBrython provides the following tools:
 - sourcemaps (<i>not implemented</i>) ;
 - stubs (<i>not implemented</i>) ;
 - compiler (<i>not implemented</i>) ;
@@ -34,7 +34,9 @@ RBrython aims at better interactions between Python and JS code while avoiding c
 
 RBrython focuses on the core of Python, it doesn't aim to maintain standard Python libraries.
 
-RBrython does not directly focuses on performances. However performances can be achieved through an optimizer, or by re-writing critical parts in JS (which should be made easier by RBrython).
+RBrython does not directly focuses on runtime performances. However performances can be achieved through an optimizer, or by re-writing critical parts in JS (which should be made easier by RBrython).
+
+RBrython does not aim for transcription performances and prefers AoT compilation.
 
 ## Principles
 
