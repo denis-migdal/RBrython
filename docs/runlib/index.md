@@ -16,7 +16,7 @@
 1. `$call` create a callable instead of performing the call itself, I think it should perform the call.
 2. There is no functions for method call. IIRC, `getattr` will bind the method. Having a method call function would avoid the bind.
 3. There is no function for unary operator. Having a e.g. `rich_uop(opname, a, pos)` could benefit Brython.
-4. Replace long function and class definition by an helper, e.g. `createFct(meta, () => {})`. Note: maybe using `new Function(patch(fct.toString()))` ?
+4. Replace long function and class definition by an helper, e.g. `createFct(meta, () => {})`. Note: maybe using `new Function(patch(fct.toString()))` upon first call ?
 
 
 
