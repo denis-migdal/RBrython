@@ -8,6 +8,7 @@
 | `call(callable, ...args)` | `$call(callable)(...args)` |  |
 | `mcall(obj, attr, ...args)` | attr+call | Method call |
 | `assert(cond)` | `assert(cond, msg)` | |
+| NotImpl | `$raise(e)` ||
 
 ### Recommandations for Brython
 
