@@ -17,7 +17,7 @@
 3. There is no function for unary operator. Having a e.g. `rich_uop(opname, a, pos)` could benefit Brython.
 
 Opinions:
-- I prefer using a source map instead of giving each functions the position as a parameter.
+- I prefer using a source map instead of giving each functions the position as a parameter. Requiring to get the current line by parsing exception stacktrace. However, this is Browser dependant.
 
 ## Internal helpers
 
