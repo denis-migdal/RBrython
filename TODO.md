@@ -7,13 +7,12 @@ Plan à 10 weeks:
     - None/Fstring
     - comments
     - post msg.
+    - move types into corelib.
 - W2:
     - tools + full pipeline.
     - remove old code + document...
 - W3:
     - Imports
-    - move types into corelib.
-- W4
     - fct args + async
 
 - rewrite test system (tags to filter) + dirs + diff ?

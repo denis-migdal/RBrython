@@ -3,7 +3,7 @@ As much as possible, corelib should be implemented in Python, and should not rel
 ```py
 class int:
     __add__(a, b):
-        __INCLUDE_JS__('a+b') # can't do it otherwise.
+        __INCLUDE_JS__('a+b') # can't define it otherwise.
 ```
 
 For performances purposes, corelib could be pre-compiled using special emission rules.

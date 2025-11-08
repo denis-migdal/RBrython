@@ -28,6 +28,8 @@ RBrython provides the following tools:
 - compiler (<i>not implemented</i>) ;
 - a documentation.
 
+Note: most of the code outside of `src/rbry` correspond to SBrython code that hasn't been cleaned yet. They are used as references during the development of RBrython.
+
 ## Goals
 
 RBrython aims at better interactions between Python and JS code while avoiding conversions.
