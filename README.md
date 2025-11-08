@@ -67,6 +67,10 @@ class X {
 
 Then, the following Python code `X.foo(x)` should be made possible without changing the class definition in JS, but by changing the call behavior. 
 
+### Principle 5
+
+RBrython should document as much as possible to help third party interventions. RBrython will also try documenting equivalent Brython features.
+
 ## Test
 
 Current : 22/~88
