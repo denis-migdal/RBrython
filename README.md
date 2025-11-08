@@ -12,10 +12,10 @@ RBrython distinguishes several processes:
 - <b>parser</b>: transform Python code into AST (<i>for now uses Brython</i>).
 - <b>checker</b>: deduce and check typehints in the AST (<i>not implemented</i>).
 - <b>optimizer</b>: transform the AST using deduced types as well as some assumptions (<i>not implemented</i>).
-- <b>emitter</b>: generate JS code from the AST.
+- <b>[emitter](./docs/emitter/index.md)</b>: generate JS code from the AST.
 - <b>runner</b>: run generated JS code (<i>not implemented</i>).
 
-Theses processes depends on an AST structure, for now we use Brython's.
+Theses processes depends on an [AST structure](./docs/ast/index.md), for now we use Brython's.
 
 RBrython also provides the following libraries:
 - <b>[runlib](./docs/runlib/index.md)</b>: a set of helpers used to execute the generated JS code.

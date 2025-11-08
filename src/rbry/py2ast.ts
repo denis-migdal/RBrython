@@ -1,9 +1,4 @@
-import {Module} from "./bry_types"
-
-export type AST = {
-    filename: string,
-    ast     : Module
-}
+import {AST, ModuleNode} from "./ast/types";
 
 export function py2ast(code: string, filename: string): AST {
 
