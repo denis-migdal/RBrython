@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import { getClass } from ".";
+import { getClass } from "../helpers/getClass";
 import { NotImplemented } from "./NotImplemented";
 
 export class int {

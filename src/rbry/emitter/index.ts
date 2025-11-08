@@ -1,6 +1,8 @@
 // quick h4ck (should move it).
 import "../runlib";
 
+import "./handlers/list"; // ensure Handlers are loaded.
+
 import { AST } from "../ast/types";
 import Body from "./handlers/Body";
 

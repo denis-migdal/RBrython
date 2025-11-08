@@ -28,3 +28,4 @@ Opinions:
 | RBrython | Brython | Desc |
 |---|---|---|
 | `getClass(o)` | `get_class(o)` | |
+| `isClass(o)` | ? | assert if should be called with `new` |

@@ -1,10 +1,9 @@
 // @ts-nocheck
 
-import { getClass } from ".";
+import { getClass } from "../helpers/getClass";
 
 export class float {
     __eq__(b: unknown) {
-        console.warn("=", this, b)
         return this == b
     }
     __add__(b: unknown) {

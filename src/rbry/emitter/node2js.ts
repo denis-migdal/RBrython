@@ -1,7 +1,6 @@
 import { nodeType } from "../ast";
 import { ASTNode } from "../ast/types";
 import Handlers from "./handlers";
-import "./handlers/list"; // ensure Handlers are loaded.
 
 export function node2js(node: ASTNode): string {
 
