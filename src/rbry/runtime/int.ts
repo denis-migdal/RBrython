@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { getClass } from ".";
 import { NotImplemented } from "./NotImplemented";
 

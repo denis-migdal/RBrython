@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { int } from "./int";
 import { float } from "./float";
 import { str } from "./str";

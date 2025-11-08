@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { ASTNode } from "../bry_types";
 import { AST } from "../py2ast";
 

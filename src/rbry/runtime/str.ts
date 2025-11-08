@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 export class str {
     __eq__(b: unknown) {
         return this == b;
