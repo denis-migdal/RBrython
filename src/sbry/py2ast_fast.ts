@@ -1071,6 +1071,7 @@ function readExpr(colon_is_end = true) { //TODO...
 
 // @ts-ignore
 import JS_stubs  from "!!raw-loader!../../stubs/JS/__init__.pyi";
+//JS_stubs = "";
 
 export function py2ast(_code: string, filename: string): AST {
     

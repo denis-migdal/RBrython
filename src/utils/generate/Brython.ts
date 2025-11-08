@@ -17,7 +17,7 @@ export default function generateBrython(_ast: any, src:string, results: SubResul
 
     //times[1] += performance.now();
 
-    var symtable = $B._PySymtable_Build(ast, filename, future)
+    var symtable = $B._PySymtable_Build(ast, filename, future);
 
     const t0 = performance.now();
 

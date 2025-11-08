@@ -12,11 +12,53 @@
 #
 # - some API (mainly in Window)
 #   - animations
+#   DOC
+#   - FontFaceSet
+#   - FragmentDirective
+#   - DOMImplementation
+#   - timeline
+#   - create*
+#   - evaluate
+#   - getSelection
+#   Window
+#   - requestAnimationFrame
+#   - setInterval(self, )
+#   - setTimeout
+#
+#   - customElements: CustomElementRegistry
+#   - history
+#
+#   - fetch
+#   - caches (CacheStorage / Cache / Request / Response -with fetch-)
+#   - matchMedia (MediaQueryList)
+#   - cookieStore
+#   - crypto
+#   - frames (Window as an array like)
+#   - indexedDB
+#   - localStorage
+#   - sessionStorage
+#   - locationBar
+#   - menubar
+#   - navigator
+#   - opener
+#   - performance
+#   - personalbar
+#   - screen
+#   - scrollbars
+#   - speechSynthesis
+#   - statusbar
+#   - toolbar
+#   - visualViewport
+#   - createImageBitmap
+#   - getSelection
+#   - queueMicrotask
+#   - reportError
 # - static
 #   - AbortControler
 #   - DOMRect
 #   - HTMLScriptElement
 #   - URL
+#   - parseHTMLUnsafe
 # - iterators/array
 #   - NodeList
 #   - ShadowRoot
@@ -28,6 +70,7 @@
 #   - assignedElements
 #   - assignedNodes
 #   - URLSearchParams
+#   - Doc elementsFromPoints
 #   + *args (node1/target1/etc)
 # - Special methods
 #   - DOMStringMap
@@ -46,6 +89,7 @@
 #   - valueAsDate
 #   - HTMLXElement (missing some I guess)
 #   - states (require Set)
+#   - Document : specialize HTMLCollections
 # - https://developer.mozilla.org/en-US/docs/Web/API (1006 classes)
 #
 
@@ -3599,181 +3643,788 @@ class Window(EventTarget):
 
     See https://developer.mozilla.org/en-US/docs/Web/API/Window
     """
-
     # caches
     closed: Final[bool]
-    # cookieStore
+    """
+    The Window.closed read-only property indicates whether the referenced window is closed or not.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/closed
+    """
+    # cookieStore (limited availability)
     crossOriginIsolated: Final[bool]
+    """
+    The crossOriginIsolated read-only property of the Window interface returns a boolean value that indicates whether the document is cross-origin isolated.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/crossOriginIsolated
+    """
     # crypto
-    # customElements
+    # customElements: CustomElementRegistry
+    """
+    The customElements read-only property of the Window interface returns a reference to the CustomElementRegistry object, which can be used to register new custom elements and get information about previously registered custom elements.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/customElements
+    """
     document: Final[Document]
+    """
+    window.document returns a reference to the document contained in the window.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/document
+    """
     frameElement: Final[HTMLElement|None]
+    """
+    The Window.frameElement property returns the element (such as <iframe> or <object>) in which the window is embedded.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/frameElement
+    """
     # frames
     # history
     # indexedDB
     innerHeight: Final[float]
+    """
+    The read-only innerHeight property of the Window interface returns the interior height of the window in pixels, including the height of the horizontal scroll bar, if present.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/innerHeight
+    """
     innerWidth: Final[float]
+    """
+    The read-only Window property innerWidth returns the interior width of the window in pixels (that is, the width of the window's layout viewport). That includes the width of the vertical scroll bar, if one is present.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth
+    """
     isSecureContext: Final[bool]
+    """
+    The isSecureContext read-only property of the Window interface returns a boolean indicating whether the current context is secure (true) or not (false).
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/isSecureContext
+    """
     length: Final[float]
+    """
+    Returns the number of frames (either <frame> or <iframe> elements) in the window.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/length
+    """
     # localStorage
     location: Final[Location]
+    """
+    The Window.location read-only property returns a Location object with information about the current location of the document.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/location
+    """
     # locationBar
     # menubar
     name: Final[str]
+    """
+    The Window.name property gets/sets the name of the window's browsing context.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/name
+    """
     # navigator
     # opener
     origin: Final[str]
+    """
+    The origin read-only property of the Window interface returns the origin of the global scope, serialized as a string.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/origin
+    """
     originAgentCluster: Final[bool]
+    """
+    The originAgentCluster read-only property of the Window interface returns true if this window belongs to an origin-keyed agent cluster: this means that the operating system has provided dedicated resources (for example an operating system process) to this window's origin that are not shared with windows from other origins.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/originAgentCluster
+    """
     outerHeight: Final[float]
+    """
+    The Window.outerHeight read-only property returns the height in pixels of the whole browser window, including any sidebar, window chrome, and window-resizing borders/handles.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/outerHeight
+    """
     outerWidth: Final[float]
+    """
+    Window.outerWidth read-only property returns the width of the outside of the browser window. It represents the width of the whole browser window including sidebar (if expanded), window chrome and window resizing borders/handles.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/outerWidth
+    """
     parent: Final[Window]
+    """
+    The Window.parent property is a reference to the parent of the current window or subframe.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/parent
+    """
     # performance
     # personalbar
     # screen
     screenLeft: Final[float]
+    """
+    The Window.screenLeft read-only property returns the horizontal distance, in CSS pixels, from the left border of the user's browser viewport to the left side of the screen.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/screenLeft
+    """
     screenTop: Final[float]
+    """
+    The Window.screenTop read-only property returns the vertical distance, in CSS pixels, from the top border of the user's browser viewport to the top side of the screen.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/screenTop
+    """
     screenX: Final[float]
+    """
+    The Window.screenX read-only property returns the horizontal distance, in CSS pixels, of the left border of the user's browser viewport to the left side of the screen.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/screenX
+    """
     screenY: Final[float]
+    """
+    The Window.screenY read-only property returns the vertical distance, in CSS pixels, of the top border of the user's browser viewport to the top edge of the screen.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/screenY
+    """
     # scrollbars
     scrollX: Final[float]
+    """
+    The read-only scrollX property of the Window interface returns the number of pixels by which the document is currently scrolled horizontally. This value is subpixel precise in modern browsers, meaning that it isn't necessarily a whole number. You can get the number of pixels the document is scrolled vertically from the scrollY property.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollX
+    """
     scrollY: Final[float]
+    """
+    The read-only scrollY property of the Window interface returns the number of pixels by which the document is currently scrolled vertically. This value is subpixel precise in modern browsers, meaning that it isn't necessarily a whole number. You can get the number of pixels the document is scrolled horizontally from the scrollX property.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollY
+    """
     self: Final[Window]
+    """
+    The Window.self read-only property returns the window itself, as a WindowProxy. It can be used with dot notation on a window object (that is, window.self) or standalone (self). The advantage of the standalone notation is that a similar notation exists for non-window contexts, such as in Web Workers. By using self, you can refer to the global scope in a way that will work not only in a window context (self will resolve to window.self) but also in a worker context (self will then resolve to WorkerGlobalScope.self).
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/self
+    """
     # sessionStorage
     # speechSynthesis
     # statusbar
     # toolbar
     top: Final[Window]
+    """
+    Returns a reference to the topmost window in the window hierarchy.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/top
+    """
     # visualViewport
     window: Final[Window]
+    """
+    The window property of a Window object points to the window object itself.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/window
+    """
 
     def alert(self, message: str = "", /) -> Undefined: ...
+    """
+    window.alert() instructs the browser to display a dialog with an optional message, and to wait until the user dismisses the dialog.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/alert
+    """
     def atob(self, encodedData: str, /) -> str: ...
+    """
+    The atob() method of the Window interface decodes a string of data which has been encoded using Base64 encoding. You can use the Window.btoa() method to encode and transmit data which may otherwise cause communication problems, then transmit it and use the atob() method to decode the data again. For example, you can encode, transmit, and decode control characters such as ASCII values 0 through 31.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/atob
+    """
     def btoa(self, stringToEncode: str, /) -> str: ...
+    """
+    The btoa() method of the Window interface creates a Base64-encoded ASCII string from a binary string (i.e., a string in which each character in the string is treated as a byte of binary data).
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/btoa
+    """
     def cancelAnimationFrame(self, requestID: float, /) -> Undefined: ...
+    """
+    The window.cancelAnimationFrame() method cancels an animation frame request previously scheduled through a call to window.requestAnimationFrame().
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/cancelAnimationFrame
+    """
     def clearInterval(self, intervalID: float, /) -> Undefined: ...
+    """
+    The clearInterval() method of the Window interface cancels a timed, repeating action which was previously established by a call to setInterval(). If the parameter provided does not identify a previously established action, this method does nothing.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/clearInterval
+    """
     def clearTimeout(self, timeoutID: float, /) -> Undefined: ...
+    """
+    The clearTimeout() method of the Window interface cancels a timeout previously established by calling Window.setTimeout().
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/clearTimeout
+    """
     def close(self) -> Undefined: ...
+    """
+    The Window.close() method closes the current window, or the window on which it was called.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/close
+    """
     def confirm(self, message: str = "", /) -> bool: ...
+    """
+    window.confirm() instructs the browser to display a dialog with an optional message, and to wait until the user either confirms or cancels the dialog.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm
+    """
     # createImageBitmap
     # fetch
     def focus(self) -> Undefined: ...
+    """
+    Makes a request to bring the window to the front. It may fail due to user settings and the window isn't guaranteed to be frontmost before this method returns.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/focus
+    """
     def getComputedStyle(self, element: Element, pseudoElt: str|None = None, /) -> CSSStyleDeclaration: ...
+    """
+    The Window.getComputedStyle() method returns an object containing the values of all CSS properties of an element, after applying active stylesheets and resolving any basic computation those values may contain.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle
+    """
     # getSelection
     # matchMedia
     def moveBy(self, deltaX: float, deltaY: float, /) -> Undefined: ...
+    """
+    The moveBy() method of the Window interface moves the current window by a specified amount.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/moveBy
+    """
     def moveTo(self, deltaX: float, deltaY: float, /) -> Undefined: ...
+    """
+    The moveTo() method of the Window interface moves the current window to the specified coordinates.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/moveTo
+    """
     def open(self, url: str = "", target: str = "", windowFeatures: str = "", /) -> Window|None: ...
+    """
+    The open() method of the Window interface loads a specified resource into a new or existing browsing context (that is, a tab, a window, or an iframe) under a specified name.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/open
+    """
     def postMessage(self, message: object, targetOrigin: str = "", /) -> Undefined: ...
+    """
+    The window.postMessage() method safely enables cross-origin communication between Window objects; e.g., between a page and a pop-up that it spawned, or between a page and an iframe embedded within it.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage
+    """
     def print(self) -> Undefined: ...
+    """
+    Opens the print dialog to print the current document.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/print
+    """
     def prompt(self, message: str, defaultValue: str|None = None, /) -> str|None: ...
+    """
+    window.prompt() instructs the browser to display a dialog with an optional message prompting the user to input some text, and to wait until the user either submits the text or cancels the dialog.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt
+    """    
+
     # queueMicrotask
     # reportError
     # requestAnimationFrame
 
     def resizeBy(self, deltaX: float, deltaY: float, /) -> Undefined: ...
+    """
+    The Window.resizeBy() method resizes the current window by a specified amount.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/resizeBy
+    """
     def resizeTo(self, width: float, height: float, /) -> Undefined: ...
+    """
+    The Window.resizeTo() method dynamically resizes the window.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/resizeTo
+    """
     def scroll(self, xCoord: float, yCoord: float, /) -> Undefined: ...
+    """
+    The Window.scroll() method scrolls the window to a particular place in the document.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/scroll
+    """
     def scrollBy(self, xCoord: float, yCoord: float, /) -> Undefined: ...
+    """
+    The Window.scrollBy() method scrolls the document in the window by the given amount.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollBy
+    """
     def scrollTo(self, xCoord: float, yCoord: float, /) -> Undefined: ...
+    """
+    Window.scrollTo() scrolls to a particular set of coordinates in the document.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollTo
+    """
     # def setInterval(self, )
     # def setTimeout
     def stop(self) -> Undefined: ...
+    """
+    The window.stop() stops further resource loading in the current browsing context, equivalent to the stop button in the browser.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/stop
+    """
     def structuredClone[T](self, value: T, /) -> T: ...
+    """
+    The structuredClone() method of the Window interface creates a deep clone of a given value using the structured clone algorithm.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Window/structuredClone
+    """
 
 
 window: Window
+"""
+The Window interface represents a window containing a DOM document; the document property points to the DOM document loaded in that window.
+
+See https://developer.mozilla.org/en-US/docs/Web/API/Window
+"""
 
 class DocumentType(Node):
+    """
+    The DocumentType interface represents a Node containing a doctype.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/DocumentType
+    """
+    
     name: Final[str]
+    """
+    The read-only name property of the DocumentType returns the type of the document.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/DocumentType/name
+    """
     publicId: Final[str]
+    """
+    The read-only publicId property of the DocumentType returns a formal identifier of the document.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/DocumentType/publicId
+    """
     systemId: Final[str]
+    """
+    The read-only systemId property of the DocumentType returns the URL of the associated DTD.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/DocumentType/systemId
+    """
 
     def after(self, param1: Node, /) -> Undefined: ...
-    def before(self, param1: Node, /) -> Undefined: ...
-    def remove(self) -> Undefined: ...
-    def replaceWith(self, node1: Node, /) -> Undefined: ...
+    """
+    The DocumentType.after() method inserts a set of Node objects or strings in the children list of the DocumentType's parent, just after the DocumentType. Strings are inserted as equivalent Text nodes.
 
-# https://developer.mozilla.org/en-US/docs/Web/API/Document/
-# also lot of methods...
+    See https://developer.mozilla.org/en-US/docs/Web/API/DocumentType/after
+    """
+    def before(self, param1: Node, /) -> Undefined: ...
+    """
+    The DocumentType.before() method inserts a set of Node objects or strings in the children list of the DocumentType's parent, just before the DocumentType. Strings are inserted as equivalent Text nodes.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/DocumentType/before
+    """
+    def remove(self) -> Undefined: ...
+    """
+    The DocumentType.remove() method removes a document's doctype.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/DocumentType/remove
+    """
+    def replaceWith(self, node1: Node, /) -> Undefined: ...
+    """
+    The DocumentType.replaceWith() method replaces the document type with a set of given nodes.
+    
+    See https://developer.mozilla.org/en-US/docs/Web/API/DocumentType/replaceWith
+    """
+
+class ElementCreationOptions(TypedDict):
+    # is: str
+    # "is" is reserved keyword
+    pass
+
+
 class Document(Node):
+    """
+    The Document interface represents any web page loaded in the browser and serves as an entry point into the web page's content, which is the DOM tree.
+    
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/
+    """
+    def __new__(cls) -> Document: ...
+    """
+    The Document constructor creates a new Document object that is a web page loaded in the browser and serving as an entry point into the page's content.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/Document
+    """
+
     activeElement: Final[Element|None]
+    """
+    The activeElement read-only property of the Document interface returns the Element within the DOM that is receiving keyboard events such as keydown and keyup. This is usually analogous to the focused element.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/activeElement
+    """
     adoptedStyleSheets: Final[CSSStyleSheet]
+    """
+    The adoptedStyleSheets property of the Document interface is used for setting an array of constructed stylesheets to be used by the document.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/adoptedStyleSheets
+    """
     body: Final[HTMLBodyElement]
+    """
+    The Document.body property represents the <body> or <frameset> node of the current document, or null if no such element exists.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/body
+    """
     characterSet: Final[str]
+    """
+    The Document.characterSet read-only property returns the character encoding of the document that it's currently rendered with.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/characterSet
+    """
     childElementCount: Final[float]
+    """
+    The Document.childElementCount read-only property returns the number of child elements of the document.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/childElementCount
+    """
     children: Final[HTMLCollection]
+    """
+    The read-only children property returns a live HTMLCollection which contains all of the child elements of the document upon which it was called.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/children
+    """
     compatMode: Final[str]
+    """
+    The Document.compatMode read-only property indicates whether the document is rendered in Quirks mode or Standards mode.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/compatMode
+    """
     contentType: Final[str]
+    """
+    The Document.contentType read-only property returns the MIME type that the document is being rendered as. This may come from HTTP headers or other sources of MIME information, and might be affected by automatic type conversions performed by either the browser or extensions.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/contentType
+    """
     cookie: Final[str]
+    """
+    The Document property cookie lets you read and write cookies associated with the document. It serves as a getter and setter for the actual values of the cookies.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie
+    """
     currentScript: Final[HTMLScriptElement|None]
+    """
+    The Document.currentScript property returns the <script> element whose script is currently being processed and isn't a JavaScript module. (For modules use import.meta instead.)
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/currentScript
+    """
     defaultView: Final[Window|None]
+    """
+    In browsers, document.defaultView returns the window object associated with a document, or null if none is available.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/defaultView
+    """
     designMode: Final[str]
+    """
+    document.designMode controls whether the entire document is editable. Valid values are "on" and "off". According to the specification, this property is meant to default to "off". Firefox follows this standard. The earlier versions of Chrome and IE default to "inherit". Starting in Chrome 43, the default is "off" and "inherit" is no longer supported. In IE6-10, the value is capitalized.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/designMode
+    """
     dir: Final[str]
+    """
+    The Document.dir property is a string representing the directionality of the text of the document, whether left to right (default) or right to left. Possible values are 'rtl', right to left, and 'ltr', left to right.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/dir
+    """
     doctype: Final[DocumentType]
+    """
+    The doctype read-only property of the Document interface is a DocumentType object representing the Document Type Declaration (DTD) associated with the current document.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/doctype
+    """
     documentElement: Final[Element]
+    """
+    The documentElement read-only property of the Document interface returns the Element that is the root element of the document (for example, the <html> element for HTML documents).
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement
+    """
     documentURI: Final[str]
+    """
+    The documentURI read-only property of the Document interface returns the document location as a string.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/documentURI
+    """
     embeds: Final[HTMLCollection]
+    """
+    The embeds read-only property of the Document interface returns a list of the embedded <embed> elements within the current document.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/embeds
+    """
     firstElementChild: Final[HTMLElement|None]
+    """
+    The Document.firstElementChild read-only property returns the document's first child Element, or null if there are no child elements.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/firstElementChild
+    """
     #fonts: FontFaceSet
     forms: Final[HTMLCollection]
+    """
+    The forms read-only property of the Document interface returns an HTMLCollection listing all the <form> elements contained in the document.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/forms
+    """
     #fragmentDirective: FragmentDirective
     head: Final[HTMLHeadElement]
+    """
+    The head read-only property of the Document interface returns the <head> element of the current document.
+
+    https://developer.mozilla.org/en-US/docs/Web/API/Document/head
+    """
     hidden: Final[bool]
+    """
+    The Document.hidden read-only property returns a Boolean value indicating if the page is considered hidden or not.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/hidden
+    """
     images: Final[HTMLCollection]
+    """
+    The images read-only property of the Document interface returns a collection of the images in the current HTML document.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/images
+    """
     #implementation: DOMImplementation
     lastElementChild: Final[Element|None]
+    """
+    The Document.lastElementChild read-only property returns the document's last child Element, or null if there are no child elements.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/lastElementChild
+    """
     lastModified: Final[str]
+    """
+    The lastModified property of the Document interface returns a string containing the date and local time on which the current document was last modified.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/lastModified
+    """
     links: Final[HTMLCollection]
+    """
+    The links read-only property of the Document interface returns a collection of all <area> elements and <a> elements in a document with a value for the href attribute.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/links
+    """
     location: Final[Location]
+    """
+    The Document.location read-only property returns a Location object, which contains information about the URL of the document and provides methods for changing that URL and loading another URL.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/location
+    """
     plugins: Final[HTMLCollection]
+    """
+    The plugins read-only property of the Document interface returns an HTMLCollection object containing one or more HTMLEmbedElements representing the <embed> elements in the current document.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/plugins
+    """
     readyState: Final[str]
+    """
+    The Document.readyState property describes the loading state of the document. When the value of this property changes, a readystatechange event fires on the document object.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/readyState
+    """
     referrer: Final[str]
+    """
+    The Document.referrer property returns the URI of the page that linked to this page.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/referrer
+    """
     scripts: Final[HTMLCollection]
+    """
+    The scripts property of the Document interface returns a list of the <script> elements in the document. The returned object is an HTMLCollection.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/scripts
+    """
     scrollingElement: Final[Element]
+    """
+    The scrollingElement read-only property of the Document interface returns a reference to the Element that scrolls the document. In standards mode, this is the root element of the document, document.documentElement.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/scrollingElement
+    """
     styleSheets: Final[StyleSheetList]
+    """
+    The styleSheets read-only property of the Document interface returns a StyleSheetList of CSSStyleSheet objects, for stylesheets explicitly linked into or embedded in a document.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/styleSheets
+    """
     # timeline
     title: Final[str]
+    """
+    The document.title property gets or sets the current title of the document. When present, it defaults to the value of the <title>.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/title
+    """
     URL: Final[str]
+    """
+    The URL read-only property of the Document interface returns the document location as a string.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/URL
+    """
     visibilityState: Final[str]
+    """
+    The Document.visibilityState read-only property returns the visibility of the document. It can be used to check whether the document is in the background or in a minimized window, or is otherwise not visible to the user.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilityState
+    """
 
     # static parseHTMLUnsafe
     def adoptNode(self, externalNode: Node, /) -> Node: ...
+    """
+    Document.adoptNode() transfers a node from another document into the method's document. The adopted node and its subtree are removed from their original document (if any), and their ownerDocument is changed to the current document. The node can then be inserted into the current document.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/adoptNode
+    """
     def append(self, param1: Node, /) -> Undefined: ...
+    """
+    The Document.append() method inserts a set of Node objects or strings after the last child of the document. Strings are inserted as equivalent Text nodes.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/append
+    """
     def close(self) -> Undefined: ...
+    """
+    The Document.close() method finishes writing to a document, opened with Document.open().
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/close
+    """
     def createAttribute(self, name: str, /) -> Attr: ...
+    """
+    The Document.createAttribute() method creates a new attribute node, and returns it. The object created is a node implementing the Attr interface. The DOM does not enforce what sort of attributes can be added to a particular element in this manner.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/createAttribute
+    """
     def createAttributeNS(self, namespaceURI: str, qualifiedName: str, /) -> Attr: ...
+    """
+    The Document.createAttributeNS() method creates a new attribute node with the specified namespace URI and qualified name, and returns it. The object created is a node implementing the Attr interface. The DOM does not enforce what sort of attributes can be added to a particular element in this manner.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/createAttributeNS
+    """
     def createCDATASection(self, data:str, /) -> Node: ...
+    """
+    createCDATASection() creates a new CDATA section node, and returns it.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/createCDATASection
+    """
     def createComment(self, data: str, /) -> Node: ...
+    """
+    createComment() creates a new comment node, and returns it.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/createComment
+    """
     def createDocumentFragment(self) -> DocumentFragment: ...
+    """
+    Creates a new empty DocumentFragment into which DOM nodes can be added to build an offscreen DOM tree.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/createDocumentFragment
+    """
     # TODO: options
-    def createElement(self, localName: str, /) -> Element: ...
-    def createElementNS(self, namespaceURI: str, qualifiedName: str, /) -> Element: ...
+    def createElement(self, localName: str, options: ElementCreationOptions|None = None, /) -> Element: ...
+    def createElementNS(self, namespaceURI: str, qualifiedName: str, options: ElementCreationOptions|None = None, /) -> Element: ...
     # createExpression
     # createNodeIterator
     # createProcessingInstruction
     # createRange
     def createTextNode(self, data: str, /) -> Node: ...
+    """
+    Creates a new Text node. This method can be used to escape HTML characters.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/createTextNode
+    """
     # createTreeWalker
     def elementFromPoint(self, x: float, y: float, /) -> Element: ...
+    """
+    The elementFromPoint() method, available on the Document object, returns the topmost Element at the specified coordinates (relative to the viewport).
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/elementFromPoint
+    """
     # elementsFromPoint (array)
     # evaluate (XPath)
     # getAnimations
     def getElementById(self, selectors: str, /) -> Element|None: ...
+    """
+    The getElementById() method of the Document interface returns an Element object representing the element whose id property matches the specified string. Since element IDs are required to be unique if specified, they're a useful way to get access to a specific element quickly.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById
+    """
     def getElementsByClassName(self, names:str, /) -> HTMLCollection: ...
+    """
+    The getElementsByClassName method of Document interface returns an array-like object of all child elements which have all of the given class name(s).
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByClassName
+    """
     def getElementsByName(self, name:str, /) -> HTMLCollection: ...
+    """
+    The getElementsByName() method of the Document object returns a NodeList Collection of elements with a given name attribute in the document.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByName
+    """
     def getElementsByTagName(self, name:str, /) -> HTMLCollection: ...
+    """
+    The getElementsByTagName method of Document interface returns an HTMLCollection of elements with the given tag name.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByTagName
+    """
     def getElementsByTagNameNS(self, namespace: str, name: str, /) -> HTMLCollection: ...
+    """
+    Returns a list of elements with the given tag name belonging to the given namespace. The complete document is searched, including the root node.
+    
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByTagNameNS
+    """
     # getSelection
     def hasFocus(self) -> bool: ...
+    """
+    The hasFocus() method of the Document interface returns a boolean value indicating whether the document or any element inside the document has focus. This method can be used to determine whether the active element in a document has focus.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/hasFocus
+    """
     def hasStorageAccess(self) -> bool: ...
+    """
+    The hasStorageAccess() method of the Document interface returns a Promise that resolves with a boolean value indicating whether the document has access to third-party, unpartitioned cookies.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/hasStorageAccess
+    """
     def importNode[T: Node](self, externalNode: T, deep: bool = False, /) -> T: ...
+    """
+    The Document object's importNode() method creates a copy of a Node or DocumentFragment from another document, to be inserted into the current document later.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/importNode
+    """
     def open(self) -> Undefined: ...
+    """
+    The Document.open() method opens a document for writing.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/open
+    """
     def prepend(self, param1: Node, /) -> Undefined: ...
+    """
+    The Document.prepend() method inserts a set of Node objects or strings before the first child of the document. Strings are inserted as equivalent Text nodes.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/prepend
+    """
     def querySelector(self, selectors: str, /) -> Element|None: ...
+    """
+    The Document method querySelector() returns the first Element within the document that matches the specified CSS selector, or group of CSS selectors. If no matches are found, null is returned.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector
+    """
     def querySelectorAll(self, selectors: str, /) -> NodeList: ...
+    """
+    The Document method querySelectorAll() returns a static (not live) NodeList representing a list of the document's elements that match the specified group of selectors.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll
+    """
     def replaceChildren(self, param1: Node, /) -> Undefined: ...
-    # TODO: options
+    """
+    The Document.replaceChildren() method replaces the existing children of a Document with a specified new set of children.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/replaceChildren
+    """
+    # Options not available on browsers yet
     async def requestStorageAccess(self) -> Undefined: ...
+    """
+    The requestStorageAccess() method of the Document interface allows content loaded in a third-party context (i.e., embedded in an <iframe>) to request access to third-party cookies and unpartitioned state. This is relevant to user agents that, by default, block access to third-party, unpartitioned cookies to improve privacy (e.g., to prevent tracking), and is part of the Storage Access API.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/requestStorageAccess
+    """
     def writeln(self, line: str, /) -> Undefined: ...
+    """
+    Writes a string of text followed by a newline character to a document.
+
+    See https://developer.mozilla.org/en-US/docs/Web/API/Document/writeln
+    """
 
 document: Document
+"""
+The Document interface represents any web page loaded in the browser and serves as an entry point into the web page's content, which is the DOM tree.
+
+See https://developer.mozilla.org/en-US/docs/Web/API/Document
+"""

@@ -1,4 +1,4 @@
-import { py2ast } from "@SBrython/sbry/py2ast_fast";
+import { py2ast } from "@SBrython/rbry/py2ast";
 import { Results } from "../results";
 
 declare const $B: any;
@@ -22,8 +22,6 @@ export default function buildAST(code: string, results: Results, use_parser: boo
     // tokens count
     const tokens = $B.tokenizer(code, '_');
     results.nb_tokens += tokens.length;
-
-    console.warn(tokens);
 
     results.bry .times[results.bry .offset++] += t0 - beg;
 

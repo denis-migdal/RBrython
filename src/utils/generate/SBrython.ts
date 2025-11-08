@@ -1,6 +1,5 @@
-import {py2ast, convert_ast} from "@SBrython/sbry/py2ast";
-import {ast2js} from "@SBrython/sbry/ast2js";
-import {SBrython, _sb_, _r_} from "@SBrython/runtime";
+import {convert_ast} from "@SBrython/sbry/py2ast";
+import {_sb_, _r_} from "@SBrython/runtime";
 
 // declare all builtin types...
 //import '@SBrython/sbry/structs/STypeBuiltin';
@@ -8,6 +7,7 @@ import {SBrython, _sb_, _r_} from "@SBrython/runtime";
 // ^ TODO: move out...
 
 import { SubResults } from "../results";
+import { ast2js } from "@SBrython/rbry/ast2js";
 
 export default function generateSBrython(_ast: any, results: SubResults) {
 
@@ -19,7 +19,7 @@ export default function generateSBrython(_ast: any, results: SubResults) {
         const filename = "_";
 
         const ast = {
-            nodes: convert_ast(__ast),
+            ast: __ast,
             filename
         }
 

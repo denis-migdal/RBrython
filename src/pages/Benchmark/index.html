@@ -3,7 +3,14 @@
     <head>
         <title>Benchmark</title>
         <link rel="stylesheet" href="./index.css"/>
+        <script>
+            a = performance.now();
+        </script>
         <script src="/assets/brython.min.js"></script>
+        <script>
+            b = performance.now();
+            console.warn(b-a)
+        </script>
         <script src="/skeleton/index.js" type="module"></script>
         <script src="./index.js" type="module"></script>
     </head>
