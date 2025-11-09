@@ -1,12 +1,35 @@
-As much as possible, corelib should be implemented in Python, and should not rely on the runlib. The function `__INCLUDE_JS__('...')` can be used to include raw JS code.
+As much as possible, corelib should be implemented in Python, and should not rely on the runlib. 
+
+For performances purposes, corelib could be pre-compiled using special emission rules.
+
+## Special methods
+
+RBrython defines several methods in order to access native JS operations.
+
+### JS Operators
+
+RBrython defines a set of functions enabling access to JS operators. 
 
 ```py
 class int:
-    __add__(a, b):
-        __INCLUDE_JS__('a+b') # can't define it otherwise.
+    __add__(self, b):
+        __JS_ADD__(self, b) # can't define it otherwise.
 ```
 
-For performances purposes, corelib could be pre-compiled using special emission rules.
+List of operators:
+- `__JS_ADD__(a, b)`
+
+### Log
+
+`__JS_LOG__(...)` print its parameters in the console. This function is used for quick debugs.
+
+### Arbitrary JS code
+
+`__JS_WRITE__('...')` write raw JS code into the emitted JS code. You should avoid using it as much as possible.
+
+```py
+__JS_WRITE__('console.warn("Hello")')
+```
 
 ## Advices
 

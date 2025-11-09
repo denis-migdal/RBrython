@@ -8,7 +8,7 @@ export default function Call(node: CallNode) {
     //const keywords = node.keywords;
 
     // @ts-ignore
-    if( f.id === "__INCLUDE_JS__")
+    if( f.id === "__JS_WRITE__")
         // @ts-ignore
         return node.args[0].value;
 
