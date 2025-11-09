@@ -1,5 +1,4 @@
 - W1:
-    - posonly function args.
     - types (int, float, str, etc. as python code)
     - requires __new__
 - W2:

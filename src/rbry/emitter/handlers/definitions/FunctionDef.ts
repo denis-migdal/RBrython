@@ -11,7 +11,16 @@ export default function FunctionDef(node: FunctionDefNode) {
     // @ts-ignore
     let prefix = globalThis.inClass ? "" : "function ";
 
-    let fct_str = `${prefix}${name}() {
+    let args = "";
+    for(let i = 0; i < node.args.posonlyargs.length; ++i) {
+        //console.warn( node.args.posonlyargs[i] );
+        //TODO:
+        //args += node2js(node.args.posonlyargs[i]) + ", ";
+        // @ts-ignore
+        args += `${node.args.posonlyargs[i].arg}, `;
+    }
+
+    let fct_str = `${prefix}${name}(${args}) {
         const self = this;
         ${Body(body)}
     }`;
@@ -24,7 +33,7 @@ export default function FunctionDef(node: FunctionDefNode) {
     // hardcoded
     if( type === "Attribute") {
         // @ts-ignore
-        const typehint = node.args.args[1].annotation.id;
+        const typehint = node.args.posonlyargs[1].annotation.id;
 
         return `static {
             this.prototype.${
