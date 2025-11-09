@@ -12,7 +12,17 @@ export default function FunctionDef(node: FunctionDefNode) {
     let prefix = globalThis.inClass ? "" : "function ";
 
     let args = "";
-    for(let i = 0; i < node.args.posonlyargs.length; ++i) {
+
+    let i = 0;
+    let self = "";
+    // @ts-ignore
+    if( globalThis.inClass ) {
+        // @ts-ignore
+        self = `const ${node.args.posonlyargs[i].arg} = this;`;
+        ++i;
+    }
+
+    for( ; i < node.args.posonlyargs.length; ++i) {
         //console.warn( node.args.posonlyargs[i] );
         //TODO:
         //args += node2js(node.args.posonlyargs[i]) + ", ";
@@ -21,7 +31,7 @@ export default function FunctionDef(node: FunctionDefNode) {
     }
 
     let fct_str = `${prefix}${name}(${args}) {
-        const self = this;
+        ${self}
         ${Body(body)}
     }`;
 
