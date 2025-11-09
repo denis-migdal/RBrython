@@ -83,6 +83,7 @@ export type FunctionDefNode = {
     name: string;
     args: ASTNode[];
     body: BodyNode;
+    decorator_list: ASTNode[]
 }
 
 export type IfNode = {

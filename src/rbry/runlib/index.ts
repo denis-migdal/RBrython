@@ -27,8 +27,17 @@ import { float } from "./tmp_corelib/float";
 import { str   } from "./tmp_corelib/str";
 import { _boolean } from "./tmp_corelib/boolean";
 import { getClass } from "./helpers/getClass";
+import {NotImplemented} from "./tmp_corelib/NotImplemented";
+import singledispatchmethod from "./tmp_corelib/singledispatchmethod";
 
 //TODO: __call__ on type...
+
+// @ts-ignore
+globalThis.__JS_LOG__ = (...args) => console.log(...args);
+
+// @ts-ignore
+globalThis.__JS_ADD__ = (a, b) => a+b;
+
 
 // @ts-ignore
 globalThis.str = str;
@@ -36,6 +45,9 @@ globalThis.str = str;
 globalThis.float = float;
 // @ts-ignore
 globalThis.int = int;
+
+// @ts-ignore
+globalThis.singledispatchmethod = singledispatchmethod;
 
 // @ts-ignore
 globalThis.abs = function( a: unknown) {
@@ -47,6 +59,9 @@ globalThis.abs = function( a: unknown) {
 globalThis.type = function(a: unknown) {
     return getClass(a); //TODO...
 }
+
+// @ts-ignore
+globalThis.NotImplemented = NotImplemented;
 
 // @ts-ignore
 globalThis.range = function*(a: number) {

@@ -70,3 +70,6 @@ Handlers["Break"] = Break as Handler;
 
 import {default as Raise} from "./keywords/Raise";
 Handlers["Raise"] = Raise as Handler;
+
+import {default as ImportFrom} from "./imports/ImportFrom";
+Handlers["ImportFrom"] = ImportFrom as Handler;

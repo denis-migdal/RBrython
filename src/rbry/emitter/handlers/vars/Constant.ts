@@ -13,6 +13,7 @@ export default function Constant(node: ConstantNode) {
             if( qname === "float"   ) return `${value}`;
             if( qname === "int"     ) return `${value}n`;
             if( qname === "NoneType") return "null";
+            //if( qname === "ellipsis") return "$RB.ellipsis";
         }
         if( type === "string" ) return `"${node.value}"`;
         if( type === "number" ) return `${node.value}n`; // bigint

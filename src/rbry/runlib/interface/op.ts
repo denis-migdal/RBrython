@@ -19,8 +19,7 @@ export default function op(a: unknown, op: string, b: unknown) {
         if( fct === undefined)
             fct = defaults[op as keyof typeof defaults];
     }
-
-    console.warn(a);
+    
     let result = fct.call(a, b);
     if( result === NotImplemented) {
 

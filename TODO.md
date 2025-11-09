@@ -1,16 +1,24 @@
+- doc __JS_LOG__ + dec impl + others ?
+
 - W1:
-    - post msg.
+    - decorators
+    - @singledispatch ?
+        - https://docs.python.org/3/library/functools.html#functools.singledispatchmethod
+        - https://docs.python.org/3/library/functools.html#functools.singledispatch
+    - types (int, float, str, etc. as python code)
 - W2:
     - tools + full pipeline.
         - compiler
         - stubs
+        - create stubs from py file ?
         - sourcemap
 - W3:
     - fct args + async
-    - @overload
     - Imports
+- W4:
+    - optimizer + flags (?) + test versions (?)
+    - inlining (opti) ?
 
-- optimizer + flags (?) + test versions (?)
 
 - remove old code + document...
 
