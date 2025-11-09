@@ -1,11 +1,7 @@
-- dec impl
-
 - W1:
-    - decorators
-    - @singledispatch ?
-        - https://docs.python.org/3/library/functools.html#functools.singledispatchmethod
-        - https://docs.python.org/3/library/functools.html#functools.singledispatch
+    - posonly function args.
     - types (int, float, str, etc. as python code)
+    - requires __new__
 - W2:
     - tools + full pipeline.
         - compiler
