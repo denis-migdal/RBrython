@@ -13,7 +13,7 @@ RBrython defines a set of functions enabling access to JS operators.
 ```py
 class int:
     __add__(self, b):
-        __JS_ADD__(self, b) # can't define it otherwise.
+        return __JS_ADD__(self, b) # can't define it otherwise.
 ```
 
 List of operators:

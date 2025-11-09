@@ -1,4 +1,4 @@
-- doc __JS_LOG__ + dec impl + others ?
+- dec impl
 
 - W1:
     - decorators
