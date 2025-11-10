@@ -35,6 +35,14 @@ import singledispatchmethod from "./tmp_corelib/singledispatchmethod";
 // @ts-ignore
 globalThis.__JS_LOG__ = (...args) => console.log(...args);
 
+const HVALUE = Symbol();
+
+// @ts-ignore
+globalThis.__JS_SET_HVALUE__ = (self, v) => self[HVALUE] = v;
+
+// @ts-ignore
+globalThis.__JS_GET_HVALUE__ = (self, v) => self[HVALUE];
+
 // @ts-ignore
 globalThis.__JS_ADD__ = (a, b) => a+b;
 

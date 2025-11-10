@@ -1,0 +1,33 @@
+I was thinking about Py/JS types.
+
+In Python, we can create a Z2 type inheriting from int we can then use everywhere an int is accepted:
+```
+class Z2(int):
+    def __add__(self, b):
+        return Z2(super().__add__(b)%2)
+```
+
+Meaning, that if I have a JS function requiring an int, I can give a Z2 to it:
+```
+globalThis.incr = function(a) { return ++a }
+```
+
+We would then have a "surprising" behavior:
+```
+x = scope.incr( Z2(1) )
+print(x, type(x))
+# expected: 0, Z2
+# got:           2, int.
+``
+
+To avoid that, maybe Brython should distinguish 4 kind of types:
+- Python types, implemented as non-ES6 classes (unfortunately required to have full support of Python features). Python type should not override JS valueOf.
+- JS classes, implemented as ES6 classes, with special rules (multi-inheritance is forbidden, special construction system, inheritance produces another JS class, can't inherit from Python class, can't override JS operators -e.g. []- ). e.g. enabling to inherit from HTMLElement. Maybe using an @jsclass decorator.
+- JS literals, viewed as a subclass of a python literal (e.g. JS number is a float). Meaning that we can operate on it as if it was a python literal, without conversions. We can't inherit from it.
+- some JS classes (e.g. Array) viewed as a subclass of a Python type (e.g. list) with extra methods. Same rules as JS classes.
+
+This means that:
+- creation of python literal will be slower than creation of JS literal (well this is already the case in Brython except for small int).
+- you'll have to explicitly convert python literal if the JS function expects a JS literal (as you would if you had a float while the function expects an int).
+
+For performances purposes you could make some assumptions, e.g. can't inherit from Python literals, enabling to make an complete equivalence between JS and Python literals.

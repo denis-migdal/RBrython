@@ -1,26 +1,33 @@
 - W1:
-    - types (int, float, str, etc. as python code)
-- W2:
+    - non-ES6 classes
+    @__JS_CONSTRUCTOR__
+    def _(self, ...args, /):
+        __JS_SET_HVALUE(self, args)
+    - $RB.lit(type)
+        -> get class
+        -> return new class(...)
+    - JS and Py new() => not the same.
+- W2
+    - types (int, float, str, type, etc. as python code)
+    - dict/list/tuple (only symbols ?)
+    - mail.
+- W3:
+    - fct args + async
+    - indent JS code
+    - Imports/runner (base types inside global space...)
+- W4:
     - tools + full pipeline.
         - compiler
         - stubs
         - create stubs from py file ?
         - sourcemap
-- W3:
-    - fct args + async
-    - Imports
-- W4:
+- W5:
+    - JS compat
+    -> for JS literal value = this... (how to ?)
+            -> h4ck ?
+- W6:
     - optimizer + flags (?) + test versions (?)
     - inlining (opti) ?
 
-
-- remove old code + document...
-
-- indent JS code
-- multi-inheritance
-
 - rewrite test system (tags to filter) + dirs + diff ?
 - rewrite Editor...
-
-- dict/list/tuple
-- types as Python + move types into corelib.

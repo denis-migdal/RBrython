@@ -6,15 +6,15 @@ For performances purposes, corelib could be pre-compiled using special emission 
 
 RBrython defines several methods in order to access native JS operations.
 
+### Hidden value
+
+When implementing Python literals you might want to store the internal JS value, and then use it in operations:
+- `__JS_SET_HVALUE__(self, v)`
+- `__JS_GET_HVALUE__(self)`
+
 ### JS Operators
 
-RBrython defines a set of functions enabling access to JS operators. 
-
-```py
-class int:
-    __add__(self, b):
-        return __JS_ADD__(self, b) # can't define it otherwise.
-```
+RBrython defines a set of functions enabling access to JS operators. Theses operators only work on JS types.
 
 List of operators:
 - `__JS_ADD__(a, b)`
