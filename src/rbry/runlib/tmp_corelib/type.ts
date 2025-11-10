@@ -1,6 +1,9 @@
+import lit from "../interface/lit";
+
 export class type {
     //TODO...
     __call__(...args: any[]) {
+
         // @ts-ignore
         const factory = this.prototype.__new__;
         const self = factory !== undefined
@@ -15,6 +18,6 @@ export class type {
         return self
     }
     __eq__(b: unknown) {
-        return this == b;
+        return lit(this == b);
     }
 }

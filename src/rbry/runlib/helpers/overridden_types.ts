@@ -1,1 +1,0 @@
-export default {} as Record<string, {new(...args:any[]): any}>;

@@ -1,4 +1,3 @@
-import overrided_types from "./overridden_types";
 import { type } from "../tmp_corelib/type";
 
 export function getClass(o: unknown) {
@@ -14,5 +13,6 @@ export function getClass(o: unknown) {
         return o.constructor;
     }
 
-    return overrided_types[typename];
+    throw new Error("JS type not implemented yet");
+    //return overrided_types[typename];
 }

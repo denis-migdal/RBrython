@@ -1,16 +1,16 @@
-- W2
-    - types (int, float, str, type, etc. as python code)
-    - mail.
 - W3:
-    - fct args + async
-    - indent JS code
+    - complex JS function call (?).
+        -> ((args) => {code})(args) -> convert back ?
+        - abs() function
+        - int(str)
+    - fct args
     - Imports/runner (base types inside global space...)
 - W4:
     - tools + full pipeline.
         - compiler
         - stubs
         - create stubs from py file ?
-        - sourcemap
+        - sourcemap / indent JS code
 - W5:
     - JS compat
     -> for JS literal value = this... (how to ?)
@@ -18,6 +18,10 @@
 - W6:
     - optimizer + flags (?) + test versions (?)
     - inlining (opti) ?
+- WX:
+    - types (type as python code)
+    - Nan != Nan
+    - async fct
 
 - dict/list/tuple (only symbols ?)
 

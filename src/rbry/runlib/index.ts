@@ -1,5 +1,3 @@
-import "./helpers/load_overridden_types"; // prevents circular dependencies.
-
 // interface
 import op     from "./interface/op";
 import uop    from "./interface/uop";
@@ -22,52 +20,95 @@ globalThis.$RB = {
 
 
 //TODO: corelib
-
-import { float } from "./tmp_corelib/float";
-import { str   } from "./tmp_corelib/str";
-import { _boolean } from "./tmp_corelib/boolean";
 import { getClass } from "./helpers/getClass";
 import {NotImplemented} from "./tmp_corelib/NotImplemented";
 import singledispatchmethod from "./tmp_corelib/singledispatchmethod";
 import lit from "./interface/lit";
 
-//TODO: __call__ on type...
-
 // @ts-ignore
 globalThis.__JS_LOG__ = (...args) => console.log(...args);
 
-const IVALUE = Symbol();
+export const IVALUE = Symbol();
 
 // @ts-ignore
 globalThis.__JS_SET_IVALUE__ = (self, v) => self[IVALUE] = v;
-
 // @ts-ignore
 globalThis.__JS_GET_IVALUE__ = (self, v) => self[IVALUE];
 
-// @ts-ignore
-globalThis.__JS_ADD__ = (a, b) => {
-    return a+b
-};
+const ops = { /* @ts-ignore */
+    "==" : (a, b) => { console.warn(a,b); return a == b }, /* @ts-ignore */
+    "===": (a, b) => a === b,/* @ts-ignore */
+    "+": (a, b) => a + b,/* @ts-ignore */
+    "-": (a, b) => a - b,/* @ts-ignore */
+    "*": (a, b) => a * b,/* @ts-ignore */
+    "**": (a, b) => a ** b,/* @ts-ignore */
+    "/": (a, b) => a / b,/* @ts-ignore */
+    "%": (a, b) => a % b,/* @ts-ignore */
+    "|": (a, b) => a | b,/* @ts-ignore */
+    "&": (a, b) => a & b,/* @ts-ignore */
+    ">>": (a, b) => a >> b,/* @ts-ignore */
+    "<<": (a, b) => a << b,/* @ts-ignore */
+}
+
+const uops = { /* @ts-ignore */
+    "-": (a) => -a, /* @ts-ignore */
+    "~": (a) => ~a, /* @ts-ignore */
+    "!": (a) => !a,
+}
+
+function getStr(o: unknown): string {
+    if( typeof o === "string")
+        return o;
+
+    // @ts-ignore
+    return o[IVALUE];
+}
 
 // @ts-ignore
-globalThis.__JS_OPI__ = (op, ...args: any[]) => {
+globalThis.__JS_OP__ = function (...args: any[]) {
+    if(args.length === 2) { // unary op
+        // @ts-ignore
+        return uops[getStr(args[0])](args[1]);
+    } // else binary op
     // @ts-ignore
-    return op(...args.map(e => __JS_GET_IVALUE__(e) ) )
+    return ops[getStr(args[1])](args[0], args[2]);
+}
+
+// @ts-ignore
+globalThis.__JS_OPI__ = (...args: any[]) => {
+    // @ts-ignore
+    return __JS_OP__(...args.map(e => __JS_GET_IVALUE__(e)) )
 };
 
 // @ts-ignore
 globalThis.__JS_FROM__ = lit;
 
+
 // @ts-ignore
-globalThis.__JS_FROM_OPI__ = (op, ...args: any[]) => {
+globalThis.__JS_AS_NUMBER__ = (o: unknown) => {
     // @ts-ignore
-    return __JS_FROM__( op(...args.map(e => __JS_GET_IVALUE__(e) ) ) )
+    o = o[IVALUE]
+    if( o === "infinity" || o === "inf")
+        return Number.POSITIVE_INFINITY
+    if( o === "-infinity" || o === "-inf")
+        return Number.NEGATIVE_INFINITY
+    return Number( o );
+}
+
+// @ts-ignore
+globalThis.__JS_AS_STRING__ = (o: unknown) => `${o[IVALUE]}`;
+
+// @ts-ignore
+globalThis.__JS_FROM_OP__ = (...args: any[]) => {
+    // @ts-ignore
+    return __JS_FROM__( __JS_OP__(...args) )
 };
 
 // @ts-ignore
-globalThis.str = str;
-// @ts-ignore
-globalThis.float = float;
+globalThis.__JS_FROM_OPI__ = (...args: any[]) => {
+    // @ts-ignore
+    return __JS_FROM__( __JS_OPI__(...args) )
+};
 
 // @ts-ignore
 globalThis.singledispatchmethod = singledispatchmethod;

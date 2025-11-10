@@ -18,12 +18,13 @@ When implementing Python literals you might want to store the internal JS value,
 
 RBrython defines a set of functions enabling access to JS operators. Theses operators only work on JS types.
 
-List of operators:
-- `__JS_ADD__(a, b)`.
+- `__JS_OP__(a, op, b)` : perform the binary JS operation op on a and b.
+- `__JS_OP__(op, a)` : perform the unary JS operation op on a.
+- `__JS_FROM_OP__(op, ...args)` build a new Python literal from the operation result.
+- `__JS_OPI__(...)` perform the operation `op` on the internal values.
+- `__JS_FROM_OPI__(op, ...args)` build a new Python literal from the operation result.
 
-`__JS_OPI__(op, ...args)` perform the operation `op` on the internal values of `...args`.
-
-`__JS_FROM_OPI__(op, ...args)` build a new Python literal from the operation result.
+- `__JS_AS_NUMBER__(o)` : convert `o` into a JS number.
 
 ### Log
 
