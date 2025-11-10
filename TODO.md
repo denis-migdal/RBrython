@@ -1,6 +1,4 @@
 - W3:
-    - complex JS function call (?).
-        -> ((args) => {code})(args) -> convert back ?
         - abs() function
         - int(str)
     - fct args

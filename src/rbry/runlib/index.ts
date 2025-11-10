@@ -64,6 +64,13 @@ function getStr(o: unknown): string {
     return o[IVALUE];
 }
 
+
+// @ts-ignore
+globalThis.__JS_IRUN__ = function (code: string, ...args: any[]) {
+    // @ts-ignore
+    return __JS_FROM__( eval(code[IVALUE])(...args.map( e => e[IVALUE])) );
+}
+
 // @ts-ignore
 globalThis.__JS_OP__ = function (...args: any[]) {
     if(args.length === 2) { // unary op

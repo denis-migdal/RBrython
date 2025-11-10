@@ -32,7 +32,13 @@ RBrython defines a set of functions enabling access to JS operators. Theses oper
 
 ### Arbitrary JS code
 
-`__JS_WRITE__('...')` write raw JS code into the emitted JS code. You should avoid using it as much as possible.
+- `__JS_IRUN__('(...) => ...', ...args)` performs complex computations from arguments internal values.  You should avoid using it when possible.
+
+```py
+__JS_IRUN__('(a,b) => a+b', a, b)
+```
+
+- `__JS_WRITE__('...')` write raw JS code into the emitted JS code. You should avoid using it as much as possible.
 
 ```py
 __JS_WRITE__('console.warn("Hello")')

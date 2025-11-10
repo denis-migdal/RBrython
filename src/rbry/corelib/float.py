@@ -118,8 +118,7 @@ class float:
         return __JS_FROM_OPI__("-", self) # type: ignore
     
     def __int__(self, /) -> int:
-        x = __JS_GET_IVALUE__(self) # type: ignore
-        return __JS_WRITE__('$RB.lit(Math.trunc(x))') # type: ignore
+        return __JS_IRUN__('(x) => Math.trunc(x)', self) # type: ignore
     
 #     __abs__() {
 #         return Math.abs(this);
