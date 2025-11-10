@@ -36,13 +36,13 @@ import lit from "./interface/lit";
 // @ts-ignore
 globalThis.__JS_LOG__ = (...args) => console.log(...args);
 
-const HVALUE = Symbol();
+const IVALUE = Symbol();
 
 // @ts-ignore
-globalThis.__JS_SET_IVALUE__ = (self, v) => self[HVALUE] = v;
+globalThis.__JS_SET_IVALUE__ = (self, v) => self[IVALUE] = v;
 
 // @ts-ignore
-globalThis.__JS_GET_IVALUE__ = (self, v) => self[HVALUE];
+globalThis.__JS_GET_IVALUE__ = (self, v) => self[IVALUE];
 
 // @ts-ignore
 globalThis.__JS_ADD__ = (a, b) => {
