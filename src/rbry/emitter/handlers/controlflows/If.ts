@@ -5,7 +5,7 @@ import { nodeType } from "@SBrython/rbry/ast";
 
 export default function If(node: IfNode) {
 
-    let str = `if( ${node2js(node.test)} ) {
+    let str = `if( __JS_GET_IVALUE__(${node2js(node.test)}) ) {
         ${ Body(node.body) }
     }`;
 

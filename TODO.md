@@ -1,8 +1,6 @@
 - W3:
-        - abs() function
-        - int(str)
-    - fct args
     - Imports/runner (base types inside global space...)
+    - fct args
 - W4:
     - tools + full pipeline.
         - compiler

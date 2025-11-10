@@ -3,7 +3,20 @@ from types     import NotImplementedType
 
 class int:
 
-    def __new__(cls, o: object, /) -> int:
+    def __new__(cls, o: object, base: int, /) -> int:
+        if type(o) == str:
+            return __JS_IRUN__( # type: ignore
+                '''
+                    (x, base) => {
+                        if( base !== 16)
+                            return BigInt(x);
+                        
+                        let result = 0n;
+                        for(let i = 2; i < x.length; ++i)
+                            result = result << 4n + BigInt( parseInt(this.slice(i, i+8), 16) );
+                        return result;
+                    }
+                ''', o, base) # type: ignore
         return type(o).__int__(o) # type: ignore
     
     def __eq__(self, o: object, /) -> bool:
@@ -111,6 +124,5 @@ class int:
     def __neg__(self, /) -> int:
         return __JS_FROM_OPI__("-", self) # type: ignore
     
-    # __abs__() {
-    #     return this < 0n ? - this : this;
-    # }
+    def __abs__(self, /) -> int:
+         return __JS_IRUN__("x => x < 0n ? -x : x", self) # type: ignore

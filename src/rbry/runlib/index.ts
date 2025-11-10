@@ -33,7 +33,7 @@ export const IVALUE = Symbol();
 // @ts-ignore
 globalThis.__JS_SET_IVALUE__ = (self, v) => self[IVALUE] = v;
 // @ts-ignore
-globalThis.__JS_GET_IVALUE__ = (self, v) => self[IVALUE];
+globalThis.__JS_GET_IVALUE__ = (self) => self[IVALUE];
 
 const ops = { /* @ts-ignore */
     "==" : (a, b) => { console.warn(a,b); return a == b }, /* @ts-ignore */
@@ -68,7 +68,7 @@ function getStr(o: unknown): string {
 // @ts-ignore
 globalThis.__JS_IRUN__ = function (code: string, ...args: any[]) {
     // @ts-ignore
-    return __JS_FROM__( eval(code[IVALUE])(...args.map( e => e[IVALUE])) );
+    return __JS_FROM__( eval(code[IVALUE])(...args.map( e => e?.[IVALUE])) );
 }
 
 // @ts-ignore
@@ -84,7 +84,7 @@ globalThis.__JS_OP__ = function (...args: any[]) {
 // @ts-ignore
 globalThis.__JS_OPI__ = (...args: any[]) => {
     // @ts-ignore
-    return __JS_OP__(...args.map(e => __JS_GET_IVALUE__(e)) )
+    return __JS_OP__(...args.map(e => getStr(e)) )
 };
 
 // @ts-ignore
