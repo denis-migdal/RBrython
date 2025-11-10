@@ -39,10 +39,10 @@ globalThis.__JS_LOG__ = (...args) => console.log(...args);
 const HVALUE = Symbol();
 
 // @ts-ignore
-globalThis.__JS_SET_HVALUE__ = (self, v) => self[HVALUE] = v;
+globalThis.__JS_SET_IVALUE__ = (self, v) => self[HVALUE] = v;
 
 // @ts-ignore
-globalThis.__JS_GET_HVALUE__ = (self, v) => self[HVALUE];
+globalThis.__JS_GET_IVALUE__ = (self, v) => self[HVALUE];
 
 // @ts-ignore
 globalThis.__JS_ADD__ = (a, b) => {
@@ -50,9 +50,9 @@ globalThis.__JS_ADD__ = (a, b) => {
 };
 
 // @ts-ignore
-globalThis.__JS_OPH__ = (op, ...args: any[]) => {
+globalThis.__JS_OPI__ = (op, ...args: any[]) => {
     // @ts-ignore
-    return op(...args.map(e => __JS_GET_HVALUE__(e) ) )
+    return op(...args.map(e => __JS_GET_IVALUE__(e) ) )
 };
 
 // @ts-ignore
