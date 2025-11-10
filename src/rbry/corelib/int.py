@@ -12,8 +12,7 @@ class int:
     
     @__add__.register
     def _(self, b: int, /) -> int:
-        return __JS_ADD__(__JS_GET_HVALUE__(self), # type: ignore
-                          __JS_GET_HVALUE__(b))    # type: ignore
+        return __JS_OPH__(__JS_ADD__, self, b) # type: ignore
     
     #@__add__.register
     #def _(self, b: float, /) -> float:

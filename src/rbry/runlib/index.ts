@@ -46,10 +46,14 @@ globalThis.__JS_GET_HVALUE__ = (self, v) => self[HVALUE];
 
 // @ts-ignore
 globalThis.__JS_ADD__ = (a, b) => {
-    console.warn(a,b);
     return a+b
 };
 
+// @ts-ignore
+globalThis.__JS_OPH__ = (op, ...args: any[]) => {
+    // @ts-ignore
+    return op(...args.map(e => __JS_GET_HVALUE__(e) ) )
+};
 
 // @ts-ignore
 globalThis.str = str;

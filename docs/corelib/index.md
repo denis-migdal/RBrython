@@ -17,7 +17,9 @@ When implementing Python literals you might want to store the internal JS value,
 RBrython defines a set of functions enabling access to JS operators. Theses operators only work on JS types.
 
 List of operators:
-- `__JS_ADD__(a, b)`
+- `__JS_ADD__(a, b)`.
+
+`__JS_OPH__(op, ...args)` perform the operation `op` on the hidden values of `...args`.
 
 ### Log
 

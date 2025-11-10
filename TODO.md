@@ -1,7 +1,5 @@
 - W2
-    - include py file (instead of using int.ts)...
     - types (int, float, str, type, etc. as python code)
-    - dict/list/tuple (only symbols ?)
     - mail.
 - W3:
     - fct args + async
@@ -20,6 +18,8 @@
 - W6:
     - optimizer + flags (?) + test versions (?)
     - inlining (opti) ?
+
+- dict/list/tuple (only symbols ?)
 
 - rewrite test system (tags to filter) + dirs + diff ?
 - rewrite Editor...
