@@ -56,6 +56,15 @@ globalThis.__JS_OPI__ = (op, ...args: any[]) => {
 };
 
 // @ts-ignore
+globalThis.__JS_FROM__ = lit;
+
+// @ts-ignore
+globalThis.__JS_FROM_OPI__ = (op, ...args: any[]) => {
+    // @ts-ignore
+    return __JS_FROM__( op(...args.map(e => __JS_GET_IVALUE__(e) ) ) )
+};
+
+// @ts-ignore
 globalThis.str = str;
 // @ts-ignore
 globalThis.float = float;

@@ -12,7 +12,7 @@ class int:
     
     @__add__.register
     def _(self, b: int, /) -> int:
-        return __JS_OPI__(__JS_ADD__, self, b) # type: ignore
+        return __JS_FROM_OPI__(__JS_ADD__, self, b) # type: ignore
     
     #@__add__.register
     #def _(self, b: float, /) -> float:

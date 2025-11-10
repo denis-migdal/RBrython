@@ -12,6 +12,8 @@ When implementing Python literals you might want to store the internal JS value,
 - `__JS_SET_IVALUE__(self, v)`
 - `__JS_GET_IVALUE__(self)`
 
+`__JS_FROM__(v)` : build a python literal from a JS value.
+
 ### JS Operators
 
 RBrython defines a set of functions enabling access to JS operators. Theses operators only work on JS types.
@@ -20,6 +22,8 @@ List of operators:
 - `__JS_ADD__(a, b)`.
 
 `__JS_OPI__(op, ...args)` perform the operation `op` on the internal values of `...args`.
+
+`__JS_FROM_OPI__(op, ...args)` build a new Python literal from the operation result.
 
 ### Log
 
