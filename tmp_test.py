@@ -3,12 +3,9 @@ from types     import NotImplementedType
 
 class X:
 
-    def __init__(self, v: int, /):
-        __JS_SET_HVALUE__(self, v) # type: ignore
-
     # for literals, needs special creation function...
-    #def __new__(cls, o: object, /) -> int:
-    #    return type(o).__int__(o) # type: ignore
+    def __new__(cls, o: object, /) -> int:
+        return type(o).__int__(o) # type: ignore
 
     @singledispatchmethod
     def __add__(self, _: object, /) -> int|float|NotImplementedType:

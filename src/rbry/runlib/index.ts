@@ -11,6 +11,7 @@ import attr   from "./interface/attr";
 // @ts-ignore
 globalThis.$RB = {
     // interface
+    lit,
     op,
     uop,
     call,
@@ -29,6 +30,7 @@ import { _boolean } from "./tmp_corelib/boolean";
 import { getClass } from "./helpers/getClass";
 import {NotImplemented} from "./tmp_corelib/NotImplemented";
 import singledispatchmethod from "./tmp_corelib/singledispatchmethod";
+import lit from "./interface/lit";
 
 //TODO: __call__ on type...
 

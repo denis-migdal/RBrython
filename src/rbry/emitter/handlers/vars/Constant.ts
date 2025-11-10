@@ -11,12 +11,12 @@ export default function Constant(node: ConstantNode) {
             const value: float|bigint = node.value.value;
 
             if( qname === "float"   ) return `${value}`;
-            if( qname === "int"     ) return `${value}n`;
+            if( qname === "int"     ) return `$RB.lit(${value}n)`;
             if( qname === "NoneType") return "null";
             //if( qname === "ellipsis") return "$RB.ellipsis";
         }
         if( type === "string" ) return `"${node.value}"`;
-        if( type === "number" ) return `${node.value}n`; // bigint
+        if( type === "number" ) return `$RB.lit(${node.value}n)`; // bigint
         if( type === "boolean") return `${node.value}`;
 
         console.warn(node, type);
