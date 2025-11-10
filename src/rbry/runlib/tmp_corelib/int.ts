@@ -3,7 +3,8 @@
 import { getClass } from "../helpers/getClass";
 import { NotImplemented } from "./NotImplemented";
 
-export class int {
+//TODO: remove
+export class _int {
     __eq__(b: unknown) {
         return this == b;
     }

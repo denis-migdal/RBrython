@@ -2,22 +2,36 @@ import { ClassDefNode } from "@SBrython/rbry/ast/types";
 import { nodeType } from "@SBrython/rbry/ast";
 import { node2js } from "../../node2js";
 
+// @ts-ignore
+globalThis.inCstrFct = false;
+
 export default function ClassDef(node: ClassDefNode) {
     const name = node.name;
     const body = node.body;
 
-    let str = `const ${name} = (() =>{
+    // dirty dirty h4ck... (we need a runner)
+    let str = `globalThis.${name} = (() =>{
         function ${name}() {
             return Object.create(${name}.prototype);
         }
+        const classname = ${name};
     `;
 
     for(let i = 0; i < body.length; ++i) {
         const type = nodeType(body[i]);
         if( type === "FunctionDef") {
             // @ts-ignore
-            str += `${name}.prototype.${body[i].name} = ${node2js(body[i])}
+            globalThis.inCstrFct = true;
+            // @ts-ignore
+            let prefix = body[i].name === "_"
+                            ? ""
+                            // @ts-ignore
+                            : `${name}.prototype.${body[i].name} = `;
+            
+            str += `${prefix}${node2js(body[i])}
             `;
+            // @ts-ignore
+            globalThis.inCstrFct = false;
         }
     }
 

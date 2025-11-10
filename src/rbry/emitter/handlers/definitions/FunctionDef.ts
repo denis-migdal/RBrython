@@ -16,7 +16,7 @@ export default function FunctionDef(node: FunctionDefNode) {
     let i = 0;
     let self = "";
     // @ts-ignore
-    if( globalThis.inClass ) {
+    if( globalThis.inClass || globalThis.inCstrFct ) {
         // @ts-ignore
         self = `const ${node.args.posonlyargs[i].arg} = this;`;
         ++i;
@@ -45,15 +45,31 @@ export default function FunctionDef(node: FunctionDefNode) {
         // @ts-ignore
         const typehint = node.args.posonlyargs[1].annotation.id;
 
-        return `static {
-            this.prototype.${
+        let str = "";
+        let prefix = "";
+        let pprefix = "classname";
+
+        // @ts-ignore
+        if( globalThis.inClass ) {
+            str += "static {\n";
+            prefix = "function ";
+            pprefix = "this";
+        }
+
+        str += `${pprefix}.prototype.${
                 // @ts-ignore
                 dnode.value.id
             }.register(
-                function ${fct_str},
+                ${prefix}${fct_str},
                 "${typehint}"
             );
-        }`;
+        `;
+
+        // @ts-ignore
+        if( globalThis.inClass )
+            str += "}\n";
+
+        return str;
     }
 
     // @ts-ignore
@@ -63,5 +79,5 @@ export default function FunctionDef(node: FunctionDefNode) {
         }`;
     }
 
-    throw new Error("not implemented");
+    return `${node2js(dnode)}(${fct_str})`;
 }

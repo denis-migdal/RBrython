@@ -23,7 +23,6 @@ globalThis.$RB = {
 
 //TODO: corelib
 
-import { int   } from "./tmp_corelib/int";
 import { float } from "./tmp_corelib/float";
 import { str   } from "./tmp_corelib/str";
 import { _boolean } from "./tmp_corelib/boolean";
@@ -46,15 +45,16 @@ globalThis.__JS_SET_HVALUE__ = (self, v) => self[HVALUE] = v;
 globalThis.__JS_GET_HVALUE__ = (self, v) => self[HVALUE];
 
 // @ts-ignore
-globalThis.__JS_ADD__ = (a, b) => a+b;
+globalThis.__JS_ADD__ = (a, b) => {
+    console.warn(a,b);
+    return a+b
+};
 
 
 // @ts-ignore
 globalThis.str = str;
 // @ts-ignore
 globalThis.float = float;
-// @ts-ignore
-globalThis.int = int;
 
 // @ts-ignore
 globalThis.singledispatchmethod = singledispatchmethod;
