@@ -144,3 +144,4 @@ globalThis.range = function*(a: number) {
 globalThis.Exception = function(msg: string) {
     throw new Error(msg);
 }
+

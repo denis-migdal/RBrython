@@ -1,5 +1,9 @@
 - W3:
-    - Imports/runner (base types inside global space...)
+    - runner
+        - base types inside global space...
+        - give context (JS)...
+            - macros (?)
+    - Imports
     - fct args
 - W4:
     - tools + full pipeline.
@@ -11,15 +15,16 @@
     - JS compat
     -> for JS literal value = this... (how to ?)
             -> h4ck ?
-- W6:
+
+- WX:
     - optimizer + flags (?) + test versions (?)
     - inlining (opti) ?
 - WX:
     - types (type as python code)
     - Nan != Nan
     - async fct
-
-- dict/list/tuple (only symbols ?)
-
-- rewrite test system (tags to filter) + dirs + diff ?
-- rewrite Editor...
+- WX:
+    - dict/list/tuple (only symbols ?)
+- WX
+    - rewrite test system (tags to filter) + dirs + diff ?
+    - rewrite Editor...
