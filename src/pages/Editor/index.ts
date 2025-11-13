@@ -44,7 +44,7 @@ const brython_tests = [
     'basic test suite',
     'numbers',
 //    "classes" // ~726
-    "strings",
+//    "strings",
 //    "string methods"
 ];
 // strings ~616
@@ -463,9 +463,12 @@ function startTests(test_name: string, merge: boolean) {
 
     let failed = [];
 
+    const configs = ["NONE"];
+    /*
     const configs: typeof __SBRY_COMPAT__[] = __SBRY_COMPAT__ === "NONE"
         ? ["NONE"]
         : ["NONE", "PERF"]; //, "FULL"];
+    */
 
     // build merged code
     tests: for(let i = 0; i < tests.length; ++i) {

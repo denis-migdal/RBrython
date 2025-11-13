@@ -1,4 +1,5 @@
 import { SubResults } from "../results";
+import { BryRunner } from "../runner";
 
 declare const $B: any;
 
@@ -11,22 +12,9 @@ export default function generateBrython(_ast: any, src:string, results: SubResul
     $B.debug = 0;
 
     const beg = performance.now();
-
-    const filename = "_";
-    const future = $B.future_features(ast, filename)
-
-    //times[1] += performance.now();
-
-    var symtable = $B._PySymtable_Build(ast, filename, future);
-
     const t0 = performance.now();
 
-    let imported:any;
-    const jscode  = $B.js_from_root({ast,
-                                  symtable,
-                                  filename,
-                                  src,
-                                  imported}).js
+    const jscode = BryRunner.emit(ast);
 
     const t1 = performance.now();
     

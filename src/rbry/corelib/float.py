@@ -3,11 +3,8 @@ from types     import NotImplementedType
 
 class float:
     def __new__(cls, o: object, /) -> int:
-        __JS_LOG__(o, type(o), str, type(o) is str, type(o) == str)
         if type(o) is str:
-            __JS_LOG__("inside")
             return __JS_FROM__( __JS_AS_NUMBER__(o) ) # type: ignore
-        __JS_LOG__("outside")
         return type(o).__float__(o) # type: ignore
     
     def __eq__(self, o: object, /) -> bool:

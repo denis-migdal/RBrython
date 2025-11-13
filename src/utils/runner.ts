@@ -1,3 +1,4 @@
-import Runner from "@SBrython/rbry/runner";
+import Runner from "@SBrython/rbry/runners";
 
-export default new Runner();
+export const  BryRunner = Runner.getBrythonRunner();
+export const RBryRunner = Runner.getRBrythonRunner();

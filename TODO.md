@@ -1,9 +1,6 @@
 - W2:
-    1. runner
-        - config: macros, symbols
-        - ??Builtin(name, code, cfg)
-        - registerBuiltin(name, symb)
-        - initialize()
+    1. runner / brython runner...
+    - steps
     2. fix NaN -> test merge=true (bench)
     3. optis on types.
     4. fct args (/!\ vals par défaut peuvent changer)
@@ -15,6 +12,7 @@
         + documenter fonctionnement...
     - imports
     - import JS.
+    - $B.imported["JS"] = $B.jsobj2pyobj( globalThis );
 - W4:
     - classes
         - inherit

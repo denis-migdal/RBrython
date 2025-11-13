@@ -1,5 +1,5 @@
 import { SubResults } from "../results";
-import runner from "../runner";
+import { RBryRunner } from "../runner";
 
 export default function executeSBrython(results: SubResults, print: (...args: any[]) => void) {
 
@@ -7,8 +7,8 @@ export default function executeSBrython(results: SubResults, print: (...args: an
 
     const beg = performance.now();
 
-    const fct = runner.asFunction(results.code);
     //sb.print = print;
+    const fct = RBryRunner.asFunction(results.code);
 
     const t0 = performance.now();
 

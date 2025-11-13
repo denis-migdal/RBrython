@@ -6,7 +6,7 @@ import {_sb_, _r_} from "@SBrython/runtime";
 // ^ TODO: move out...
 
 import { SubResults } from "../results";
-import runner from "../runner";
+import { RBryRunner } from "../runner";
 
 export default function generateSBrython(_ast: any, results: SubResults) {
 
@@ -14,7 +14,7 @@ export default function generateSBrython(_ast: any, results: SubResults) {
     const beg = performance.now();
     const t0  = performance.now();
 
-    const jscode = runner.emit(ast);
+    const jscode = RBryRunner.emit(ast);
 
     const t1 = performance.now();
 

@@ -1,25 +1,19 @@
+import { ParsedCode } from "@SBrython/rbry/ast/types";
 import { Results } from "../results";
-import runner from "../runner";
+import { BryRunner } from "../runner";
 
 declare const $B: any;
 
 export default function buildAST(code: string, results: Results, use_parser: boolean) {
 
-    const _ast: {bry: any, sbry:any} = {
+    const _ast: {bry: ParsedCode|null, sbry: ParsedCode|null} = {
          bry: null,
         sbry: null
     }
 
-    $B.imported["JS"] = $B.jsobj2pyobj( globalThis );
-
     const beg = performance.now();
-
-    const parser = new $B.Parser(code, "_", 'file');
-    _ast.bry = $B._PyPegen.run_parser(parser);
-
+    _ast.bry = _ast.sbry = BryRunner.parse(code);
     const t0 = performance.now();
-
-    _ast.sbry = runner.parse(code);
 
     // tokens count
     const tokens = $B.tokenizer(code, '_');

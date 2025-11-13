@@ -1,6 +1,8 @@
-export type AST = {
+export type ParsedCode = {
     filename: string,
-    ast     : ModuleNode
+    pycode  : string,
+    ast     : ModuleNode,
+    symtable: unknown,
 };
 
 export type ASTNode = {};

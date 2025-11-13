@@ -36,18 +36,18 @@ globalThis.__JS_SET_IVALUE__ = (self, v) => self[IVALUE] = v;
 globalThis.__JS_GET_IVALUE__ = (self) => self[IVALUE];
 
 const ops = { /* @ts-ignore */
-    "==" : (a, b) => { console.warn(a,b); return a == b }, /* @ts-ignore */
+    "==" : (a, b) => a ==  b,/* @ts-ignore */
     "===": (a, b) => a === b,/* @ts-ignore */
-    "+": (a, b) => a + b,/* @ts-ignore */
-    "-": (a, b) => a - b,/* @ts-ignore */
-    "*": (a, b) => a * b,/* @ts-ignore */
-    "**": (a, b) => a ** b,/* @ts-ignore */
-    "/": (a, b) => a / b,/* @ts-ignore */
-    "%": (a, b) => a % b,/* @ts-ignore */
-    "|": (a, b) => a | b,/* @ts-ignore */
-    "&": (a, b) => a & b,/* @ts-ignore */
-    ">>": (a, b) => a >> b,/* @ts-ignore */
-    "<<": (a, b) => a << b,/* @ts-ignore */
+    "+"  : (a, b) => a +  b,/* @ts-ignore */
+    "-"  : (a, b) => a -  b,/* @ts-ignore */
+    "*"  : (a, b) => a *  b,/* @ts-ignore */
+    "**" : (a, b) => a ** b,/* @ts-ignore */
+    "/"  : (a, b) => a /  b,/* @ts-ignore */
+    "%"  : (a, b) => a %  b,/* @ts-ignore */
+    "|"  : (a, b) => a |  b,/* @ts-ignore */
+    "&"  : (a, b) => a &  b,/* @ts-ignore */
+    ">>" : (a, b) => a >> b,/* @ts-ignore */
+    "<<" : (a, b) => a << b,/* @ts-ignore */
 }
 
 const uops = { /* @ts-ignore */
