@@ -1,5 +1,5 @@
-import { SBrython } from "@SBrython/runtime";
 import { SubResults } from "../results";
+import runner from "../runner";
 
 export default function executeSBrython(results: SubResults, print: (...args: any[]) => void) {
 
@@ -7,13 +7,12 @@ export default function executeSBrython(results: SubResults, print: (...args: an
 
     const beg = performance.now();
 
-    const sb = new SBrython();
-    sb.print = print;
-    const fct = sb.buildModule(results.code, {filename: "_"} as any);
+    const fct = runner.asFunction(results.code);
+    //sb.print = print;
 
     const t0 = performance.now();
 
-    fct(sb);
+    fct();
 
     const t1 = performance.now();
 
