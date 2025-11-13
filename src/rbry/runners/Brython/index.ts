@@ -1,14 +1,16 @@
 import { ParsedCode } from "../../ast/types";
 import parse from "../../parser";
+import Runner from "../interface";
 
-export default class BrythonRunner {
+export default class BrythonRunner extends Runner {
 
     constructor() {
+        super();
         this.initialize(); // by default initialize immediately.
     }
 
     run(pycode: string) {
-        this.asFunction(this.emit(this.parse(pycode)))();
+        this.loadAsFunction(this.emit(this.parse(pycode)))();
     }
     // builtins
 
@@ -31,8 +33,9 @@ export default class BrythonRunner {
                                 imported}).js
 
     }
-    asFunction(jscode: string) {
-        return new Function(jscode);
+    loadAsFunction(jscode: string) {
+        $B.imported["_"] = {};
+        return new Function(jscode) as () => void;
     }
 }
 

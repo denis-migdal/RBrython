@@ -1,7 +1,4 @@
 - W2:
-    1. runner / brython runner...
-    - steps
-    2. fix NaN -> test merge=true (bench)
     3. optis on types.
     4. fct args (/!\ vals par défaut peuvent changer)
     5. dict/list/tuple/string (seulement op de bases ?)
@@ -27,5 +24,5 @@
         - stubs
         - create stubs from py file ?
         - sourcemap / indent JS code
-    - rewrite test system (tags to filter) + dirs + diff ?
+    - rewrite test system (tags to filter) + dirs + diff + included/excluded stats
     - rewrite Editor...

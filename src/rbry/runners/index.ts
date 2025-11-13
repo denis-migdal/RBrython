@@ -1,7 +1,7 @@
 import  BrythonRunner from "./Brython";
 import RBrythonRunner from "./RBrython";
 
-export default class Runner {
+export default class Runners {
     static getBrythonRunner() {
         return new BrythonRunner();
     }

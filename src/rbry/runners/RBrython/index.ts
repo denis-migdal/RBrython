@@ -1,6 +1,7 @@
 import { ParsedCode } from "../../ast/types";
 import emit from "../../emitter";
 import parse from "../../parser";
+import Runner from "../interface";
 
 const builtin_pycode = {
     int  : require("!!raw-loader!../../corelib/int.py").default,
@@ -9,14 +10,15 @@ const builtin_pycode = {
     str  : require("!!raw-loader!../../corelib/str.py").default
 }
 
-export default class RBrythonRunner {
+export default class RBrythonRunner extends Runner {
 
     constructor() {
+        super();
         this.initialize(); // by default initialize immediately.
     }
 
     run(pycode: string) {
-        this.asFunction(this.emit(this.parse(pycode)))();
+        this.loadAsFunction(this.emit(this.parse(pycode)))();
     }
     // builtins
 
@@ -36,8 +38,8 @@ export default class RBrythonRunner {
     emit(ast: ParsedCode) {
         return emit(ast);
     }
-    asFunction(jscode: string) {
-        return new Function(jscode);
+    loadAsFunction(jscode: string) {
+        return new Function(jscode) as () => void;
     }
 }
 
