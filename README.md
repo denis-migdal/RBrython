@@ -13,7 +13,7 @@ RBrython distinguishes several processes:
 - <b>checker</b>: deduce and check typehints in the AST (<i>not implemented</i>).
 - <b>[optimizer](./docs/optimizer/index.md)</b>: transform the AST using deduced types as well as some assumptions (<i>not implemented</i>).
 - <b>[emitter](./docs/emitter/index.md)</b>: generate JS code from the AST.
-- <b>runner</b>: run generated JS code (<i>not implemented</i>).
+- <b>[runner](./docs/runner/index.md)</b>: run generated JS code (<i>not implemented</i>).
 
 Theses processes depends on an [AST structure](./docs/ast/index.md), for now we use Brython's.
 
