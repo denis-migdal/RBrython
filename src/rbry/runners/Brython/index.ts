@@ -35,7 +35,7 @@ export default class BrythonRunner extends Runner {
     }
     loadAsFunction(jscode: string) {
         $B.imported["_"] = {};
-        return new Function(jscode) as () => void;
+        return new Function("'use strict';" + jscode) as () => void;
     }
 }
 

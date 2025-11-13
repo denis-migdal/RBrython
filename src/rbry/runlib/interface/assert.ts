@@ -1,6 +1,4 @@
-import { IVALUE } from "..";
-
-export default function assert(cond: {[IVALUE]: boolean}) {
-    if( ! cond[IVALUE] )
+export default function assert(cond: boolean) {
+    if( ! cond )
         throw new Error(`Assertion failed`);
 }

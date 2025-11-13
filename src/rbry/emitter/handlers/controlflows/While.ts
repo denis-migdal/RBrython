@@ -4,7 +4,7 @@ import Body from "../Body";
 
 export default function While(node: WhileNode) {
 
-    return `while( __JS_GET_IVALUE__(${node2js(node.test)}) ) {
+    return `while( ${node2js(node.test)} ) {
         ${Body(node.body)}
     }`;
 

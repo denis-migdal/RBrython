@@ -9,7 +9,6 @@ import attr   from "./interface/attr";
 // @ts-ignore
 globalThis.$RB = {
     // interface
-    lit,
     op,
     uop,
     call,
@@ -23,7 +22,6 @@ globalThis.$RB = {
 import { getClass } from "./helpers/getClass";
 import {NotImplemented} from "./tmp_corelib/NotImplemented";
 import singledispatchmethod from "./tmp_corelib/singledispatchmethod";
-import lit from "./interface/lit";
 
 // @ts-ignore
 globalThis.__JS_LOG__ = (...args) => console.log(...args);
@@ -56,45 +54,30 @@ const uops = { /* @ts-ignore */
     "!": (a) => !a,
 }
 
-function getStr(o: unknown): string {
-    if( typeof o === "string")
-        return o;
-
-    // @ts-ignore
-    return o[IVALUE];
-}
-
-
 // @ts-ignore
-globalThis.__JS_IRUN__ = function (code: string, ...args: any[]) {
+globalThis.__JS_RUN__ = function (code: string, ...args: any[]) {
+
+    throw new Error("Currently, should not be called");
+    
     // @ts-ignore
-    return __JS_FROM__( eval(code[IVALUE])(...args.map( e => e?.[IVALUE])) );
+    return eval(code)(...args);
 }
 
 // @ts-ignore
 globalThis.__JS_OP__ = function (...args: any[]) {
+
+    throw new Error("Currently, should not be called");
+
     if(args.length === 2) { // unary op
         // @ts-ignore
-        return uops[getStr(args[0])](args[1]);
+        return uops[args[0]](args[1]);
     } // else binary op
     // @ts-ignore
-    return ops[getStr(args[1])](args[0], args[2]);
+    return ops[args[1]](args[0], args[2]);
 }
 
 // @ts-ignore
-globalThis.__JS_OPI__ = (...args: any[]) => {
-    // @ts-ignore
-    return __JS_OP__(...args.map(e => getStr(e)) )
-};
-
-// @ts-ignore
-globalThis.__JS_FROM__ = lit;
-
-
-// @ts-ignore
 globalThis.__JS_AS_NUMBER__ = (o: unknown) => {
-    // @ts-ignore
-    o = o[IVALUE]
     if( o === "infinity" || o === "inf")
         return Number.POSITIVE_INFINITY
     if( o === "-infinity" || o === "-inf")
@@ -103,19 +86,7 @@ globalThis.__JS_AS_NUMBER__ = (o: unknown) => {
 }
 
 // @ts-ignore
-globalThis.__JS_AS_STRING__ = (o: unknown) => `${o[IVALUE]}`;
-
-// @ts-ignore
-globalThis.__JS_FROM_OP__ = (...args: any[]) => {
-    // @ts-ignore
-    return __JS_FROM__( __JS_OP__(...args) )
-};
-
-// @ts-ignore
-globalThis.__JS_FROM_OPI__ = (...args: any[]) => {
-    // @ts-ignore
-    return __JS_FROM__( __JS_OPI__(...args) )
-};
+globalThis.__JS_AS_STRING__ = (o: unknown) => `${o}`;
 
 // @ts-ignore
 globalThis.singledispatchmethod = singledispatchmethod;

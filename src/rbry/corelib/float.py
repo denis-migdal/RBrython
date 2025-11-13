@@ -4,11 +4,11 @@ from types     import NotImplementedType
 class float:
     def __new__(cls, o: object, /) -> int:
         if type(o) is str:
-            return __JS_FROM__( __JS_AS_NUMBER__(o) ) # type: ignore
+            return __JS_AS_NUMBER__(o) # type: ignore
         return type(o).__float__(o) # type: ignore
     
     def __eq__(self, o: object, /) -> bool:
-        return __JS_FROM_OPI__(self, "==", o) # type: ignore
+        return __JS_OP__(self, "==", o) # type: ignore
     
 
     ### add ###
@@ -18,13 +18,11 @@ class float:
     
     @__add__.register
     def _(self, b: float, /) -> float:
-        return __JS_FROM_OPI__(self, "+", b) # type: ignore
+        return __JS_OP__(self, "+", b) # type: ignore
     
     @__add__.register
     def _(self, b: int, /) -> float:
-        return __JS_FROM_OP__(  __JS_GET_IVALUE__(self), # type: ignore
-                                "+",
-                                __JS_AS_NUMBER__(b)) # type: ignore
+        return __JS_OP__(  self, "+", __JS_AS_NUMBER__(b)) # type: ignore
 
     @singledispatchmethod
     def __radd__(self, _: object, /) -> float|NotImplementedType:
@@ -32,9 +30,7 @@ class float:
     
     @__radd__.register
     def _(self, b: int, /) -> float:
-        return __JS_FROM_OP__(  __JS_AS_NUMBER__(b), # type: ignore
-                                "+",
-                                __JS_GET_IVALUE__(self)) # type: ignore
+        return __JS_OP__(  __JS_AS_NUMBER__(b), "+", self) # type: ignore
     
 
     ### sub ###
@@ -44,13 +40,11 @@ class float:
     
     @__sub__.register
     def _(self, b: float, /) -> float:
-        return __JS_FROM_OPI__(self, "-", b) # type: ignore
+        return __JS_OP__(self, "-", b) # type: ignore
     
     @__sub__.register
     def _(self, b: int, /) -> float:
-        return __JS_FROM_OP__(  __JS_GET_IVALUE__(self), # type: ignore
-                                "-",
-                                __JS_AS_NUMBER__(b)) # type: ignore
+        return __JS_OP__( self, "-", __JS_AS_NUMBER__(b)) # type: ignore
 
     @singledispatchmethod
     def __rsub__(self, _: object, /) -> float|NotImplementedType:
@@ -58,9 +52,7 @@ class float:
     
     @__rsub__.register
     def _(self, b: int, /) -> float:
-        return __JS_FROM_OP__(  __JS_AS_NUMBER__(b), # type: ignore
-                                "-",
-                                __JS_GET_IVALUE__(self)) # type: ignore
+        return __JS_OP__( __JS_AS_NUMBER__(b), "-", self) # type: ignore
     
     ### mul ###
     @singledispatchmethod
@@ -69,13 +61,11 @@ class float:
     
     @__mul__.register
     def _(self, b: float, /) -> float:
-        return __JS_FROM_OPI__(self, "*", b) # type: ignore
+        return __JS_OP__(self, "*", b) # type: ignore
     
     @__mul__.register
     def _(self, b: int, /) -> float:
-        return __JS_FROM_OP__(  __JS_GET_IVALUE__(self), # type: ignore
-                                "*",
-                                __JS_AS_NUMBER__(b)) # type: ignore
+        return __JS_OP__( self, "*", __JS_AS_NUMBER__(b)) # type: ignore
 
     @singledispatchmethod
     def __rmul__(self, _: object, /) -> float|NotImplementedType:
@@ -83,9 +73,7 @@ class float:
     
     @__rmul__.register
     def _(self, b: int, /) -> float:
-        return __JS_FROM_OP__(  __JS_AS_NUMBER__(b), # type: ignore
-                                "*",
-                                __JS_GET_IVALUE__(self)) # type: ignore
+        return __JS_OP__( __JS_AS_NUMBER__(b), "*", self) # type: ignore
 
     ### div ###
     @singledispatchmethod
@@ -94,13 +82,11 @@ class float:
     
     @__div__.register
     def _(self, b: float, /) -> float:
-        return __JS_FROM_OPI__(self, "/", b) # type: ignore
+        return __JS_OP__(self, "/", b) # type: ignore
     
     @__div__.register
     def _(self, b: int, /) -> float:
-        return __JS_FROM_OP__(  __JS_GET_IVALUE__(self), # type: ignore
-                                "/",
-                                __JS_AS_NUMBER__(b)) # type: ignore
+        return __JS_OP__( self, "/", __JS_AS_NUMBER__(b)) # type: ignore
 
     @singledispatchmethod
     def __rdiv__(self, _: object, /) -> float|NotImplementedType:
@@ -108,17 +94,15 @@ class float:
     
     @__rdiv__.register
     def _(self, b: int, /) -> float:
-        return __JS_FROM_OP__(  __JS_AS_NUMBER__(b), # type: ignore
-                                "/",
-                                __JS_GET_IVALUE__(self)) # type: ignore
+        return __JS_OP__( __JS_AS_NUMBER__(b), "/", self) # type: ignore
     
     ### unary operators ###
 
     def __neg__(self, /) -> float:
-        return __JS_FROM_OPI__("-", self) # type: ignore
+        return __JS_OP__("-", self) # type: ignore
     
     def __int__(self, /) -> int:
-        return __JS_IRUN__('(x) => Math.trunc(x)', self) # type: ignore
+        return __JS_RUN__('(x) => Math.trunc(x)', self) # type: ignore
     
     def __abs__(self, /) -> int:
-         return __JS_IRUN__('(x) => Math.abs(x)', self) # type: ignore
+         return __JS_RUN__('(x) => Math.abs(x)', self) # type: ignore

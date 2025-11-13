@@ -1,6 +1,8 @@
-import { AttributeNode, CallNode } from "@SBrython/rbry/ast/types";
+import { ASTNode, AttributeNode, CallNode } from "@SBrython/rbry/ast/types";
 import { node2js } from "../../node2js";
 import { nodeType } from "@SBrython/rbry/ast";
+
+export const macros: Record<string, (...args: ASTNode[]) => string> = {};
 
 export default function Call(node: CallNode) {
     const f        = node.func;
@@ -8,9 +10,9 @@ export default function Call(node: CallNode) {
     //const keywords = node.keywords;
 
     // @ts-ignore
-    if( f.id === "__JS_WRITE__")
+    if( f.id in macros)
         // @ts-ignore
-        return node.args[0].value;
+        return macros[f.id]( ...node.args );
 
     //TODO: args parsing...
     let str = "";

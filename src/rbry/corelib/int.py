@@ -5,7 +5,7 @@ class int:
 
     def __new__(cls, o: object, base: int, /) -> int:
         if type(o) == str:
-            return __JS_IRUN__( # type: ignore
+            return __JS_RUN__( # type: ignore
                 '''
                     (x, base) => {
                         if( base !== 16)
@@ -20,7 +20,7 @@ class int:
         return type(o).__int__(o) # type: ignore
     
     def __eq__(self, o: object, /) -> bool:
-        return __JS_FROM_OPI__(self, "==", o) # type: ignore
+        return __JS_OP__(self, "==", o) # type: ignore
 
     ### add ###
 
@@ -30,7 +30,7 @@ class int:
     
     @__add__.register
     def _(self, b: int, /) -> int:
-        return __JS_FROM_OPI__(self, "+", b) # type: ignore
+        return __JS_OP__(self, "+", b) # type: ignore
     
     ### add ###
 
@@ -40,7 +40,7 @@ class int:
     
     @__sub__.register
     def _(self, b: int, /) -> int:
-        return __JS_FROM_OPI__(self, "-", b) # type: ignore
+        return __JS_OP__(self, "-", b) # type: ignore
     
     ### mul ###
     @singledispatchmethod
@@ -49,7 +49,7 @@ class int:
     
     @__mul__.register
     def _(self, b: int, /) -> int:
-        return __JS_FROM_OPI__(self, "*", b) # type: ignore
+        return __JS_OP__(self, "*", b) # type: ignore
     
     ### pow ###
     @singledispatchmethod
@@ -58,7 +58,7 @@ class int:
     
     @__pow__.register
     def _(self, b: int, /) -> int:
-        return __JS_FROM_OPI__(self, "**", b) # type: ignore
+        return __JS_OP__(self, "**", b) # type: ignore
     
     ### div ###
     @singledispatchmethod
@@ -67,9 +67,9 @@ class int:
     
     @__div__.register
     def _(self, b: int, /) -> float:
-        return __JS_FROM_OP__(__JS_AS_NUMBER__(self), # type: ignore
-                                "/",
-                              __JS_AS_NUMBER__(b)) # type: ignore
+        return __JS_OP__(__JS_AS_NUMBER__(self), # type: ignore
+                         "/",
+                         __JS_AS_NUMBER__(b)) # type: ignore
     
     ### mod ###
     @singledispatchmethod
@@ -78,7 +78,7 @@ class int:
 
     @__mod__.register
     def _(self, b: int, /) -> int:
-        return __JS_FROM_OPI__(self, "%", b) # type: ignore
+        return __JS_OP__(self, "%", b) # type: ignore
     
     ### or ###
     @singledispatchmethod
@@ -87,7 +87,7 @@ class int:
 
     @__or__.register
     def _(self, b: int, /) -> int:
-        return __JS_FROM_OPI__(self, "|", b) # type: ignore
+        return __JS_OP__(self, "|", b) # type: ignore
 
     ### and ###
     @singledispatchmethod
@@ -96,7 +96,7 @@ class int:
 
     @__and__.register
     def _(self, b: int, /) -> int:
-        return __JS_FROM_OPI__(self, "&", b) # type: ignore
+        return __JS_OP__(self, "&", b) # type: ignore
     
     
     ### lshift ###
@@ -106,7 +106,7 @@ class int:
 
     @__lshift__.register
     def _(self, b: int, /) -> int:
-        return __JS_FROM_OPI__(self, "<<", b) # type: ignore
+        return __JS_OP__(self, "<<", b) # type: ignore
     
     ### rshift ###
     @singledispatchmethod
@@ -115,14 +115,14 @@ class int:
 
     @__rshift__.register
     def _(self, b: int, /) -> int:
-        return __JS_FROM_OPI__(self, ">>", b) # type: ignore
+        return __JS_OP__(self, ">>", b) # type: ignore
 
     ### unary operators ###
     def __invert__(self, /) -> int:
-        return __JS_FROM_OPI__("~", self) # type: ignore
+        return __JS_OP__("~", self) # type: ignore
 
     def __neg__(self, /) -> int:
-        return __JS_FROM_OPI__("-", self) # type: ignore
+        return __JS_OP__("-", self) # type: ignore
     
     def __abs__(self, /) -> int:
-         return __JS_IRUN__("x => x < 0n ? -x : x", self) # type: ignore
+         return __JS_RUN__("x => x < 0n ? -x : x", self) # type: ignore

@@ -1,5 +1,3 @@
-import lit from "../interface/lit";
-
 export class type {
     //TODO...
     __call__(...args: any[]) {
@@ -18,6 +16,6 @@ export class type {
         return self
     }
     __eq__(b: unknown) {
-        return lit(this == b);
+        return this == b;
     }
 }

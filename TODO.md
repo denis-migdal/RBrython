@@ -1,5 +1,4 @@
 - W2:
-    3. optis on types.
     4. fct args (/!\ vals par défaut peuvent changer)
     5. dict/list/tuple/string (seulement op de bases ?)
 - W3: 
@@ -24,5 +23,8 @@
         - stubs
         - create stubs from py file ?
         - sourcemap / indent JS code
-    - rewrite test system (tags to filter) + dirs + diff + included/excluded stats
+    - rewrite test system (tags to filter) + dirs + diff
+        + included/excluded stats
+        + code highlight (dont AST)
+        + print() in editor Output
     - rewrite Editor...

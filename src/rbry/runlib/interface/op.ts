@@ -1,7 +1,5 @@
-import { IVALUE } from "..";
 import { getClass } from "../helpers/getClass";
 import { NotImplemented } from "../tmp_corelib/NotImplemented";
-import lit from "./lit";
 
 export default function op(a: unknown, op: string, b: unknown) {
     const ka = getClass(a);
@@ -15,7 +13,7 @@ export default function op(a: unknown, op: string, b: unknown) {
 
     if( fct === undefined ) {
         if( op === "ne" )
-            return lit( ! ka.prototype["__eq__"].call(a, b)[IVALUE] );
+            return ! ka.prototype["__eq__"].call(a, b);
         if( op[0] === "i")
             fct = ka.prototype[`__${op.slice(1)}__`];
         if( fct === undefined)
@@ -23,6 +21,7 @@ export default function op(a: unknown, op: string, b: unknown) {
     }
     
     let result = fct.call(a, b);
+
     if( result === NotImplemented) {
 
         const kb = getClass(b);

@@ -1,6 +1,6 @@
 ## Changes to make
 
-- remplace `__JS_IRUN__` by JS imports (performs an evil eval).
+- remplace `__JS_RUN__` by JS imports (performs an evil eval).
 - use JS lit.
 
 ## Optimizations ideas (not implemented)

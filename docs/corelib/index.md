@@ -2,9 +2,9 @@ As much as possible, corelib should be implemented in Python, and should not rel
 
 For performances purposes, corelib could be pre-compiled using special emission rules.
 
-## Special methods
+## JS macro
 
-RBrython defines several methods in order to access native JS operations.
+RBrython enable to define JavaScript macros in order to access native JS operations. During the emission, calls to such macros may be replaced by their JS code.
 
 ### Internal value
 
@@ -12,19 +12,17 @@ When implementing Python literals you might want to store the internal JS value,
 - `__JS_SET_IVALUE__(self, v)`
 - `__JS_GET_IVALUE__(self)`
 
-`__JS_FROM__(v)` : build a python literal from a JS value.
-
 ### JS Operators
 
 RBrython defines a set of functions enabling access to JS operators. Theses operators only work on JS types.
 
 - `__JS_OP__(a, op, b)` : perform the binary JS operation op on a and b.
 - `__JS_OP__(op, a)` : perform the unary JS operation op on a.
-- `__JS_FROM_OP__(op, ...args)` build a new Python literal from the operation result.
-- `__JS_OPI__(...)` perform the operation `op` on the internal values.
-- `__JS_FROM_OPI__(op, ...args)` build a new Python literal from the operation result.
+
+### Convertions
 
 - `__JS_AS_NUMBER__(o)` : convert `o` into a JS number.
+- `__JS_AS_STRING__(o)` : convert `o` into a JS string.
 
 ### Log
 
@@ -32,10 +30,10 @@ RBrython defines a set of functions enabling access to JS operators. Theses oper
 
 ### Arbitrary JS code
 
-- `__JS_IRUN__('(...) => ...', ...args)` performs complex computations from arguments internal values.  You should avoid using it when possible.
+- `__JS_RUN__('(...) => ...', ...args)` performs complex computations.
 
 ```py
-__JS_IRUN__('(a,b) => a+b', a, b)
+__JS_RUN__('(a,b) => a+b', a, b)
 ```
 
 - `__JS_WRITE__('...')` write raw JS code into the emitted JS code. You should avoid using it as much as possible.

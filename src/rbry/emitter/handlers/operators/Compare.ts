@@ -8,7 +8,7 @@ export default function Compare(node: CompareNode) {
     const op = getOp(node.ops[0]) as keyof typeof cmpops | "Is";
     const b  = node.comparators[0];
 
-    if( op === 'Is' ) return `__JS_FROM_OPI__(${node2js(a)}, "===", ${node2js(b)})`;
+    if( op === 'Is' ) return `${node2js(a)} === ${node2js(b)}`;
     
     const opname = cmpops[op];
     if( opname === undefined) {

@@ -1,12 +1,10 @@
-import { IVALUE } from "..";
 import { getClass } from "../helpers/getClass";
-import lit from "./lit";
 
 export default function uop(op:string, a: unknown) {
 
     if( op === "not") {
         // @ts-ignore
-        return lit(! a[IVALUE]);
+        return ! a;
     }
 
     const ka = getClass(a);
