@@ -14,11 +14,23 @@ export default function FunctionDef(node: FunctionDefNode) {
     let args = "";
 
     let i = 0;
+    let arg_offset = 0;
     let self = "";
     // @ts-ignore
     if( globalThis.inClass || globalThis.inCstrFct ) {
-        // @ts-ignore
-        self = `const ${node.args.posonlyargs[i].arg} = this;`;
+
+        let selfname = "";
+        if( node.args.posonlyargs.length)
+            // @ts-ignore
+            selfname = node.args.posonlyargs[0].arg;
+        else {
+            // @ts-ignore
+            selfname = node.args.args[0].arg
+            ++arg_offset;
+        }
+
+        // @ts-ignore'
+        self = `const ${selfname} = this;`;
         ++i;
     }
 
@@ -29,6 +41,29 @@ export default function FunctionDef(node: FunctionDefNode) {
         // @ts-ignore
         args += `${node.args.posonlyargs[i].arg}, `;
     }
+    i = arg_offset;
+    for( ; i < node.args.args.length; ++i) {
+        //console.warn( node.args.posonlyargs[i] );
+        //TODO:
+        //args += node2js(node.args.posonlyargs[i]) + ", ";
+        // @ts-ignore
+        args += `_${node.args.args[i].arg}, `;
+    }
+    if( node.args.args.length ) {
+        // kw...
+        args += "{";
+        for( let i = arg_offset ; i < node.args.args.length; ++i) {
+            // @ts-ignore
+            args += `${node.args.args[i].arg} = _${node.args.args[i].arg}, `;
+        }
+        args += "} = $RB.getKW()";
+    }
+
+    // vararg
+    // kwonlyargs
+    // kwarg
+    //console.warn(node.args);
+
 
     let fct_str = `${prefix}${name}(${args}) {
         ${self}

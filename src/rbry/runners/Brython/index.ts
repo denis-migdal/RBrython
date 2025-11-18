@@ -17,6 +17,8 @@ export default class BrythonRunner extends Runner {
     // initialize
     #initialized = false;
     initialize() {
+        $B.imported["JS"] = $B.jsobj2pyobj( globalThis );
+
         this.#initialized = true;
     }
 
@@ -35,7 +37,7 @@ export default class BrythonRunner extends Runner {
     }
     loadAsFunction(jscode: string) {
         $B.imported["_"] = {};
-        return new Function("'use strict';" + jscode) as () => void;
+        return Function("'use strict';" + jscode) as () => void;
     }
 }
 

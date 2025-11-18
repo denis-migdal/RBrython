@@ -17,6 +17,18 @@ export default function ClassDef(node: ClassDefNode) {
         const classname = ${name};
     `;
 
+
+    if( node.bases.length >= 1) {
+        str += `${name}.prototype = Object.create(${node2js(node.bases[0])}.prototype);\n`;
+    
+        for(let i = 1; i < node.bases.length; ++i) {
+
+            str += `Object.assign(${name}.prototype, ${node2js(node.bases[i])}.prototype);`;
+        }
+
+        str += `${name}.prototype.constructor = ${name};\n`;
+    }
+
     for(let i = 0; i < body.length; ++i) {
         const type = nodeType(body[i]);
         if( type === "FunctionDef") {
@@ -41,8 +53,4 @@ export default function ClassDef(node: ClassDefNode) {
     `;
 
     return str;
-
-    /*return `class ${name} {
-        ${Body(body, true)}
-    }`;*/
 }

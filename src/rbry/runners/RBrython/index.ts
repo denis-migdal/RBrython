@@ -66,13 +66,6 @@ export default class RBrythonRunner extends Runner {
         return emit(ast);
     }
     loadAsFunction(jscode: string) {
-        return new Function("'use strict';" + jscode) as () => void;
+        return Function("'use strict';" + jscode) as () => void;
     }
 }
-
-/*
- - config: macros, symbols
- - ??Builtin(name, code, cfg)
- - registerBuiltin(name, symb)
- - initialize()
- */

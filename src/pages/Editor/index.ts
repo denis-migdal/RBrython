@@ -5,7 +5,7 @@ import printBenchStats from "./utils/printBenchStats";
 const brython_tests = [
     'basic test suite',
     'numbers',
-//    "classes" // ~726
+    "classes" // ~726
 //    "strings",
 //    "string methods"
 ];
@@ -52,7 +52,19 @@ function createBench() {
             .addStep("load",  (runner, ctx) => {
         ctx.fct = runner.loadAsFunction(ctx.jscode);
     })
-            .addStep("execute",  (_, ctx) => {
+            .addStep("execute1",  (_, ctx) => {
+        ctx.fct();
+    })
+            .addStep("execute2",  (_, ctx) => {
+        ctx.fct();
+    })
+            .addStep("execute3",  (_, ctx) => {
+        ctx.fct();
+    })
+            .addStep("execute4",  (_, ctx) => {
+        ctx.fct();
+    })
+            .addStep("execute5",  (_, ctx) => {
         ctx.fct();
     });
 

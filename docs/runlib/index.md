@@ -9,6 +9,10 @@
 | `mcall(obj, attr, ...args)` | attr+call | Method call |
 | `assert(cond)` | `assert(cond, msg)` | |
 | NotImpl | `$raise(e)` ||
+| `setKW(kw)` | | in a call, set kw args |
+| `getKW(): kw` | | in a call, get kw args |
+| `getModule(name)` | ? | get loaded module (sync) |
+
 
 ### Recommandations for Brython
 

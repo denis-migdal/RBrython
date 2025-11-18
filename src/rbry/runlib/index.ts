@@ -15,13 +15,17 @@ globalThis.$RB = {
     mcall,
     assert,
     attr,
+    getKW,
+    setKW,
+    getModule
 }
-
 
 //TODO: corelib
 import { getClass } from "./helpers/getClass";
 import {NotImplemented} from "./tmp_corelib/NotImplemented";
 import singledispatchmethod from "./tmp_corelib/singledispatchmethod";
+import { getKW, setKW } from "./interface/KW";
+import getModule from "./interface/getModule";
 
 // @ts-ignore
 globalThis.__JS_LOG__ = (...args) => console.log(...args);
@@ -58,7 +62,7 @@ const uops = { /* @ts-ignore */
 globalThis.__JS_RUN__ = function (code: string, ...args: any[]) {
 
     throw new Error("Currently, should not be called");
-    
+
     // @ts-ignore
     return eval(code)(...args);
 }

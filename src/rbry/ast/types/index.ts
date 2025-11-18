@@ -72,13 +72,15 @@ export type AttributeNode = {
 }
 
 export type CallNode = {
-    func: ASTNode
-    args: ASTNode[]
+    func    : ASTNode
+    args    : ASTNode[],
+    keywords: ASTNode[]
 }
 
 export type ClassDefNode = {
     name: string;
     body: BodyNode;
+    bases: ASTNode[];
 }
 
 export type FunctionDefNode = {

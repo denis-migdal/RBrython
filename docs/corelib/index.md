@@ -2,6 +2,10 @@ As much as possible, corelib should be implemented in Python, and should not rel
 
 For performances purposes, corelib could be pre-compiled using special emission rules.
 
+## Importing JS
+
+You can import JS global scope with `import JS`.
+
 ## JS macro
 
 RBrython enable to define JavaScript macros in order to access native JS operations. During the emission, calls to such macros may be replaced by their JS code.

@@ -16,6 +16,10 @@ Internal API:
 
 Python types are implemented as constructor functions. Indeed, some of Python features can't be implemented with ES6 classes (e.g. `__new__`/`__init__` behaviors, multi-inheritance, etc).
 
+### KW arguments
+
+JS having no concept of keyword arguments, KW arguments are implemented using `setKW()` and `getKW()`.
+
 ### Method decorators (TODO: non-ES6 classes)
 
 Method decorators are implemented using [static initialization blocs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Static_initialization_blocks).

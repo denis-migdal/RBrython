@@ -22,6 +22,10 @@ RBrython also provides the following libraries:
 - <b>[corelib](./docs/corelib/index.md)</b>: an implementation of builtin Python functions and structures.
 - <b>stdlib</b>: an implementation of standard Python libraries (<i>out of scope</i>).
 
+RBrython distinguishes two parts:
+- <i>kernel</i>: Python without the corelib.
+- <i>core</i>: Python with the corelib.
+
 RBrython provides the following tools:
 - sourcemaps (<i>not implemented</i>) ;
 - stubs (<i>not implemented</i>) ;

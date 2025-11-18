@@ -7,7 +7,7 @@ export const macros: Record<string, (...args: ASTNode[]) => string> = {};
 export default function Call(node: CallNode) {
     const f        = node.func;
     const args     = node.args;
-    //const keywords = node.keywords;
+    const keywords = node.keywords;
 
     // @ts-ignore
     if( f.id in macros)
@@ -18,6 +18,14 @@ export default function Call(node: CallNode) {
     let str = "";
     for(let i = 0; i < args.length; ++i)
         str += node2js(args[i]) + ", ";
+
+    if( keywords.length ) {
+        str += "$RB.setKW({";
+            for( let i = 0; i < keywords.length; ++i)
+                // @ts-ignore
+                str += `${keywords[i].arg}: ${node2js(keywords[i].value)},`;
+        str += "})";
+    }    
 
     if( nodeType(f) === "Attribute") {
         const m = f as AttributeNode;

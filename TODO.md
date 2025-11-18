@@ -1,30 +1,27 @@
-- W2:
-    4. fct args (/!\ vals par défaut peuvent changer)
-    5. dict/list/tuple/string (seulement op de bases ?)
-- W3: 
-    - symtable (scope) -> use Brython's...
-        + add to AST structure...
-        + add to node2js context...
-        + documenter fonctionnement...
-    - imports
-    - import JS.
-    - $B.imported["JS"] = $B.jsobj2pyobj( globalThis );
-- W4:
-    - classes
-        - inherit
-        - inherit base types (?)
+1. Test system
+    - revoir catégories : py // core/kernel // int/float/str/etc.
+    - ne pas s'arrêter au premier assert
+        - get lines (require sourcemap) ~> highlight errors ?
+    - filter (?) ~> diff files for now ?
+
+- features
+    - import (+ registerModule...)
+    - dict/list/tuple (seulement op de bases ?)
     - async fct / generators
-- W5:
-    - optimizer + flags (?) + test versions (?)
+- compliance
+    - use symboltable
+    - better function args
+    - better classes
+        - observer DP for multi-inheritance.
+        - attr.
     - types + object (type as python code)
-- W6:
-    - tools + full pipeline.
-        - compiler
-        - stubs
-        - create stubs from py file ?
-        - sourcemap / indent JS code
+- tools
     - rewrite test system (tags to filter) + dirs + diff
         + included/excluded stats
         + code highlight (dont AST)
         + print() in editor Output
-    - rewrite Editor...
+    - indent generated JS
+    - compiler
+    - JS stubs / stubs from py file ?
+    - sourcemap
+    - optimizer + flags (?) + test versions (?)
