@@ -1,8 +1,8 @@
-import { ASTNode } from "@RBrython/rbry/ast/types";
+import { ASTNode, SymTab } from "@RBrython/rbry/ast/types";
 import { node2js } from "../../node2js";
 import Body from "../Body";
 
-export default function Match(node: ASTNode) {
+export default function Match(node: ASTNode, symtab: SymTab) {
 
     let result = "{";
 
@@ -16,15 +16,15 @@ export default function Match(node: ASTNode) {
         // @ts-ignore
         result += `if( tname === "${node.cases[i].pattern.cls.id}") {
             ${  // @ts-ignore
-                Body(node.cases[i].body)}
+                Body(node.cases[i].body, symtab)}
         }`;
     }
     result += `else {
             ${  // @ts-ignore
-                Body(node.cases[node.cases.length-1].body)}
+                Body(node.cases[node.cases.length-1].body, symtab)}
     }`;
 
     result += "}";
-    
+
     return result;
 }

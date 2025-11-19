@@ -1,23 +1,32 @@
 import Body from "../Body";
 import { node2js } from "../../node2js";
-import { nodeType } from "../../../ast";
-import { FunctionDefNode } from "../../../ast/types";
+import { CLASS, FunctionDefNode, SymTab } from "../../../ast/types";
 
-export default function FunctionDef(node: FunctionDefNode) {
+export default function FunctionDef(node: FunctionDefNode, symtab: SymTab) {
+
     const name = node.name;
-    //const args = node.args;
     const body = node.body;
 
-    // @ts-ignore
-    let prefix = globalThis.inClass ? "" : "function ";
+    const fsymtab = symtab.children.find( (e) => e.name === name)!;
 
+
+    let result = "";
+    if( symtab.type === CLASS )
+        result += `${symtab.name}.prototype.${name} = `;
+
+    for( let i = 0; i < node.decorator_list.length ; ++i )
+        result += `${node2js(node.decorator_list[i])}(`;
+
+    result += `function ${name}(`;
+
+    //TODO: move out args + use in lambda.
     let args = "";
 
     let i = 0;
     let arg_offset = 0;
     let self = "";
-    // @ts-ignore
-    if( globalThis.inClass || globalThis.inCstrFct ) {
+
+    if( symtab.type === CLASS ) { // first arg is self.
 
         let selfname = "";
         if( node.args.posonlyargs.length)
@@ -58,30 +67,20 @@ export default function FunctionDef(node: FunctionDefNode) {
         }
         args += "} = $RB.getKW()";
     }
+    result += args; //TODO...
 
     // vararg
     // kwonlyargs
     // kwarg
     //console.warn(node.args);
 
-
-    let fct_str = `${prefix}${name}(${args}) {
+    result += `){
         ${self}
-        ${Body(body)}
+        ${Body(body, fsymtab)}
     }`;
 
-    if( node.decorator_list.length === 0 )
-        return fct_str;
+    for( let i = 0; i < node.decorator_list.length ; ++i )
+        result += ")";
 
-    const dnode = node.decorator_list[0];
-
-    // @ts-ignore
-    if( globalThis.inClass ) {
-
-        return `static {
-            this.prototype.${name} = ${node2js(dnode)}(function ${fct_str});
-        }`;
-    }
-
-    return `${node2js(dnode)}(${fct_str})`;
+    return result;
 }

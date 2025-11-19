@@ -2,14 +2,14 @@ Group
 - new dispatch
 
 1. modules
-    - use symboltable
+    -> args node + use in lambda...
     - export/import
-        - type of import/export
-            - obj
-            - ES6
-            - global
-            -> runner/no runner ??? (import ???)
     - register module
+    - type of import/export
+        - obj
+        - ES6
+        - global
+        -> runner/no runner ??? (import ???)
 2. Tests
     - sourcemap
     - (un)indent generated JS

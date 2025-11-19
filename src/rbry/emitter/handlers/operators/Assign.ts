@@ -1,12 +1,12 @@
-import { AssignNode } from "../../../ast/types";
+import { AssignNode, SymTab } from "../../../ast/types";
 import { node2js } from "../../node2js";
 
-export default function Assign(node: AssignNode) {
+export default function Assign(node: AssignNode, symtab: SymTab) {
 
     let res = "";
 
     //@ts-ignore
-    const prefix = globalThis.inClass ? "static " : "var ";
+    const prefix = "var ";
 
     for(let i = 1; i < node.targets.length; ++i)
         res += `${prefix}${node2js(node.targets[i])};`;

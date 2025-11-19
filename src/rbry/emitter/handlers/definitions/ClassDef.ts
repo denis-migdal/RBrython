@@ -1,21 +1,22 @@
 import { node2js } from "../../node2js";
-import { nodeType } from "../../../ast";
-import { ClassDefNode } from "../../../ast/types";
+import { ClassDefNode, SymTab } from "../../../ast/types";
+import Body from "../Body";
 
-// @ts-ignore
-globalThis.inCstrFct = false;
+export default function ClassDef(node: ClassDefNode, symtab: SymTab) {
 
-export default function ClassDef(node: ClassDefNode) {
     const name = node.name;
     const body = node.body;
 
-    // dirty dirty h4ck... (we need a runner)
+    const csymtab = symtab.children.find( (e) => e.name === name)!;
+
+    // JS cstr
     let str = `globalThis.${name} = (() =>{
         function ${name}() {
             return Object.create(${name}.prototype);
         }
-        const classname = ${name};
     `;
+
+    // inheritance
 
     // @ts-ignore
     const isH4ck = node.bases.length === 1 && ["number", "bigint", "boolean", "string"].includes(node.bases[0].id);
@@ -31,23 +32,8 @@ export default function ClassDef(node: ClassDefNode) {
         str += `${name}.prototype.constructor = ${name};\n`;
     }
 
-    for(let i = 0; i < body.length; ++i) {
-        const type = nodeType(body[i]);
-        if( type === "FunctionDef") {
-            // @ts-ignore
-            globalThis.inCstrFct = true;
-            // @ts-ignore
-            let prefix = body[i].name === "_"
-                            ? ""
-                            // @ts-ignore
-                            : `${name}.prototype.${body[i].name} = `;
-            
-            str += `${prefix}${node2js(body[i])}
-            `;
-            // @ts-ignore
-            globalThis.inCstrFct = false;
-        }
-    }
+    // body...
+    str += Body(body, csymtab);
 
     str += `
         return ${name};

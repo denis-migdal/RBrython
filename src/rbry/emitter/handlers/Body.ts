@@ -1,19 +1,11 @@
-import { BodyNode } from "../../ast/types";
+import { BodyNode, SymTab } from "../../ast/types";
 import { node2js } from "../node2js";
 
-export default function(body: BodyNode, _inClass = false) {
-
-    //@ts-ignore
-    const prev = globalThis.inClass;
-    //@ts-ignore
-    globalThis.inClass = _inClass; //TODO: h4ck
+export default function(body: BodyNode, symtab: SymTab) {
 
     let res = "";
     for(let i = 0; i < body.length; ++i)
-        res += node2js(body[i]) + ";\n";
-
-    //@ts-ignore
-    globalThis.inClass = prev;
+        res += node2js(body[i], symtab) + ";\n";
 
     return res;
 }

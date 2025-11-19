@@ -22,8 +22,11 @@ export default class RBrythonEngine extends Engine {
     // initialize
     #initialized = false;
     initialize() {
-        for(let name in builtins)
+        for(let name in builtins) {
+            // @ts-ignore
+            console.warn(this.emit(this.parse(builtins[name])))
             this.run(builtins[name as keyof typeof builtins]);
+        }
 
         this.#initialized = true;
     }

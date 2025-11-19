@@ -1,8 +1,21 @@
+export const FUNCTION = 0;
+export const CLASS    = 1;
+export const BODY     = 1;
+
+export type SymTab = {
+    name    : string;
+    children: SymTab[];
+    symbols : {
+        $strings: Record<string, number>
+    }
+    type: typeof FUNCTION|typeof CLASS|typeof BODY;
+};
+
 export type ParsedCode = {
     filename: string,
     pycode  : string,
     ast     : ModuleNode,
-    symtable: unknown,
+    symtable: SymTab,
 };
 
 export type ASTNode = {};

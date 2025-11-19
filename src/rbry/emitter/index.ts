@@ -7,5 +7,5 @@ import { ParsedCode } from "../ast/types";
 import Body from "./handlers/Body";
 
 export default function emit(ast: ParsedCode) {
-    return Body(ast.ast.body);
+    return Body(ast.ast.body, ast.symtable);
 }
