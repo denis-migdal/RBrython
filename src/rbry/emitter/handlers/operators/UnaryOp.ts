@@ -1,6 +1,6 @@
-import { UnaryOpNode } from "@SBrython/rbry/ast/types";
+import { UnaryOpNode } from "../../../ast/types";
 import { node2js } from "../../node2js";
-import { getOp } from "@SBrython/rbry/ast";
+import { getOp } from "../../../ast/";
 
 export default function(node: UnaryOpNode) {
 

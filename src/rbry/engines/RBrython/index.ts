@@ -1,8 +1,13 @@
 import { ParsedCode } from "../../ast/types";
+import emit from "../../emitter";
 import parse from "../../parser";
-import Runner from "../interface";
+import Engine from "../interface";
 
-export default class BrythonRunner extends Runner {
+import "./macros";
+import builtins from "./builtins";
+
+
+export default class RBrythonEngine extends Engine {
 
     constructor() {
         super();
@@ -17,7 +22,8 @@ export default class BrythonRunner extends Runner {
     // initialize
     #initialized = false;
     initialize() {
-        $B.imported["JS"] = $B.jsobj2pyobj( globalThis );
+        for(let name in builtins)
+            this.run(builtins[name as keyof typeof builtins]);
 
         this.#initialized = true;
     }
@@ -27,23 +33,9 @@ export default class BrythonRunner extends Runner {
         return parse(pycode, "_");
     }
     emit(ast: ParsedCode) {
-        let imported:any;
-        return $B.js_from_root({ast: ast.ast,
-                                symtable: ast.symtable,
-                                filename: ast.filename,
-                                src     : ast.pycode,
-                                imported}).js
-
+        return emit(ast);
     }
     loadAsFunction(jscode: string) {
-        $B.imported["_"] = {};
         return Function("'use strict';" + jscode) as () => void;
     }
 }
-
-/*
- - config: macros, symbols
- - ??Builtin(name, code, cfg)
- - registerBuiltin(name, symb)
- - initialize()
- */

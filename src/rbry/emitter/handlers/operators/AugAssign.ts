@@ -1,7 +1,7 @@
-import { AugAssignNode } from "@SBrython/rbry/ast/types";
+import { AugAssignNode } from "../../../ast/types";
 import { node2js } from "../../node2js";
 import { binops } from "./BinOp";
-import { getOp } from "@SBrython/rbry/ast";
+import { getOp } from "../../../ast/";
 
 export default function AugAssign(node: AugAssignNode) {
  

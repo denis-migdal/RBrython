@@ -1,6 +1,6 @@
-import { CompareNode } from "@SBrython/rbry/ast/types";
+import { CompareNode } from "../../../ast/types";
 import { node2js } from "../../node2js";
-import { getOp } from "@SBrython/rbry/ast";
+import { getOp } from "../../../ast/";
 
 export default function Compare(node: CompareNode) {
 

@@ -1,4 +1,4 @@
-import { NameNode } from "@SBrython/rbry/ast/types";
+import { NameNode } from "../../../ast/types";
 
 export default function Name(node: NameNode) {
     return node.id;

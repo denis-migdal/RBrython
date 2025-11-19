@@ -1,7 +1,12 @@
-import { ASTNode } from "@SBrython/rbry/ast/types";
-import { node2js } from "../../node2js";
+import { ASTNode } from "../../../ast/types";
 
 export default function Import(node: ASTNode) {
+
     // @ts-ignore
-    return `const ${node.names[0].name} = $RB.getModule("${node.names[0].name}")`;
+    const module = node.names[0].name;
+
+    if( module === "RBM" )
+        return ""; // Brython macros...
+
+    return `const ${module} = $RB.getModule("${module}")`;
 }

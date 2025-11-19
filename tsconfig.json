@@ -3,7 +3,7 @@
     "exclude": ["src/tests"],
     "compilerOptions": {
         "outDir": "./build/TS",
-        "paths": { "@SBrython/*": ["./src/*"] },
+        "paths": { "@RBrython/*": ["./src/*"], "@SBrython/*": ["./src/*"] },
         "sourceMap": true,
         "alwaysStrict": true,
         "strict": true,

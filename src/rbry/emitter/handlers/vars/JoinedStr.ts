@@ -1,6 +1,6 @@
-import { nodeType } from "@SBrython/rbry/ast";
+import { nodeType } from "../../../ast/";
 import { node2js } from "../../node2js";
-import { JoinedStrNode } from "@SBrython/rbry/ast/types";
+import { JoinedStrNode } from "../../../ast/types";
 
 export default function JoinedStr(node: JoinedStrNode) {
 

@@ -8,12 +8,12 @@
 
 <i>Note: some features are not yet implemented but can be found in [SBrython](https://github.com/denis-migdal/SBrython).</i>
 
-RBrython distinguishes several processes:
+RBrython [engine](./docs/runner/engine.md) distinguishes several processes:
 - <b>[parser](./docs/parser/index.md)</b>: transform Python code into AST (<i>for now uses Brython</i>).
 - <b>checker</b>: deduce and check typehints in the AST (<i>not implemented</i>).
 - <b>[optimizer](./docs/optimizer/index.md)</b>: transform the AST using deduced types as well as some assumptions (<i>not implemented</i>).
 - <b>[emitter](./docs/emitter/index.md)</b>: generate JS code from the AST.
-- <b>[runner](./docs/runner/index.md)</b>: run generated JS code.
+- <b>[runner](.)</b>: run generated JS code.
 
 Theses processes depends on an [AST structure](./docs/ast/index.md), for now we use Brython's.
 
@@ -28,7 +28,7 @@ RBrython distinguishes two parts:
 
 RBrython provides the following tools:
 - sourcemaps (<i>not implemented</i>) ;
-- stubs (<i>not implemented</i>) ;
+- JS API stubs (cf /stubs directory) ;
 - compiler (<i>not implemented</i>) ;
 - a documentation.
 
@@ -85,3 +85,6 @@ Current : 22/~88
 - http://127.0.0.1:5501/Editor/
 - http://127.0.0.1:5501/Editor/?test=rbrython
 - http://127.0.0.1:5501/Editor/?test=rbrython&merge=true
+
+
+Tests from : https://github.com/brython-dev/brython/tree/master/www/tests

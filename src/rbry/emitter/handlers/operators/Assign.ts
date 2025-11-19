@@ -1,4 +1,4 @@
-import { AssignNode } from "@SBrython/rbry/ast/types";
+import { AssignNode } from "../../../ast/types";
 import { node2js } from "../../node2js";
 
 export default function Assign(node: AssignNode) {

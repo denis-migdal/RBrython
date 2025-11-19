@@ -1,4 +1,4 @@
-import { BodyNode } from "@SBrython/rbry/ast/types";
+import { BodyNode } from "../../ast/types";
 import { node2js } from "../node2js";
 
 export default function(body: BodyNode, _inClass = false) {

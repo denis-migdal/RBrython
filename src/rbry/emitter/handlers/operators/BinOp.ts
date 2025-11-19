@@ -1,5 +1,5 @@
-import { getOp } from "@SBrython/rbry/ast";
-import { BinaryOpNode } from "@SBrython/rbry/ast/types";
+import { getOp } from "../../../ast/";
+import { BinaryOpNode } from "../../../ast/types";
 import { node2js } from "../../node2js";
 
 export default function(node: BinaryOpNode) {

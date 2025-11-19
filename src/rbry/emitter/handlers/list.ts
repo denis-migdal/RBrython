@@ -1,10 +1,13 @@
-import Handlers, { Handler } from ".";
+import Handlers, { Handler } from "./index";
 
 import {default as ClassDef} from "./definitions/ClassDef";
 Handlers["ClassDef"] = ClassDef as Handler;
 
 import {default as FunctionDef} from "./definitions/FunctionDef";
 Handlers["FunctionDef"] = FunctionDef as Handler;
+
+import {default as Lambda} from "./definitions/Lambda";
+Handlers["Lambda"] = Lambda as Handler;
 
 import {default as Assert} from "./keywords/Assert";
 Handlers["Assert"] = Assert as Handler;
@@ -61,6 +64,8 @@ Handlers["For"] = For as Handler;
 import {default as Try} from "./controlflows/Try";
 Handlers["Try"] = Try as Handler;
 
+import {default as Match} from "./controlflows/Match";
+Handlers["Match"] = Match as Handler;
 
 import {default as Continue} from "./keywords/Continue";
 Handlers["Continue"] = Continue as Handler;

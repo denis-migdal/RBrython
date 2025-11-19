@@ -1,4 +1,4 @@
-import { AssertNode } from "@SBrython/rbry/ast/types";
+import { AssertNode } from "../../../ast/types";
 import { node2js } from "../../node2js";
 
 export default function Assert(node: AssertNode) {

@@ -1,4 +1,4 @@
-import { ConstantNode } from "@SBrython/rbry/ast/types";
+import { ConstantNode } from "../../../ast/types";
 
 export default function Constant(node: ConstantNode) {
 

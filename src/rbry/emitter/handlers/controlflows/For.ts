@@ -1,4 +1,4 @@
-import { ForNode } from "@SBrython/rbry/ast/types";
+import { ForNode } from "../../../ast/types";
 import { node2js } from "../../node2js";
 import Body from "../Body";
 

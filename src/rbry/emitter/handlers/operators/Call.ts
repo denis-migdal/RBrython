@@ -1,6 +1,6 @@
-import { ASTNode, AttributeNode, CallNode } from "@SBrython/rbry/ast/types";
 import { node2js } from "../../node2js";
-import { nodeType } from "@SBrython/rbry/ast";
+import { nodeType } from "../../../ast";
+import { ASTNode, AttributeNode, CallNode } from "../../../ast/types";
 
 export const macros: Record<string, (...args: ASTNode[]) => string> = {};
 

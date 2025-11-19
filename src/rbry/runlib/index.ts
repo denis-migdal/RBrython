@@ -5,6 +5,7 @@ import call   from "./interface/call";
 import mcall  from "./interface/mcall";
 import assert from "./interface/assert";
 import attr   from "./interface/attr";
+import { getKW, setKW } from "./interface/KW";
 
 // @ts-ignore
 globalThis.$RB = {
@@ -21,79 +22,7 @@ globalThis.$RB = {
 }
 
 //TODO: corelib
-import { getClass } from "./helpers/getClass";
 import {NotImplemented} from "./tmp_corelib/NotImplemented";
-import singledispatchmethod from "./tmp_corelib/singledispatchmethod";
-import { getKW, setKW } from "./interface/KW";
-import getModule from "./interface/getModule";
-
-// @ts-ignore
-globalThis.__JS_LOG__ = (...args) => console.log(...args);
-
-export const IVALUE = Symbol();
-
-// @ts-ignore
-globalThis.__JS_SET_IVALUE__ = (self, v) => self[IVALUE] = v;
-// @ts-ignore
-globalThis.__JS_GET_IVALUE__ = (self) => self[IVALUE];
-
-const ops = { /* @ts-ignore */
-    "==" : (a, b) => a ==  b,/* @ts-ignore */
-    "===": (a, b) => a === b,/* @ts-ignore */
-    "+"  : (a, b) => a +  b,/* @ts-ignore */
-    "-"  : (a, b) => a -  b,/* @ts-ignore */
-    "*"  : (a, b) => a *  b,/* @ts-ignore */
-    "**" : (a, b) => a ** b,/* @ts-ignore */
-    "/"  : (a, b) => a /  b,/* @ts-ignore */
-    "%"  : (a, b) => a %  b,/* @ts-ignore */
-    "|"  : (a, b) => a |  b,/* @ts-ignore */
-    "&"  : (a, b) => a &  b,/* @ts-ignore */
-    ">>" : (a, b) => a >> b,/* @ts-ignore */
-    "<<" : (a, b) => a << b,/* @ts-ignore */
-}
-
-const uops = { /* @ts-ignore */
-    "-": (a) => -a, /* @ts-ignore */
-    "~": (a) => ~a, /* @ts-ignore */
-    "!": (a) => !a,
-}
-
-// @ts-ignore
-globalThis.__JS_RUN__ = function (code: string, ...args: any[]) {
-
-    throw new Error("Currently, should not be called");
-
-    // @ts-ignore
-    return eval(code)(...args);
-}
-
-// @ts-ignore
-globalThis.__JS_OP__ = function (...args: any[]) {
-
-    throw new Error("Currently, should not be called");
-
-    if(args.length === 2) { // unary op
-        // @ts-ignore
-        return uops[args[0]](args[1]);
-    } // else binary op
-    // @ts-ignore
-    return ops[args[1]](args[0], args[2]);
-}
-
-// @ts-ignore
-globalThis.__JS_AS_NUMBER__ = (o: unknown) => {
-    if( o === "infinity" || o === "inf")
-        return Number.POSITIVE_INFINITY
-    if( o === "-infinity" || o === "-inf")
-        return Number.NEGATIVE_INFINITY
-    return Number( o );
-}
-
-// @ts-ignore
-globalThis.__JS_AS_STRING__ = (o: unknown) => `${o}`;
-
-// @ts-ignore
-globalThis.singledispatchmethod = singledispatchmethod;
 
 // @ts-ignore
 globalThis.abs = function( a: unknown) {
@@ -119,4 +48,33 @@ globalThis.range = function*(a: number) {
 globalThis.Exception = function(msg: string) {
     throw new Error(msg);
 }
+
+// =====================================================
+
+//TODO: as macro...
+
+import { getClass } from "./helpers/getClass";
+import getModule from "./interface/getModule";
+
+// @ts-ignore
+globalThis.__JS_LOG__ = (...args) => console.log(...args);
+
+export const IVALUE = Symbol();
+
+// @ts-ignore
+globalThis.__JS_SET_IVALUE__ = (self, v) => self[IVALUE] = v;
+// @ts-ignore
+globalThis.__JS_GET_IVALUE__ = (self) => self[IVALUE];
+
+// @ts-ignore
+globalThis.__JS_AS_NUMBER__ = (o: unknown) => {
+    if( o === "infinity" || o === "inf")
+        return Number.POSITIVE_INFINITY
+    if( o === "-infinity" || o === "-inf")
+        return Number.NEGATIVE_INFINITY
+    return Number( o );
+}
+
+// @ts-ignore
+globalThis.__JS_AS_STRING__ = (o: unknown) => `${o}`;
 

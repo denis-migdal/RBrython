@@ -1,6 +1,10 @@
-import BenchRunner, { BenchResults, BenchStats } from "./utils/BenchRunner";
-import { BryRunner, RBryRunner } from "./utils/runner";
+import BenchRunner, { BenchStats } from "./utils/BenchRunner";
+import { BryEngine, RBryEngine } from "./utils/engine";
 import printBenchStats from "./utils/printBenchStats";
+
+import test_suite from "../../tests";
+
+const NB_REPEAT = 3;
 
 const brython_tests = [
     'basic test suite',
@@ -40,40 +44,48 @@ function createBench() {
 
     const bench = new BenchRunner();
 
-    bench.addRunner( "Brython",  BryRunner)
-            .addRunner("RBrython", RBryRunner);
+    bench.addEngine( "Brython"    ,  BryEngine)
+            .addEngine("RBrython", RBryEngine);
 
-    bench.addStep("parse", (runner, ctx) => {
-        ctx.ast = runner.parse(ctx.pycode);
+    bench.addStep("parse", (engine, ctx) => {
+        ctx.ast = engine.parse(ctx.pycode);
     })
-            .addStep("emit",  (runner, ctx) => {
-        ctx.jscode = runner.emit(ctx.ast);
+            .addStep("emit",  (engine, ctx) => {
+        ctx.jscode = engine.emit(ctx.ast);
     })
-            .addStep("load",  (runner, ctx) => {
-        ctx.fct = runner.loadAsFunction(ctx.jscode);
-    })
-            .addStep("execute1",  (_, ctx) => {
-        ctx.fct();
-    })
-            .addStep("execute2",  (_, ctx) => {
-        ctx.fct();
-    })
-            .addStep("execute3",  (_, ctx) => {
-        ctx.fct();
-    })
-            .addStep("execute4",  (_, ctx) => {
-        ctx.fct();
-    })
-            .addStep("execute5",  (_, ctx) => {
-        ctx.fct();
+            .addStep("load",  (engine, ctx) => {
+        ctx.fct = engine.loadAsFunction(ctx.jscode);
     });
 
+    for(let i = 0; i < NB_REPEAT; ++i)
+        bench.addStep(`execute${i}`,  (_, ctx) => { ctx.fct(); });
+    
     bench.addStat("nbTokens", (ctx) => {
         return $B.tokenizer(ctx.pycode, '_').length;
     })
     bench.addStat("nbFiles", (ctx) => {
         return 1;
     })
+    bench.addStat("asserts_count", (ctx) => {
+        const n = assert_count / NB_REPEAT;
+        assert_count = 0;
+        return n;
+    })
+    bench.addStat("asserts_fail", (ctx) => {
+        const n = assert_fail / NB_REPEAT;
+        assert_fail = 0;
+        return n;
+    })
+
+    let assert_count = 0;
+    let assert_fail  = 0;
+
+    // @ts-ignore
+    $RB.assert = function(cond) {
+        ++assert_count;
+        if( ! cond )
+            ++assert_fail;
+    }
 
     bench.resetStats();
 
@@ -124,6 +136,7 @@ function run(pycodes: string[]) {
     const results = bench.getStats();
 
     if( pycodes.length === 1) {
+          python_input.textContent = results.Brython.ctx.pycode;
          bry_js_output.textContent = results. Brython.ctx.jscode;
         sbry_js_output.textContent = results.RBrython.ctx.jscode;
     }
@@ -357,6 +370,10 @@ const defaultOpt = new Option("----", undefined, true, true);
 defaultOpt.toggleAttribute('disabled');
 select.append( defaultOpt );
 
+for(let name in test_suite)
+    select.append( new Option(name, test_suite[name as keyof typeof test_suite]) );
+
+
 function filterCode(code: string) {
 
     const codes = code.split("\n");
@@ -407,7 +424,9 @@ for(let i = 0; i < brython_tests.length; ++i) {
 const bench = createBench();
 let initialRun: string[];
 
-if( test_name !== null )
+if( test_name === "rbrython" ) {
+    initialRun = Object.values(test_suite);
+} else if( test_name !== null )
     initialRun = generateTestSuite(test_name, merge);
 else
     initialRun = [python_input.value = localStorage.getItem('sbrython_code') ?? ""];

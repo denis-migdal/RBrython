@@ -1,0 +1,3 @@
+from RBM import number
+
+def __JS_AS_NUMBER__(a: object, /) -> number: ...

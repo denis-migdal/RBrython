@@ -18,10 +18,6 @@ function tdiff(a: number, b: number) {
 }
 
 export default function printBenchStats(stats: BenchStats, base: BenchStats) {
-
-    //const nb_tokens = results.nb_tokens;
-    //const A = results[a];
-    //const B = results[b];
     
     let report = "";
 
@@ -33,7 +29,13 @@ export default function printBenchStats(stats: BenchStats, base: BenchStats) {
 //    report += "Status         : SUCCESS\n";
     report += `Tested         : ${nb_done}/${nb_lines} (${(nb_done/nb_lines*100).toFixed(2)}%)\n`;*/
 
+    const passed = stats.stats.asserts_count - stats.stats.asserts_fail;
+    let passed_rate = passed / stats.stats.asserts_count;
+    if( stats.stats.asserts_count === 0)
+        passed_rate = 1;
+
     const nb_tokens = stats.stats.nbTokens;
+    report += `Asserts: ${passed}/${stats.stats.asserts_count} (${+(passed_rate*100)}%)\n`
     report += `Py code: ${nb_tokens} tokens (${stats.stats.nbFiles} file)\n`;
     
     report += "JS code: " + tdiff(stats.ctx.jscode?.length,

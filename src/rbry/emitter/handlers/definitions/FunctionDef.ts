@@ -1,7 +1,7 @@
-import { FunctionDefNode } from "@SBrython/rbry/ast/types";
 import Body from "../Body";
 import { node2js } from "../../node2js";
-import { nodeType } from "@SBrython/rbry/ast";
+import { nodeType } from "../../../ast";
+import { FunctionDefNode } from "../../../ast/types";
 
 export default function FunctionDef(node: FunctionDefNode) {
     const name = node.name;
@@ -74,41 +74,10 @@ export default function FunctionDef(node: FunctionDefNode) {
         return fct_str;
 
     const dnode = node.decorator_list[0];
-    const type = nodeType(dnode);
-    // hardcoded
-    if( type === "Attribute") {
-        // @ts-ignore
-        const typehint = node.args.posonlyargs[1].annotation.id;
-
-        let str = "";
-        let prefix = "";
-        let pprefix = "classname";
-
-        // @ts-ignore
-        if( globalThis.inClass ) {
-            str += "static {\n";
-            prefix = "function ";
-            pprefix = "this";
-        }
-
-        str += `${pprefix}.prototype.${
-                // @ts-ignore
-                dnode.value.id
-            }.register(
-                ${prefix}${fct_str},
-                "${typehint}"
-            );
-        `;
-
-        // @ts-ignore
-        if( globalThis.inClass )
-            str += "}\n";
-
-        return str;
-    }
 
     // @ts-ignore
     if( globalThis.inClass ) {
+
         return `static {
             this.prototype.${name} = ${node2js(dnode)}(function ${fct_str});
         }`;

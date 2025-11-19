@@ -1,6 +1,6 @@
 import { ParsedCode } from "../ast/types";
 
-export default abstract class Runner {
+export default abstract class Engine {
     abstract run(pycode: string): void;
 
     // low level

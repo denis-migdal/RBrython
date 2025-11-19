@@ -1,4 +1,4 @@
-import { WhileNode } from "@SBrython/rbry/ast/types";
+import { WhileNode } from "../../../ast/types";
 import { node2js } from "../../node2js";
 import Body from "../Body";
 

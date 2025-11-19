@@ -1,0 +1,52 @@
+#!/usr/bin/env -S deno --allow-read --allow-write --unstable-sloppy-imports --ext=ts
+
+//TODO...
+
+import { parseArgs } from "jsr:@std/cli/parse-args";
+import { dirname, fromFileUrl } from "https://deno.land/std/path/mod.ts";
+
+import Runners from "../dist/dev/libs/RBrython-dev/index";
+
+declare global {
+    var __BRYTHON__: any;
+    var Deno: any;
+}
+
+
+const flags = parseArgs(Deno.args, {
+	boolean: ["help", "watch", "verbose"],
+	default: {
+        help   : false,
+        watch  : false,
+        verbose: false,
+    },
+});
+
+const {_: SRC_DIRS, verbose:DEBUG, watch} = flags;
+
+
+async function loadBrython() {
+    //Load Brython (used for parser)
+
+    const brython_file = "/../brython/www/src/brython.min.js";
+
+    const PARSER_SCRIPT = await Deno.readTextFile( dirname(fromFileUrl(import.meta.url)) + brython_file );
+
+    globalThis.__BRYTHON__ = {};
+    globalThis.global = globalThis;
+    // @ts-ignore
+    globalThis.module = {};
+
+    eval(PARSER_SCRIPT);
+
+    globalThis.$B = __BRYTHON__;
+    __BRYTHON__.imported["JS"] = __BRYTHON__.jsobj2pyobj( globalThis );
+
+}
+await loadBrython();
+
+const runner = Runners.getRBrythonRunner()
+
+const jscode = await Deno.readTextFile(SRC_DIRS[0]);
+
+runner.run(jscode);

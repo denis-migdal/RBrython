@@ -5,18 +5,18 @@ import { walk } from "https://deno.land/std@0.170.0/fs/walk.ts";
 import {exists} from "https://deno.land/std/fs/mod.ts"
 import { dirname, basename, fromFileUrl } from "https://deno.land/std/path/mod.ts";
 
-import * as sbry from "../dist/dev/libs/SBrython-dev/"; //TODO..
+import Runners from "../dist/dev/libs/RBrython-dev/index";
 
 declare global {
     var __BRYTHON__: any;
     var Deno: any;
 }
 
-function isSBryFile(path: string) {
-	return path.endsWith('.py') || path.endsWith('.sbry');
+function isRBryFile(path: string) {
+	return path.endsWith('.py') || path.endsWith('.rbry');
 }
 
-function getOutputPath(path, srcDir: string, outDir: string) {
+function getOutputPath(path: string, srcDir: string, outDir: string) {
 
     const ext = ".js"; // TODO
     const base = basename(path)
@@ -30,14 +30,13 @@ function getOutputPath(path, srcDir: string, outDir: string) {
 	return `${outDir}/${dirname(path.slice(srcDir.length))}/${filename}`;
 }
 
-async function isDirEmpty(path) {
-
+async function isDirEmpty(path: string) {
 	for await (const dirEntry of Deno.readDir(path) )
 		return false;
 	return true;
 }
 
-async function removeFile(path) {
+async function removeFile(path: string) {
 	console.log('Removing file', path);
 	
 	await Deno.remove(path);
@@ -57,24 +56,26 @@ const flags = parseArgs(Deno.args, {
 	boolean: ["help", "watch", "verbose"],
 	string: ["outDir", "compat", "mode", "export"],
 	default: {
-        help: false,
-        watch: false,
+        help   : false,
+        watch  : false,
         verbose: false,
-        compat: "NONE",
-        mode: "dev",
-        export: "NONE"
+        compat : "NONE",
+        mode   : "dev",
+        export : "NONE"
     },
 });
 
+/*
 globalThis.__SBRY_COMPAT__ = flags.compat;
 globalThis.__SBRY_MODE__   = flags.mode;
 globalThis.__SBRY_EXPORT__ = flags.export;
+*/
 
 const {_: SRC_DIRS, outDir: DST_DIR, verbose:DEBUG, watch} = flags;
 
 if(flags.help) {
-	console.log('sbryc $SRC_FILES[...]');
-	console.log('\t* --compat NONE|PERF|FULL');
+	console.log('rbryc $SRC_FILES[...]');
+	console.log('\t* --compat NONE|PERF|FULL|BRYTHON');
 	console.log('\t* --export NONE|ES6|SBRY|GLOBAL');
 	console.log('\t* --mode   dev|prod|test');
 	console.log('\t* --outDir $DST_DIR');
@@ -94,35 +95,12 @@ async function convertFile(src: string, dst: string) {
 	
 	const pycode = await Deno.readTextFile(src);
 	
-    const js_code = convert_code_sbrython(pycode, src);
+    const js_code = convert_code(pycode, src);
 	await Deno.writeTextFile(dst, js_code);
 }
 
-function convert_code_sbrython(pycode: string, filename: string) {
-    return sbry.ast2js( sbry.py2ast( pycode, filename ) );
-}
-
-let convert_code = convert_code_sbrython;
-
-function convert_code_brython(pycode: string, filename: string) {
-
-    globalThis.$B = __BRYTHON__;
-
-    __BRYTHON__.debug = 0; //TODO...
-
-	let js_ast = __BRYTHON__.py2js(pycode);
-	return `__BRYTHON__.imported["exec"] = {};
-__BRYTHON__.frames_stack = [];
-
-${js_ast.to_js()}
-`;
-	//TODO: imports+exports...
-    /* pyobj2jsobj() */
-
-}
-
-if( flags.compat === "BRYTHON" ) {
-    //TODO: load
+async function loadBrython() {
+    //Load Brython (used for parser)
 
     const brython_file = "/../brython/www/src/brython.min.js";
 
@@ -133,25 +111,20 @@ if( flags.compat === "BRYTHON" ) {
     // @ts-ignore
     globalThis.module = {};
 
-    /*
-    window.location = {
-        href: "http://localhost/",
-        origin: "http://localhost",
-        pathname: "/"
-    };
-    window.document = {
-        getElementsByTagName: () => [{src: "http://localhost/"}],
-        currentScript: () => {src: "http://localhost/"}
-    }; 
-    window.MutationObserver = function() { this.observe = () => {};  }
-    */
-
     eval(PARSER_SCRIPT);
 
+    globalThis.$B = __BRYTHON__;
     __BRYTHON__.imported["JS"] = __BRYTHON__.jsobj2pyobj( globalThis );
 
-    convert_code = convert_code_brython
 }
+await loadBrython();
+
+const runner = flags.compat === "BRYTHON"
+                ? Runners.getBrythonRunner()
+                : Runners.getRBrythonRunner()
+
+let convert_code = (pycode: string, filename: string) => runner.emit( runner.parse(pycode) )
+
 
 /******************/
 // Initial conversion
@@ -180,7 +153,7 @@ for(let SRC_DIR of SRC_DIRS) {
     
         const path = walkEntry.path;
         
-        if( ! walkEntry.isFile || ! isSBryFile(path) )
+        if( ! walkEntry.isFile || ! isRBryFile(path) )
             continue;
 
         await convertFile( path, getOutputPath(path, SRC_DIR, DST_DIR) );
@@ -200,7 +173,7 @@ if( watch ) {
 
 	        //if( DEBUG ) console.log(event.kind, event.paths);
             
-            const paths = event.paths.filter( path => isSBryFile(path) );
+            const paths = event.paths.filter( (path:string) => isRBryFile(path) );
             if(paths.length === 0)
                 continue;
             
@@ -209,9 +182,9 @@ if( watch ) {
                 && event.paths.length === 2 ) {
 
                 const [srcfile, dstfile] = event.paths;
-                if( isSBryFile(srcfile) )
+                if( isRBryFile(srcfile) )
                     await removeFile( getOutputPath(srcfile, SRC_DIR, DST_DIR) );
-                if( dstfile.startsWith(SRC_DIR) && isSBryFile( dstfile ) )
+                if( dstfile.startsWith(SRC_DIR) && isRBryFile( dstfile ) )
                     await convertFile(dstfile, getOutputPath(dstfile, SRC_DIR, DST_DIR) );
                 
                 continue;

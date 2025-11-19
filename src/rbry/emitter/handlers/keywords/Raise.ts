@@ -1,4 +1,4 @@
-import { RaiseNode } from "@SBrython/rbry/ast/types";
+import { RaiseNode } from "../../../ast/types";
 import { node2js } from "../../node2js";
 
 export default function Raise(node: RaiseNode) {

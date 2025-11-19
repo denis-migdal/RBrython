@@ -1,4 +1,4 @@
-import { TryNode } from "@SBrython/rbry/ast/types";
+import { TryNode } from "../../../ast/types";
 import Body from "../Body";
 
 export default function Try(node: TryNode) {

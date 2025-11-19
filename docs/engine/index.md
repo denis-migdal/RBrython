@@ -1,8 +1,8 @@
 ## Run Python code
 
-Several runners availables:
-- `BrythonRunner` : use Brython.
-- `RBrythonRunner` : use RBrython.
+Several engines availables:
+- `BrythonEngine` : use Brython.
+- `RBrythonEngine` : use RBrython.
 
 - `run(pycode: string)`: runs the given python code.
     1. `parse(pycode: string): ParsedCode`: transforms the python code into the AST.

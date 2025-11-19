@@ -10,6 +10,8 @@ You can import JS global scope with `import JS`.
 
 RBrython enable to define JavaScript macros in order to access native JS operations. During the emission, calls to such macros may be replaced by their JS code.
 
+You can import them using `from RBM import ...` in order to fix typehint errors.
+
 ### Internal value
 
 When implementing Python literals you might want to store the internal JS value, and then use it in operations:
@@ -48,15 +50,13 @@ __JS_WRITE__('console.warn("Hello")')
 
 ## Advices
 
-Use `@singledispatchmethod` from the functool package for functions/methods those behaviors depends on its first argument type.
+Use class matching for functions/methods those behaviors depends on its first argument type. It will help RBrython to optimize the code (<i>not implemented yet</i>).
 
 ```py
-class int:
-    @singledispatchmethod
-    def __add__(self, b: object) -> int|NotImplementedType: ...
-
-    @__add__.register
-    def _(self, b: int) -> int: ...
+class float:
+    def __add__(self, o: object, /) -> NotImplementedType|float:
+        match o:
+            case float(): return __JS_OP__(self, "+", o)
+            case int  (): return __JS_OP__(self, "+", __JS_AS_NUMBER__(o))
+            case _      : return NotImplemented
 ```
-
-It will help RBrython to optimize the code (<i>not implemented yet</i>).

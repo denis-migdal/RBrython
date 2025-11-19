@@ -1,7 +1,7 @@
-import { IfNode } from "@SBrython/rbry/ast/types";
+import { IfNode } from "../../../ast/types";
 import { node2js } from "../../node2js";
 import Body from "../Body";
-import { nodeType } from "@SBrython/rbry/ast";
+import { nodeType } from "../../../ast/";
 
 export default function If(node: IfNode) {
 

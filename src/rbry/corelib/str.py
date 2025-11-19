@@ -1,27 +1,20 @@
-from functools import singledispatchmethod
 from types     import NotImplementedType
+from RBM import __JS_OP__, string
 
-class str:
+class str(string):
     def __new__(cls, o: object, /) -> str:
         return __JS_AS_STRING__(o) # type: ignore
         #return type(o).__str__(o) # type: ignore
     
     def __eq__(self, o: object, /) -> bool:
-        return __JS_OP__(self, "==", o) # type: ignore
+        return __JS_OP__(self, "==", o)
 
-    ### mul ###
-    @singledispatchmethod
-    def __mul__(self, _: object, /) -> str|NotImplementedType:
-        return NotImplemented
+    def __mul__(self, o: object, /) -> NotImplementedType|str:
+        match o:
+            case int  (): return __JS_WRITE__("self.repeat(Number(b))") # type: ignore
+            case _      : return NotImplemented
     
-    @__mul__.register
-    def _(self, b: int, /) -> str:
-        return __JS_WRITE__("self.repeat(Number(b))") # type: ignore
-    
-    @singledispatchmethod
-    def __rmul__(self, _: object, /) -> str|NotImplementedType:
-        return NotImplemented
-    
-    @__rmul__.register
-    def _(self, b: int, /) -> str:
-        return __JS_WRITE__("self.repeat(Number(b))") # type: ignore
+    def __rmul__(self, o: object, /) -> NotImplementedType|str:
+        match o:
+            case int  (): return __JS_WRITE__("self.repeat(Number(b))") # type: ignore
+            case _      : return NotImplemented

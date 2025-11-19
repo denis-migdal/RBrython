@@ -17,6 +17,7 @@ export default async function(...args) {
 	const cfg = await buildConfigs("./src/",
 		"./dist/${version}/",
 		{
+			"@RBrython": "src/",
 			"@SBrython": "src/"
 		})(...args);
 

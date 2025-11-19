@@ -1,6 +1,6 @@
-import { ClassDefNode } from "@SBrython/rbry/ast/types";
-import { nodeType } from "@SBrython/rbry/ast";
 import { node2js } from "../../node2js";
+import { nodeType } from "../../../ast";
+import { ClassDefNode } from "../../../ast/types";
 
 // @ts-ignore
 globalThis.inCstrFct = false;
@@ -17,8 +17,10 @@ export default function ClassDef(node: ClassDefNode) {
         const classname = ${name};
     `;
 
+    // @ts-ignore
+    const isH4ck = node.bases.length === 1 && ["number", "bigint", "boolean", "string"].includes(node.bases[0].id);
 
-    if( node.bases.length >= 1) {
+    if( !isH4ck && node.bases.length >= 1) {
         str += `${name}.prototype = Object.create(${node2js(node.bases[0])}.prototype);\n`;
     
         for(let i = 1; i < node.bases.length; ++i) {

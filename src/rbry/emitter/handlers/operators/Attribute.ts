@@ -1,4 +1,4 @@
-import { AttributeNode } from "@SBrython/rbry/ast/types";
+import { AttributeNode } from "../../../ast/types";
 import { node2js } from "../../node2js";
 
 export default function (node: AttributeNode) {
