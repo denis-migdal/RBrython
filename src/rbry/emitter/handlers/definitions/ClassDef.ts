@@ -10,7 +10,7 @@ export default function ClassDef(node: ClassDefNode, symtab: SymTab) {
     const csymtab = symtab.children.find( (e) => e.name === name)!;
 
     // JS cstr
-    let str = `globalThis.${name} = (() =>{
+    let str = `var ${name} = (() =>{
         function ${name}() {
             return Object.create(${name}.prototype);
         }

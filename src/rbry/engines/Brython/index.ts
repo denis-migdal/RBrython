@@ -1,8 +1,23 @@
 import { ParsedCode } from "../../ast/types";
 import parse from "../../parser";
-import Engine from "../interface";
+import Engine, { PyModule } from "../interface";
 
 export default class BrythonEngine extends Engine {
+
+    override registerBuiltins(symbols: string | PyModule): void {
+        throw new Error("Method not implemented.");
+    }
+    
+    override registerBuiltin(name: string, value: any): void {
+        throw new Error("Method not implemented.");
+    }
+
+    override registerModule(name: string, symbols: PyModule): void {
+        $B.imported[name] = $B.jsobj2pyobj( symbols );
+    }
+    override getModule(name: string): PyModule {
+        return $B.imported[name];
+    }
 
     constructor() {
         super();
@@ -10,15 +25,14 @@ export default class BrythonEngine extends Engine {
     }
 
     run(pycode: string) {
-        this.loadAsFunction(this.emit(this.parse(pycode)))();
+        return this.loadAsFunction(this.emit(this.parse(pycode)))();
     }
     // builtins
 
     // initialize
     #initialized = false;
     initialize() {
-        $B.imported["JS"] = $B.jsobj2pyobj( globalThis );
-
+        this.registerModule("JS", globalThis);
         this.#initialized = true;
     }
 
@@ -37,6 +51,6 @@ export default class BrythonEngine extends Engine {
     }
     loadAsFunction(jscode: string) {
         $B.imported["_"] = {};
-        return Function("'use strict';" + jscode) as () => void;
+        return Function("'use strict';" + jscode) as () => PyModule;
     }
 }

@@ -1,10 +1,13 @@
+Doc
+- registerModule/getModule/registerBuiltin/registerBuiltins
+
 Group
 - new dispatch
 
 1. modules
-    - export/import
-    - register module
-    - type of import/export
+    - runlib inside runner...
+        -> avoid using globalThis (somehow)...
+    - different types (?)
         - obj
         - ES6
         - global
