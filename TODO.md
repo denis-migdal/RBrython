@@ -7,9 +7,11 @@ Group
 - runners
 - doc
 
-
+./tools/rbc src/rbry/corelib/ --outDir src/rbry/corelib-aot
++ cmd line...
 
 1.
+    - + stubs doc + options doc...
     - remove SBrython
     - restructurer doc... (+cf SBrython)
     - 3x runner

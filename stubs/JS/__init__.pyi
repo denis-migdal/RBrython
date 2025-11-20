@@ -522,7 +522,7 @@ class Node(EventTarget):
     
     See https://developer.mozilla.org/en-US/docs/Web/API/Node/previousSibling
     """
-    textContent: Final[str|None]
+    textContent: str|None
     """
     The textContent property of the Node interface represents the text content of the node and its descendants.
     

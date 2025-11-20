@@ -1,3 +1,5 @@
+import "@RBrython/rbry/runlib";
+
 import Runner, { PyModule } from "./interface";
 
 export const modules: Record<string, any> = {};

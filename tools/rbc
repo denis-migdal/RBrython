@@ -5,7 +5,7 @@ import { walk } from "https://deno.land/std@0.170.0/fs/walk.ts";
 import {exists} from "https://deno.land/std/fs/mod.ts"
 import { dirname, basename, fromFileUrl } from "https://deno.land/std/path/mod.ts";
 
-import Runners from "../dist/dev/libs/RBrython-dev/index";
+import Engines from "../dist/dev/libs/RBrython-all/index";
 
 declare global {
     var __BRYTHON__: any;
@@ -119,11 +119,11 @@ async function loadBrython() {
 }
 await loadBrython();
 
-const runner = flags.compat === "BRYTHON"
-                ? Runners.getBrythonRunner()
-                : Runners.getRBrythonRunner()
+const engine = flags.compat === "BRYTHON"
+                ? Engines.getBrythonEngine()
+                : Engines.getRBrythonEngine()
 
-let convert_code = (pycode: string, filename: string) => runner.emit( runner.parse(pycode) )
+let convert_code = (pycode: string, filename: string) => engine.emit( engine.parse(pycode) )
 
 
 /******************/

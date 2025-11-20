@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="module">
+            import runner from "/libs/Runner/index.js";
+
+            const script = await (await fetch("/assets/AOT.js")).text();
+
+            runner.loadAsFunction(script)();
+        </script>
+    </head>
+</html>

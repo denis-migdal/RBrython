@@ -65,7 +65,7 @@ document.body.textContent = "ok"`
 </html>
 ```
 
-See [this page](./docs/engine/index.md) to learn how to use Brython engines.
+See [this page](./docs/engine/index.md) to learn how to use RBrython engines.
 
 ⚠ Currently, RBrython is depending on Brython to convert Python into JS. Therefore you'll need to include Brython.
 
@@ -73,7 +73,44 @@ See [this page](./docs/engine/index.md) to learn how to use Brython engines.
 
 ### Method 3: Ahead of time
 
+You can also convert Python scripts into JS ahead of time for more performant Web pages:
+```bash
+./tools/rbc src/assets/AOT.py
+```
 
+See [this page]() to learn how to use the rbc command (todo).
+
+Depending on the chosen option, you'll need a <i>runner</i> in order to execute the JS code. The runner doesn't require Brython (1.2MB, once compressed 132KB) and is lighter than the full RBrython distribution (currently 52KB instead of 92KB, once compressed, 2.6KB bytes instead of 5KB).
+
+Then you can then include the generated script in your webpage:
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="module" src="/libs/Runner/index.js"></script>
+        <script type="module" src="/assets/AOT.js"></script>
+    </head>
+</html>
+```
+
+You can also use the runner directly:
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="module">
+            import runner from "/libs/Runner/index.js";
+
+            const script = await (await fetch("/assets/AOT.js")).text();
+            runner.loadAsFunction(script)();
+        </script>
+    </head>
+</html>
+```
+
+See [this page](./docs/runner/index.md) to learn how to use the RBrython runner.
+
+💡 You'll find the `/libs/Runner/index.js` script inside the `dist/prod/` directory.
 
 ## Architecture
 
