@@ -38,11 +38,38 @@ Running Python code in the Browser is as simple as adding your Python code in a 
 
 ⚠ Currently, RBrython is depending on Brython to convert Python into JS. Therefore you'll need to include Brython.
 
-💡 You'll find the `/libs/ScriptRunner/index.js` script in the `dist/prod/` directory.
+💡 You'll find the `/libs/ScriptRunner/index.js` script inside the `dist/prod/` directory.
 
 💡 In order to access the browser API, simply import the JS module in your Python code.
 
 ### Method 2: RBrython engine
+
+You can also run Python code with a RBrython engine:
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="/assets/brython.min.js"></script>
+        <script type="module">
+            import Engine from "/libs/RBrython-dev/index.js";
+
+            const engine = new Engine();
+            engine.run(
+`from JS import document
+
+document.body.textContent = "ok"`
+            );
+        </script>
+    </head>
+</html>
+```
+
+See [this page](./docs/engine/index.md) to learn how to use Brython engines.
+
+⚠ Currently, RBrython is depending on Brython to convert Python into JS. Therefore you'll need to include Brython.
+
+💡 You'll find the `/libs/RBrython-dev/index.js` script inside the `dist/prod/` directory.
 
 ### Method 3: Ahead of time
 

@@ -17,3 +17,5 @@ const scripts = document.querySelectorAll("script[type='text/rbrython']");
 
 for(let i = 0; i < scripts.length; ++i)
     engine.run( fix_indent(scripts[i].textContent!) );
+
+export default Engine;

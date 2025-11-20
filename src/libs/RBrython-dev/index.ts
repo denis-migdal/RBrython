@@ -1,3 +1,3 @@
-import Engines from "@RBrython/rbry/engines/";
+import Engine from "@RBrython/rbry/engines/RBrython";
 
-export default Engines
+export default Engine;

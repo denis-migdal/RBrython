@@ -5,13 +5,14 @@ Doc
 Group
 - new dispatch
 - runners
+- doc
+
+
 
 1.
     - remove SBrython
     - restructurer doc... (+cf SBrython)
     - 3x runner
-        -> script runner
-        -> interactive runner (included in script runner)
         -> only runner (precompute all JS).[AoT]
         ==> stats
     - assert excp... (dev/prod/test)
