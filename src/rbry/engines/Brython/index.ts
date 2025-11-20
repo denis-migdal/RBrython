@@ -5,11 +5,14 @@ import Engine, { PyModule } from "../interface";
 export default class BrythonEngine extends Engine {
 
     override registerBuiltins(symbols: string | PyModule): void {
-        throw new Error("Method not implemented.");
+        if( typeof symbols === "string")
+            throw new Error("Not implemented (yet)");
+        for(let name in symbols)
+            this.registerBuiltin(name, symbols[name]);
     }
     
     override registerBuiltin(name: string, value: any): void {
-        throw new Error("Method not implemented.");
+        $B.builtins[name] = $B.jsobj2pyobj(value);
     }
 
     override registerModule(name: string, symbols: PyModule): void {
