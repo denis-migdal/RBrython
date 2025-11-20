@@ -1,40 +1,34 @@
 import { ParsedCode } from "../../ast/types";
 import emit from "../../emitter";
 import parse from "../../parser";
-import Engine, { PyModule } from "../interface";
+import Engine from "../interface";
 
 import "./macros";
 import builtins from "./builtins";
-
-export const modules: Record<string, any> = {};
+import { PyModule } from "@RBrython/rbry/runners/interface";
+import RBrythonGlobalRunner from "@RBrython/rbry/runners/RBrythonGlobalRunner";
 
 export default class RBrythonEngine extends Engine {
 
-    #module   = modules; // h4ck
-    #builtins: Record<string, any> = {};
+    readonly runner = new RBrythonGlobalRunner();
 
     override registerBuiltins(symbols: string | PyModule): void {
         if( typeof symbols === "string")
             symbols = this.run(symbols);
-        for(let name in symbols)
-            this.registerBuiltin(name, symbols[name]);
+        this.runner.registerBuiltins(symbols);
     }
 
     override registerBuiltin(name: string, value: any) {
-        this.#builtins[name] = value;
-
-        //TODO...
-        // @ts-ignore
-        globalThis[name] = value;
+        this.runner.registerBuiltin(name, value);
     }
 
     override registerModule(name: string, symbols: string|PyModule): void {
         if( typeof symbols === "string")
             symbols = this.run(symbols);
-        this.#module[name] = symbols;
+        this.runner.registerModule(name, symbols);
     }
     override getModule(name: string): PyModule {
-        return this.#module[name];
+        return this.runner.getModule(name);
     }
 
     constructor() {
@@ -70,7 +64,6 @@ export default class RBrythonEngine extends Engine {
         return emit(ast);
     }
     loadAsFunction(jscode: string) {
-
-        return Function("'use strict';" + jscode + "; return __exported__;") as () => PyModule;
+        return this.runner.loadAsFunction(jscode);
     }
 }

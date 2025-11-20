@@ -16,6 +16,7 @@ globalThis.$RB = {
     mcall,
     assert,
     attr,
+    setattr,
     getKW,
     setKW,
     getModule
@@ -55,6 +56,7 @@ globalThis.Exception = function(msg: string) {
 
 import { getClass } from "./helpers/getClass";
 import getModule from "./interface/getModule";
+import setattr from "./interface/setattr";
 
 // @ts-ignore
 globalThis.__JS_LOG__ = (...args) => console.log(...args);

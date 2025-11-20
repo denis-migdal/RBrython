@@ -1,25 +1,28 @@
+import { PyModule } from "@RBrython/rbry/runners/interface";
 import { ParsedCode } from "../../ast/types";
 import parse from "../../parser";
-import Engine, { PyModule } from "../interface";
+import Engine from "../interface";
+import BrythonGlobalRunner from "@RBrython/rbry/runners/BrythonGlobalRunner";
 
 export default class BrythonEngine extends Engine {
+
+    readonly runner = new BrythonGlobalRunner();
 
     override registerBuiltins(symbols: string | PyModule): void {
         if( typeof symbols === "string")
             throw new Error("Not implemented (yet)");
-        for(let name in symbols)
-            this.registerBuiltin(name, symbols[name]);
+        this.runner.registerBuiltins(symbols);
     }
     
     override registerBuiltin(name: string, value: any): void {
-        $B.builtins[name] = $B.jsobj2pyobj(value);
+        this.runner.registerBuiltin(name, value);
     }
 
     override registerModule(name: string, symbols: PyModule): void {
-        $B.imported[name] = $B.jsobj2pyobj( symbols );
+        this.runner.registerModule(name, symbols);
     }
     override getModule(name: string): PyModule {
-        return $B.imported[name];
+        return this.runner.getModule(name);
     }
 
     constructor() {
@@ -53,7 +56,6 @@ export default class BrythonEngine extends Engine {
 
     }
     loadAsFunction(jscode: string) {
-        $B.imported["_"] = {};
-        return Function("'use strict';" + jscode) as () => PyModule;
+        return this.runner.loadAsFunction(jscode);
     }
 }

@@ -1,32 +1,45 @@
 Doc
-- registerModule/getModule/registerBuiltin/registerBuiltins
+- runners/engines
+    - registerModule/getModule/registerBuiltin/registerBuiltins
 
 Group
 - new dispatch
+- runners
 
-1. modules
-    - runlib inside runner...
-        -> avoid using globalThis (somehow)...
-    - different types (?)
-        - obj
-        - ES6
-        - global
-        -> runner/no runner ??? (import ???)
-2. Tests
+1.
+    - remove SBrython
+    - restructurer doc... (+cf SBrython)
+    - 3x runner
+        -> script runner
+        -> interactive runner (included in script runner)
+        -> only runner (precompute all JS).[AoT]
+        ==> stats
+    - assert excp... (dev/prod/test)
+    - prod/test ([-OO flag])
+        + assert (keep in test)
+        + __debug__
+            ~> cste (?)
+        + docstrings
+        + do not indent JS code
+        + useless {}
+        + other possible opti... (not test)
+3. Tests
     - sourcemap
     - (un)indent generated JS
     - test system: get lines (require sourcemap) ~> highlight errors ?
 
-X. SBrython version... ?
-    - assert excp... (dev/prod/test)
-    - build runner... (.js)...
-    - PERF|STRICT
-        - operations on literals.
-        - remove runners (or reduce it as much as possible).
-        - remove non-common features / compatibility...
-3. some refactor/warnings/cleaning works.
-    - better function args
-4. generation
+- features
+    - types + object (type as python code)
+    - classes attr operation.
+    - isinstance...
+- more features
+    -> bool inherit from int...
+    - dict/list/tuple (seulement op de bases ?)
+    - async fct / generators
+    - observer DP for class multi-inheritance.
+
+
+X. tools
     - compiler cmd... (tool)
         - doc...
         - compat BRYTHON ou rien.
@@ -35,20 +48,20 @@ X. SBrython version... ?
             __BRYTHON__.imported["exec"] = {};
             __BRYTHON__.frames_stack = [];
     - runner cmd... -> test tool (cli) ? (rbrun/rbtest)
-
-- features
-    - types + object (type as python code)
-    - classes attr operation.
-- more features
-    -> bool inherit from int...
-    - dict/list/tuple (seulement op de bases ?)
-    - async fct / generators
-    - observer DP for class multi-inheritance.
-- checker
+X. different runners (?)
+    - global/raw
+    -> avoid using globalThis (somehow)...
+        - obj
+        - ES6
+    -> runner/no runner ??? (import ???)
+    -> build runlib... (.js)...
+X. Opti/checker
+    - PERF|STRICT
+        - operations on literals.
+        - remove runners (or reduce it as much as possible).
+        - remove non-common features / compatibility...
     - JS stubs / stubs from py file ?
     - optimizer + flags (?) + test versions (?)
-
-- isinstance...
 
 - unittests (cf editor)
     + list of builtins
@@ -66,3 +79,8 @@ X. SBrython version... ?
 - cst  6 : https://docs.python.org/3/library/constants.html
 - types  : https://docs.python.org/3/library/stdtypes.html
 - exc : https://docs.python.org/3/library/exceptions.html
+
++ sbry/TODO.md
++ sbry/src/sbry + sbry/src/runtime
++ sbry/pages/compat
++ sbry/README.md

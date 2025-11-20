@@ -1,6 +1,5 @@
 import { ParsedCode } from "../ast/types";
-
-export type PyModule = Record<string, any>;
+import { PyModule } from "../runners/interface";
 
 export default abstract class Engine {
     abstract run(pycode: string): PyModule;
@@ -10,7 +9,6 @@ export default abstract class Engine {
 
     abstract registerModule(name: string, symbols: string|PyModule): void;
     abstract      getModule(name: string): PyModule;
-
 
     // low level
     abstract parse(pycode: string ): ParsedCode;

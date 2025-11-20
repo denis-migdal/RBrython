@@ -1,8 +1,52 @@
 <div align="center">
   <h1>RBrython (POC)</h1>
 
-  <p>Trying a new architecture for Brython</p>
+  <p>Testing a new architecture for Brython</p>
 </div>
+
+RBrython enables to execute Python codes in the Browser. To do so RBrython converts Python codes into JavaScript, either in the browser, or ahead of time.
+
+RBrython perfectly integrates with existing Python and Web development tools, while enabling transparent interactions with existing JavaScript/TypeScript codes/libraries, as well as with the browser APIs.
+
+With RBrython, you can choose whether the conversion should favorise Python compliance or performances.
+
+## Running Python code in the Browser
+
+There are 3 ways to run Python code with RBrython:
+1. include Python script tags into your WebPage (the simplest).
+2. use the RBrython engine in JS (the most customizable).
+3. convert the Python code ahead of time (the fatest).
+
+### Method 1: Python script tags
+
+Running Python code in the Browser is as simple as adding your Python code in a script tag (click [here](https://rbrython.migdal.ovh/tests/ScriptRunner) to test):
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="/assets/brython.min.js"></script>
+        <script type="module" src="/libs/ScriptRunner/index.js"></script>
+        <script type="text/rbrython">
+            from JS import document
+
+            document.body.textContent = "ok"
+        </script>
+    </head>
+</html>
+```
+
+⚠ Currently, RBrython is depending on Brython to convert Python into JS. Therefore you'll need to include Brython.
+
+💡 You'll find the `/libs/ScriptRunner/index.js` script in the `dist/prod/` directory.
+
+💡 In order to access the browser API, simply import the JS module in your Python code.
+
+### Method 2: RBrython engine
+
+### Method 3: Ahead of time
+
+
 
 ## Architecture
 

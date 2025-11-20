@@ -1,4 +1,4 @@
-import { modules } from "@RBrython/rbry/engines/RBrython";
+import { modules } from "@RBrython/rbry/runners/RBrythonGlobalRunner";
 
 export default function getModule(name: string) {
 
