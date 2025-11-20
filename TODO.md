@@ -8,11 +8,9 @@ Doc
     - runners/engines // registerModule/getModule/registerBuiltin/registerBuiltins
 
     - dev doc
-        - build
-        - ./tools/rbc src/rbry/corelib/ --outDir src/rbry/corelib-aot
+        - Writing core modules
 
     - architecture
-    - + options (and opts...) doc...
 
 1. Prod
     - prod/test ([-OO flag])
@@ -83,4 +81,10 @@ X. Opti/checker
 + sbry/TODO.md
 + sbry/src/sbry + sbry/src/runtime
 + sbry/pages/compat
-+ sbry/README.md
+
+(disable privacy.reduceTimerPrecision on FF for better precision)
+
+Tests from : https://github.com/brython-dev/brython/tree/master/www/tests
+
+cf https://groups.google.com/g/brython/c/5Y4FneO3tzU/m/ftPUn9LMAAAJ
+https://groups.google.com/g/brython/c/5Y4FneO3tzU/m/KnnzMS6QAAAJ

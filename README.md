@@ -17,6 +17,8 @@ There are 3 ways to run Python code with RBrython:
 2. use the RBrython engine in JavaScript (the most customizable).
 3. convert the Python code ahead of time (the fatest).
 
+💡 You can test the current RBrython version [here](http://rbrython.migdal.ovh/Editor).
+
 ### Method 1: Python script tags
 
 Running Python code in the Browser is as simple as adding your Python code in a script tag (click [here](https://rbrython.migdal.ovh/tests/ScriptRunner) to test):
@@ -136,20 +138,28 @@ See the [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/API) fo
 
 ### Mode (not implemented)
 
-RBrython offers several mode:
-- production
-- test
-- development
-
-- `mode`: for development purposes.
+RBrython offers several modes:
    - `dev`: performs some checks, keeps some debug informations (***default***).
    - `prod`: intended for production code.
    - `test`: like the `prod` mode, but asserts are kept.
 
-### Writing core modules
+## Contributing
 
-TODO...
-(dev page...)
+Build commands:
+- `npm run watch`: rebuild the development version each time a source file is modified.
+- `npm run build`: build the development version.
+- `npm run build-prod`: build the production version.
+- `./tools/rbc src/rbry/corelib/ --outDir src/rbry/corelib-aot` : convert the corelib files ahead of time for the standard runner.
+
+💡 You can run RBrython test suite in [http://rbrython.migdal.ovh/Editor?test=rbrython](http://rbrython.migdal.ovh/Editor?test=rbrython).
+
+💡 You can launch the RBrython Website in VScode thanks to the live server extension. Else you can launch a simple HTTP server on `/dist/dev/`.
+
+TODO: architecture + writing corelib.
+
+See also the [goal and principles](./docs/dev/principles/).
+
+Google group discussion: https://groups.google.com/g/brython/c/4P4mvgH02UI/m/BNi266d3AgAJ
 
 ## Architecture
 
@@ -175,66 +185,3 @@ RBrython distinguishes two parts:
 
 RBrython provides the following tools:
 - sourcemaps (<i>not implemented</i>) ;
-- JavaScript API stubs (cf /stubs directory) ;
-- compiler (<i>not implemented</i>) ;
-- a documentation.
-
-## Goals
-
-RBrython aims at better interactions between Python and JavaScript code while avoiding conversions.
-
-RBrython focuses on the core of Python, it doesn't aim to maintain standard Python libraries.
-
-RBrython does not directly focuses on runtime performances. However performances can be achieved through an optimizer, or by re-writing critical parts in JavaScript (which should be made easier by RBrython).
-
-RBrython does not aim for transcription performances and prefers AoT compilation.
-
-## Principles
-
-### Principle 0
-
-RBrython should respect the principles of clean code and clean architecture.
-
-### Principle 1
-
-In order to limit the scope of changes, the several RBrython parts should be as independent as possible.
-
-For example, corelib and stdlib should not rely on runlib. This means that they either have to be implemented in Python, or in vanilla JavaScript. Indeed, as they are huge code bases, each minor changes in the runlib interface would be hell.
-
-### Principle 3
-
-RBrython should be free from JavaScript-Python data conversions. Python use of classes/functions from JavaScript should be transparent, and vice versa.
-
-### Principle 4
-
-RBrython should represent Python data as vanilla JavaScript data showing intend, not behavior. RBrython Python specific behaviors should be implemented inside Python operations, and should be reflected on the data.
-
-For example, declaring a method should be written in JavaScript as:
-```js
-class X {
-  foo() {}
-}
-```
-
-Then, the following Python code `X.foo(x)` should be made possible without changing the class definition in JavaScript, but by changing the call behavior. 
-
-### Principle 5
-
-RBrython should document as much as possible to help third party interventions. RBrython will also try documenting equivalent Brython features.
-
-## Test
-
-Current : 22/~88
-+1
-
-- http://127.0.0.1:5501/Editor/
-- http://127.0.0.1:5501/Editor/?test=rbrython
-- http://127.0.0.1:5501/Editor/?test=rbrython&merge=true
-
-
-Tests from : https://github.com/brython-dev/brython/tree/master/www/tests
-
-(disable privacy.reduceTimerPrecision on FF for better precision)
-
-cf https://groups.google.com/g/brython/c/5Y4FneO3tzU/m/ftPUn9LMAAAJ
-https://groups.google.com/g/brython/c/5Y4FneO3tzU/m/KnnzMS6QAAAJ
