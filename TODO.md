@@ -4,10 +4,15 @@ Group
 - doc
 
 Doc
-    - + stubs doc + options doc...
+    
     - runners/engines // registerModule/getModule/registerBuiltin/registerBuiltins
+
+    - dev doc
+        - build
+        - ./tools/rbc src/rbry/corelib/ --outDir src/rbry/corelib-aot
+
     - architecture
-    - ./tools/rbc src/rbry/corelib/ --outDir src/rbry/corelib-aot + cmd line...
+    - + options (and opts...) doc...
 
 1. Prod
     - prod/test ([-OO flag])
