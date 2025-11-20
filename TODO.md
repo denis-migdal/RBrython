@@ -3,16 +3,12 @@ Group
 - runners
 - doc
 
-Doc
-    
+1. Doc
     - runners/engines // registerModule/getModule/registerBuiltin/registerBuiltins
-
     - dev doc
         - Writing core modules
-
-    - architecture
-
-1. Prod
+        - architecture
+2. mode
     - prod/test ([-OO flag])
         + assert (keep in test)
         + __debug__
