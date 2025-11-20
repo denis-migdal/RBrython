@@ -1,12 +1,6 @@
 import webpack from 'webpack';
 
 import buildConfigs from "./build/WebpackFramework/index.js";
-import genBry2SBry  from "./build/gen/bry2sbry.js";
-import genTypes     from "./build/gen/types.js";
-import genAST2JS    from "./build/gen/ast2js.js";
-import genOperators from "./build/gen/operators.js";
-import genRuntime   from "./build/gen/runtime.js";
-
 
 import CircularDependencyPlugin from 'circular-dependency-plugin';
 
@@ -18,12 +12,11 @@ export default async function(...args) {
 		"./dist/${version}/",
 		{
 			"@RBrython": "src/",
-			"@SBrython": "src/"
 		})(...args);
 
 	const entries = cfg.entry = await cfg.entry();
 
-	const production = [ 'libs/SBrython-prod', 'libs/SBrython-runtime-prod', 'Benchmark'];
+	const production = [ 'libs/SBrython-prod', 'libs/SBrython-runtime-prod', 'Benchmark']; //TODO...
 
 	for(const name in entries) {
 
@@ -40,19 +33,15 @@ export default async function(...args) {
 	}
 
 	// only require it once.
-	cfg.plugins.push({
+	cfg.plugins.push(/*{
 		apply: (compiler) => {
 			compiler.hooks.compile.tap("MyPlugin_compile", async () => {
-			await Promise.all([
-				genBry2SBry(),
-				genTypes(),
-				genAST2JS(),
-				genOperators(),
-				genRuntime(),
-			]);
-		});
-	},
-	}, new CircularDependencyPlugin({
+				await Promise.all([
+					// genX()
+				]);
+			});
+		},
+	},*/ new CircularDependencyPlugin({
 		// exclude detection of files based on a RegExp
 		exclude: /node_modules/,
 		// include specific files based on a RegExp

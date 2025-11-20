@@ -3,7 +3,7 @@
 // get result
 // get metrics...
 
-import Engine from "@SBrython/rbry/engines/interface";
+import Engine from "@RBrython/rbry/engines/interface";
 
 export type BenchStats   = {
     steps : {name: string, time: number}[];

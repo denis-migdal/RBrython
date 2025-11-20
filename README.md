@@ -82,6 +82,8 @@ See [this page]() to learn how to use the rbc command (todo).
 
 Depending on the chosen option, you'll need a <i>runner</i> in order to execute the JS code. The runner doesn't require Brython (1.2MB, once compressed 132KB) and is lighter than the full RBrython distribution (currently 52KB instead of 92KB, once compressed, 2.6KB bytes instead of 5KB).
 
+💡 `npm run stats` to recompte file statistics.
+
 Then you can then include the generated script in your webpage:
 ```html
 <!DOCTYPE html>

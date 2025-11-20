@@ -6,7 +6,7 @@ export default function Assign(node: AssignNode, symtab: SymTab) {
 
     let res = "";
 
-    let prefix = "";
+    let prefix = "var ";
     const type = nodeType(node.targets[0]);
     if( type === "Attribute" )
         // @ts-ignore

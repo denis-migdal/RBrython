@@ -26,7 +26,7 @@ const test_name = search.get("test");
 //const merge     = __SBRY_MODE__ === "test"; // Benchmark
 const merge     = search.get("merge") === "true" ? true : false;
 const parser    = search.get("parser") === "false" ? false : true;
-const DEFAULT_COMPAT = (search.get("compat") ?? "NONE") as typeof __SBRY_COMPAT__;
+const DEFAULT_COMPAT = (search.get("compat") ?? "NONE");// as typeof __SBRY_COMPAT__;
 
 ////////////////////////////////////////////////////////////////:
 
@@ -183,8 +183,7 @@ function generateTestSuite(test_name: string, merge: boolean): string[] {
 
             for(const config of configs) {
 
-                globalThis.__SBRY_COMPAT__ = config as any;
-
+                //globalThis.__SBRY_COMPAT__ = config as any;
                 //TODO: second exclude...
 
                 let code = subtests[j];
@@ -326,7 +325,7 @@ const test_suites  = await loadTests(...brython_tests); // cf end of file for av
 // ===============================================================
 
 const  bry_output  = document.querySelector ( '.brython_output')!;
-const sbry_output  = document.querySelector('.sbrython_output')!;
+const sbry_output  = document.querySelector('.rbrython_output')!;
 const python_input = document.querySelector<HTMLInputElement>('#python')!;
 
 const python_output = document.querySelector(".python_ouput")!;
@@ -341,7 +340,7 @@ const sbry_print = (...args: any[]) => {
 python_input.addEventListener("input",
     () => {
         const code = python_input.value;
-        localStorage.setItem('sbrython_code', code);
+        localStorage.setItem('rbrython_code', code);
         run([code]);
     });
 
@@ -396,7 +395,7 @@ select.addEventListener('change', () => {
     const code = filterCode(select.value);
 
     python_input.value = code;
-    localStorage.setItem('sbrython_code', code);
+    localStorage.setItem('rbrython_code', code);
     run([code]);
     
 });
@@ -429,6 +428,6 @@ if( test_name === "rbrython" ) {
 } else if( test_name !== null )
     initialRun = generateTestSuite(test_name, merge);
 else
-    initialRun = [python_input.value = localStorage.getItem('sbrython_code') ?? ""];
+    initialRun = [python_input.value = localStorage.getItem('rbrython_code') ?? ""];
 
 run( initialRun );

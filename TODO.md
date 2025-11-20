@@ -1,23 +1,15 @@
-Doc
-- runners/engines
-    - registerModule/getModule/registerBuiltin/registerBuiltins
-
 Group
 - new dispatch
 - runners
 - doc
 
-./tools/rbc src/rbry/corelib/ --outDir src/rbry/corelib-aot
-+ cmd line...
-
-1.
+Doc
     - + stubs doc + options doc...
-    - remove SBrython
-    - restructurer doc... (+cf SBrython)
-    - 3x runner
-        -> only runner (precompute all JS).[AoT]
-        ==> stats
-    - assert excp... (dev/prod/test)
+    - runners/engines // registerModule/getModule/registerBuiltin/registerBuiltins
+    - architecture
+    - ./tools/rbc src/rbry/corelib/ --outDir src/rbry/corelib-aot + cmd line...
+
+1. Prod
     - prod/test ([-OO flag])
         + assert (keep in test)
         + __debug__
