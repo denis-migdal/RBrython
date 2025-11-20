@@ -4,11 +4,12 @@ import { CLASS, FunctionDefNode, SymTab } from "../../../ast/types";
 
 export default function FunctionDef(node: FunctionDefNode, symtab: SymTab) {
 
+    const isMethod = symtab.type === CLASS;
+
     const name = node.name;
     const body = node.body;
 
     const fsymtab = symtab.children.find( (e) => e.name === name)!;
-
 
     let result = "";
     if( symtab.type === CLASS )
@@ -19,63 +20,20 @@ export default function FunctionDef(node: FunctionDefNode, symtab: SymTab) {
 
     result += `function ${name}(`;
 
-    //TODO: move out args + use in lambda.
-    let args = "";
+    result += node2js(node.args, symtab, isMethod);
 
-    let i = 0;
-    let arg_offset = 0;
-    let self = "";
+    result += "){";
 
-    if( symtab.type === CLASS ) { // first arg is self.
-
+    if( isMethod ) {
         let selfname = "";
-        if( node.args.posonlyargs.length)
-            // @ts-ignore
+        if( node.args.posonlyargs.length > 0)
             selfname = node.args.posonlyargs[0].arg;
-        else {
-            // @ts-ignore
-            selfname = node.args.args[0].arg
-            ++arg_offset;
-        }
-
-        // @ts-ignore'
-        self = `const ${selfname} = this;`;
-        ++i;
+        else
+            selfname = node.args.args[0].arg;
+        result += `const ${selfname} = this;`; //TODO: prefer var renaming...
     }
 
-    for( ; i < node.args.posonlyargs.length; ++i) {
-        //console.warn( node.args.posonlyargs[i] );
-        //TODO:
-        //args += node2js(node.args.posonlyargs[i]) + ", ";
-        // @ts-ignore
-        args += `${node.args.posonlyargs[i].arg}, `;
-    }
-    i = arg_offset;
-    for( ; i < node.args.args.length; ++i) {
-        //console.warn( node.args.posonlyargs[i] );
-        //TODO:
-        //args += node2js(node.args.posonlyargs[i]) + ", ";
-        // @ts-ignore
-        args += `_${node.args.args[i].arg}, `;
-    }
-    if( node.args.args.length ) {
-        // kw...
-        args += "{";
-        for( let i = arg_offset ; i < node.args.args.length; ++i) {
-            // @ts-ignore
-            args += `${node.args.args[i].arg} = _${node.args.args[i].arg}, `;
-        }
-        args += "} = $RB.getKW()";
-    }
-    result += args; //TODO...
-
-    // vararg
-    // kwonlyargs
-    // kwarg
-    //console.warn(node.args);
-
-    result += `){
-        ${self}
+    result += `
         ${Body(body, fsymtab)}
     }`;
 

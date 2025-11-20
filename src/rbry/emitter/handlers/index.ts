@@ -2,7 +2,9 @@
 
 import { ASTNode, SymTab } from "../../ast/types";
 
-export type Handler = (node: ASTNode, symtab?: SymTab) => string;
+export type Handler = (    node: ASTNode,
+                        symtab?: SymTab,
+                        ...args: unknown[]) => string;
 
 const Handlers: Record<string, Handler> = {};
 

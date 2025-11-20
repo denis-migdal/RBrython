@@ -96,13 +96,24 @@ export type ClassDefNode = {
     bases: ASTNode[];
 }
 
+export type ArgsDefNode = {
+    posonlyargs: ArgDefNode[];
+    args       : ArgDefNode[];
+}
+
+export type ArgDefNode = {
+    arg: string
+}
+
+export type LambdaDefNode = {
+    args: ArgsDefNode;
+    body: BodyNode;
+}
+
 export type FunctionDefNode = {
     name: string;
     posonlyargs: ASTNode[];
-    args: {
-        posonlyargs: ASTNode[];
-        args       : ASTNode[];
-    };
+    args: ArgsDefNode;
     body: BodyNode;
     decorator_list: ASTNode[]
 }

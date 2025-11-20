@@ -2,7 +2,7 @@ import { nodeType } from "../ast";
 import { ASTNode, SymTab } from "../ast/types";
 import Handlers from "./handlers";
 
-export function node2js(node: ASTNode, symtab?: SymTab): string {
+export function node2js(node: ASTNode, symtab?: SymTab, ...args: unknown[]): string {
 
     const handler = Handlers[nodeType(node) as keyof typeof Handlers];
 
@@ -11,5 +11,5 @@ export function node2js(node: ASTNode, symtab?: SymTab): string {
         throw new Error(`Node type ${nodeType(node)} is unknown`);
     }
 
-    return handler(node, symtab);
+    return handler(node, symtab, ...args);
 }

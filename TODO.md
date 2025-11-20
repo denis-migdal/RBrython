@@ -2,7 +2,6 @@ Group
 - new dispatch
 
 1. modules
-    -> args node + use in lambda...
     - export/import
     - register module
     - type of import/export
@@ -14,6 +13,7 @@ Group
     - sourcemap
     - (un)indent generated JS
     - test system: get lines (require sourcemap) ~> highlight errors ?
+
 X. SBrython version... ?
     - assert excp... (dev/prod/test)
     - build runner... (.js)...
