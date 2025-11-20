@@ -157,13 +157,11 @@ Build commands:
 
 TODO: architecture + writing corelib.
 
-See also the [goal and principles](./docs/dev/principles/).
+See also the [goal and principles](./docs/dev/principles/index.md).
 
 Google group discussion: https://groups.google.com/g/brython/c/4P4mvgH02UI/m/BNi266d3AgAJ
 
 ## Architecture
-
-<i>Note: some features are not yet implemented but can be found in [SBrython](https://github.com/denis-migdal/SBrython).</i>
 
 RBrython [engine](./docs/runner/engine.md) distinguishes several processes:
 - <b>[parser](./docs/parser/index.md)</b>: transform Python code into AST (<i>for now uses Brython</i>).
