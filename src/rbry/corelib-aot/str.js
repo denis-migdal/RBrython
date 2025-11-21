@@ -5,7 +5,7 @@ var str = (() =>{
             return Object.create(str.prototype);
         }
     str.prototype.__new__ = function __new__(o, ){const cls = this;
-        return $RB.call(__JS_AS_STRING__, o, );
+        return `${o}`;
 
     };
 str.prototype.__eq__ = function __eq__(o, ){const self = this;

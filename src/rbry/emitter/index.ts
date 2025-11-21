@@ -6,8 +6,14 @@ import { ParsedCode } from "../ast/types";
 import Body from "./handlers/Body";
 import { Macro, macros } from "./handlers/operators/Call";
 
+export enum MODE {
+  DEBUG,
+  TEST,
+  PROD,
+}
+
 export abstract class Emitter {
-    abstract emit(parsed: ParsedCode): string;
+    abstract emit(parsed: ParsedCode, mode?: MODE): string;
 
     abstract registerMacros(macros: Record<string, Macro>):void;
     abstract registerMacro(name: string, fct: Macro): void;
@@ -25,14 +31,18 @@ export default class RBrythonEmitter extends Emitter {
         this.macros[name] = fct;
     }
 
-    emit(parsed: ParsedCode) {
+    emit(parsed: ParsedCode, mode: MODE = MODE.DEBUG) {
+
+        // @ts-ignore
+        globalThis.mode = mode;
 
         const bodyNode = parsed.ast.body;
 
         const body   = Body(bodyNode, parsed.symtable);
         const exports= this.extractExportedSymbols(parsed);
 
-        return `${body}\nconst __exported__ = {${exports.join(",")}}`;
+        // @ts-ignore
+        return `const __debug__ = ${globalThis.mode === MODE.DEBUG};\n${body}\nconst __exported__ = {${exports.join(",")}}`;
     }
 
     private extractExportedSymbols(parsed: ParsedCode) {

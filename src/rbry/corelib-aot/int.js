@@ -118,7 +118,7 @@ int.prototype.__rpow__ = function __rpow__(o, mod, ){const self = this;
     };
 int.prototype.__div__ = function __div__(o, ){const self = this;
         {const tname = type(o).name;if( tname === "int") {
-            return $RB.call(__JS_AS_NUMBER__, self, ) / $RB.call(__JS_AS_NUMBER__, o, );
+            return Number(self) / Number(o);
 
         }else {
             return NotImplemented;
@@ -128,7 +128,7 @@ int.prototype.__div__ = function __div__(o, ){const self = this;
     };
 int.prototype.__rdiv__ = function __rdiv__(o, ){const self = this;
         {const tname = type(o).name;if( tname === "int") {
-            return $RB.call(__JS_AS_NUMBER__, o, ) * $RB.call(__JS_AS_NUMBER__, self, );
+            return Number(o) * Number(self);
 
         }else {
             return NotImplemented;

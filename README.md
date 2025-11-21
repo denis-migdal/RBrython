@@ -137,14 +137,21 @@ See the [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/API) fo
 
 ⚠ The MDN documentation codes are written in JavaScript.
 
+### Mode
+
+RBrython provides several modes:
+- `debug`: keep debug informations and checks (***default***).
+- `prod`: intended for production code.
+- `test`: like `prod`, but assertions are kept.
+
+The `prod` mode is similar to the `-OO` Python options:
+- assertions are removed ;
+- `__debug__` is set to false.
+- docstrings are discarded (<i>not implemented</i>).
+- generated JavaScript code isn't indented (<i>not implemented</i>).
+
 ### Compatibility (not implemented)
 
-### Mode (not implemented)
-
-RBrython offers several modes:
-   - `dev`: performs some checks, keeps some debug informations (***default***).
-   - `prod`: intended for production code.
-   - `test`: like the `prod` mode, but asserts are kept.
 
 ## Contributing
 

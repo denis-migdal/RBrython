@@ -1,39 +1,43 @@
 Group
-- new dispatch
-- runners
+- 2x faster
+- new dispatch (int)
+- runners/engines (compatible Brython).
+- prod (-OO python)
 - doc
     - https://github.com/denis-migdal/RBrython/tree/master
     - https://github.com/denis-migdal/RBrython/blob/master/docs/engine/index.md
 
+- TODO
+    - sourcemap
+    - export modes (e.g. ES6 modules).
+    - opti/compat mode (later).
+    - well ofc implement...
+
 ## Features
 
-1. mode
-    - prod/test ([-OO flag])
-        + assert (keep in test)
-        + __debug__
-            ~> cste (?)
-        + docstrings
-        + do not indent JS code
-        + useless {}
-        + other possible opti... (not test)
 2. Tests
     - sourcemap
     - (un)indent generated JS
     - test system: get lines (require sourcemap) ~> highlight errors ?
 
 - features
+    - builtins (write in Python)
+        - functions (abs/etc) in runlib
+        - object + type + NotImplemented
+        - isinstance
     - /!\ circular deps.
         - runner <-> RBrythonGlobalRunner (give it as fct parameter ~= context)
-    - builtins (write in Python)
-        - type + object
-        - functions (abs/etc) in runlib
-        - isinstance
     - classes
         - better attr operation (on classes)
         - bool inherit from int...
         - observer DP for class multi-inheritance.
     - dict/list/tuple (seulement op de bases ?)
     - async fct / generators
+
+3. Compat mode / cf optimisations (?) [per file...]
+    - operations on constants might be precomputed (<i>not implemented</i>).
+         -> ou use Terser ?
+4. Export mode...
 
 ## Tests
 

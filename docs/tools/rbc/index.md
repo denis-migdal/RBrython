@@ -34,14 +34,11 @@ You can however change this behavior by providing an output directory in which t
 ./tools/rbc --outDir $DST_DIR -
 ```
 
-### Mode (not implemented)
+### Mode
 
-- `--mode   dev|prod|test`: (default: `dev`).
+`--mode debug|test|prod`: (default: `debug`).
 
-- `mode`: for development purposes.
-   - `dev`: performs some checks, keeps some debug informations (***default***).
-   - `prod`: intended for production code.
-   - `test`: like the `prod` mode, but asserts are kept.
+See [RBrython mode](../../../?tab=readme-ov-file#mode-not-implemented).
 
 ### Compatibility (not implemented)
 

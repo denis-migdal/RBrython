@@ -1,5 +1,7 @@
 import { getClass } from "../helpers/getClass";
-import { NotImplemented } from "../tmp_corelib/NotImplemented";
+
+// @ts-ignore
+const NotImplemented = globalThis.NotImplemented = Symbol();
 
 export default function op(a: unknown, op: string, b: unknown) {
     const ka = getClass(a);

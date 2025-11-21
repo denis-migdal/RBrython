@@ -25,22 +25,18 @@ globalThis.$RB = {
 }
 
 //TODO: corelib
-import {NotImplemented} from "./tmp_corelib/NotImplemented";
 import { getClass } from "./helpers/getClass";
+
+// @ts-ignore
+globalThis.type = function(a: unknown) { // __new__ for type...
+    return getClass(a); //TODO...
+}
 
 // @ts-ignore
 globalThis.abs = function( a: unknown) {
     const ka = getClass(a);
     return ka.prototype[`__abs__`].call(a);
 }
-
-// @ts-ignore
-globalThis.type = function(a: unknown) {
-    return getClass(a); //TODO...
-}
-
-// @ts-ignore
-globalThis.NotImplemented = NotImplemented;
 
 // @ts-ignore
 globalThis.range = function*(a: number) {

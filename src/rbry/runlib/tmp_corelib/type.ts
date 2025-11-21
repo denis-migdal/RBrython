@@ -2,6 +2,8 @@ export class type {
     //TODO...
     __call__(...args: any[]) {
 
+        console.warn("really called");
+
         // @ts-ignore
         const factory = this.prototype.__new__;
         const self = factory !== undefined

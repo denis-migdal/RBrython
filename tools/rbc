@@ -60,14 +60,19 @@ const flags = parseArgs(Deno.args, {
         watch  : false,
         verbose: false,
         compat : "NONE",
-        mode   : "dev",
+        mode   : "debug",
         export : "NONE"
     },
 });
 
+let mode = 0;
+if( flags.mode === "test")
+    mode = 1;
+if( flags.mode === "prod")
+    mode = 2;
+
 /*
 globalThis.__SBRY_COMPAT__ = flags.compat;
-globalThis.__SBRY_MODE__   = flags.mode;
 globalThis.__SBRY_EXPORT__ = flags.export;
 */
 
@@ -75,12 +80,12 @@ const {_: SRC_DIRS, outDir: DST_DIR, verbose:DEBUG, watch} = flags;
 
 if(flags.help) {
 	console.log('rbryc $SRC_FILES[...]');
-	console.log('\t* --compat NONE|PERF|FULL|BRYTHON');
-	console.log('\t* --export NONE|ES6|SBRY|GLOBAL');
-	console.log('\t* --mode   dev|prod|test');
 	console.log('\t* --outDir $DST_DIR');
 	console.log('\t* --watch');
 	console.log('\t* --verbose');
+	console.log('\t* --mode   debug|test|prod');
+	console.log('\t* --compat NONE|PERF|FULL|BRYTHON');
+	console.log('\t* --export NONE|ES6|SBRY|GLOBAL');
 	Deno.exit(0);
 }
 
@@ -123,7 +128,7 @@ const engine = flags.compat === "BRYTHON"
                 ? Engines.getBrythonEngine()
                 : Engines.getRBrythonEngine()
 
-let convert_code = (pycode: string, filename: string) => engine.emit( engine.parse(pycode) )
+let convert_code = (pycode: string, filename: string) => engine.emit( engine.parse(pycode), mode );
 
 
 /******************/

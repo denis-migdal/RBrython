@@ -6,7 +6,15 @@ var float = (() =>{
         }
     float.prototype.__new__ = function __new__(o, ){const cls = this;
         if( $RB.call(type, o, ) === str ) {
-        return $RB.call(__JS_AS_NUMBER__, o, );
+        if( $RB.op(o, "eq", "infinity")||$RB.op(o, "eq", "inf") ) {
+        return Number.POSITIVE_INFINITY;
+
+    };
+if( $RB.op(o, "eq", "-infinity")||$RB.op(o, "eq", "-inf") ) {
+        return Number.NEGATIVE_INFINITY;
+
+    };
+return Number(o);
 
     };
 return $RB.mcall($RB.call(type, o, ), "__float__", o,  );
@@ -21,7 +29,7 @@ float.prototype.__add__ = function __add__(o, ){const self = this;
             return self + o;
 
         }else if( tname === "int") {
-            return self + $RB.call(__JS_AS_NUMBER__, o, );
+            return self + Number(o);
 
         }else {
             return NotImplemented;
@@ -34,7 +42,7 @@ float.prototype.__radd__ = function __radd__(o, ){const self = this;
             return o + self;
 
         }else if( tname === "int") {
-            return $RB.call(__JS_AS_NUMBER__, o, ) + self;
+            return Number(o) + self;
 
         }else {
             return NotImplemented;
@@ -47,7 +55,7 @@ float.prototype.__sub__ = function __sub__(o, ){const self = this;
             return self - o;
 
         }else if( tname === "int") {
-            return self - $RB.call(__JS_AS_NUMBER__, o, );
+            return self - Number(o);
 
         }else {
             return NotImplemented;
@@ -60,7 +68,7 @@ float.prototype.__rsub__ = function __rsub__(o, ){const self = this;
             return o - self;
 
         }else if( tname === "int") {
-            return $RB.call(__JS_AS_NUMBER__, o, ) - self;
+            return Number(o) - self;
 
         }else {
             return NotImplemented;
@@ -73,7 +81,7 @@ float.prototype.__mul__ = function __mul__(o, ){const self = this;
             return self * o;
 
         }else if( tname === "int") {
-            return self * $RB.call(__JS_AS_NUMBER__, o, );
+            return self * Number(o);
 
         }else {
             return NotImplemented;
@@ -86,7 +94,7 @@ float.prototype.__rmul__ = function __rmul__(o, ){const self = this;
             return o * self;
 
         }else if( tname === "int") {
-            return $RB.call(__JS_AS_NUMBER__, o, ) * self;
+            return Number(o) * self;
 
         }else {
             return NotImplemented;
@@ -99,7 +107,7 @@ float.prototype.__div__ = function __div__(o, ){const self = this;
             return self / o;
 
         }else if( tname === "int") {
-            return self / $RB.call(__JS_AS_NUMBER__, o, );
+            return self / Number(o);
 
         }else {
             return NotImplemented;
@@ -112,7 +120,7 @@ float.prototype.__rdiv__ = function __rdiv__(o, ){const self = this;
             return o / self;
 
         }else if( tname === "int") {
-            return $RB.call(__JS_AS_NUMBER__, o, ) / self;
+            return Number(o) / self;
 
         }else {
             return NotImplemented;

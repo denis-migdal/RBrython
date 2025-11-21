@@ -2,7 +2,7 @@ import Engine from "../interface";
 import { ParsedCode } from "@RBrython/rbry/ast/types";
 import Runner, { PyModule } from "@RBrython/rbry/runners/interface";
 import parse from "@RBrython/rbry/parser";
-import {Emitter} from "@RBrython/rbry/emitter";
+import {Emitter, MODE} from "@RBrython/rbry/emitter";
 import { Macro } from "@RBrython/rbry/emitter/handlers/operators/Call";
 
 type Parser  = typeof parse;
@@ -21,8 +21,8 @@ export default class BaseEngine extends Engine {
         this.runner  = runner;
     }
 
-    override run(pycode: string): PyModule {
-        return this.loadAsFunction(this.emit(this.parse(pycode)))();
+    override run(pycode: string, mode?: MODE): PyModule {
+        return this.loadAsFunction(this.emit(this.parse(pycode), mode))();
     }
 
     // modules
@@ -57,8 +57,8 @@ export default class BaseEngine extends Engine {
     override parse(pycode: string): ParsedCode {
         return this.parser(pycode, "_");
     }
-    override emit(parsed: ParsedCode): string {
-        return this.emitter.emit(parsed);
+    override emit(parsed: ParsedCode, mode?: MODE): string {
+        return this.emitter.emit(parsed, mode);
     }
     override loadAsFunction(jscode: string): () => PyModule {
         return this.runner.loadAsFunction(jscode);

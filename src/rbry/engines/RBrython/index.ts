@@ -30,7 +30,8 @@ export default function RBrythonEngineFactory() {
         require("!!raw-loader!../../corelib/int.py"  ).default,
         require("!!raw-loader!../../corelib/float.py").default,
         require("!!raw-loader!../../corelib/bool.py" ).default,
-        require("!!raw-loader!../../corelib/str.py"  ).default
+        require("!!raw-loader!../../corelib/str.py"  ).default,
+        require("!!raw-loader!../../corelib/mfct.py"  ).default
     ]
     for(let builtin of builtins)
         engine.registerBuiltins(builtin);
