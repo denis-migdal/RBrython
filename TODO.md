@@ -6,15 +6,17 @@ Group
     - https://github.com/denis-migdal/RBrython/blob/master/docs/engine/index.md
 
 1. Doc
-    - config
-        - runlib (add)
-        - macro (add)
-    - runners
-    - also: AST/corelib/emitter/parser/optimizer/runlib
+    - also: AST->ParsedCode/emitter /runlib/corelib
     - dev doc
         - Writing core modules
         - architecture
             - src map (emitter ?)
+
+0. features
+    - register runlib in runner
+    - register macro in emit
+    - refactor engine (provide a runner) + getRunner().
+    - mode (cf below)
 2. mode
     - prod/test ([-OO flag])
         + assert (keep in test)

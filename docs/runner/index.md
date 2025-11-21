@@ -1,8 +1,8 @@
-Directory: `/src/rbry/runners`.
+Directory: `/src/rbry/runners/`.
 
 A runner enable to run generated JavaScript code by loading the necessary:
-- helpers (cf [runlib](../runlib/index.md)).
-- builtins symbols (cf [corelib](../corelib/index.md)).
+- helpers (cf <b>[runlib](../runlib/index.md)</b>).
+- builtins symbols (cf <b>[corelib](../corelib/index.md)</b>).
 - standard Python modules (stdlib).
 
 Rbrython provides 2 runners:

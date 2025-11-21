@@ -1,6 +1,8 @@
-Currently Brython parser is used.
+Directory: `/src/rbry/parser/`.
 
-Directory: `/src/rbry/parser`.
+Parse Python code:
+```ts
+parse(pycode: string, filename: string): ParsedCode
+```
 
-Public API:
-- `parse(pycode, filename): AST`.
+💡 The Brython parser is currently used.

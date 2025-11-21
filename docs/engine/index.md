@@ -1,4 +1,4 @@
-Directory: `/src/rbry/engines`.
+Directory: `/src/rbry/engines/`.
 
 Rbrython provides 2 engines:
 - `RBrythonEngine`: use RBrython.
