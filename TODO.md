@@ -6,17 +6,15 @@ Group
     - https://github.com/denis-migdal/RBrython/blob/master/docs/engine/index.md
 
 1. Doc
-    - also: corelib
-        - Writing core modules (cf corelib)
-    - macros + refs
+    - macros
     - dev doc
         - architecture
             - src map (emitter ?)
 
 0. features
-    - register runlib in runner
-    - register macro in emit
     - refactor engine (provide a runner) + getRunner().
+        - register runlib in runner
+        - register macro in emit
     - mode (cf below)
 2. mode
     - prod/test ([-OO flag])
