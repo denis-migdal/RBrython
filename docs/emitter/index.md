@@ -19,7 +19,7 @@ Internal API:
 
 ## Macro
 
-RBrython enables access to low level JavaScript features through the usage of macros (a kind of JavaScript function inlined during emission).
+RBrython enables access to low level JavaScript features through the usage of [macros](../macros/index.md) (a kind of JavaScript function inlined during emission).
 
 TODO: how to define macros.
 
