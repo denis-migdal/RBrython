@@ -2,12 +2,15 @@ Group
 - new dispatch
 - runners
 - doc
+    - https://github.com/denis-migdal/RBrython/tree/master
+    - https://github.com/denis-migdal/RBrython/blob/master/docs/engine/index.md
 
 1. Doc
     - config
         - runlib (add)
         - macro (add)
     - runners
+    - also: AST/corelib/emitter/parser/optimizer/runlib
     - dev doc
         - Writing core modules
         - architecture

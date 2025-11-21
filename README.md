@@ -155,7 +155,7 @@ Build commands:
 - `npm run build-prod`: build the production version.
 - `./tools/rbc src/rbry/corelib/ --outDir src/rbry/corelib-aot` : convert the corelib files ahead of time for the standard runner.
 
-💡 You can run RBrython test suite in [http://rbrython.migdal.ovh/Editor?test=rbrython](http://rbrython.migdal.ovh/Editor?test=rbrython).
+💡 You can run RBrython test suite at [http://rbrython.migdal.ovh/Editor?test=rbrython](http://rbrython.migdal.ovh/Editor?test=rbrython).
 
 💡 You can launch the RBrython Website in VScode thanks to the live server extension. Else you can launch a simple HTTP server on `/dist/dev/`.
 

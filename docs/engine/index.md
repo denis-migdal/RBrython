@@ -26,6 +26,7 @@ You can get and register Python modules with the following methods:
 For example:
 ```ts
 engine.registerModule("foo.faa", "a=2");
+engine.registerModule("foo.fuu", {b: 3});
 ```
 
 ## Builtins
@@ -36,9 +37,8 @@ You can register builtin Python symbols (accessible from the global space) with:
 
 For example:
 ```ts
-engine.registerBuiltins({
-    foo: (a,b) => a+b
-})
+engine.registerBuiltins("def foo(a, /): 2*a")
+engine.registerBuiltins({ foo: (a) => 2*a })
 ```
 
 ## Steps
