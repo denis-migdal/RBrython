@@ -4,9 +4,10 @@ Group
 - doc
 
 1. Doc
-        - runlib add
-        - macro add
-    - runners/engines // registerModule/getModule/registerBuiltin/registerBuiltins
+    - config
+        - runlib (add)
+        - macro (add)
+    - runners
     - dev doc
         - Writing core modules
         - architecture

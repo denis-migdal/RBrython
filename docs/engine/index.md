@@ -43,7 +43,7 @@ engine.registerBuiltins({
 
 ## Steps
 
-Currently, `.run()` proceed in 3 steps you can call separately for development,benchmark, or debug purposes:
-1. `.parse(pycode: string ): ParsedCode`: parse the Python code (cf <b>[parser](./docs/parser/index.md)</b>).
-2. `.emit(ast: ParsedCode): string`: generate JavaScript code from the parsed code (cf <b>[emitter](./docs/emitter/index.md)</b>).
-3. `.loadAsFunction(jscode: string): () => PyModule`: transform the JavaScript code into a callable function (cf <b>[runner](./docs/runner/index.md)</b>).
+Currently, `.run()` proceed in 3 steps you can call separately for development, benchmark, or debug purposes:
+1. `.parse(pycode: string ): ParsedCode`: parse the Python code (cf <b>[parser](../parser/index.md)</b>).
+2. `.emit(ast: ParsedCode): string`: generate JavaScript code from the parsed code (cf <b>[emitter](../emitter/index.md)</b>).
+3. `.loadAsFunction(jscode: string): () => PyModule`: transform the JavaScript code into a callable function (cf <b>[runner](../runner/index.md)</b>).
