@@ -1,8 +1,17 @@
 Directory : `/src/rbry/engines/RBrython/macros.ts`.
 
-RBrython provides macros to access native JS features. You can see macros as a kind of JavaScript function inlined during emission.
+RBrython provides macros to access native JS features. You can see macros as a kind of Python function inlined during emission.
 
 💡 In order to fix typehints errors, you can import them using `from RBM import ...`.
+
+## Implementing a macro
+
+A macro is a simple JavaScript function receiving its arguments as AST nodes, and returning the JavaScript code to write:
+```ts
+__JS_ADD__ = (a: ASTNode, b: ASTNode) => {
+    return `${node2js(a)}+${node2js(b)}`;
+}
+```
 
 ## Existing macros
 
@@ -37,13 +46,4 @@ __JS_RUN__('(a,b) => a+b', a, b)
 - `__JS_WRITE__('...')` insert raw JavaScript code during emission. You should avoid it as much as possible.
 ```py
 __JS_WRITE__('console.warn("Hello")')
-```
-
-### Implementing a macro
-
-A macro is a simple JavaScript function receiving its arguments as AST nodes, and returning the JavaScript code to write:
-```ts
-__JS_ADD__ = (a: ASTNode, b: ASTNode) => {
-    return `${node2js(a)}+${node2js(b)}`;
-}
 ```

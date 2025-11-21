@@ -1,19 +1,22 @@
-TODO: source map.
+## Processes
 
-RBrython [engine](./docs/runner/engine.md) distinguishes several processes:
-- <b>[parser](./docs/parser/index.md)</b>: transform Python code into AST (<i>for now uses Brython</i>).
-- <b>checker</b>: deduce and check typehints in the AST (<i>not implemented</i>).
-- <b>[optimizer](./docs/optimizer/index.md)</b>: transform the AST using deduced types as well as some assumptions (<i>not implemented</i>).
-- <b>[emitter](./docs/emitter/index.md)</b>: generate JavaScript code from the AST.
-- <b>[runner](.)</b>: run generated JavaScript code.
+RBrython <b>(engines)[../../runner/engine.md]</b> convert Python code into JavaScript through the following processes:
+1. <b>[parser](../../parser/index.md)</b>: parse the Python code (<i>uses Brython for now</i>).
+2. <b>[emitter](../../emitter/index.md)</b>: generate JavaScript code from the parsed code.
+3. <b>[runner](../../runner/index.md)</b>: enable to run the generated JavaScript code.
 
-Theses processes depends on an [AST structure](./docs/ast/index.md), for now we use Brython's.
+💡 The following processes might be implemented in the future:
+- <b>checker</b>: deduce and check typehints in the parsed code (<i>not implemented</i>).
+- <b>[optimizer](.../../optimizer/index.md)</b>: optimize the generated JavaScript code (<i>not implemented</i>).
+
+## Libraries
+
+RBrython distinguishes 3 spaces:
+- <b>kernel</b>: a Python system as bare as it can be.
+- <b>core</b>: kernel + Python builtin symbols (i.e. includes the <b>[runlib](../../runlib/index.md)</b>).
+- <b>modules</b>: standard and user Python modules.
 
 RBrython also provides the following libraries:
-- <b>[runlib](./docs/runlib/index.md)</b>: a set of helpers used to execute the generated JavaScript code.
-- <b>[corelib](./docs/corelib/index.md)</b>: an implementation of builtin Python functions and structures.
-- <b>stdlib</b>: an implementation of standard Python libraries (<i>out of scope</i>).
-
-RBrython distinguishes two parts:
-- <i>kernel</i>: Python without the corelib.
-- <i>core</i>: Python with the corelib.
+- <b>[runlib](../../runlib/index.md)</b>: runtime helpers used by the generated JavaScript code.
+- <b>[macros](../../macros/index.md)</b>: a kind of Python function inlined during emission.
+- <b>[corelib](../../corelib/index.md)</b>: Python implementation of builtin Python symbols.

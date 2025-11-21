@@ -118,6 +118,10 @@ See [this page](./docs/runner/index.md) to learn how to use the RBrython runner.
 
 ## Development
 
+### SourceMaps
+
+(not reimplemented yet - see SBrython)
+
 ### Stubs
 
 Stubs files enable autocompletion and type checking features in your Python editor.

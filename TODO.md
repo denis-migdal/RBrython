@@ -5,16 +5,11 @@ Group
     - https://github.com/denis-migdal/RBrython/tree/master
     - https://github.com/denis-migdal/RBrython/blob/master/docs/engine/index.md
 
-1. Doc
-    - macros
-    - dev doc
-        - architecture
-            - src map (emitter ?)
-
-0. features
+1. features
     - refactor engine (provide a runner) + getRunner().
-        - register runlib in runner
-        - register macro in emit
+        - global+per file
+            - register runlib in runner
+            - register macro in emit (+ non-macro what to do ?)
     - mode (cf below)
 2. mode
     - prod/test ([-OO flag])
