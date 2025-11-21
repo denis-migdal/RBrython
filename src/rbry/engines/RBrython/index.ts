@@ -1,69 +1,21 @@
-import { ParsedCode } from "../../ast/types";
-import emit from "../../emitter";
-import parse from "../../parser";
-import Engine from "../interface";
-
 import "./macros";
+
 import builtins from "./builtins";
-import { PyModule } from "@RBrython/rbry/runners/interface";
 import RBrythonGlobalRunner from "@RBrython/rbry/runners/RBrythonGlobalRunner";
+import BaseEngine from "../Base";
+import parse from "@RBrython/rbry/parser";
+import RBrythonEmitter from "@RBrython/rbry/emitter";
 
-export default class RBrythonEngine extends Engine {
+export default function RBrythonEngineFactory() {
 
-    readonly runner = new RBrythonGlobalRunner();
+    const emitter = new RBrythonEmitter();
+    const runner  = new RBrythonGlobalRunner();
+    const engine = new BaseEngine(parse, emitter, runner);
 
-    override registerBuiltins(symbols: string | PyModule): void {
-        if( typeof symbols === "string")
-            symbols = this.run(symbols);
-        this.runner.registerBuiltins(symbols);
-    }
+    engine.registerModule("JS", globalThis);
 
-    override registerBuiltin(name: string, value: any) {
-        this.runner.registerBuiltin(name, value);
-    }
+    for(let name in builtins)
+        engine.registerBuiltins(builtins[name as keyof typeof builtins]);
 
-    override registerModule(name: string, symbols: string|PyModule): void {
-        if( typeof symbols === "string")
-            symbols = this.run(symbols);
-        this.runner.registerModule(name, symbols);
-    }
-    override getModule(name: string): PyModule {
-        return this.runner.getModule(name);
-    }
-
-    constructor() {
-        super();
-        this.initialize(); // by default initialize immediately.
-    }
-
-    run(pycode: string) {
-        return this.loadAsFunction(this.emit(this.parse(pycode)))();
-    }
-    // builtins
-
-    // initialize
-    #initialized = false;
-    initialize() {
-        
-        this.registerModule("JS", globalThis);
-
-        for(let name in builtins) {
-            // @ts-ignore
-            //console.warn(this.emit(this.parse(builtins[name])))
-            this.registerBuiltins(builtins[name as keyof typeof builtins]);
-        }
-
-        this.#initialized = true;
-    }
-
-    // low level
-    parse(pycode: string): ParsedCode {
-        return parse(pycode, "_");
-    }
-    emit(ast: ParsedCode) {
-        return emit(ast);
-    }
-    loadAsFunction(jscode: string) {
-        return this.runner.loadAsFunction(jscode);
-    }
+    return engine;
 }

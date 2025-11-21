@@ -1,4 +1,4 @@
-import Engine from "@RBrython/rbry/engines/RBrython/";
+import EngineFactory from "@RBrython/rbry/engines/RBrython/";
 
 function fix_indent(text: string) {
     
@@ -12,10 +12,10 @@ function fix_indent(text: string) {
     return text.slice(1).split("\n").map( l => l.slice(indent)).join("\n");
 }
 
-const engine = new Engine();
 const scripts = document.querySelectorAll("script[type='text/rbrython']");
 
+const engine = EngineFactory();
 for(let i = 0; i < scripts.length; ++i)
     engine.run( fix_indent(scripts[i].textContent!) );
 
-export default Engine;
+export default engine;

@@ -2,7 +2,7 @@ Directory: `/src/rbry/emitter/`.
 
 Generate JavaScript code from parsed Python code:
 ```ts
-emit(parsed: ParsedCode): string
+.emit(parsed: ParsedCode): string
 ```
 
 ## Implementation

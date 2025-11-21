@@ -62,3 +62,10 @@ You can however change this behavior by providing an output directory in which t
     - `ES6`: produce ES6 modules (recommanded for AoT conversions).
     - `SBRY`: produce SBrython modules (recommanded for conversions in the Browser).
     - `GLOBAL` : store exported symbols in `__SBRY_LAST_EXPORTED__`.
+
+## Note: For Brython ?
+
+```ts
+__BRYTHON__.imported["exec"] = {};
+__BRYTHON__.frames_stack = [];
+```

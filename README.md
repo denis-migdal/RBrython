@@ -54,9 +54,8 @@ You can also run Python code with a RBrython engine:
     <head>
         <script src="/assets/brython.min.js"></script>
         <script type="module">
-            import Engine from "/libs/RBrython-dev/index.js";
+            import engine from "/libs/RBrython-dev/index.js";
 
-            const engine = new Engine();
             engine.run(
 `from JS import document
 

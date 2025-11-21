@@ -1,11 +1,11 @@
-import  BrythonEngine from "./Brython";
-import RBrythonEngine from "./RBrython";
+import  BrythonEngineFactory from "./Brython";
+import RBrythonEngineFactory from "./RBrython";
 
 export default class Engines {
     static getBrythonEngine() {
-        return new BrythonEngine();
+        return  BrythonEngineFactory();
     }
     static getRBrythonEngine() {
-        return new RBrythonEngine();
+        return RBrythonEngineFactory();
     }
 }

@@ -23,3 +23,9 @@ Requires some assumptions (behind a flag) ?
 
 - can't inherit from literal -> JS & Python type would be the same internal data structure.
 - or "use fast primitives" in file assumptions ?
+
+## ?
+
+- operations on literals.
+- remove runners (or reduce it as much as possible).
+- remove non-common features / compatibility...

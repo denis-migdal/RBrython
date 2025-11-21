@@ -5,12 +5,13 @@ Group
     - https://github.com/denis-migdal/RBrython/tree/master
     - https://github.com/denis-migdal/RBrython/blob/master/docs/engine/index.md
 
+## Features
+
 1. features
-    - refactor engine (provide a runner) + getRunner().
-        - global+per file
-            - register runlib in runner
-            - register macro in emit (+ non-macro what to do ?)
-    - mode (cf below)
+    - Runner(runlib) {} -> $B
+    - register macro in emit (+ non-macro what to do ?)
+        - global
+    - /!\ circular deps.
 2. mode
     - prod/test ([-OO flag])
         + assert (keep in test)
@@ -26,39 +27,20 @@ Group
     - test system: get lines (require sourcemap) ~> highlight errors ?
 
 - features
-    - types + object (type as python code)
-    - classes attr operation.
-    - isinstance...
-- more features
-    -> bool inherit from int...
+    - builtins (write in Python)
+        - type + object
+        - functions (abs/etc)
+        - isinstance
+    - classes
+        - better attr operation (on classes)
+        - bool inherit from int...
+        - observer DP for class multi-inheritance.
     - dict/list/tuple (seulement op de bases ?)
     - async fct / generators
-    - observer DP for class multi-inheritance.
 
+## Tests
 
-X. tools
-    - compiler cmd... (tool)
-        - doc...
-        - compat BRYTHON ou rien.
-        - export (RAW/ES6/SBRY/GLOBAL- TODO...)
-        - mode (dev/prod/test - not implemented)
-            __BRYTHON__.imported["exec"] = {};
-            __BRYTHON__.frames_stack = [];
-    - runner cmd... -> test tool (cli) ? (rbrun/rbtest)
-X. different runners (?)
-    - global/raw
-    -> avoid using globalThis (somehow)...
-        - obj
-        - ES6
-    -> runner/no runner ??? (import ???)
-    -> build runlib... (.js)...
-X. Opti/checker
-    - PERF|STRICT
-        - operations on literals.
-        - remove runners (or reduce it as much as possible).
-        - remove non-common features / compatibility...
-    - JS stubs / stubs from py file ?
-    - optimizer + flags (?) + test versions (?)
+Tests from : https://github.com/brython-dev/brython/tree/master/www/tests
 
 - unittests (cf editor)
     + list of builtins
@@ -77,13 +59,15 @@ X. Opti/checker
 - types  : https://docs.python.org/3/library/stdtypes.html
 - exc : https://docs.python.org/3/library/exceptions.html
 
+## Old sbry code
+
 + sbry/TODO.md
 + sbry/src/sbry + sbry/src/runtime
 + sbry/pages/compat
 
-(disable privacy.reduceTimerPrecision on FF for better precision)
+Benchmark: (disable privacy.reduceTimerPrecision on FF for better precision)
 
-Tests from : https://github.com/brython-dev/brython/tree/master/www/tests
+## Discussions
 
-cf https://groups.google.com/g/brython/c/5Y4FneO3tzU/m/ftPUn9LMAAAJ
-https://groups.google.com/g/brython/c/5Y4FneO3tzU/m/KnnzMS6QAAAJ
+- https://groups.google.com/g/brython/c/5Y4FneO3tzU/m/ftPUn9LMAAAJ
+- https://groups.google.com/g/brython/c/5Y4FneO3tzU/m/KnnzMS6QAAAJ

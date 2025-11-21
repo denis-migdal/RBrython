@@ -11,7 +11,7 @@ export default abstract class Engine {
     abstract      getModule(name: string): PyModule;
 
     // low level
-    abstract parse(pycode: string ): ParsedCode;
-    abstract emit (ast: ParsedCode): string;
+    abstract parse(pycode: string): ParsedCode;
+    abstract emit (parsed: ParsedCode): string;
     abstract loadAsFunction(jscode: string): () => PyModule;
 }
