@@ -6,11 +6,11 @@ Group
     - https://github.com/denis-migdal/RBrython/blob/master/docs/engine/index.md
 
 1. Doc
-    - also: AST->ParsedCode/emitter /runlib/corelib
+    - also: runlib/corelib
     - dev doc
-        - Writing core modules
         - architecture
             - src map (emitter ?)
+        - Writing core modules (cf corelib)
 
 0. features
     - register runlib in runner
