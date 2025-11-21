@@ -145,6 +145,10 @@ RBrython offers several modes:
 
 ## Contributing
 
+You can learn more about RBrython architecture [here](./docs/dev/architecture/index.md).
+
+See also the [goal and principles](./docs/dev/principles/index.md).
+
 Build commands:
 - `npm run watch`: rebuild the development version each time a source file is modified.
 - `npm run build`: build the development version.
@@ -155,31 +159,4 @@ Build commands:
 
 💡 You can launch the RBrython Website in VScode thanks to the live server extension. Else you can launch a simple HTTP server on `/dist/dev/`.
 
-TODO: architecture + writing corelib.
-
-See also the [goal and principles](./docs/dev/principles/index.md).
-
 Google group discussion: https://groups.google.com/g/brython/c/4P4mvgH02UI/m/BNi266d3AgAJ
-
-## Architecture
-
-RBrython [engine](./docs/runner/engine.md) distinguishes several processes:
-- <b>[parser](./docs/parser/index.md)</b>: transform Python code into AST (<i>for now uses Brython</i>).
-- <b>checker</b>: deduce and check typehints in the AST (<i>not implemented</i>).
-- <b>[optimizer](./docs/optimizer/index.md)</b>: transform the AST using deduced types as well as some assumptions (<i>not implemented</i>).
-- <b>[emitter](./docs/emitter/index.md)</b>: generate JavaScript code from the AST.
-- <b>[runner](.)</b>: run generated JavaScript code.
-
-Theses processes depends on an [AST structure](./docs/ast/index.md), for now we use Brython's.
-
-RBrython also provides the following libraries:
-- <b>[runlib](./docs/runlib/index.md)</b>: a set of helpers used to execute the generated JavaScript code.
-- <b>[corelib](./docs/corelib/index.md)</b>: an implementation of builtin Python functions and structures.
-- <b>stdlib</b>: an implementation of standard Python libraries (<i>out of scope</i>).
-
-RBrython distinguishes two parts:
-- <i>kernel</i>: Python without the corelib.
-- <i>core</i>: Python with the corelib.
-
-RBrython provides the following tools:
-- sourcemaps (<i>not implemented</i>) ;

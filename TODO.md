@@ -4,10 +4,13 @@ Group
 - doc
 
 1. Doc
+        - runlib add
+        - macro add
     - runners/engines // registerModule/getModule/registerBuiltin/registerBuiltins
     - dev doc
         - Writing core modules
         - architecture
+            - src map (emitter ?)
 2. mode
     - prod/test ([-OO flag])
         + assert (keep in test)

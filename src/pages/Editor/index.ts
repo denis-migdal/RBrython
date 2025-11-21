@@ -9,7 +9,7 @@ const NB_REPEAT = 3;
 const brython_tests = [
     'basic test suite',
     'numbers',
-    "classes" // ~726
+//    "classes" // ~726
 //    "strings",
 //    "string methods"
 ];
