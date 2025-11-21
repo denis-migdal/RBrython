@@ -5,6 +5,12 @@ Generate JavaScript code from parsed Python code:
 .emit(parsed: ParsedCode): string
 ```
 
+## Macro
+
+You can register a [macro](../macros/index.md) with:
+- `.registerMacros(macros: Record<string, Macro>)`
+- `.registerMacro(name: string, fct: Macro)`
+
 ## Implementation
 
 Each node of the AST tree is converted into JavaScript code by a file in `/src/rbry/emitter/handlers/` corresponding to the AST node type.

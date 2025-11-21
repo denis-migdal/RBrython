@@ -7,12 +7,7 @@ Group
 
 ## Features
 
-1. features
-    - Runner(runlib) {} -> $B
-    - register macro in emit (+ non-macro what to do ?)
-        - global
-    - /!\ circular deps.
-2. mode
+1. mode
     - prod/test ([-OO flag])
         + assert (keep in test)
         + __debug__
@@ -21,15 +16,17 @@ Group
         + do not indent JS code
         + useless {}
         + other possible opti... (not test)
-3. Tests
+2. Tests
     - sourcemap
     - (un)indent generated JS
     - test system: get lines (require sourcemap) ~> highlight errors ?
 
 - features
+    - /!\ circular deps.
+        - runner <-> RBrythonGlobalRunner (give it as fct parameter ~= context)
     - builtins (write in Python)
         - type + object
-        - functions (abs/etc)
+        - functions (abs/etc) in runlib
         - isinstance
     - classes
         - better attr operation (on classes)

@@ -4,15 +4,26 @@ import "./handlers/list"; // ensure Handlers are loaded.
 
 import { ParsedCode } from "../ast/types";
 import Body from "./handlers/Body";
-
-const exportNodes = ["ClassDef", "FunctionDef"];
-//TODO: Assign
+import { Macro, macros } from "./handlers/operators/Call";
 
 export abstract class Emitter {
     abstract emit(parsed: ParsedCode): string;
+
+    abstract registerMacros(macros: Record<string, Macro>):void;
+    abstract registerMacro(name: string, fct: Macro): void;
 }
 
 export default class RBrythonEmitter extends Emitter {
+
+    protected readonly macros = macros;
+
+    registerMacros(macros: Record<string, Macro>) {
+        for(let name in macros)
+            this.macros[name] = macros[name];
+    }
+    registerMacro(name: string, fct: Macro) {
+        this.macros[name] = fct;
+    }
 
     emit(parsed: ParsedCode) {
 
@@ -20,8 +31,6 @@ export default class RBrythonEmitter extends Emitter {
 
         const body   = Body(bodyNode, parsed.symtable);
         const exports= this.extractExportedSymbols(parsed);
-
-        console.warn(exports);
 
         return `${body}\nconst __exported__ = {${exports.join(",")}}`;
     }

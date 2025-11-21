@@ -1,9 +1,13 @@
 from types import NotImplementedType
-from RBM import __JS_OP__, __JS_AS_NUMBER__, number
+from RBM import __JS_OP__, __JS_AS_NUMBER__, __JS_WRITE__, number
 
 class float(number):
     def __new__(cls, o: object, /) -> float:
         if type(o) is str:
+            if o == "infinity" or o == "inf":
+                return __JS_WRITE__("Number.POSITIVE_INFINITY") # pyright: ignore[reportReturnType]
+            if o == "-infinity" or o == "-inf":
+                return __JS_WRITE__("Number.NEGATIVE_INFINITY") # pyright: ignore[reportReturnType]
             return __JS_AS_NUMBER__(o)
         return type(o).__float__(o) # type: ignore
     

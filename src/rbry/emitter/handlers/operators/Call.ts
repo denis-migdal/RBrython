@@ -2,7 +2,8 @@ import { node2js } from "../../node2js";
 import { nodeType } from "../../../ast";
 import { ASTNode, AttributeNode, CallNode } from "../../../ast/types";
 
-export const macros: Record<string, (...args: ASTNode[]) => string> = {};
+export type Macro = (...args: ASTNode[]) => string;
+export const macros: Record<string, Macro> = {};
 
 export default function Call(node: CallNode) {
     const f        = node.func;

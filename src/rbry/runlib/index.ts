@@ -5,6 +5,8 @@ import call   from "./interface/call";
 import mcall  from "./interface/mcall";
 import assert from "./interface/assert";
 import attr   from "./interface/attr";
+import setattr from "./interface/setattr";
+import getModule from "./interface/getModule";
 import { getKW, setKW } from "./interface/KW";
 
 // @ts-ignore
@@ -24,6 +26,7 @@ globalThis.$RB = {
 
 //TODO: corelib
 import {NotImplemented} from "./tmp_corelib/NotImplemented";
+import { getClass } from "./helpers/getClass";
 
 // @ts-ignore
 globalThis.abs = function( a: unknown) {
@@ -53,30 +56,9 @@ globalThis.Exception = function(msg: string) {
 // =====================================================
 
 //TODO: as macro...
-
-import { getClass } from "./helpers/getClass";
-import getModule from "./interface/getModule";
-import setattr from "./interface/setattr";
-
-// @ts-ignore
-globalThis.__JS_LOG__ = (...args) => console.log(...args);
-
 export const IVALUE = Symbol();
 
 // @ts-ignore
 globalThis.__JS_SET_IVALUE__ = (self, v) => self[IVALUE] = v;
 // @ts-ignore
 globalThis.__JS_GET_IVALUE__ = (self) => self[IVALUE];
-
-// @ts-ignore
-globalThis.__JS_AS_NUMBER__ = (o: unknown) => {
-    if( o === "infinity" || o === "inf")
-        return Number.POSITIVE_INFINITY
-    if( o === "-infinity" || o === "-inf")
-        return Number.NEGATIVE_INFINITY
-    return Number( o );
-}
-
-// @ts-ignore
-globalThis.__JS_AS_STRING__ = (o: unknown) => `${o}`;
-

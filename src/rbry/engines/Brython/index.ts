@@ -3,6 +3,7 @@ import parse from "../../parser";
 import BrythonGlobalRunner from "@RBrython/rbry/runners/BrythonGlobalRunner";
 import BaseEngine from "../Base";
 import { Emitter } from "@RBrython/rbry/emitter";
+import { Macro } from "@RBrython/rbry/emitter/handlers/operators/Call";
 
 class BrythonEmitter extends Emitter {
     emit(parsed: ParsedCode) {
@@ -13,6 +14,13 @@ class BrythonEmitter extends Emitter {
                                 filename: parsed.filename,
                                 src     : parsed.pycode,
                                 imported}).js
+    }
+
+    override registerMacros(macros: Record<string, Macro>) {
+        throw new Error("Not implemented");
+    }
+    override registerMacro(name: string, fct: Macro) {
+        throw new Error("Not implemented");
     }
 }
 

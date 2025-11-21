@@ -41,6 +41,12 @@ engine.registerBuiltins("def foo(a, /): 2*a")
 engine.registerBuiltins({ foo: (a) => 2*a })
 ```
 
+## Macros
+
+You can register a [macro](../macros/index.md) with:
+- `.registerMacros(macros: Record<string, Macro>)`
+- `.registerMacro(name: string, fct: Macro)`
+
 ## Steps
 
 Currently, `.run()` proceed in 3 steps you can call separately for development, benchmark, or debug purposes:

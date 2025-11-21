@@ -1,4 +1,4 @@
-Directory : `/src/rbry/engines/RBrython/macros.ts`.
+Directory : `/src/rbry/macros/`.
 
 RBrython provides macros to access native JS features. You can see macros as a kind of Python function inlined during emission.
 
@@ -21,20 +21,22 @@ RBrython gives access to JavaScript operators through the following macros:
 - `__JS_OP__(a, op, b)` : perform the JavaScript <i>binary</i> operation `a [op] b`.
 - `__JS_OP__(op, a)` : perform the JavaScript <i>prefix unary</i> operation `[op] a`.
 
-### Conversions (not really macro)
+### Conversions
 
 - `__JS_AS_NUMBER__(o)` : convert `o` into a JavaScript number.
 - `__JS_AS_STRING__(o)` : convert `o` into a JavaScript string.
 
-### Log (not really macro)
+### Log
 
-`__JS_LOG__(...)` print its parameters in the console. This function is used for quick debugs.
+`__JS_LOG__(...)` print its parameters in the console. This function is used for quick debugs when Python `print()` isn't working/available.
 
 ### Internal value (not really macro)
 
 When implementing some Python types you might want to store an internal JavaScript value for internal operations:
 - `__JS_SET_IVALUE__(self, v)`
 - `__JS_GET_IVALUE__(self)`
+
+⚠ Currently, they aren't really implemented as macro (and aren't used in RBrython code yet).
 
 ### Insert arbitrary JavaScript code
 

@@ -84,3 +84,7 @@ Handlers["ImportFrom"] = ImportFrom as Handler;
 
 import {default as Import} from "./imports/Import";
 Handlers["Import"] = Import as Handler;
+
+import {default as BoolOp} from "./operators/BoolOp";
+Handlers["BoolOp"] = BoolOp as Handler;
+
