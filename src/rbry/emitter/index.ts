@@ -5,6 +5,8 @@ import "./handlers/list"; // ensure Handlers are loaded.
 import { ParsedCode } from "../ast/types";
 import Body from "./handlers/Body";
 import { Macro, macros } from "./handlers/operators/Call";
+import { Target } from "../targets/interface";
+import { RawTarget } from "../targets/raw";
 
 export enum MODE {
   DEBUG,
@@ -12,8 +14,18 @@ export enum MODE {
   PROD,
 }
 
+export type EmitterOptions = {
+    mode  : MODE,
+    target: Target
+}
+
+const EmitterDefaults: EmitterOptions = {
+    mode  : MODE.DEBUG,
+    target: RawTarget
+}
+
 export abstract class Emitter {
-    abstract emit(parsed: ParsedCode, mode?: MODE): string;
+    abstract emit(parsed: ParsedCode, opts?: Partial<EmitterOptions>): string;
 
     abstract registerMacros(macros: Record<string, Macro>):void;
     abstract registerMacro(name: string, fct: Macro): void;
@@ -31,18 +43,29 @@ export default class RBrythonEmitter extends Emitter {
         this.macros[name] = fct;
     }
 
-    emit(parsed: ParsedCode, mode: MODE = MODE.DEBUG) {
+    emit(parsed: ParsedCode, {
+                                mode   = EmitterDefaults.mode,
+                                target = EmitterDefaults.target
+                            }: Partial<EmitterOptions> = {}) {
 
         // @ts-ignore
         globalThis.mode = mode;
 
         const bodyNode = parsed.ast.body;
 
-        const body   = Body(bodyNode, parsed.symtable);
-        const exports= this.extractExportedSymbols(parsed);
+        const body    = Body(bodyNode, parsed.symtable);
+        const exported= this.extractExportedSymbols(parsed);
 
-        // @ts-ignore
-        return `const __debug__ = ${globalThis.mode === MODE.DEBUG};\n${body}\nconst __exported__ = {${exports.join(",")}}`;
+        const jscode = body;
+
+        const output = {
+            name    : "_",
+            imported: [],
+            exported,
+            jscode,
+        }
+
+        return target(output);
     }
 
     private extractExportedSymbols(parsed: ParsedCode) {

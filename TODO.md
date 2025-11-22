@@ -1,24 +1,24 @@
-Group
-- 2x faster
-- new dispatch (int)
-- runners/engines (compatible Brython).
-- prod (-OO python)
-- doc
-    - https://github.com/denis-migdal/RBrython/tree/master
-    - https://github.com/denis-migdal/RBrython/blob/master/docs/engine/index.md
-
-- TODO
-    - sourcemap
-    - export modes (e.g. ES6 modules).
-    - opti/compat mode (later).
-    - well ofc implement...
+- target opts (mainly exports).
 
 ## Features
 
-2. Tests
-    - sourcemap
-    - (un)indent generated JS
-    - test system: get lines (require sourcemap) ~> highlight errors ?
+1. Source map.
+    - w_node / w_str / other write
+        - start/end/pos(?) (opt).
+    - (un)indent generated JS (w_indent/w_line) ~> use minifier.
+    - sourcemap API...
+        -> filtrer quel type de truc à besoin d'être mappé ?
+        -> register stating pos in source map struct...
+        -> emit : JS struct
+            -> imported (?)
+            -> exported (todo: export mode with $RB ? / imported ?)
+            -> sourcemap
+            -> jscode
+    1. AST node : (start/end)
+    2. [jspos, pypos, level, node]
+    3. sort + remove duplicates.
+    4. src map
+    - failed test -> get line + highlight errors ?
 
 - features
     - builtins (write in Python)
@@ -34,10 +34,14 @@ Group
     - dict/list/tuple (seulement op de bases ?)
     - async fct / generators
 
+Import/export
+    - import (target + runner + corelib-aot).
+    - name in export (global/Brython).
+    
 3. Compat mode / cf optimisations (?) [per file...]
     - operations on constants might be precomputed (<i>not implemented</i>).
          -> ou use Terser ?
-4. Export mode...
+TS/WASM generation possible.
 
 ## Tests
 

@@ -2,8 +2,12 @@ Directory: `/src/rbry/emitter/`.
 
 Generate JavaScript code from parsed Python code:
 ```ts
-.emit(parsed: ParsedCode, mode: MODE = MODE.DEBUG): string
+.emit(parsed: ParsedCode, opts?: Partial<EmitterOptions>): string
 ```
+
+Options:
+- mode: see [RBrython mode](../../../?tab=readme-ov-file#mode).
+- target: see [RBrython target](../../../?tab=readme-ov-file#target).
 
 ## Macro
 

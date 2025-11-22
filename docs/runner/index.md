@@ -11,11 +11,11 @@ Rbrython provides 2 runners:
 
 ## Run JavaScript code
 
-To run JavaScript code you first need to convert it into a function:
 ```ts
-const fct = runner.loadAsFunction(mycode);
-fct(); // execute the code.
+runner.run(jscode);
 ```
+
+⚠ You can't dynamically run JavaScript code generated with the `module` target.
 
 ## Modules
 

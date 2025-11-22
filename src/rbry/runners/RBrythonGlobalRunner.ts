@@ -1,6 +1,11 @@
 import "@RBrython/rbry/runlib";
 
 import Runner, { PyModule } from "./interface";
+import { $RB } from "@RBrython/rbry/runlib";
+
+// h4ck
+// @ts-ignore
+globalThis.$RB = $RB;
 
 export const modules: Record<string, any> = {};
 
@@ -9,8 +14,15 @@ export default class RBrythonGlobalRunner extends Runner {
     #module   = modules; // h4ck
     #builtins: Record<string, any> = {};
 
-    override loadAsFunction(jscode: string): () => PyModule {
-        return Function("'use strict';" + jscode + "; return __exported__;") as () => PyModule;
+    override run(jscode: string) {
+        return this.runFunction( this.loadAsFunction(jscode) );
+    }
+
+    override loadAsFunction(jscode: string): (runlib: any) => PyModule {
+        return Function("$RB", jscode) as (runlib: any) => PyModule;
+    }
+    override runFunction( fct: (runlib: any) => PyModule ) {
+        return fct($RB);
     }
 
     // modules

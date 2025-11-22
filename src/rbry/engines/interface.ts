@@ -1,10 +1,10 @@
 import { ParsedCode } from "../ast/types";
-import { MODE } from "../emitter";
+import { EmitterOptions } from "../emitter";
 import { Macro } from "../emitter/handlers/operators/Call";
 import { PyModule } from "../runners/interface";
 
 export default abstract class Engine {
-    abstract run(pycode: string, mode?: MODE): PyModule;
+    abstract run(pycode: string, opts?: EmitterOptions): PyModule;
 
     abstract registerModule(name: string, symbols: string|PyModule): void;
     abstract      getModule(name: string): PyModule;
@@ -17,6 +17,8 @@ export default abstract class Engine {
 
     // low level
     abstract parse(pycode: string): ParsedCode;
-    abstract emit (parsed: ParsedCode, mode?: MODE): string;
-    abstract loadAsFunction(jscode: string): () => PyModule;
+    abstract emit (parsed: ParsedCode, opts?: Partial<EmitterOptions>): string;
+    
+    abstract loadAsFunction(jscode: string): (runlib: any) => PyModule;
+    abstract runFunction(fct: (runlib: any) => PyModule): PyModule;
 }

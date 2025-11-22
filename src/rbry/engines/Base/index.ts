@@ -2,8 +2,9 @@ import Engine from "../interface";
 import { ParsedCode } from "@RBrython/rbry/ast/types";
 import Runner, { PyModule } from "@RBrython/rbry/runners/interface";
 import parse from "@RBrython/rbry/parser";
-import {Emitter, MODE} from "@RBrython/rbry/emitter";
+import {Emitter, EmitterOptions} from "@RBrython/rbry/emitter";
 import { Macro } from "@RBrython/rbry/emitter/handlers/operators/Call";
+import { FunctionTarget } from "@RBrython/rbry/targets/function";
 
 type Parser  = typeof parse;
 
@@ -21,8 +22,12 @@ export default class BaseEngine extends Engine {
         this.runner  = runner;
     }
 
-    override run(pycode: string, mode?: MODE): PyModule {
-        return this.loadAsFunction(this.emit(this.parse(pycode), mode))();
+    override run(pycode: string, opts?: Omit<EmitterOptions, "target">): PyModule {
+
+        return this.runner.run(this.emit(this.parse(pycode), {
+            ...opts,
+            target: FunctionTarget
+        }));
     }
 
     // modules
@@ -57,11 +62,13 @@ export default class BaseEngine extends Engine {
     override parse(pycode: string): ParsedCode {
         return this.parser(pycode, "_");
     }
-    override emit(parsed: ParsedCode, mode?: MODE): string {
-        return this.emitter.emit(parsed, mode);
+    override emit(parsed: ParsedCode, opts?: Partial<EmitterOptions>): string {
+        return this.emitter.emit(parsed, opts);
     }
-    override loadAsFunction(jscode: string): () => PyModule {
+    override loadAsFunction(jscode: string): (runlib: any) => PyModule {
         return this.runner.loadAsFunction(jscode);
     }
-
+    override runFunction(fct: (runlib: any) => PyModule): PyModule {
+        return this.runner.runFunction(fct);
+    }
 }

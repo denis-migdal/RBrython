@@ -2,6 +2,8 @@ export type PyModule = Record<string, any>;
 
 export default abstract class Runner {
     
+    abstract run(jscode: string): PyModule;
+
     abstract registerBuiltins(symbols: PyModule): void;
     abstract registerBuiltin(name: string, value: any): void;
 
@@ -9,5 +11,6 @@ export default abstract class Runner {
     abstract      getModule(name: string): PyModule;
 
     // low level
-    abstract loadAsFunction(jscode: string): () => PyModule;
+    abstract loadAsFunction(jscode: string): (runlib: any) => PyModule;
+    abstract runFunction(fct: (runlib: any) => PyModule): PyModule;
 }

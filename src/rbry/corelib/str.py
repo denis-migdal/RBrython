@@ -1,4 +1,4 @@
-from types     import NotImplementedType
+from types import NotImplementedType
 from RBM import __JS_OP__, string
 
 class str(string):

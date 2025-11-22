@@ -3,6 +3,7 @@ import { BryEngine, RBryEngine } from "./utils/engine";
 import printBenchStats from "./utils/printBenchStats";
 
 import test_suite from "../../tests";
+import { $RB } from "@RBrython/rbry/runlib";
 
 const NB_REPEAT = 3;
 
@@ -58,7 +59,7 @@ function createBench() {
     });
 
     for(let i = 0; i < NB_REPEAT; ++i)
-        bench.addStep(`execute${i}`,  (_, ctx) => { ctx.fct(); });
+        bench.addStep(`execute${i}`,  (_, ctx) => { ctx.fct($RB); });
     
     bench.addStat("nbTokens", (ctx) => {
         return $B.tokenizer(ctx.pycode, '_').length;

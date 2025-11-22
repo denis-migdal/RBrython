@@ -5,7 +5,7 @@ import { walk } from "https://deno.land/std@0.170.0/fs/walk.ts";
 import {exists} from "https://deno.land/std/fs/mod.ts"
 import { dirname, basename, fromFileUrl } from "https://deno.land/std/path/mod.ts";
 
-import Engines from "../dist/dev/libs/RBrython-all/index";
+import Engines, {Targets} from "../dist/dev/libs/RBrython-all/index";
 
 declare global {
     var __BRYTHON__: any;
@@ -54,14 +54,14 @@ async function removeFile(path: string) {
 
 const flags = parseArgs(Deno.args, {
 	boolean: ["help", "watch", "verbose"],
-	string: ["outDir", "compat", "mode", "export"],
+	string: ["outDir", "compat", "mode", "target"],
 	default: {
         help   : false,
         watch  : false,
         verbose: false,
         compat : "NONE",
         mode   : "debug",
-        export : "NONE"
+        target : "raw"
     },
 });
 
@@ -71,9 +71,15 @@ if( flags.mode === "test")
 if( flags.mode === "prod")
     mode = 2;
 
+const target = Targets[flags.target];
+
+const emitOpts = {
+    mode,
+    target
+}
+
 /*
 globalThis.__SBRY_COMPAT__ = flags.compat;
-globalThis.__SBRY_EXPORT__ = flags.export;
 */
 
 const {_: SRC_DIRS, outDir: DST_DIR, verbose:DEBUG, watch} = flags;
@@ -84,8 +90,8 @@ if(flags.help) {
 	console.log('\t* --watch');
 	console.log('\t* --verbose');
 	console.log('\t* --mode   debug|test|prod');
+	console.log('\t* --target raw|function|global|module');
 	console.log('\t* --compat NONE|PERF|FULL|BRYTHON');
-	console.log('\t* --export NONE|ES6|SBRY|GLOBAL');
 	Deno.exit(0);
 }
 
@@ -128,7 +134,7 @@ const engine = flags.compat === "BRYTHON"
                 ? Engines.getBrythonEngine()
                 : Engines.getRBrythonEngine()
 
-let convert_code = (pycode: string, filename: string) => engine.emit( engine.parse(pycode), mode );
+let convert_code = (pycode: string, filename: string) => engine.emit( engine.parse(pycode), emitOpts );
 
 
 /******************/

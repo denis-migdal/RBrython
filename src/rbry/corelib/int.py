@@ -1,5 +1,4 @@
-from types     import NotImplementedType
-
+from types import NotImplementedType
 from RBM import __JS_AS_NUMBER__, __JS_OP__, bigint
 
 class int(bigint):

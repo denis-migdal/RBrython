@@ -38,7 +38,14 @@ You can however change this behavior by providing an output directory in which t
 
 `--mode debug|test|prod`: (default: `debug`).
 
-See [RBrython mode](../../../?tab=readme-ov-file#mode-not-implemented).
+See [RBrython mode](../../../?tab=readme-ov-file#mode).
+
+
+### Target
+
+`--target raw|function|global|module`: (default: `raw`).
+
+See [RBrython target](../../../?tab=readme-ov-file#target).
 
 ### Compatibility (not implemented)
 
@@ -49,16 +56,6 @@ See [RBrython mode](../../../?tab=readme-ov-file#mode-not-implemented).
    - `PERF`: generate unclean and fast JS/TS code, requires a small runtime library.
    - `FULL`: fully compliant with the Python standard (**not implemented yet**).
    - `BRYTHON`: use [brython](https://github.com/brython-dev/brython), fully python-compliant, slower, JS-Python interactions more incertains, currently not compatible with other options.
-
-### Export (not implemented)
-
-- `--export NONE|ES6|SBRY|GLOBAL`: produce ES6 modules, or SBrython modules (default: `NONE`).
-
-- `export`:
-    - `NONE`: can't import/export symbols (***default***).
-    - `ES6`: produce ES6 modules (recommanded for AoT conversions).
-    - `SBRY`: produce SBrython modules (recommanded for conversions in the Browser).
-    - `GLOBAL` : store exported symbols in `__SBRY_LAST_EXPORTED__`.
 
 ## Note: For Brython ?
 

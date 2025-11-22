@@ -14,7 +14,7 @@ To access JavaScript features, you can either:
 
 💡 For performances purposes, corelib can be pre-compiled:
 ```bash
-./tools/rbc src/rbry/corelib/ --outDir src/rbry/corelib-aot
+./tools/rbc src/rbry/corelib/ --target function --outDir src/rbry/corelib-aot
 ```
 
 ## Advices

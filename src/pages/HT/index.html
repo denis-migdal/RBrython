@@ -1,0 +1,44 @@
+<div style="height: 100px;position:relative">
+    <div class="editable" style="position: absolute;top:0;left: 0;" contenteditable="true">A B C</div>
+    <div class="editor-wrapper" style="position: absolute;top:0;left: 0;">A <span style="background-color: red;">B</span> C</div>
+</div>
+<script>
+
+    const wrapper = document.querySelector('.editor-wrapper');
+    const editable = document.querySelector('.editable');
+
+    const a = document.querySelector('div>div>span');
+    a.addEventListener("mouseover", () => {
+        console.warn("hell");
+    })
+
+    function getCaretRangeFromPoint(x, y) {
+  if (document.caretPositionFromPoint) {
+    // Standard moderne (Firefox)
+    const pos = document.caretPositionFromPoint(x, y);
+    const range = document.createRange();
+    range.setStart(pos.offsetNode, pos.offset);
+    range.collapse(true);
+    return range;
+  } else if (document.caretRangeFromPoint) {
+    // Ancien WebKit / Chrome
+    return document.caretRangeFromPoint(x, y);
+  }
+  return null;
+}
+
+/*
+wrapper.addEventListener('mousedown', (e) => {
+  e.preventDefault(); // empêche la sélection sur la couche highlight
+
+  // Récupère le caret exact dans l'éditeur au point du clic
+  const range = getCaretRangeFromPoint(e.clientX, e.clientY);
+  if (!range) return;
+
+  editable.focus();
+  const sel = window.getSelection();
+  sel.removeAllRanges();
+  sel.addRange(range);
+});
+*/
+</script>
