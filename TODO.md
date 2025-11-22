@@ -1,4 +1,6 @@
-- target opts (mainly exports).
+- target opts
+    - not really tested everything correctly
+    - no imports (not tested)
 
 ## Features
 
@@ -37,7 +39,9 @@
 Import/export
     - import (target + runner + corelib-aot).
     - name in export (global/Brython).
-    
+    - multi strat (?)
+        - fct|module|global|brython
+
 3. Compat mode / cf optimisations (?) [per file...]
     - operations on constants might be precomputed (<i>not implemented</i>).
          -> ou use Terser ?

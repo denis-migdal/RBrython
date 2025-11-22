@@ -3,10 +3,6 @@ import "@RBrython/rbry/runlib";
 import Runner, { PyModule } from "./interface";
 import { $RB } from "@RBrython/rbry/runlib";
 
-// h4ck
-// @ts-ignore
-globalThis.$RB = $RB;
-
 export const modules: Record<string, any> = {};
 
 export default class RBrythonGlobalRunner extends Runner {

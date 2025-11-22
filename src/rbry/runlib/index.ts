@@ -9,7 +9,7 @@ import setattr from "./interface/setattr";
 import getModule from "./interface/getModule";
 import { getKW, setKW } from "./interface/KW";
 
-export const $RB = {
+const $RB = globalThis.$RB = {
     // interface
     op,
     uop,
@@ -22,6 +22,7 @@ export const $RB = {
     setKW,
     getModule
 }
+export {$RB};
 
 //TODO: corelib
 import { getClass } from "./helpers/getClass";

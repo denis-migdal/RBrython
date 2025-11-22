@@ -160,7 +160,7 @@ RBrython enable to generate JavaScript code for several targets:
 - `module`: for ES6 modules.
 - `brython`: brython-compatible module (<i>not implemented</i>).
 
-### Performances and compatibility (not implemented)
+### Compatibility and performances (not implemented)
 
 ## Contributing
 
