@@ -1,2 +1,2 @@
-export const __webpack_id__=915;export const __webpack_ids__=[915];export const __webpack_modules__={475:(_,o,e)=>{e.p}};import _ from"../../skeleton/index.js";import*as o from"./index.js";_.C(o),_(_.s=475);
+export const __webpack_id__=915;export const __webpack_ids__=[915];export const __webpack_modules__={8475:(_,o,e)=>{e.p}};import _ from"../../skeleton/index.js";import*as o from"./index.js";_.C(o),_(_.s=8475);
 //# sourceMappingURL=index.js.map

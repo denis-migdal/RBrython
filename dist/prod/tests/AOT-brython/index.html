@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="/assets/brython.min.js"></script>
+        <script type="module" src="/libs/Runner/index.js"></script>
+        <script type="module" src="/assets/AOT-Bry.js"></script>
+        <script type="module">
+            __BRYTHON__.runPythonSource(
+`from _ import foo
+
+foo()`)
+        </script>
+    </head>
+</html>
