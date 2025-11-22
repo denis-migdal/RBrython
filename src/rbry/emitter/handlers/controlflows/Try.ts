@@ -1,13 +1,6 @@
-import { SymTab, TryNode } from "../../../ast/types";
-import Body from "../Body";
+import { TryNode } from "../../../ast/types";
+import { EmitContext } from "../../EmitContext";
 
-export default function Try(node: TryNode, symtab: SymTab) {
-    //TODO...
-    return `try {
-        ${Body(node.body, symtab)}
-    } catch {
-        ${  // @ts-ignore
-            Body(node.handlers[0].body, symtab)
-        }
-    }`;
+export default function Try(node: TryNode, ctx: EmitContext) {
+    return ctx.w`try{${node.body}}catch{${node.handlers[0].body}}`;
 }

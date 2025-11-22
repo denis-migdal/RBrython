@@ -1,44 +1,39 @@
-import Body from "../Body";
-import { node2js } from "../../node2js";
-import { CLASS, FunctionDefNode, SymTab } from "../../../ast/types";
+import { FunctionDefNode } from "../../../ast/types";
+import { EmitContext } from "../../EmitContext";
 
-export default function FunctionDef(node: FunctionDefNode, symtab: SymTab) {
+export default function FunctionDef(node: FunctionDefNode, ctx: EmitContext) {
 
-    const isMethod = symtab.type === CLASS;
+    const isMethod = ctx.isMethod();
 
     const name = node.name;
     const body = node.body;
 
-    const fsymtab = symtab.children.find( (e) => e.name === name)!;
-
     let result = "";
-    if( symtab.type === CLASS )
-        result += `${symtab.name}.prototype.${name} = `;
+    if( isMethod )
+        result += ctx.w`${ctx.getName(-1)}.prototype.${name} = `;
 
+    // open decorator
     for( let i = 0; i < node.decorator_list.length ; ++i )
-        result += `${node2js(node.decorator_list[i])}(`;
+        result += ctx.w`${node.decorator_list[i]}(`;
 
-    result += `function ${name}(`;
+    result += ctx.w`function ${name}(${node.args}){`;
 
-    result += node2js(node.args, symtab, isMethod);
-
-    result += "){";
-
+    //TODO: prefer var renaming...
     if( isMethod ) {
         let selfname = "";
         if( node.args.posonlyargs.length > 0)
             selfname = node.args.posonlyargs[0].arg;
         else
             selfname = node.args.args[0].arg;
-        result += `const ${selfname} = this;`; //TODO: prefer var renaming...
+        result += ctx.w`const ${selfname} = this;`;
     }
 
-    result += `
-        ${Body(body, fsymtab)}
-    }`;
+    result += ctx.w_body(body);
+    result += ctx.w`}`;
 
+    // close decorator
     for( let i = 0; i < node.decorator_list.length ; ++i )
-        result += ")";
+        result += ctx.w`)`;
 
     return result;
 }

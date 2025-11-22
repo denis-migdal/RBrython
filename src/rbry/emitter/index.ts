@@ -3,10 +3,10 @@ import "../runlib";
 import "./handlers/list"; // ensure Handlers are loaded.
 
 import { ParsedCode } from "../ast/types";
-import Body from "./handlers/Body";
-import { Macro, macros } from "./handlers/operators/Call";
 import { Target } from "../targets/interface";
 import { RawTarget } from "../targets/raw";
+import SourceMap from "./SourceMap";
+import { EmitContext, Macro } from "./EmitContext";
 
 export enum MODE {
   DEBUG,
@@ -33,7 +33,7 @@ export abstract class Emitter {
 
 export default class RBrythonEmitter extends Emitter {
 
-    protected readonly macros = macros;
+    protected readonly macros: Record<string, Macro> = {};
 
     registerMacros(macros: Record<string, Macro>) {
         for(let name in macros)
@@ -48,21 +48,13 @@ export default class RBrythonEmitter extends Emitter {
                                 target = EmitterDefaults.target
                             }: Partial<EmitterOptions> = {}) {
 
-        // @ts-ignore
-        globalThis.mode = mode;
-
-        const bodyNode = parsed.ast.body;
-
-        const body    = Body(bodyNode, parsed.symtable);
-        const exported= this.extractExportedSymbols(parsed);
-
-        const jscode = body;
+        const ctx = new EmitContext(parsed.symtable, mode, this.macros);
 
         const output = {
             name    : "_",
             imported: [],
-            exported,
-            jscode,
+            exported: this.extractExportedSymbols(parsed),
+            jscode  : ctx.w_body(parsed.ast.body),
         }
 
         return target(output);
@@ -75,3 +67,12 @@ export default class RBrythonEmitter extends Emitter {
                      .filter( k => symbols[k] === 4098); // magic value
     }
 }
+
+/*
+TODO: filter...
+const sm = new SourceMap("a", "b", "c");
+sm.addMapping({line: 3, col: 4}, {line: 3, col: 5});
+sm.addMapping({line: 3, col: 5}, {line: 3, col: 5});
+
+console.warn(sm.toFile());
+*/

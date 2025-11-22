@@ -4,10 +4,20 @@
 
 ## Features
 
+1. Indent
+    /!\ indent for MatchNode
+2. True write.
+3. doc EmitContext + node2js + macros
+
+
+-> write ne marchera pas s'il y a des paramètres à transmettre... FUUUUU...
+    -> enter/leave
+    -> writer with ctx ?
+
 1. Source map.
-    - w_node / w_str / other write
-        - start/end/pos(?) (opt).
-    - (un)indent generated JS (w_indent/w_line) ~> use minifier.
+    - generic w() / w`` (just start/end pos).
+        - indent generated JS (w_indent/w_line)
+        - handle line breaks.
     - sourcemap API...
         -> filtrer quel type de truc à besoin d'être mappé ?
         -> register stating pos in source map struct...
@@ -37,10 +47,10 @@
     - async fct / generators
 
 Import/export
-    - import (target + runner + corelib-aot).
+    - multi-strats (module/global/brython/function)
+        - booleans ?
+        - import issue... + runners/aot (builtins/RB).
     - name in export (global/Brython).
-    - multi strat (?)
-        - fct|module|global|brython
 
 3. Compat mode / cf optimisations (?) [per file...]
     - operations on constants might be precomputed (<i>not implemented</i>).

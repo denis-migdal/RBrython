@@ -1,8 +1,8 @@
 import { getOp } from "../../../ast/";
 import { BinaryOpNode } from "../../../ast/types";
-import { node2js } from "../../node2js";
+import { EmitContext } from "../../EmitContext";
 
-export default function(node: BinaryOpNode) {
+export default function(node: BinaryOpNode, ctx: EmitContext) {
     const a = node.left;
     const b = node.right;
     const op = getOp(node.op) as keyof typeof binops;
@@ -11,7 +11,7 @@ export default function(node: BinaryOpNode) {
     if( opname === undefined) 
         throw new Error(`BinOp ${op} not impl`);
 
-    return `$RB.op(${node2js(a)}, "${opname}", ${node2js(b)})`;
+    return ctx.w`$RB.op(${a}, "${opname}", ${b})`;
 }
 
 export const binops = {

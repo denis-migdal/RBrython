@@ -1,14 +1,14 @@
 import { ASTNode } from "../ast/types";
-import { node2js } from "../emitter/node2js";
+import { EmitContext } from "../emitter/EmitContext";
 
-export default function __JS_LOG__(...args: ASTNode[]) {
+export default function __JS_LOG__(ctx: EmitContext, ...args: ASTNode[]) {
 
-    let result = "console.log(";
+    let result = ctx.w_str("console.log(");
 
     for(let i = 0; i < args.length; ++i)
-        result += node2js(args[i]) + ",";
+        result += ctx.w`${args[i]},`;
 
-    result += ");"
+    result += ctx.w_str(");");
 
     return result;
 }

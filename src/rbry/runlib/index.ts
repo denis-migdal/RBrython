@@ -9,6 +9,7 @@ import setattr from "./interface/setattr";
 import getModule from "./interface/getModule";
 import { getKW, setKW } from "./interface/KW";
 
+// @ts-ignore
 const $RB = globalThis.$RB = {
     // interface
     op,

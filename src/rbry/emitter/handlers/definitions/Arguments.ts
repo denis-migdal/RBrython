@@ -1,9 +1,8 @@
-import { ArgsDefNode, SymTab } from "@RBrython/rbry/ast/types";
+import { ArgsDefNode } from "@RBrython/rbry/ast/types";
+import { EmitContext } from "../../EmitContext";
 
 //TODO: vararg + kw => dans le corps...
-export default function Arguments(node: ArgsDefNode,
-                                symtab: SymTab,
-                              isMethod: boolean = false) {
+export default function Arguments(node: ArgsDefNode, ctx: EmitContext) {
     
     let result = "";
 
@@ -11,7 +10,7 @@ export default function Arguments(node: ArgsDefNode,
     let pos_offset = 0;
     let arg_offset = 0;
 
-    if( isMethod ) {
+    if( ctx.isMethod() ) {
         if( node.posonlyargs.length)
             ++pos_offset
         else
@@ -19,17 +18,17 @@ export default function Arguments(node: ArgsDefNode,
     }
 
     for(let i = pos_offset; i < node.posonlyargs.length; ++i)
-        result += `${node.posonlyargs[i].arg}, `;
+        result += ctx.w`${node.posonlyargs[i].arg}, `;
 
     for(let i = arg_offset; i < node.args.length; ++i)
-        result += `_${node.args[i].arg}, `;
+        result += ctx.w`_${node.args[i].arg}, `;
 
     if( node.args.length ) {
         // kw...
-        result += "{";
+        result += ctx.w`{`;
         for( let i = arg_offset ; i < node.args.length; ++i)
-            result += `${node.args[i].arg} = _${node.args[i].arg}, `;
-        result += "} = $RB.getKW()";
+            result += ctx.w`${node.args[i].arg} = _${node.args[i].arg}, `;
+        result += ctx.w`} = $RB.getKW()`;
     }
 
     return result;

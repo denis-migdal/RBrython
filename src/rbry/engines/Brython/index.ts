@@ -3,7 +3,7 @@ import parse from "../../parser";
 import BrythonGlobalRunner from "@RBrython/rbry/runners/BrythonGlobalRunner";
 import BaseEngine from "../Base";
 import { Emitter } from "@RBrython/rbry/emitter";
-import { Macro } from "@RBrython/rbry/emitter/handlers/operators/Call";
+import { Macro } from "@RBrython/rbry/emitter/EmitContext";
 
 class BrythonEmitter extends Emitter {
     emit(parsed: ParsedCode) {

@@ -1,9 +1,6 @@
-import { LambdaDefNode, SymTab } from "@RBrython/rbry/ast/types";
-import { node2js } from "../../node2js";
+import { LambdaDefNode } from "@RBrython/rbry/ast/types";
+import { EmitContext } from "../../EmitContext";
 
-export default function Lambda(node: LambdaDefNode, symtab: SymTab): string {
-    
-    const args = node2js(node.args, symtab);
-
-    return `(${args}) => { return ${node2js(node.body)}}`
+export default function Lambda(node: LambdaDefNode, ctx: EmitContext): string {
+    return ctx.w`(${node.args}) => {return ${node.body}}`; // shouldn't have many lines...
 }

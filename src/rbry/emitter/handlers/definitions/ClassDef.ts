@@ -1,16 +1,13 @@
-import { node2js } from "../../node2js";
 import { ClassDefNode, SymTab } from "../../../ast/types";
-import Body from "../Body";
+import { EmitContext } from "../../EmitContext";
 
-export default function ClassDef(node: ClassDefNode, symtab: SymTab) {
+export default function ClassDef(node: ClassDefNode, ctx: EmitContext) {
 
     const name = node.name;
     const body = node.body;
 
-    const csymtab = symtab.children.find( (e) => e.name === name)!;
-
     // JS cstr
-    let str = `var ${name} = (() =>{
+    let str = ctx.w`var ${name} = (() =>{
         function ${name}() {
             return Object.create(${name}.prototype);
         }
@@ -22,20 +19,19 @@ export default function ClassDef(node: ClassDefNode, symtab: SymTab) {
     const isH4ck = node.bases.length === 1 && ["number", "bigint", "boolean", "string"].includes(node.bases[0].id);
 
     if( !isH4ck && node.bases.length >= 1) {
-        str += `${name}.prototype = Object.create(${node2js(node.bases[0])}.prototype);\n`;
+        str += ctx.w`${name}.prototype = Object.create(${node.bases[0]}.prototype);\n`;
     
         for(let i = 1; i < node.bases.length; ++i) {
-
-            str += `Object.assign(${name}.prototype, ${node2js(node.bases[i])}.prototype);`;
+            str += ctx.w`Object.assign(${name}.prototype, ${node.bases[i]}.prototype);`;
         }
 
-        str += `${name}.prototype.constructor = ${name};\n`;
+        str += ctx.w`${name}.prototype.constructor = ${name};\n`;
     }
 
     // body...
-    str += Body(body, csymtab);
+    str += ctx.w_body(body);
 
-    str += `
+    str += ctx.w`
         return ${name};
     })();
     `;

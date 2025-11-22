@@ -1,6 +1,7 @@
 import { ConstantNode } from "../../../ast/types";
+import { EmitContext } from "../../EmitContext";
 
-export default function Constant(node: ConstantNode) {
+export default function Constant(node: ConstantNode, ctx: EmitContext) {
 
         const type = typeof node.value;
 
@@ -10,14 +11,14 @@ export default function Constant(node: ConstantNode) {
             // @ts-ignore
             const value: float|bigint = node.value.value;
 
-            if( qname === "float"   ) return `${value}`;
-            if( qname === "int"     ) return `${value}n`;
-            if( qname === "NoneType") return "null";
+            if( qname === "float"   ) return ctx.w`${value}`;
+            if( qname === "int"     ) return ctx.w`${value}n`;
+            if( qname === "NoneType") return ctx.w`null`;
             //if( qname === "ellipsis") return "$RB.ellipsis";
         }
-        if( type === "string" ) return `"${node.value}"`;
-        if( type === "number" ) return `${node.value}n`; // bigint
-        if( type === "boolean") return `${node.value}`;
+        if( type === "string" ) return ctx.w`"${node.value}"`;
+        if( type === "number" ) return ctx.w`${node.value}n`; // bigint
+        if( type === "boolean") return ctx.w`${node.value}`;
 
         console.warn(node, type);
         throw new Error(`Unknown Cste ${type}`);

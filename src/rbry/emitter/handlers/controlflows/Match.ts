@@ -1,30 +1,23 @@
-import { ASTNode, SymTab } from "@RBrython/rbry/ast/types";
-import { node2js } from "../../node2js";
-import Body from "../Body";
+import { MatchNode } from "@RBrython/rbry/ast/types";
+import { EmitContext } from "../../EmitContext";
 
-export default function Match(node: ASTNode, symtab: SymTab) {
+export default function Match(node: MatchNode, ctx: EmitContext) {
 
-    let result = "{";
+    let result = ctx.w`{`; // we want a special scope for the match.
+    //TODO: indent...
 
-    // @ts-ignore
-    result += `const tname = type(${node2js(node.subject)}).name;`
+    result += ctx.w`const tname = type(${node.subject}).name;`
 
-    // @ts-ignore
     for(let i = 0; i < node.cases.length -1; ++i) {
         if( i !== 0)
-            result += "else ";
-        // @ts-ignore
-        result += `if( tname === "${node.cases[i].pattern.cls.id}") {
-            ${  // @ts-ignore
-                Body(node.cases[i].body, symtab)}
-        }`;
-    }
-    result += `else {
-            ${  // @ts-ignore
-                Body(node.cases[node.cases.length-1].body, symtab)}
-    }`;
+            result += ctx.w`else `;
 
-    result += "}";
+        const c = node.cases[i];
+
+        result += ctx.w`if( tname === "${c.pattern.cls.id}"){${c.body}}`;
+    }
+    result += ctx.w`else {${node.cases[node.cases.length-1].body}}`;
+    result += ctx.w`}`;
 
     return result;
 }

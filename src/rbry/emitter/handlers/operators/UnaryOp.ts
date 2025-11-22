@@ -1,8 +1,8 @@
 import { UnaryOpNode } from "../../../ast/types";
-import { node2js } from "../../node2js";
 import { getOp } from "../../../ast/";
+import { EmitContext } from "../../EmitContext";
 
-export default function(node: UnaryOpNode) {
+export default function(node: UnaryOpNode, ctx: EmitContext) {
 
     const a = node.operand;
     const op = getOp(node.op) as keyof typeof uops;
@@ -11,7 +11,7 @@ export default function(node: UnaryOpNode) {
     if( opname === undefined) 
         throw new Error(`UnaryOp ${op} not impl`);
 
-    return `$RB.uop("${opname}", ${node2js(a)})`;
+    return ctx.w`$RB.uop("${opname}", ${a})`;
 }
 
 const uops = {

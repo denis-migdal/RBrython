@@ -18,13 +18,13 @@ export type ParsedCode = {
     symtable: SymTab,
 };
 
-export type ASTNode = {};
+export type ASTNode<T={}> = {} & T;
 
 export type BodyNode = ASTNode[];
 
-export type ModuleNode = {
+export type ModuleNode = ASTNode<{
     body: BodyNode
-} & ASTNode;
+}>;
 
 export type ExprNode = {
     value: ASTNode
@@ -32,6 +32,9 @@ export type ExprNode = {
 
 export type ConstantNode = {
     value: number|string|boolean|{value: number|bigint}
+}
+export type StringNode = {
+    value: string;
 }
 
 export type AssertNode = {
@@ -49,6 +52,10 @@ export type BinaryOpNode = {
     left : ASTNode;
     right: ASTNode;
     op   : OperatorNode;
+}
+export type BoolOpNode = {
+    op: OperatorNode;
+    values: [ASTNode, ASTNode]
 }
 
 export type CompareNode = {
@@ -87,7 +94,7 @@ export type AttributeNode = {
 export type CallNode = {
     func    : ASTNode
     args    : ASTNode[],
-    keywords: ASTNode[]
+    keywords: {arg: string, value: ASTNode}[]
 }
 
 export type ClassDefNode = {
@@ -143,9 +150,30 @@ export type RaiseNode = {
 
 export type TryNode = {
     body: BodyNode;
-    handlers: ASTNode[];
+    handlers: {body: BodyNode}[];
 }
 
 export type JoinedStrNode = {
-    values: ASTNode[]
+    values: {value: string|ASTNode}[]
+}
+
+export type MatchNode = {
+    subject: ASTNode,
+    cases  : {
+        pattern: {
+            cls: {
+                id: string
+            }
+        }
+        body: BodyNode
+    }[]
+}
+
+export type ImportNode = {
+    names: {name: string}[]
+}
+
+export type ImportFromNode = {
+    module: string
+    names: {name: string}[]
 }

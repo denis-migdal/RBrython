@@ -1,9 +1,9 @@
 import { AugAssignNode } from "../../../ast/types";
-import { node2js } from "../../node2js";
 import { binops } from "./BinOp";
 import { getOp } from "../../../ast/";
+import { EmitContext } from "../../EmitContext";
 
-export default function AugAssign(node: AugAssignNode) {
+export default function AugAssign(node: AugAssignNode, ctx: EmitContext) {
  
     const a  = node.target;
     const op = getOp(node.op) as keyof typeof binops;
@@ -13,5 +13,5 @@ export default function AugAssign(node: AugAssignNode) {
     if( opname === undefined) 
         throw new Error(`BinOp ${op} not impl`);
 
-    return `${node2js(a)} = $RB.op(${node2js(a)}, "i${opname}", ${node2js(b)})`;   
+    return ctx.w`${a} = $RB.op(${a}, "i${opname}", ${b})`;   
 }

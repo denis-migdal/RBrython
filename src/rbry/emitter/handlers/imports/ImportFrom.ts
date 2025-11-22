@@ -1,9 +1,8 @@
-import { ASTNode } from "../../../ast/types";
-import { node2js } from "../../node2js";
+import { ImportFromNode } from "../../../ast/types";
+import { EmitContext } from "../../EmitContext";
 
-export default function ImportFrom(node: ASTNode) {
+export default function ImportFrom(node: ImportFromNode, ctx: EmitContext) {
 
-    // @ts-ignore
     const module = node.module;
 
     if( module === "RBM" )
@@ -15,12 +14,10 @@ export default function ImportFrom(node: ASTNode) {
         console.warn("Import not implemented yet");
         return "";
     }
-    let res = "const {";
+    let res = ctx.w`const {`;
 
-    // @ts-ignore
     for(let i = 0; i < node.names.length; ++i)
-        // @ts-ignore
-        res += `${node.names[i].name},`;
+        res += ctx.w`${node.names[i].name},`;
 
-    return res + `} = $RB.getModule("${module}")`;
+    return res + ctx.w`} = $RB.getModule("${module}")`;
 }

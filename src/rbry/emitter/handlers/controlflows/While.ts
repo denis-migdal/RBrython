@@ -1,11 +1,7 @@
-import { SymTab, WhileNode } from "../../../ast/types";
-import { node2js } from "../../node2js";
-import Body from "../Body";
+import { WhileNode } from "../../../ast/types";
+import { EmitContext } from "../../EmitContext";
 
-export default function While(node: WhileNode, symtab: SymTab) {
-
-    return `while( ${node2js(node.test)} ) {
-        ${Body(node.body, symtab)}
-    }`;
-
+export default function While(node: WhileNode, ctx: EmitContext) {
+    
+    return ctx.w`while(${node.test}){${node.body}}`;
 }

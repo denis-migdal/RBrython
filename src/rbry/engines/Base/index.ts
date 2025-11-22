@@ -3,8 +3,8 @@ import { ParsedCode } from "@RBrython/rbry/ast/types";
 import Runner, { PyModule } from "@RBrython/rbry/runners/interface";
 import parse from "@RBrython/rbry/parser";
 import {Emitter, EmitterOptions} from "@RBrython/rbry/emitter";
-import { Macro } from "@RBrython/rbry/emitter/handlers/operators/Call";
 import { FunctionTarget } from "@RBrython/rbry/targets/function";
+import { Macro } from "@RBrython/rbry/emitter/EmitContext";
 
 type Parser  = typeof parse;
 

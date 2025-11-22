@@ -1,6 +1,6 @@
 import { ReturnNode } from "../../../ast/types";
-import { node2js } from "../../node2js";
+import { EmitContext } from "../../EmitContext";
 
-export default function Return(node: ReturnNode) {
-    return `return ${ node2js(node.value) }`;
+export default function Return(node: ReturnNode, ctx: EmitContext) {
+    return ctx.w`return ${node.value}`;
 }

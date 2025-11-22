@@ -1,6 +1,6 @@
 import { ExprNode } from "../../../ast/types";
-import { node2js } from "../../node2js";
+import { EmitContext } from "../../EmitContext";
 
-export default function Expr(node: ExprNode) {
-    return node2js(node.value);
+export default function Expr(node: ExprNode, ctx: EmitContext) {
+    return ctx.w_node(node.value);
 }

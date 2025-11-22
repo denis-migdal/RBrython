@@ -1,9 +1,10 @@
 // list is filled in list.ts in order to prevent circular dependency.
 
-import { ASTNode, SymTab } from "../../ast/types";
+import { ASTNode } from "../../ast/types";
+import { EmitContext } from "../EmitContext";
 
 export type Handler = (    node: ASTNode,
-                        symtab?: SymTab,
+                            ctx: EmitContext,
                         ...args: unknown[]) => string;
 
 const Handlers: Record<string, Handler> = {};

@@ -1,9 +1,14 @@
-import { ASTNode } from "../ast/types";
-import { node2js } from "../emitter/node2js";
+import { ASTNode, StringNode } from "../ast/types";
+import { EmitContext } from "../emitter/EmitContext";
 
-export default function __JS_RUN__(...args: ASTNode[]) {
-    // @ts-ignore
-    return `(${unescape(args[0].value)})(${args.slice(1).map(e=>node2js(e)).join(",")})`;
+export default function __JS_RUN__(ctx: EmitContext, code: ASTNode, ...args: ASTNode[]) {
+    
+    let result = ctx.w`(${unescape((code as StringNode).value)})(`;
+    for(let i = 0; i < args.length; ++i)
+        result += ctx.w`${args[i]},`;    
+    result += ctx.w`)`;
+
+    return result;
 }
 
 function unescape(str: string) {

@@ -1,37 +1,34 @@
-import { node2js } from "../../node2js";
 import { nodeType } from "../../../ast";
 import { ASTNode, AttributeNode, CallNode } from "../../../ast/types";
+import { EmitContext } from "../../EmitContext";
 
-export type Macro = (...args: ASTNode[]) => string;
-export const macros: Record<string, Macro> = {};
-
-export default function Call(node: CallNode) {
+export default function Call(node: CallNode, ctx: EmitContext) {
     const f        = node.func;
     const args     = node.args;
     const keywords = node.keywords;
 
     // @ts-ignore
-    if( f.id in macros)
-        // @ts-ignore
-        return macros[f.id]( ...node.args );
+    const fid: string = f.id;
+
+    if( fid in ctx.macros)
+        return ctx.macros[fid](ctx, ...node.args);
 
     //TODO: args parsing...
     let str = "";
     for(let i = 0; i < args.length; ++i)
-        str += node2js(args[i]) + ", ";
+        str += ctx.w`${args[i]}, `;
 
     if( keywords.length ) {
-        str += "$RB.setKW({";
+        str += ctx.w`$RB.setKW({`;
             for( let i = 0; i < keywords.length; ++i)
-                // @ts-ignore
-                str += `${keywords[i].arg}: ${node2js(keywords[i].value)},`;
-        str += "})";
-    }    
+                str += ctx.w`${keywords[i].arg}: ${keywords[i].value},`;
+        str += ctx.w`})`;
+    }
 
     if( nodeType(f) === "Attribute") {
         const m = f as AttributeNode;
-        return `$RB.mcall(${node2js(m.value)}, "${m.attr}", ${str} )`;
+        return ctx.w`$RB.mcall(${m.value}, "${m.attr}", ${str} )`;
     }
 
-    return `$RB.call(${node2js(f)}, ${str})`;
+    return ctx.w`$RB.call(${f}, ${str})`;
 }

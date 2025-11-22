@@ -1,22 +1,19 @@
-import { IfNode, SymTab } from "../../../ast/types";
-import { node2js } from "../../node2js";
-import Body from "../Body";
+import { IfNode } from "../../../ast/types";
 import { nodeType } from "../../../ast/";
+import { EmitContext } from "../../EmitContext";
 
-export default function If(node: IfNode, symtab: SymTab) {
+export default function If(node: IfNode, ctx: EmitContext) {
 
-    let str = `if( ${node2js(node.test)} ) {
-        ${ Body(node.body, symtab) }
-    }`;
+    let str = ctx.w`if( ${node.test} ){${node.body}}`;
 
     for(let i = 0; i < node.orelse.length; ++i) {
         const snode = node.orelse[i];
         const type = nodeType(snode);
 
         if( type === "If")
-            str += "else " + node2js(snode);
+            str += ctx.w`else ${snode}`;  // if node (else is prefix)
         else
-            str += `else { ${node2js(snode)} }`;
+            str += ctx.w`else{${snode}}`; // a body I guess ?
     }
 
     return str;

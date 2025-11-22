@@ -1,6 +1,6 @@
 import { RaiseNode } from "../../../ast/types";
-import { node2js } from "../../node2js";
+import { EmitContext } from "../../EmitContext";
 
-export default function Raise(node: RaiseNode) {
-    return `throw ${node2js(node.exc)};`;
+export default function Raise(node: RaiseNode, ctx: EmitContext) {
+    return ctx.w`throw ${node.exc};`;
 }

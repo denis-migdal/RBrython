@@ -1,12 +1,12 @@
-import { ASTNode } from "../../../ast/types";
+import { ImportNode } from "../../../ast/types";
+import { EmitContext } from "../../EmitContext";
 
-export default function Import(node: ASTNode) {
+export default function Import(node: ImportNode, ctx: EmitContext) {
 
-    // @ts-ignore
     const module = node.names[0].name;
 
     if( module === "RBM" )
-        return ""; // Brython macros...
+        return ""; // RBrython macros...
 
-    return `const ${module} = $RB.getModule("${module}")`;
+    return ctx.w`const ${module} = $RB.getModule("${module}")`;
 }

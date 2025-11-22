@@ -1,6 +1,6 @@
 import { ParsedCode } from "../ast/types";
 import { EmitterOptions } from "../emitter";
-import { Macro } from "../emitter/handlers/operators/Call";
+import { Macro } from "../emitter/EmitContext";
 import { PyModule } from "../runners/interface";
 
 export default abstract class Engine {

@@ -1,6 +1,6 @@
 import { AttributeNode } from "../../../ast/types";
-import { node2js } from "../../node2js";
+import { EmitContext } from "../../EmitContext";
 
-export default function (node: AttributeNode) {
-    return `$RB.attr(${node2js(node.value)}, "${node.attr}")`;
+export default function (node: AttributeNode, ctx: EmitContext) {
+    return ctx.w`$RB.attr(${node.value}, "${node.attr}")`;
 }

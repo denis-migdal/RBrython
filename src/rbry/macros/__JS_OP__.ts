@@ -1,13 +1,16 @@
 import { ASTNode } from "../ast/types";
-import { node2js } from "../emitter/node2js";
+import { EmitContext } from "../emitter/EmitContext";
 
-export default function __JS_OP__(...args: ASTNode[]) {
+export default function __JS_OP__(ctx: EmitContext, ...args: ASTNode[]) {
     
-    if(args.length === 2) // unary op
+    if(args.length === 2) {// unary op
         // @ts-ignore
-        return `${args[0].value}${node2js(args[1])}`;
+        const op = args[0].value;
+        return ctx.w`${op}${args[1]}`;
+    }
     
     // binary op
     // @ts-ignore
-    return `${node2js(args[0])} ${args[1].value} ${node2js(args[2])}`;
+    const op = args[1].value;
+    return ctx.w`${args[0]} ${op} ${args[2]}`;
 }

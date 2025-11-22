@@ -1,6 +1,6 @@
 import { ASTNode } from "../ast/types";
-import { node2js } from "../emitter/node2js";
+import { EmitContext } from "../emitter/EmitContext";
 
-export default function __JS_AS_NUMBER__(node: ASTNode) {
-    return `Number(${node2js(node)})`;
+export default function __JS_AS_NUMBER__(ctx: EmitContext, node: ASTNode) {
+    return ctx.w`Number(${node})`;
 }
