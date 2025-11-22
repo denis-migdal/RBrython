@@ -91,7 +91,7 @@ if(flags.help) {
 	console.log('\t* --verbose');
 	console.log('\t* --mode   debug|test|prod');
 	console.log('\t* --target raw|function|global|module');
-	console.log('\t* --compat NONE|PERF|FULL|BRYTHON');
+	console.log('\t* --compat brython|');
 	Deno.exit(0);
 }
 
@@ -130,7 +130,7 @@ async function loadBrython() {
 }
 await loadBrython();
 
-const engine = flags.compat === "BRYTHON"
+const engine = flags.compat === "brython"
                 ? Engines.getBrythonEngine()
                 : Engines.getRBrythonEngine()
 

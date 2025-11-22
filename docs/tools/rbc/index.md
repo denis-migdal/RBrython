@@ -47,15 +47,21 @@ See [RBrython mode](../../../?tab=readme-ov-file#mode).
 
 See [RBrython target](../../../?tab=readme-ov-file#target).
 
-### Compatibility (not implemented)
+### Compatibility and performances
 
+`--compat brython`: (default: "").
+
+- `brython`: use [brython](https://github.com/brython-dev/brython):
+    - fully python-compliant, but slower.
+    - interactions with JavaScript might not behave well in some edge cases.
+
+
+<b><i>Not implemented:</i></b>
 - `--compat NONE|PERF|FULL|BRYTHON`: the level of Python compliance (default: `NONE`).
-
 - `compat`: compatibility level with the Python standard:
    - `NONE`: generate clean and fastest JS/TS code, doesn't require a runtime library (***default***).
    - `PERF`: generate unclean and fast JS/TS code, requires a small runtime library.
    - `FULL`: fully compliant with the Python standard (**not implemented yet**).
-   - `BRYTHON`: use [brython](https://github.com/brython-dev/brython), fully python-compliant, slower, JS-Python interactions more incertains, currently not compatible with other options.
 
 ## Note: For Brython ?
 
