@@ -2,6 +2,15 @@
     - not really tested everything correctly.
     - all import features not propertly tested.
 
+## Export/imports
+
+1. importmap
+    b. fetch/AJAX for functions.
+    c. import() for modules.
+2. add module name somewhere ?
+
+Import map : (sys.meta_path)
+
 ## Features
 
 1. Indent
@@ -45,12 +54,6 @@
         - observer DP for class multi-inheritance.
     - dict/list/tuple (seulement op de bases ?)
     - async fct / generators
-
-Import/export
-    - multi-strats (module/global/brython/function)
-        - booleans ?
-        - import issue... + runners/aot (builtins/RB).
-    - name in export (global/Brython).
 
 3. Compat mode / cf optimisations (?) [per file...]
     - operations on constants might be precomputed (<i>not implemented</i>).

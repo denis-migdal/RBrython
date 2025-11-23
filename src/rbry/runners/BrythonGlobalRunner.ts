@@ -5,12 +5,25 @@ export default class RBrythonGlobalRunner extends Runner {
     override run(jscode: string) {
         return this.runFunction( this.loadAsFunction(jscode) );
     }
-
-    override loadAsFunction(jscode: string): () => PyModule {
-        $B.imported["_"] = {};
-        return Function("'use strict';" + jscode) as () => PyModule;
+    override runSync(jscode: string) {
+        return this.runSyncFunction( this.loadAsSyncFunction(jscode) );
     }
-    override runFunction( fct: (runlib: any) => PyModule ) {
+
+    override loadAsFunction(jscode: string): () => Promise<PyModule> {
+        $B.imported["_"] = {};
+        return eval(jscode) as () => Promise<PyModule>;
+    }
+    override runFunction( fct: (runlib: any) => Promise<PyModule> ) {
+        // @ts-ignore
+        return fct();
+    }
+
+    override loadAsSyncFunction(jscode: string): () => PyModule {
+        $B.imported["_"] = {};
+
+        return eval(jscode) as () => PyModule;
+    }
+    override runSyncFunction( fct: (runlib: any) => PyModule ) {
         // @ts-ignore
         return fct();
     }

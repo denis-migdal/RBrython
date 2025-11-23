@@ -8,5 +8,8 @@ export default function Import(node: ImportNode, ctx: EmitContext) {
     if( module === "RBM" )
         return ""; // RBrython macros...
 
-    return ctx.w`const ${module} = $RB.getModule("${module}")`;
+    if( ctx.isTopLevel() && ! ctx.sync )
+        return ctx.w`const ${module} = await $RB.getModule("${module}")`;
+
+    return ctx.w`const ${module} = $RB.getModuleSync("${module}")`;
 }

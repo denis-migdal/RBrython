@@ -10,14 +10,24 @@ export default class RBrythonGlobalRunner extends Runner {
     #module   = modules; // h4ck
     #builtins: Record<string, any> = {};
 
-    override run(jscode: string) {
-        return this.runFunction( this.loadAsFunction(jscode) );
+    override async run(jscode: string) {
+        return await this.runFunction( this.loadAsFunction(jscode) );
+    }
+    override runSync(jscode: string) {
+        return this.runSyncFunction( this.loadAsSyncFunction(jscode) );
     }
 
-    override loadAsFunction(jscode: string): (runlib: any) => PyModule {
-        return Function("$RB", jscode) as (runlib: any) => PyModule;
+    override loadAsFunction(jscode: string): (runlib: any) => Promise<PyModule> {
+        return eval(jscode) as (runlib: any) => Promise<PyModule>;
     }
-    override runFunction( fct: (runlib: any) => PyModule ) {
+    override async runFunction( fct: (runlib: any) => Promise<PyModule> ) {
+        return await fct($RB);
+    }
+
+    override loadAsSyncFunction(jscode: string): (runlib: any) => PyModule {
+        return eval(jscode) as (runlib: any) => PyModule;
+    }
+    override runSyncFunction( fct: (runlib: any) => PyModule ) {
         return fct($RB);
     }
 
@@ -40,14 +50,4 @@ export default class RBrythonGlobalRunner extends Runner {
         // @ts-ignore
         globalThis[name] = value;
     }
-
-    /*
-    // helpers
-    override registerHelpers(helpers: Record<string, any>) {
-        for(let name in helpers)
-            this.registerHelper(name, helpers[name]);
-    }
-    override registerHelper(name: string, value: any) {
-        
-    }*/
 }

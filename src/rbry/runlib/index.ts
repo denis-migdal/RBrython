@@ -21,12 +21,14 @@ const $RB = globalThis.$RB = {
     setattr,
     getKW,
     setKW,
-    getModule
+    getModule,
+    getModuleSync
 }
 export {$RB};
 
 //TODO: corelib
 import { getClass } from "./helpers/getClass";
+import getModuleSync from "./interface/getModuleSync";
 
 // @ts-ignore
 globalThis.type = function(a: unknown) { // __new__ for type...

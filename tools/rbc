@@ -5,7 +5,7 @@ import { walk } from "https://deno.land/std@0.170.0/fs/walk.ts";
 import {exists} from "https://deno.land/std/fs/mod.ts"
 import { dirname, basename, fromFileUrl } from "https://deno.land/std/path/mod.ts";
 
-import Engines, {Targets} from "../dist/dev/libs/RBrython-all/index";
+import Engines, {EXPORT, Targets} from "../dist/dev/libs/RBrython-all/index";
 
 declare global {
     var __BRYTHON__: any;
@@ -53,15 +53,18 @@ async function removeFile(path: string) {
 /******************/
 
 const flags = parseArgs(Deno.args, {
-	boolean: ["help", "watch", "verbose"],
+	boolean: ["help", "watch", "verbose", "sync"],
 	string: ["outDir", "compat", "mode", "target"],
+    collect: ["export"],
 	default: {
         help   : false,
         watch  : false,
         verbose: false,
+        sync   : false,
         compat : "NONE",
         mode   : "debug",
-        target : "raw"
+        target : "raw",
+        export : []
     },
 });
 
@@ -73,9 +76,14 @@ if( flags.mode === "prod")
 
 const target = Targets[flags.target];
 
+const exports = flags.export.map( (e:string) => EXPORT[e])
+                            .reduce( (e: number,acc: number) => acc |= e, 0 );
+
 const emitOpts = {
     mode,
-    target
+    target,
+    exports,
+    sync: flags.sync
 }
 
 /*
@@ -90,7 +98,9 @@ if(flags.help) {
 	console.log('\t* --watch');
 	console.log('\t* --verbose');
 	console.log('\t* --mode   debug|test|prod');
-	console.log('\t* --target raw|function|global|module');
+	console.log('\t* --target raw|function|module|brython');
+	console.log('\t* --export NONE|GLOBAL|MODULE|RETURN|BRYTHON');
+	console.log('\t* --sync');
 	console.log('\t* --compat brython|');
 	Deno.exit(0);
 }

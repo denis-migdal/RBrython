@@ -9,17 +9,22 @@ export class EmitContext {
 
     readonly macros: Record<string, Macro> = {};
     readonly mode;
+    readonly sync;
 
     #symtabs;
-    constructor(symtab: SymTab, mode: MODE, macros: Record<string, Macro>) {
+    constructor(symtab: SymTab, mode: MODE, macros: Record<string, Macro>, sync: boolean) {
         this.#symtabs = [symtab];
         this.mode     = mode;
         this.macros   = macros;
+        this.sync     = sync;
     }
 
     // a little h4cky
     getName(idx = 0) {
         return this.#symtabs[this.#symtabs.length-1+idx].name;
+    }
+    isTopLevel() {
+        return this.#symtabs.length === 1;
     }
     isMethod() {
         const last = this.#symtabs.length-1;

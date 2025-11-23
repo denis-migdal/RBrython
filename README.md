@@ -151,16 +151,32 @@ The `prod` mode is similar to the `-OO` Python options:
 
 💡 You can also use existing JavaScript minifier, uglifier, or optimizer on the generated files.
 
+### Compatibility and performances (not implemented)
+
 ### Target
 
 RBrython enable to generate JavaScript code for several targets:
-- `function`: for dynamic codes.
 - `raw`: code without import/export (<i><b>default</b></i>).
-- `global`: for JavaScript script tags.
-- `module`: for ES6 modules.
-- `brython`: brython-compatible module (<i>not implemented</i>).
+- `function`: for dynamic codes (implies `EXPORT.RETURN`)
+- `module`: (implies `EXPORT.MODULE`)
+- `brython`: (implies `EXPORT.BRYTHON` and `sync: true`)
 
-### Imports
+#### Sync
+
+You can choose whether the Python script top level should be synchronous or asynchronous. The latter enable you to use ̀top level `await`.
+
+#### Export
+
+In RBrython, you can export Python modules in various ways:
+- `EXPORT.NONE`: no exports (<b><i>default</i></b>).
+- `EXPORT.GLOBAL`: export symbols as a global scope module.
+- `EXPORT.MODULE`: export symbols as ES6 module.
+- `EXPORT.RETURN`: export symbols as a function return value.
+- `EXPORT.BRYTHON`: export symbols as a Brython module.
+
+💡 You can combine several exports, e.g. `EXPORT.GLOBAL|EXPORT.BRYTHON|EXPORT.MODULE`.
+
+#### Imports
 
 RBrython search Python modules in:
 1. the loaded modules.
@@ -169,20 +185,19 @@ RBrython search Python modules in:
 4. an importmap (<i>not implemented</i>).
 
 ⚠ JavaScript ES6 modules necessitate to be either:
-- pre-loaded, indeed it isn't possible to load an ES6 module synchronously  (<i>preloadDependancies not implemented</i>).
-- imported through a specific async API (<i>not implemented</i>).
+- imported with `await JS.import(url)`.
+- pre-loaded, as it isn't possible to load an ES6 module synchronously.
 
 The import map is structured like this (<i>not implemented</i>):
 ```ts
 {
     "module_name": {
-        url: "...",
-        type: "function|module"
+        url: "function:...",
+        url: "module:...",
+        url: "brython:...",
     }
 }
 ```
-
-### Compatibility and performances (not implemented)
 
 ## Contributing
 

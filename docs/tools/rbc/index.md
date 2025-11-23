@@ -47,6 +47,18 @@ See [RBrython mode](../../../?tab=readme-ov-file#mode).
 
 See [RBrython target](../../../?tab=readme-ov-file#target).
 
+#### Export
+
+`--export NONE|GLOBAL|MODULE|RETURN|BRYTHON`: (default: `NONE`).
+
+See [RBrython export](../../../?tab=readme-ov-file#export).
+
+#### Sync
+
+`--sync`.
+
+See [RBrython sync](../../../?tab=readme-ov-file#sync).
+
 ### Compatibility and performances
 
 `--compat brython`: (default: "").

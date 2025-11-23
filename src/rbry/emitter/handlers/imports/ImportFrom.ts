@@ -19,5 +19,8 @@ export default function ImportFrom(node: ImportFromNode, ctx: EmitContext) {
     for(let i = 0; i < node.names.length; ++i)
         res += ctx.w`${node.names[i].name},`;
 
-    return res + ctx.w`} = $RB.getModule("${module}")`;
+    if( ctx.isTopLevel() && ! ctx.sync )
+        return  res + ctx.w`} = await $RB.getModule("${module}")`;
+
+    return res + ctx.w`} = $RB.getModuleSync("${module}")`;
 }

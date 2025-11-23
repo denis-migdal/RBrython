@@ -3,25 +3,52 @@ import "../runlib";
 import "./handlers/list"; // ensure Handlers are loaded.
 
 import { ParsedCode } from "../ast/types";
-import { Target } from "../targets/interface";
-import { RawTarget } from "../targets/raw";
 import SourceMap from "./SourceMap";
 import { EmitContext, Macro } from "./EmitContext";
+import globalExport from "./exports/global";
+import returnExport from "./exports/return";
+import moduleExport from "./exports/module";
+import brythonExport from "./exports/brython";
+import RawTarget from "./targets/raw";
 
-export enum MODE {
+export type Target = {
+    defaults : Partial<EmitterOptions>
+    transform: (jscode: string, sync: boolean) => string;
+}
+
+export type JSCode = {
+    name    : string,
+    jscode  : string,
+    imported: string[],
+    exported: string[],
+}
+
+export const enum MODE {
   DEBUG,
   TEST,
   PROD,
 }
 
+export const enum EXPORT {
+    NONE    = 0,
+    GLOBAL  = 1<<0,
+    MODULE  = 1<<1,
+    RETURN  = 1<<2,
+    BRYTHON = 1<<3,
+}
+
 export type EmitterOptions = {
-    mode  : MODE,
-    target: Target
+    mode   : MODE,
+    target : Target,
+    exports: EXPORT,
+    sync   : boolean
 }
 
 const EmitterDefaults: EmitterOptions = {
-    mode  : MODE.DEBUG,
-    target: RawTarget
+    mode   : MODE.DEBUG,
+    target : RawTarget,
+    exports: EXPORT.NONE,
+    sync   : false
 }
 
 export abstract class Emitter {
@@ -43,21 +70,41 @@ export default class RBrythonEmitter extends Emitter {
         this.macros[name] = fct;
     }
 
-    emit(parsed: ParsedCode, {
-                                mode   = EmitterDefaults.mode,
-                                target = EmitterDefaults.target
-                            }: Partial<EmitterOptions> = {}) {
+    emit(parsed: ParsedCode, options: Partial<EmitterOptions> = {}) {
 
-        const ctx = new EmitContext(parsed.symtable, mode, this.macros);
+        const name = "_";
 
-        const output = {
-            name    : "_",
-            imported: [],
-            exported: this.extractExportedSymbols(parsed),
-            jscode  : ctx.w_body(parsed.ast.body),
+        const opts: EmitterOptions = Object.assign({}, 
+                                        EmitterDefaults,
+                                        options.target?.defaults,
+                                        options);
+
+        const ctx = new EmitContext(parsed.symtable,
+                                    opts.mode,
+                                    this.macros,
+                                    opts.sync);
+
+        const exported = this.extractExportedSymbols(parsed);
+        let jscode     = ctx.w_body(parsed.ast.body);
+
+        if( opts.exports & EXPORT.GLOBAL)
+            jscode += globalExport(name, exported);
+        if( opts.exports & EXPORT.MODULE)
+            jscode += moduleExport(name, exported);
+        if( opts.exports & EXPORT.RETURN)
+            jscode += returnExport(name, exported);
+        if( opts.exports & EXPORT.BRYTHON) {
+            jscode += brythonExport(name, exported);
         }
 
-        return target(output);
+        const output = {
+            name,
+            imported: [],
+            exported,
+            jscode,
+        }
+
+        return opts.target.transform(jscode, opts.sync!)
     }
 
     private extractExportedSymbols(parsed: ParsedCode) {

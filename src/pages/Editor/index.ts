@@ -4,6 +4,7 @@ import printBenchStats from "./utils/printBenchStats";
 
 import test_suite from "../../tests";
 import { $RB } from "@RBrython/rbry/runlib";
+import { Targets } from "@RBrython/libs/RBrython-all";
 
 const NB_REPEAT = 3;
 
@@ -52,14 +53,15 @@ function createBench() {
         ctx.ast = engine.parse(ctx.pycode);
     })
             .addStep("emit",  (engine, ctx) => {
-        ctx.jscode = engine.emit(ctx.ast);
+        ctx.jscode = engine.emit(ctx.ast, {target: Targets.function,
+                                             sync: true});
     })
             .addStep("load",  (engine, ctx) => {
-        ctx.fct = engine.loadAsFunction(ctx.jscode);
+        ctx.fct = engine.loadAsSyncFunction(ctx.jscode);
     });
 
     for(let i = 0; i < NB_REPEAT; ++i)
-        bench.addStep(`execute${i}`,  (_, ctx) => { ctx.fct($RB); });
+        bench.addStep(`execute${i}`,  (_, ctx) => { ctx.fct($RB); }); // own $RB
     
     bench.addStat("nbTokens", (ctx) => {
         return $B.tokenizer(ctx.pycode, '_').length;

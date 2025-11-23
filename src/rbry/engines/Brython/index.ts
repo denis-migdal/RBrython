@@ -5,15 +5,19 @@ import BaseEngine from "../Base";
 import { Emitter } from "@RBrython/rbry/emitter";
 import { Macro } from "@RBrython/rbry/emitter/EmitContext";
 
+function asFct(jscode: string) {
+    return `(function($RB){"use strict";${jscode}})`;
+}
+
 class BrythonEmitter extends Emitter {
     emit(parsed: ParsedCode) {
 
         let imported:any;
-        return $B.js_from_root({ast     : parsed.ast,
+        return asFct($B.js_from_root({ast     : parsed.ast,
                                 symtable: parsed.symtable,
                                 filename: parsed.filename,
                                 src     : parsed.pycode,
-                                imported}).js
+                                imported}).js);
     }
 
     override registerMacros(macros: Record<string, Macro>) {

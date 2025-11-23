@@ -1,6 +1,6 @@
 import { modules } from "@RBrython/rbry/runners/RBrythonGlobalRunner";
 
-export default async function getModule(name: string) {
+export default function getModuleSync(name: string) {
 
     // h4ck
     const module = modules[name];
