@@ -1,3 +1,3 @@
 export default function returnExport(_: string, exported: string[]) {
-    return `\nreturn {${exported.join(", ")}};`;
+    return `  return {${exported.join(", ")}};\n`;
 }

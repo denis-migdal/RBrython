@@ -7,11 +7,10 @@ export default function ClassDef(node: ClassDefNode, ctx: EmitContext) {
     const body = node.body;
 
     // JS cstr
-    ctx.w`var ${name} = (() =>{
-        function ${name}() {
-            return Object.create(${name}.prototype);
-        }
-    `;
+    ctx.w`var ${name} = (() =>{${ctx.BB}`
+        ctx.w`function ${name}() {${ctx.BB}`
+            ctx.w`return Object.create(${name}.prototype);`
+        ctx.w`${ctx.EB}}${ctx.EB}`;
 
     // inheritance
 
@@ -31,8 +30,5 @@ export default function ClassDef(node: ClassDefNode, ctx: EmitContext) {
     // body...
     ctx.w_body(body);
 
-    ctx.w`
-        return ${name};
-    })();
-    `;
+    ctx.w`${ctx.BB}return ${name};${ctx.EB}})();`;
 }

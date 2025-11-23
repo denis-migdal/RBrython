@@ -2,12 +2,11 @@
     - not really tested everything correctly.
     - all import features not propertly tested.
 
+- doc
+    - macro + emit (?).
+
 ## Features
 
-- macro + emit (?).
-
-1. Indent
-    /!\ indent for MatchNode
 2. True write.
 3. doc EmitContext + node2js + macros
 

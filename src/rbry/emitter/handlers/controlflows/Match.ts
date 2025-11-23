@@ -3,8 +3,8 @@ import { EmitContext } from "../../EmitContext";
 
 export default function Match(node: MatchNode, ctx: EmitContext) {
 
-    ctx.w`{`; // we want a special scope for the match.
-    
+    ctx.w`{${ctx.BB}`; // we want a special scope for the match.
+
     //TODO: indent...
 
     ctx.w`const tname = type(${node.subject}).name;`
@@ -18,5 +18,5 @@ export default function Match(node: MatchNode, ctx: EmitContext) {
         ctx.w`if( tname === "${c.pattern.cls.id}"){${c.body}}`;
     }
     ctx.w`else {${node.cases[node.cases.length-1].body}}`;
-    ctx.w`}`;
+    ctx.w`${ctx.EB}}`;
 }

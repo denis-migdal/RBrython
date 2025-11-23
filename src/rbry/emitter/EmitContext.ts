@@ -42,10 +42,18 @@ export class EmitContext {
     w(strings: TemplateStringsArray, ...exprs: any[]) {
 
         for(let i = 0; i < exprs.length; ++i) {
-            this.jscode += strings[i];
+            this.w_str(strings[i]);
 
             const e = exprs[i];
-            if( isASTNode(e) )
+            if( e === this.BB) {
+                ++this.indent_level;
+                this.w_line();
+            } else if (e === this.EB) {
+                --this.indent_level;
+                this.w_line();
+            }  else if (e === this.NL) {
+                this.w_line();
+            } else if( isASTNode(e) )
                 this.w_node(e)
             else if( Array.isArray(e) )
                 this.w_body(e);
@@ -53,18 +61,42 @@ export class EmitContext {
                 this.jscode += `${e}`;
         }
 
-        this.jscode += strings[strings.length-1];
+        this.w_str(strings[strings.length-1]);
     }
 
     w_str(str: string) {
+        if( str.includes("\n") )
+            throw new Error("Break line !");
         return this.jscode += str;
     }
 
+    indent_level = 0;
+
+    w_line() {
+        this.jscode += "\n" + "  ".repeat(this.indent_level);
+    }
+
+    readonly NL = Symbol();
+    readonly BB = Symbol();
+    readonly EB = Symbol();
+
     w_body(nodes: ASTNode[]) {
-        for(let i = 0; i < nodes.length; ++i) {
-            this.w_node(nodes[i])
-            this.w_str(";\n");
+
+        if( nodes.length === 0)
+            return;
+
+        ++this.indent_level;
+
+        this.w_line();
+
+        this.w_node(nodes[0]);
+
+        for(let i = 1; i < nodes.length; ++i) {
+            this.w_line();
+            this.w_node(nodes[i]);
         }
+        --this.indent_level;
+        this.w_line();
     }
 
     w_node(node: ASTNode) {

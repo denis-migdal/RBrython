@@ -24,7 +24,7 @@ export default function FunctionDef(node: FunctionDefNode, ctx: EmitContext) {
             selfname = node.args.posonlyargs[0].arg;
         else
             selfname = node.args.args[0].arg;
-        ctx.w`const ${selfname} = this;`;
+        ctx.w`${ctx.BB}const ${selfname} = this;${ctx.EB}`;
     }
 
     ctx.w_body(body);
