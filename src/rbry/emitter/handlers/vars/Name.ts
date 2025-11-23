@@ -5,8 +5,10 @@ import { EmitContext } from "../../EmitContext";
 export default function Name(node: NameNode, ctx: EmitContext) {
 
     // h4ck
-    if( node.id === "__debug__")
-        return ctx.w`${ctx.mode === MODE.DEBUG}`;
+    if( node.id === "__debug__") {
+        ctx.w`${ctx.mode === MODE.DEBUG}`;
+        return;
+    }
 
-    return ctx.w_str(node.id);
+    ctx.w_str(node.id);
 }

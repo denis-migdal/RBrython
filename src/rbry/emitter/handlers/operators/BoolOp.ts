@@ -12,5 +12,5 @@ export default function BoolOp(node: BoolOpNode, ctx: EmitContext) {
     if( op === "And")
         jsop = "&&";
 
-    return ctx.w`${node.values[0]}${jsop}${node.values[1]}`;
+    ctx.w`${node.values[0]}${jsop}${node.values[1]}`;
 }

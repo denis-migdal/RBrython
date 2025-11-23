@@ -4,8 +4,7 @@ import { ASTNode } from "../../ast/types";
 import { EmitContext } from "../EmitContext";
 
 export type Handler = (    node: ASTNode,
-                            ctx: EmitContext,
-                        ...args: unknown[]) => string;
+                            ctx: EmitContext) => void;
 
 const Handlers: Record<string, Handler> = {};
 

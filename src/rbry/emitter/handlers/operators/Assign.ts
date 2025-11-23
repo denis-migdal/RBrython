@@ -4,21 +4,20 @@ import { EmitContext } from "../../EmitContext";
 
 export default function Assign(node: AssignNode, ctx: EmitContext) {
 
-    let res = "";
-
     let prefix = "var ";
     const type = nodeType(node.targets[0]);
     if( type === "Attribute" ) {
         const attr = node.targets[0] as AttributeNode;
-        return ctx.w`$RB.setattr(${attr.value}, "${attr.attr}", ${node.value})`;
+        ctx.w`$RB.setattr(${attr.value}, "${attr.attr}", ${node.value})`;
+        return;
     }
 
     for(let i = 1; i < node.targets.length; ++i)
-        res += ctx.w`${prefix}${node.targets[i]};`;
+        ctx.w`${prefix}${node.targets[i]};`;
 
-    res += ctx.w`${prefix}${node.targets[0]} = `;
+    ctx.w`${prefix}${node.targets[0]} = `;
     for(let i = 1; i < node.targets.length; ++i)
-        res += ctx.w`${node.targets[i]} = `;
+        ctx.w`${node.targets[i]} = `;
 
-    return res + ctx.w_node(node.value);
+    return ctx.w_node(node.value);
 }

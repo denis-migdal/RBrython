@@ -11,7 +11,7 @@ export default function(node: UnaryOpNode, ctx: EmitContext) {
     if( opname === undefined) 
         throw new Error(`UnaryOp ${op} not impl`);
 
-    return ctx.w`$RB.uop("${opname}", ${a})`;
+    ctx.w`$RB.uop("${opname}", ${a})`;
 }
 
 const uops = {

@@ -11,7 +11,7 @@ export default function(node: BinaryOpNode, ctx: EmitContext) {
     if( opname === undefined) 
         throw new Error(`BinOp ${op} not impl`);
 
-    return ctx.w`$RB.op(${a}, "${opname}", ${b})`;
+    ctx.w`$RB.op(${a}, "${opname}", ${b})`;
 }
 
 export const binops = {

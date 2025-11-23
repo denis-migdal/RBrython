@@ -3,12 +3,10 @@ import { EmitContext } from "../emitter/EmitContext";
 
 export default function __JS_RUN__(ctx: EmitContext, code: ASTNode, ...args: ASTNode[]) {
     
-    let result = ctx.w`(${unescape((code as StringNode).value)})(`;
+    ctx.w`(${unescape((code as StringNode).value)})(`;
     for(let i = 0; i < args.length; ++i)
-        result += ctx.w`${args[i]},`;    
-    result += ctx.w`)`;
-
-    return result;
+        ctx.w`${args[i]},`;    
+    ctx.w`)`;
 }
 
 function unescape(str: string) {

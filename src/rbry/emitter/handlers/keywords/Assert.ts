@@ -5,7 +5,7 @@ import { EmitContext } from "../../EmitContext";
 export default function Assert(node: AssertNode, ctx: EmitContext) {
 
     if( ctx.mode === MODE.PROD )
-        return "";
+        return;
 
-    return ctx.w`$RB.assert(${node.test})`;
+    ctx.w`$RB.assert(${node.test})`;
 }

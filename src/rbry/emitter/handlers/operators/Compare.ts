@@ -8,7 +8,10 @@ export default function Compare(node: CompareNode, ctx: EmitContext) {
     const op = getOp(node.ops[0]) as keyof typeof cmpops | "Is";
     const b  = node.comparators[0];
 
-    if( op === 'Is' ) return ctx.w`${a} === ${b}`;
+    if( op === 'Is' ) {
+        ctx.w`${a} === ${b}`;
+        return;
+    }
     
     const opname = cmpops[op];
     if( opname === undefined) {
@@ -16,7 +19,7 @@ export default function Compare(node: CompareNode, ctx: EmitContext) {
         throw new Error(`CmpOp ${op} not impl`);
     }
 
-    return ctx.w`$RB.op(${a}, "${opname}", ${b})`;
+    ctx.w`$RB.op(${a}, "${opname}", ${b})`;
 }
 
 const cmpops = {

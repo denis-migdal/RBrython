@@ -2,22 +2,14 @@
     - not really tested everything correctly.
     - all import features not propertly tested.
 
-## Export/imports
-
-1. importmap
-    b. fetch/AJAX for functions.
-    c. import() for modules.
-2. add module name somewhere ?
-
-Import map : (sys.meta_path)
-
 ## Features
+
+- macro + emit (?).
 
 1. Indent
     /!\ indent for MatchNode
 2. True write.
 3. doc EmitContext + node2js + macros
-
 
 -> write ne marchera pas s'il y a des paramètres à transmettre... FUUUUU...
     -> enter/leave
@@ -54,6 +46,12 @@ Import map : (sys.meta_path)
         - observer DP for class multi-inheritance.
     - dict/list/tuple (seulement op de bases ?)
     - async fct / generators
+
+1. importmap
+    a. fetch/AJAX for functions.
+    b. import() for modules.
+    c. add module name somewhere ?
+    - Import map : (sys.meta_path)
 
 3. Compat mode / cf optimisations (?) [per file...]
     - operations on constants might be precomputed (<i>not implemented</i>).

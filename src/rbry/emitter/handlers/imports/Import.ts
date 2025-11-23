@@ -6,10 +6,12 @@ export default function Import(node: ImportNode, ctx: EmitContext) {
     const module = node.names[0].name;
 
     if( module === "RBM" )
-        return ""; // RBrython macros...
+        return; // RBrython macros...
 
-    if( ctx.isTopLevel() && ! ctx.sync )
-        return ctx.w`const ${module} = await $RB.getModule("${module}")`;
+    if( ctx.isTopLevel() && ! ctx.sync ) {
+        ctx.w`const ${module} = await $RB.getModule("${module}")`;
+        return
+    }
 
-    return ctx.w`const ${module} = $RB.getModuleSync("${module}")`;
+    ctx.w`const ${module} = $RB.getModuleSync("${module}")`;
 }

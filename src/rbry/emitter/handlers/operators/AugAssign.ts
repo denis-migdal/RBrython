@@ -13,5 +13,5 @@ export default function AugAssign(node: AugAssignNode, ctx: EmitContext) {
     if( opname === undefined) 
         throw new Error(`BinOp ${op} not impl`);
 
-    return ctx.w`${a} = $RB.op(${a}, "i${opname}", ${b})`;   
+    ctx.w`${a} = $RB.op(${a}, "i${opname}", ${b})`;   
 }

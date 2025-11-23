@@ -85,7 +85,9 @@ export default class RBrythonEmitter extends Emitter {
                                     opts.sync);
 
         const exported = this.extractExportedSymbols(parsed);
-        let jscode     = ctx.w_body(parsed.ast.body);
+        ctx.w_body(parsed.ast.body);
+
+        let jscode = ctx.jscode;
 
         if( opts.exports & EXPORT.GLOBAL)
             jscode += globalExport(name, exported);

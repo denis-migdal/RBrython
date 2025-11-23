@@ -1,5 +1,5 @@
 import { nodeType } from "../../../ast";
-import { ASTNode, AttributeNode, CallNode } from "../../../ast/types";
+import { AttributeNode, CallNode } from "../../../ast/types";
 import { EmitContext } from "../../EmitContext";
 
 export default function Call(node: CallNode, ctx: EmitContext) {
@@ -10,25 +10,28 @@ export default function Call(node: CallNode, ctx: EmitContext) {
     // @ts-ignore
     const fid: string = f.id;
 
-    if( fid in ctx.macros)
-        return ctx.macros[fid](ctx, ...node.args);
-
-    //TODO: args parsing...
-    let str = "";
-    for(let i = 0; i < args.length; ++i)
-        str += ctx.w`${args[i]}, `;
-
-    if( keywords.length ) {
-        str += ctx.w`$RB.setKW({`;
-            for( let i = 0; i < keywords.length; ++i)
-                str += ctx.w`${keywords[i].arg}: ${keywords[i].value},`;
-        str += ctx.w`})`;
+    if( fid in ctx.macros) {
+        ctx.macros[fid](ctx, ...node.args);
+        return;
     }
 
     if( nodeType(f) === "Attribute") {
         const m = f as AttributeNode;
-        return ctx.w`$RB.mcall(${m.value}, "${m.attr}", ${str} )`;
+        ctx.w`$RB.mcall(${m.value}, "${m.attr}", `;
+    } else {
+        ctx.w`$RB.call(${f}, `;
     }
 
-    return ctx.w`$RB.call(${f}, ${str})`;
+    //TODO: args parsing...
+    for(let i = 0; i < args.length; ++i)
+        ctx.w`${args[i]}, `;
+
+    if( keywords.length ) {
+        ctx.w`$RB.setKW({`;
+            for( let i = 0; i < keywords.length; ++i)
+                ctx.w`${keywords[i].arg}: ${keywords[i].value},`;
+        ctx.w`})`;
+    }
+
+    ctx.w_str(")");
 }

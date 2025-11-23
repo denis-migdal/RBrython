@@ -3,13 +3,15 @@ import { isASTNode, nodeType } from "../ast";
 import { ASTNode, CLASS, ClassDefNode, FUNCTION, FunctionDefNode, SymTab } from "../ast/types";
 import Handlers from "./handlers";
 
-export type Macro = (ctx: EmitContext, ...args: ASTNode[]) => string;
+export type Macro = (ctx: EmitContext, ...args: ASTNode[]) => void;
 
 export class EmitContext {
 
     readonly macros: Record<string, Macro> = {};
     readonly mode;
     readonly sync;
+
+    jscode: string = "";
 
     #symtabs;
     constructor(symtab: SymTab, mode: MODE, macros: Record<string, Macro>, sync: boolean) {
@@ -37,35 +39,32 @@ export class EmitContext {
 
     get symtab() { return this.#symtabs[this.#symtabs.length-1]; }
 
-    w(strings: TemplateStringsArray, ...exprs: any[]): string {
+    w(strings: TemplateStringsArray, ...exprs: any[]) {
 
-        let result = "";
         for(let i = 0; i < exprs.length; ++i) {
-            result += strings[i];
+            this.jscode += strings[i];
+
             const e = exprs[i];
             if( isASTNode(e) )
-                result += this.w_node(e)
+                this.w_node(e)
             else if( Array.isArray(e) )
-                result += this.w_body(e);
+                this.w_body(e);
             else
-                result += `${e}`;
+                this.jscode += `${e}`;
         }
 
-        result += strings[strings.length-1];
-
-        return result;
+        this.jscode += strings[strings.length-1];
     }
 
     w_str(str: string) {
-        return str;
+        return this.jscode += str;
     }
 
     w_body(nodes: ASTNode[]) {
-        let res = "";
-        for(let i = 0; i < nodes.length; ++i)
-            res += this.w_node(nodes[i]) + ";\n";
-
-        return res;
+        for(let i = 0; i < nodes.length; ++i) {
+            this.w_node(nodes[i])
+            this.w_str(";\n");
+        }
     }
 
     w_node(node: ASTNode) {
@@ -85,10 +84,11 @@ export class EmitContext {
 
         const str = handler(node, this);
 
+        if( str !== undefined)
+            throw new Error("NOK");
+
         if( hasNewContext )
             this.leave();
-
-        return str;
     }
 
     // enter/leave.
