@@ -1,6 +1,6 @@
 - target opts
-    - not really tested everything correctly
-    - no imports (not tested)
+    - not really tested everything correctly.
+    - all import features not propertly tested.
 
 ## Features
 

@@ -160,6 +160,28 @@ RBrython enable to generate JavaScript code for several targets:
 - `module`: for ES6 modules.
 - `brython`: brython-compatible module (<i>not implemented</i>).
 
+### Imports
+
+RBrython search Python modules in:
+1. the loaded modules.
+2. the global space.
+3. Brython loaded modules.
+4. an importmap (<i>not implemented</i>).
+
+⚠ JavaScript ES6 modules necessitate to be either:
+- pre-loaded, indeed it isn't possible to load an ES6 module synchronously  (<i>preloadDependancies not implemented</i>).
+- imported through a specific async API (<i>not implemented</i>).
+
+The import map is structured like this (<i>not implemented</i>):
+```ts
+{
+    "module_name": {
+        url: "...",
+        type: "function|module"
+    }
+}
+```
+
 ### Compatibility and performances (not implemented)
 
 ## Contributing
