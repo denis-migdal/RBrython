@@ -18,7 +18,10 @@ export type ParsedCode = {
     symtable: SymTab,
 };
 
-export type ASTNode<T={}> = {} & T;
+export type ASTNode<T={}> = {
+    js_start?: number,
+    js_end  ?: number
+} & T;
 
 export type BodyNode = ASTNode[];
 
@@ -26,138 +29,138 @@ export type ModuleNode = ASTNode<{
     body: BodyNode
 }>;
 
-export type ExprNode = {
+export type ExprNode = ASTNode<{
     value: ASTNode
-}
+}>
 
-export type ConstantNode = {
+export type ConstantNode = ASTNode<{
     value: number|string|boolean|{value: number|bigint}
-}
-export type StringNode = {
+}>
+export type StringNode = ASTNode<{
     value: string;
-}
+}>
 
-export type AssertNode = {
+export type AssertNode = ASTNode<{
     test: ASTNode
-}
+}>
 
 export type OperatorNode = unknown; // better to shadow it...
 
-export type UnaryOpNode = {
+export type UnaryOpNode = ASTNode<{
     operand: ASTNode;
     op     : OperatorNode; 
-}
+}>
 
-export type BinaryOpNode = {
+export type BinaryOpNode = ASTNode<{
     left : ASTNode;
     right: ASTNode;
     op   : OperatorNode;
-}
-export type BoolOpNode = {
+}>
+export type BoolOpNode = ASTNode<{
     op: OperatorNode;
     values: [ASTNode, ASTNode]
-}
+}>
 
-export type CompareNode = {
+export type CompareNode = ASTNode<{
     left       : ASTNode;
     ops        : OperatorNode[];
     comparators: ASTNode[];
-}
+}>
 
-export type NameNode = {
+export type NameNode = ASTNode<{
     id: string;
-}
+}>
 
-export type AssignNode = {
+export type AssignNode = ASTNode<{
     value  : ASTNode;
     targets: ASTNode[];
-}
+}>
 
-export type AugAssignNode = {
+export type AugAssignNode = ASTNode<{
     target : ASTNode;
     value  : ASTNode;
     op     : OperatorNode;
-}
+}>
 
 
-export type ReturnNode = {
+export type ReturnNode = ASTNode<{
     value  : ASTNode;
-}
+}>
 
-export type PassNode = {}
+export type PassNode = ASTNode<{}>
 
-export type AttributeNode = {
+export type AttributeNode = ASTNode<{
     value: ASTNode;
     attr : string;
-}
+}>
 
-export type CallNode = {
+export type CallNode = ASTNode<{
     func    : ASTNode
     args    : ASTNode[],
     keywords: {arg: string, value: ASTNode}[]
-}
+}>
 
-export type ClassDefNode = {
+export type ClassDefNode = ASTNode<{
     name: string;
     body: BodyNode;
     bases: ASTNode[];
-}
+}>
 
-export type ArgsDefNode = {
+export type ArgsDefNode = ASTNode<{
     posonlyargs: ArgDefNode[];
     args       : ArgDefNode[];
-}
+}>
 
-export type ArgDefNode = {
+export type ArgDefNode = ASTNode<{
     arg: string
-}
+}>
 
-export type LambdaDefNode = {
+export type LambdaDefNode = ASTNode<{
     args: ArgsDefNode;
     body: BodyNode;
-}
+}>
 
-export type FunctionDefNode = {
+export type FunctionDefNode = ASTNode<{
     name: string;
     posonlyargs: ASTNode[];
     args: ArgsDefNode;
     body: BodyNode;
     decorator_list: ASTNode[]
-}
+}>
 
-export type IfNode = {
+export type IfNode = ASTNode<{
     test: ASTNode;
     body: BodyNode;
     orelse: ASTNode[];
-}
+}>
 
-export type WhileNode = {
+export type WhileNode = ASTNode<{
     test: ASTNode;
     body: BodyNode;
     //TODO: orelse
-}
+}>
 
-export type ForNode = {
+export type ForNode = ASTNode<{
     target: ASTNode;
     iter  : ASTNode;
     body  : BodyNode;
     //TODO: orelse
-}
+}>
 
-export type RaiseNode = {
+export type RaiseNode = ASTNode<{
     exc: ASTNode;
-}
+}>
 
-export type TryNode = {
+export type TryNode = ASTNode<{
     body: BodyNode;
     handlers: {body: BodyNode}[];
-}
+}>
 
-export type JoinedStrNode = {
-    values: {value: string|ASTNode}[]
-}
+export type JoinedStrNode = ASTNode<{
+    values: (ASTNode<{value: ASTNode}>|StringNode)[]
+}>
 
-export type MatchNode = {
+export type MatchNode = ASTNode<{
     subject: ASTNode,
     cases  : {
         pattern: {
@@ -167,13 +170,13 @@ export type MatchNode = {
         }
         body: BodyNode
     }[]
-}
+}>
 
-export type ImportNode = {
+export type ImportNode = ASTNode<{
     names: {name: string}[]
-}
+}>
 
-export type ImportFromNode = {
+export type ImportFromNode = ASTNode<{
     module: string
     names: {name: string}[]
-}
+}>

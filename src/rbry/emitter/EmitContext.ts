@@ -114,10 +114,9 @@ export class EmitContext {
         if( hasNewContext )
             this.enter( (node as ClassDefNode|FunctionDefNode).name);
 
-        const str = handler(node, this);
-
-        if( str !== undefined)
-            throw new Error("NOK");
+        node.js_start = this.jscode.length;
+        handler(node, this);
+        node.js_end   = this.jscode.length;
 
         if( hasNewContext )
             this.leave();

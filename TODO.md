@@ -1,23 +1,14 @@
 - target opts
     - not really tested everything correctly.
     - all import features not propertly tested.
+- ident code.
 
 - doc
-    - macro + emit (?).
+    - macro + emit + EmitContext (?).
 
 ## Features
 
-2. True write.
-3. doc EmitContext + node2js + macros
-
--> write ne marchera pas s'il y a des paramètres à transmettre... FUUUUU...
-    -> enter/leave
-    -> writer with ctx ?
-
 1. Source map.
-    - generic w() / w`` (just start/end pos).
-        - indent generated JS (w_indent/w_line)
-        - handle line breaks.
     - sourcemap API...
         -> filtrer quel type de truc à besoin d'être mappé ?
         -> register stating pos in source map struct...
