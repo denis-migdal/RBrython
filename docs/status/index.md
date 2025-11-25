@@ -1,11 +1,11 @@
-## Kernel
+## Kernel
 
-### Keywords (0/37)
+### Keywords (0/37)
 
 https://www.w3schools.com/python/python_ref_keywords.asp
 
 Implemented and tested:
-- 
+- x
 
 Implemented but not fully tested:
 - assert
@@ -35,7 +35,7 @@ Not implemented (8)
 ### Operators 
 
 Implemented and tested:
-- 
+- x
 
 Implemented but not fully tested
 - arithmetic op : + - * / // % **
