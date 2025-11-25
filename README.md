@@ -10,6 +10,8 @@ RBrython perfectly integrates with existing Python and Web development tools, wh
 
 With RBrython, you can choose whether the conversion should favorise Python compliance or performances.
 
+See <a href="./docs/status/index.md">here</a> the current RBrython implementation status.
+
 ## Running Python code in the Browser
 
 There are 3 ways to run Python code with RBrython:

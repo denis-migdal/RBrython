@@ -5,11 +5,28 @@
 
 - doc
     - macro + emit + EmitContext (?).
+    - debug: include srcmap
+    - test/prod : src map url.
+
+## TODO
+
+- ~100 unittest/semaine.
+- Brython support in export
+- Exception trace + sourcemap
+- clean JS / no runtime.
 
 ## Features
 
+0. filename + module name etc (add to source URL in function)
+0. Emit Brython
+    - use $imported[module_name]...
 1. Source map.
+    - how to get sourcemap when dealing with errors ?
     - sourcemap API...
+        1. convert JS pos with line/col
+        2. [jspos, pypos, level, node]
+        3. sort + remove duplicates.
+        4. src map
         -> filtrer quel type de truc à besoin d'être mappé ?
         -> register stating pos in source map struct...
         -> emit : JS struct
@@ -17,10 +34,6 @@
             -> exported (todo: export mode with $RB ? / imported ?)
             -> sourcemap
             -> jscode
-    1. AST node : (start/end)
-    2. [jspos, pypos, level, node]
-    3. sort + remove duplicates.
-    4. src map
     - failed test -> get line + highlight errors ?
 
 - features
@@ -51,15 +64,61 @@ TS/WASM generation possible.
 ## Tests
 
 Tests from : https://github.com/brython-dev/brython/tree/master/www/tests
+See src/unittests
 
-- unittests (cf editor)
-    + list of builtins
-    - https://github.com/brython-dev/brython/blob/master/www/tests/test_decorators.py
-    - https://github.com/brython-dev/brython/blob/master/www/tests/test_exceptions.py
-    - https://github.com/brython-dev/brython/blob/master/www/tests/test_iterators.py
-    - https://github.com/brython-dev/brython/blob/master/www/tests/test_rmethods.py
-    - https://github.com/brython-dev/brython/blob/master/www/tests/test_fstrings.py
-    - https://github.com/brython-dev/brython/blob/master/www/tests/test_types.py
+Kernel (4453 ~= 86/w):
+- classes (1176)
+    - descriptor (27)
+    - decorators (99)
+    - reflected method (95)
+    - special methods (108)
+    - test rmethod (+120)
+- functions
+    - packed_argument (+12)
+- imports (112)
+    - test_from_import (+26)
+    - global_in_imported.py (+19)
+
+- test_types (+129)
+
+- f-string (138)
+
+- exceptions (210)
+    - exceptions_trace (+257)
+    + src map...
+
+- iterators (94)
+    - generator (1262)
+
+- simple (+15) (no asserts...)
+- basic test suite (1132)
+- test_suite (+1214)
+
+Core (3144 ~= 60/w):
+- numbers (827)
+- bytes (301)
+- dicts (288)
+- list (496)
+- test_list_methods (+74)
+- memory view (17)
+- sets (319)
+- string format (289)
+- string methods (95)
+- strings (512)
+
+Other
+- exec_eval
+- file open_read
+- javascript objects
+- pattern matching
+- print (?) - contains builtin list ?
+- test_buitins
+
+- issues (+3333)
+- issues BB (+895)
+- issues GC (+461)
+
+-----------
 
 - https://docs.python.org/3/reference/datamodel.html#numbers-integral
 - https://docs.python.org/3/reference/datamodel.html#emulating-numeric-types
