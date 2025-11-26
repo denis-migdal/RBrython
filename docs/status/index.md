@@ -17,8 +17,8 @@ https://www.w3schools.com/python/python_ref_keywords.asp
         </tr>
         <tr>
             <td>$\color{orange}{and/not/or}$</td>
-            <td>$\color{red}{is/is not}$</td>
-            <td>$\color{red}{in/not in}$</td>
+            <td>$\color{red}{is/is~not}$</td>
+            <td>$\color{red}{in/not~in}$</td>
             <td>$\color{red}{del}$</td>
         </tr>
         <tr>
