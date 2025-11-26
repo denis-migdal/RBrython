@@ -1,12 +1,14 @@
 ## Current TODOs
 
-- bug
-    - bool() type call... (TODO...) -> use __new__
-    - and/or bug...
+- fix corelib type issue
 - complete documentation
     - bool() opti.
     - macro + emit + EmitContext (?).
     - debug: include inline srcmap vs prod : separate file (srcmap url)
+- bug
+    - bool() type call... (TODO...) -> use __new__
+    - and/or bug...
+- color failed unittest
 
 Mail
 - target opts
@@ -23,8 +25,8 @@ Mail
 
 ## Features
 
-0. filename + module name etc (add to source URL in function)
 0. Emit Brython
+    - filename + module name etc (add to source URL in function)
     - use $imported[module_name]...
 1. Source map.
     - how to get sourcemap when dealing with errors ?

@@ -6,12 +6,20 @@
 import Engine from "@RBrython/rbry/engines/interface";
 
 export type BenchStats   = {
-    steps : {name: string, time: number}[];
-    ctx   : Record<string, any>
+    tests : ResultOne[],
+    steps : {name: string, time: number}[],
+    ctx   : Record<string, any>,
     errors: Error[],
     stats : Record<string, number>
 }
 export type BenchResults = Record<string, BenchStats>;
+
+type ResultOne = {
+    ctx   : Record<string, any>,
+    steps : {name: string, time: number}[],
+    errors: Error[],
+    stats : Record<string, number>
+}
 
 export default class BenchRunner {
 
@@ -37,10 +45,11 @@ export default class BenchRunner {
         this.#results = {};
         for(let r = 0; r < this.engines.length; ++r) {
             this.#results[this.engines[r].name] = {
+                tests : [],
                 steps : new Array(this.steps.length),
                 ctx   : {},
                 errors: [],
-                stats : {}
+                stats : {},
             };
             for(let i = 0; i < this.steps.length; ++i)
                 this.#results[this.engines[r].name].steps[i] = {
@@ -56,41 +65,65 @@ export default class BenchRunner {
         return this.#results!;
     }
 
+    protected benchOne(engineId: number, ctx: Record<string, any>) {
+
+        const engine = this.engines[engineId].engine;
+
+        const resultOne: ResultOne = {
+            ctx,
+            steps : new Array(this.steps.length),
+            errors: [],
+            stats : {}
+        };
+
+        try {
+
+            for(let i = 0; i < this.steps.length; ++i) {
+
+                const f = this.steps[i].fct;
+
+                const beg = performance.now();
+                f(engine, ctx);
+                const end = performance.now();
+                
+                resultOne.steps[i] = {
+                    time: end - beg,
+                    name: this.steps[i].name
+                }
+            }
+
+            for(let i = 0; i < this.stats.length; ++i)
+                resultOne.stats[this.stats[i].name] = this.stats[i].fct(ctx);
+
+        } catch(e: unknown) {
+            resultOne.errors.push( e as Error );
+        }
+
+        return resultOne;
+    }
+
     bench(ctx: Record<string, any>) {
 
-        if( this.#results === null ) {
+        if( this.#results === null )
             this.resetStats();
-        }
-        //TODO tokenize (stats).
-        //TODO print
 
         const results = this.#results!;
 
         for(let r = 0; r < this.engines.length; ++r) {
-            const engine = this.engines[r].engine;
-            const result = results[this.engines[r].name];
-            const context = result.ctx = {...ctx};
+            const resultEngine = results[this.engines[r].name];
 
-            try {
+            const resultOne = this.benchOne(r, ctx);
 
-                for(let i = 0; i < this.steps.length; ++i) {
+            // merge
+            resultEngine.tests.push(resultOne);
+            resultEngine.errors.push(...resultOne.errors);
+            for(let i = 0; i < this.steps.length; ++i)
+                resultEngine.steps[i].time += resultOne.steps[i].time;
 
-                    const f = this.steps[i].fct;
-
-                    const beg = performance.now();
-                    f(engine, context);
-                    const end = performance.now();
-                    
-                    result.steps[i].time += end - beg;
-                }
-
-                for(let i = 0; i < this.stats.length; ++i) {
-                    result.stats[this.stats[i].name] += this.stats[i].fct(context);
-                }
-
-            } catch(e: unknown) {
-                result.errors.push( e as Error );
+            for(let i = 0; i< this.stats.length; ++i) {
+                resultEngine.stats[this.stats[i].name] += resultOne.stats[this.stats[i].name];
             }
+
         }
     }
 }

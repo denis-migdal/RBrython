@@ -27,8 +27,6 @@ export default function Arguments(node: ArgsDefNode, ctx: EmitContext) {
         ctx.w`...${node.vararg.arg}`;
     }
 
-    console.warn( node.args.length, arg_offset);
-
     if( node.args.length - arg_offset) {
         // kw...
         ctx.w`{`;

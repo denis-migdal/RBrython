@@ -38,8 +38,8 @@ export default function printBenchStats(stats: BenchStats, base: BenchStats) {
     report += `Asserts: ${passed}/${stats.stats.asserts_count} (${+(passed_rate*100)}%)\n`
     report += `Py code: ${nb_tokens} tokens (${stats.stats.nbFiles} file)\n`;
     
-    report += "JS code: " + tdiff(stats.ctx.jscode?.length,
-                                  base.ctx.jscode?.length) + "\n";
+    report += "JS code: " + tdiff(stats.stats.jslen,
+                                  base.stats.jslen) + "\n";
     report += "\nTimes:\n"
 
 

@@ -25,7 +25,6 @@ export default class RBrythonGlobalRunner extends Runner {
     }
 
     override loadAsSyncFunction(jscode: string): (runlib: any) => PyModule {
-        console.warn(jscode);
         return eval(jscode) as (runlib: any) => PyModule;
     }
     override runSyncFunction( fct: (runlib: any) => PyModule ) {

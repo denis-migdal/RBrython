@@ -69,6 +69,9 @@ function createBench() {
     bench.addStat("nbFiles", (ctx) => {
         return 1;
     })
+    bench.addStat("jslen", (ctx) => {
+        return ctx.jscode?.length;
+    })
     bench.addStat("asserts_count", (ctx) => {
         const n = assert_count / NB_REPEAT;
         assert_count = 0;
@@ -110,11 +113,11 @@ function printResult( target: Element,
                         base: BenchStats) {
 
     target.textContent = printBenchStats(result, base);
-    target.classList.add("success");
+    let hasError = result.stats.asserts_fail !== 0;
+    
     if( result.errors.length > 0) {
-        console.warn(result.errors);
 
-        target.classList.add("error");
+        hasError = true;
         target.textContent += "\n" + result.errors.map( e => {
             let msg = e.message;
             if( msg === "")
@@ -124,19 +127,37 @@ function printResult( target: Element,
         }).join('\n');
         //TODO: show code...
     }
+
+    target.classList.toggle("error", hasError); 
+    target.classList.toggle("success", !hasError); 
 }
 
-function run(pycodes: string[]) {
+function run(pycodes: string[]|Record<string,string>) {
 
     resetGUI();
 
     bench.resetStats();
 
     //TODO: handle errors...
-    for(let i = 0; i < pycodes.length; ++i)
-        bench.bench({pycode: pycodes[i]});
+    const keys = Object.keys(pycodes);
+    for(let i = 0; i < keys.length; ++i) {
+        // @ts-ignore
+        bench.bench({pycode: pycodes[keys[i]]});
+    }
 
     const results = bench.getStats();
+
+    for(let i = 0; i < keys.length; ++i) {
+
+        const res = results.RBrython.tests[i];
+
+        const hasError = !!(res.errors.length || res.stats.asserts_fail);
+        const test = [...select.children].find( o => o.getAttribute("value") === res.ctx.pycode);
+        if( test !== undefined) {
+            test.classList.toggle("success", ! hasError);
+            test.classList.toggle("error"  ,   hasError);
+        }
+    }
 
     if( pycodes.length === 1) {
           python_input.textContent = results.Brython.ctx.pycode;
@@ -424,10 +445,10 @@ for(let i = 0; i < brython_tests.length; ++i) {
 // =====================================================================
 
 const bench = createBench();
-let initialRun: string[];
+let initialRun: string[]|Record<string, string>;
 
 if( test_name === "rbrython" ) {
-    initialRun = Object.values(test_suite);
+    initialRun = test_suite;
 } else if( test_name !== null )
     initialRun = generateTestSuite(test_name, merge);
 else
