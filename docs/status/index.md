@@ -41,15 +41,15 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 <table>
     <tbody>
         <tr>
-            <td>$\color{orange}{Assignments: =, :=}$</td>
+            <td>$\color{orange}{=, :=}$</td>
             <td>$\color{orange}{Rich~assignments}$</td>
-            <td>$\color{orange}{Arithmetic: +, -, *, /, //, \%, **}$</td>
-            <td>$\color{orange}{Bitwise: \&, |, \^, \~, <<, >>}$</td>
+            <td>$\color{orange}{+, -, *, /, //, \%, **}$</td>
+            <td>$\color{orange}{\&, |, \^, \~, <<, >>}$</td>
         </tr>
         <tr>
-            <td>$\color{orange}{Compare:~>, <, ==, !=, <=, >=}$</td>
-            <td>$\color{orange}{Logical: and/or/not}$</td>
-            <td>$\color{red}{Identity: is/is~not}$</td>
+            <td>$\color{orange}{>, <, ==, !=, <=, >=}$</td>
+            <td>$\color{orange}{and/or/not}$</td>
+            <td>$\color{red}{is/is~not}$</td>
             <td>$\color{red}{in/not~in}$</td>
         </tr>
         <tr>
