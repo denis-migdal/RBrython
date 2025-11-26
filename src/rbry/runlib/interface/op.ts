@@ -6,15 +6,6 @@ const NotImplemented = globalThis.NotImplemented = Symbol();
 
 export default function op(a: unknown, op: string, b: unknown) {
 
-    if( op === "and") {
-        return toBool(a) ? b
-                         : a;
-    }
-    if( op === "or") {
-        return toBool(a) ? a
-                         : b;
-    }
-
     const ka = getClass(a);
 
     if( ka === undefined ) {

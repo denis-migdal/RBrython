@@ -8,7 +8,6 @@ import Engine from "@RBrython/rbry/engines/interface";
 export type BenchStats   = {
     tests : ResultOne[],
     steps : {name: string, time: number}[],
-    ctx   : Record<string, any>,
     errors: Error[],
     stats : Record<string, number>
 }
@@ -47,7 +46,6 @@ export default class BenchRunner {
             this.#results[this.engines[r].name] = {
                 tests : [],
                 steps : new Array(this.steps.length),
-                ctx   : {},
                 errors: [],
                 stats : {},
             };
@@ -112,16 +110,16 @@ export default class BenchRunner {
         for(let r = 0; r < this.engines.length; ++r) {
             const resultEngine = results[this.engines[r].name];
 
-            const resultOne = this.benchOne(r, ctx);
+            const resultOne = this.benchOne(r, {...ctx});
 
             // merge
             resultEngine.tests.push(resultOne);
             resultEngine.errors.push(...resultOne.errors);
             for(let i = 0; i < this.steps.length; ++i)
-                resultEngine.steps[i].time += resultOne.steps[i].time;
+                resultEngine.steps[i].time += resultOne.steps[i]?.time ?? 0;
 
             for(let i = 0; i< this.stats.length; ++i) {
-                resultEngine.stats[this.stats[i].name] += resultOne.stats[this.stats[i].name];
+                resultEngine.stats[this.stats[i].name] += resultOne.stats[this.stats[i].name]?? 0;
             }
 
         }

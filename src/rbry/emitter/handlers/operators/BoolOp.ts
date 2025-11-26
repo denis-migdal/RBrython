@@ -5,7 +5,9 @@ import { EmitContext } from "../../EmitContext";
 export default function BoolOp(node: BoolOpNode, ctx: EmitContext) {
 
     const op = getOp(node.op);
+    
+    console.warn("WTF", op);
 
     const jsop = op.toLowerCase();
-    return ctx.w`$RB.op(${node.values[0]}, "${jsop}", ${node.values[1]})`
+    return ctx.w`$RB.bop(${node.values[0]}, "${jsop}", ${node.values[1]})`
 }

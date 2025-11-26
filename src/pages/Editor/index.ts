@@ -160,9 +160,11 @@ function run(pycodes: string[]|Record<string,string>) {
     }
 
     if( pycodes.length === 1) {
-          python_input.textContent = results.Brython.ctx.pycode;
-         bry_js_output.textContent = results. Brython.ctx.jscode;
-        sbry_js_output.textContent = results.RBrython.ctx.jscode;
+        const RBryCtx = results.RBrython.tests[0].ctx;
+        const  BryCtx = results. Brython.tests[0].ctx;
+          python_input.textContent = RBryCtx.pycode;
+         bry_js_output.textContent =  BryCtx.jscode;
+        sbry_js_output.textContent = RBryCtx.jscode;
     }
 
     printResult(bry_output , results[ "Brython"], results["RBrython"]);

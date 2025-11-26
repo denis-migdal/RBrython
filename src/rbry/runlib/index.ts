@@ -13,6 +13,7 @@ import { getKW, setKW } from "./interface/KW";
 const $RB = globalThis.$RB = {
     // interface
     op,
+    bop,
     uop,
     call,
     mcall,
@@ -30,6 +31,7 @@ export {$RB};
 //TODO: corelib
 import { getClass } from "./helpers/getClass";
 import getModuleSync from "./interface/getModuleSync";
+import bop from "./interface/bop";
 
 // @ts-ignore
 globalThis.abs = function( a: unknown) {

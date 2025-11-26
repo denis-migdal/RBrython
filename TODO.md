@@ -1,6 +1,5 @@
 ## Current TODOs
 
-- fix corelib type issue
 - complete documentation
     - bool() opti.
     - macro + emit + EmitContext (?).
