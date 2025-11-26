@@ -1,6 +1,6 @@
 ## Kernel
 
-### Keywords (0/16)
+### Keywords (1/16)
 
 https://www.w3schools.com/python/python_ref_keywords.asp
 
@@ -14,7 +14,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
         </tr>
         <tr>
             <td>$\color{orange}{and/not/or}$</td>
-            <td>$\color{red}{is/is~not}$</td>
+            <td>$\color{green}{is/is~not}$</td>
             <td>$\color{red}{in/not~in}$</td>
             <td>$\color{red}{del}$</td>
         </tr>
@@ -33,7 +33,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
     </tbody>
 </table>
 
-### Operators (0/12)
+### Operators (1/12)
 
 <table>
     <tbody>
@@ -47,7 +47,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
         <tr>
             <td>$\color{orange}{>, <, ==, !=, <=, >=}$</td>
             <td>$\color{orange}{and/or/not}$</td>
-            <td>$\color{red}{is/is~not}$</td>
+            <td>$\color{green}{is/is~not}$</td>
             <td>$\color{red}{in/not~in}$</td>
         </tr>
         <tr>
@@ -59,9 +59,13 @@ https://www.w3schools.com/python/python_ref_keywords.asp
     </tbody>
 </table>
 
-### Functions
+### Functions/Classes
 
-### Classes
+- methods
+- attributes
+- decorators
+- argument parsing
+- etc.
 
 ## Core
 
