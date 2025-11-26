@@ -10,7 +10,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 <table>
     <tbody>
         <tr>
-            <td style="background-color:orange">if/elif/else</td>
+            <td>$\color{orange}{if/elif/else}$</td>
             <td style="background-color:orange">for/while</td>
             <td style="background-color:orange">break/continue/pass</td>
             <td style="background-color:orange">match/case</td>
