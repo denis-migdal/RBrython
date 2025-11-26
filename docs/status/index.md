@@ -28,8 +28,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
             <td>$\color{red}{with}$</td>
         </tr>
         <tr>
-            <td>$\color{orange}{imports
-    import/from/as}$</td>
+            <td>$\color{orange}{import/from/as}$</td>
             <td>$\color{red}{global/nonlocal}$</td>
             <td>$\color{red}{async/await}$</td>
             <td>$\color{red}{yield}$</td>
@@ -37,33 +36,33 @@ https://www.w3schools.com/python/python_ref_keywords.asp
     </tbody>
 </table>
 
-### Operators 
+### Operators (0/12)
 
-Implemented and tested:
-- x
-
-Implemented but not fully tested
-- arithmetic op : + - * / // % **
-- assigment =
-- rich assigment (+= etc)
-- compare: > < == != <= >=
-- logical: and or not
-- identity: is, is not (not implemented)
-- bitwise: & | ^ ~ << >>
-- .
-
-Not implemented:
-- in/not in
-- :=
-- []
+<table>
+    <tbody>
+        <tr>
+            <td>$\color{orange}{Assignments: =, :=}$</td>
+            <td>$\color{orange}{Rich assignments}$</td>
+            <td>$\color{orange}{Arithmetic: +, -, *, /, //, %, **}$</td>
+            <td>$\color{orange}{Bitwise: &, |, ^, ~, <<, >>}$</td>
+        </tr>
+        <tr>
+            <td>$\color{orange}{Compare: >, <, ==, !=, <=, >=}$</td>
+            <td>$\color{orange}{Logical: and/or/not}$</td>
+            <td>$\color{red}{Identity: is/is~not}$</td>
+            <td>$\color{red}{Identity: in/not~in}$</td>
+        </tr>
+        <tr>
+            <td>$\color{red}{[]}</td>
+            <td>$\color{red}{.}</td>
+            <td>$\color{red}{ternary op}</td>
+            <td>$\color{red}{list comprehension}</td>
+        </tr>
+    </tbody>
+</table>
 
 ### Functions
 
 ### Classes
-
-### Others
-
-- list en compréhension.
-- ternary op.
 
 ## Core
