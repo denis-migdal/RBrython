@@ -43,8 +43,8 @@ https://www.w3schools.com/python/python_ref_keywords.asp
         <tr>
             <td>$\color{orange}{Assignments: =, :=}$</td>
             <td>$\color{orange}{Rich~assignments}$</td>
-            <td>$\color{orange}{Arithmetic: +, -, *, /, //, %, **}$</td>
-            <td>$\color{orange}{Bitwise: &, |, ^, ~, <<, >>}$</td>
+            <td>$\color{orange}{Arithmetic: +, -, *, /, //, \%, **}$</td>
+            <td>$\color{orange}{Bitwise: \&, |, \^, \~, <<, >>}$</td>
         </tr>
         <tr>
             <td>$\color{orange}{Compare:~>, <, ==, !=, <=, >=}$</td>
@@ -55,8 +55,8 @@ https://www.w3schools.com/python/python_ref_keywords.asp
         <tr>
             <td>$\color{red}{[]}$</td>
             <td>$\color{red}{.}$</td>
-            <td>$\color{red}{ternary op}$</td>
-            <td>$\color{red}{list comprehension}$</td>
+            <td>$\color{red}{ternary~op}$</td>
+            <td>$\color{red}{list~comprehension}$</td>
         </tr>
     </tbody>
 </table>
