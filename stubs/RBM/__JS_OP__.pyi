@@ -7,6 +7,13 @@ from RBM import bigint, boolean, number
 def __JS_OP__(a: object, op: Literal["=="], b: object) -> boolean: ...
 
 @overload
+def __JS_OP__(a: object, op: Literal["!="], b: object) -> boolean: ...
+@overload
+def __JS_OP__(a: object, op: Literal["==="], b: object) -> boolean: ...
+@overload
+def __JS_OP__(a: object, op: Literal["!=="], b: object) -> boolean: ...
+
+@overload
 def __JS_OP__(a: bigint,
              op: Literal["+"]|Literal["-"]|Literal["/"]|Literal["*"]
                 |Literal["%"]|Literal["**"],

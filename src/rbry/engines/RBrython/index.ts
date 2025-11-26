@@ -27,6 +27,7 @@ export default function RBrythonEngineFactory() {
     engine.registerModule("JS", globalThis);
 
     const builtins = [
+        require("!!raw-loader!../../corelib/type.py"  ).default,
         require("!!raw-loader!../../corelib/int.py"  ).default,
         require("!!raw-loader!../../corelib/float.py").default,
         require("!!raw-loader!../../corelib/bool.py" ).default,

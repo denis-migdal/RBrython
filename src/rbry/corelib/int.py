@@ -120,8 +120,12 @@ class int(bigint):
 
     def __lshift__(self, o: object, /) -> NotImplementedType|int:
         match o:
-            case int  (): return __JS_OP__(self, "<<", o)
-            case _      : return NotImplemented
+            case int  ():
+                __JS_LOG__("INT")
+                return __JS_OP__(self, "<<", o)
+            case _      :
+                __JS_LOG__("OTHER", o)
+                return NotImplemented
     
     def __rlshift__(self, o: object, /) -> NotImplementedType|int:
         match o:

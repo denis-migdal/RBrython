@@ -21,7 +21,15 @@ export default function Arguments(node: ArgsDefNode, ctx: EmitContext) {
     for(let i = arg_offset; i < node.args.length; ++i)
         ctx.w`_${node.args[i].arg}, `;
 
-    if( node.args.length ) {
+    // @ts-ignore
+    if( node.vararg !== undefined ) {
+        // @ts-ignore
+        ctx.w`...${node.vararg.arg}`;
+    }
+
+    console.warn( node.args.length, arg_offset);
+
+    if( node.args.length - arg_offset) {
         // kw...
         ctx.w`{`;
         for( let i = arg_offset ; i < node.args.length; ++i)

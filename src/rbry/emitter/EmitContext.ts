@@ -65,8 +65,8 @@ export class EmitContext {
     }
 
     w_str(str: string) {
-        if( str.includes("\n") )
-            throw new Error("Break line !");
+        //if( str.includes("\n") )
+        //    throw new Error("Break line !");
         return this.jscode += str;
     }
 

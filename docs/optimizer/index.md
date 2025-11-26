@@ -1,5 +1,9 @@
 ## Optimizations ideas (not implemented)
 
+for
+    - do not use iterator when possible, e.g. with range()...
+    - check if key used outside of loop or not.
+
 - self -> rename as this.
 
 - precompute operations on constants.

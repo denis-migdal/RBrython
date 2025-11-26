@@ -7,7 +7,7 @@ export default function Match(node: MatchNode, ctx: EmitContext) {
 
     //TODO: indent...
 
-    ctx.w`const tname = type(${node.subject}).name;`
+    ctx.w`const tname = $RB.getClass(${node.subject}).name;`
 
     for(let i = 0; i < node.cases.length -1; ++i) {
         if( i !== 0)

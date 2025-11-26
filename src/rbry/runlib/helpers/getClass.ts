@@ -1,5 +1,3 @@
-import { type } from "../tmp_corelib/type";
-
 const mapper = {
     "bigint" : "int",
     "number" : "float",
@@ -13,6 +11,7 @@ export function getClass(o: unknown) {
 
     if( typename === "function" ) {
         //TODO: is class ? is something else ?
+        // @ts-ignore
         return type;
     }
 

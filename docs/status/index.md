@@ -8,12 +8,12 @@ https://www.w3schools.com/python/python_ref_keywords.asp
     <tbody>
         <tr>
             <td>$\color{orange}{if/elif/else}$<sup>2</sup></td>
-            <td>$\color{green}{for}/\color{orange}{while}$<sup>2</sup></td>
+            <td>$\color{green}{for}/\color{orange}{while}$<sup>2</sup><sup>3</sup></td>
             <td>$\color{green}{pass/continue/break}$</td>
             <td>$\color{orange}{match/case}$</td>
         </tr>
         <tr>
-            <td>$\color{orange}{and/not/or}$<sup>2</sup></td>
+            <td>$\color{green}{and/or}/\color{orange}{not}$<sup>2</sup></td>
             <td>$\color{green}{is/is~not}$</td>
             <td>$\color{red}{in/not~in}$</td>
             <td>$\color{red}{del}$</td>
@@ -35,10 +35,8 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 
 - <sup>1</sup> requires exceptions
 - <sup>2</sup> requires bool()
+- <sup>3</sup> else not implemented
 
-for
-    - do not use iterator when possible, e.g. with range()...
-    - check if key used outside of loop or not.
 
 ### Operators (1/12)
 
@@ -53,7 +51,7 @@ for
         </tr>
         <tr>
             <td>$\color{orange}{>, <, ==, !=, <=, >=}$</td>
-            <td>$\color{orange}{and/or/not}$</td>
+            <td>$\color{green}{and/or}/\color{orange}{not}$<sup>2</sup></td>
             <td>$\color{green}{is/is~not}$</td>
             <td>$\color{red}{in/not~in}$</td>
         </tr>

@@ -8,12 +8,16 @@ import attr   from "./interface/attr";
 import setattr from "./interface/setattr";
 import getModule from "./interface/getModule";
 import { getKW, setKW } from "./interface/KW";
+import and from "./interface/and";
+import or from "./interface/or";
 
 // @ts-ignore
 const $RB = globalThis.$RB = {
     // interface
     op,
     uop,
+    and,
+    or,
     call,
     mcall,
     assert,
@@ -22,18 +26,14 @@ const $RB = globalThis.$RB = {
     getKW,
     setKW,
     getModule,
-    getModuleSync
+    getModuleSync,
+    getClass
 }
 export {$RB};
 
 //TODO: corelib
 import { getClass } from "./helpers/getClass";
 import getModuleSync from "./interface/getModuleSync";
-
-// @ts-ignore
-globalThis.type = function(a: unknown) { // __new__ for type...
-    return getClass(a); //TODO...
-}
 
 // @ts-ignore
 globalThis.abs = function( a: unknown) {
