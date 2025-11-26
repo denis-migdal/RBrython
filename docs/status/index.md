@@ -44,7 +44,8 @@ https://www.w3schools.com/python/python_ref_keywords.asp
             <td>$\color{orange}{=, :=}$</td>
             <td>$\color{orange}{Rich~assignments}$</td>
             <td>$\color{orange}{+, -, *, /, //, \%, **}$</td>
-            <td>$\color{orange}{\&, |, \^, \~, <<, >>}$</td>
+            <td>$\color{orange}{\&, |, \textasciicircum, \textasciitilde
+, <<, >>}$</td>
         </tr>
         <tr>
             <td>$\color{orange}{>, <, ==, !=, <=, >=}$</td>
