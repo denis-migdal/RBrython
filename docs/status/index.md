@@ -1,6 +1,6 @@
 ## Kernel
 
-### Keywords (1/16)
+### Keywords (2/16)
 
 https://www.w3schools.com/python/python_ref_keywords.asp
 
@@ -9,7 +9,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
         <tr>
             <td>$\color{orange}{if/elif/else}$</td>
             <td>$\color{orange}{for/while}$</td>
-            <td>$\color{green}{pass/}\color{orange}{continue}\color{green}{/break}$</td>
+            <td>$\color{green}{pass/continue/break}$</td>
             <td>$\color{orange}{match/case}$</td>
         </tr>
         <tr>

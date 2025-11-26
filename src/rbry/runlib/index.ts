@@ -42,8 +42,20 @@ globalThis.abs = function( a: unknown) {
 }
 
 // @ts-ignore
-globalThis.range = function*(a: number) {
-    for(let i = 0; i < a; ++i)
+globalThis.range = function*(...args: bigint[]) {
+    let beg = 0n;
+    let end = args[0];
+    let inc = 1n;
+
+    if( args.length >= 2) {
+        beg = args[0]
+        end = args[1]
+
+        if( args.length === 3)
+            inc = args[2];
+    }
+
+    for(let i = beg; i < end; i+= inc)
         yield i;
 }
 
