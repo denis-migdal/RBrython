@@ -1,8 +1,5 @@
 ## Kernel
 
-- object + type as py object + inheritance
-    - int / type -> check __call__...
-
 ### Keywords (0/16)
 
 https://www.w3schools.com/python/python_ref_keywords.asp
@@ -43,7 +40,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
         <tr>
             <td>$\color{orange}{=, :=}$</td>
             <td>$\color{orange}{Rich~assignments}$</td>
-            <td>$\color{orange}{+, -, *, /, //, \%, **}$</td>
+            <td>$\color{orange}{+, -, *, /, \text{//}, \%, **}$</td>
             <td>$\color{orange}{\&, |, \textasciicircum, \textasciitilde
 , <<, >>}$</td>
         </tr>
@@ -67,3 +64,6 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 ### Classes
 
 ## Core
+
+- object + type as py object + inheritance
+    - int / type -> check __call__...
