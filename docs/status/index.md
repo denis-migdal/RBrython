@@ -1,36 +1,41 @@
 ## Kernel
 
-### Keywords (0/37)
+- object + type as py object + inheritance
+    - int / type -> check __call__...
+
+### Keywords (0/16)
 
 https://www.w3schools.com/python/python_ref_keywords.asp
 
-Implemented and tested:
-- x
-
-Implemented but not fully tested:
-- assert
-- break/continue/pass
-- if/elif/else
-- for/while
-- match/case
-- class/def/lambda/return
-- and/not/or
-- imports
-    - import
-    - from import
-    - import as (not implemented)
-    -> 
-
-Not implemented (8)
-- scope: global/nonlocal
-- asynchronisme: async/await
-- generators: yield
-- exceptions: try/except/finally/raise
-
-- with
-- del
-- in/not in
-- is/is not
+<table>
+    <tbody>
+        <tr>
+            <td style="background-color:orange">if/elif/else</td>
+            <td style="background-color:orange">for/while</td>
+            <td style="background-color:orange">break/continue/pass</td>
+            <td style="background-color:orange">match/case</td>
+        </tr>
+        <tr>
+            <td style="background-color:orange">and/not/or</td>
+            <td style="background-color:red">is/is not</td>
+            <td style="background-color:red">in/not in</td>
+            <td style="background-color:red">del</td>
+        </tr>
+        <tr>
+            <td style="background-color:orange">class/def/lambda/return</td>
+            <td style="background-color:orange">assert</td>
+            <td style="background-color:red">try/except/finally/raise</td>
+            <td style="background-color:red">with</td>
+        </tr>
+        <tr>
+            <td style="background-color:orange">imports
+    import/from/as</td>
+            <td style="background-color:red">global/nonlocal</td>
+            <td style="background-color:red">async/await</td>
+            <td style="background-color:red">yield</td>
+        </tr>
+    </tbody>
+</table>
 
 ### Operators 
 
@@ -59,5 +64,6 @@ Not implemented:
 ### Others
 
 - list en compréhension.
+- ternary op.
 
 ## Core
