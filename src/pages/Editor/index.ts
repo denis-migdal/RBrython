@@ -2,7 +2,7 @@ import BenchRunner, { BenchStats } from "./utils/BenchRunner";
 import { BryEngine, RBryEngine } from "./utils/engine";
 import printBenchStats from "./utils/printBenchStats";
 
-import test_suite from "../../tests";
+import test_suite from "../../tests/py";
 import { $RB } from "@RBrython/rbry/runlib";
 import { Targets } from "@RBrython/libs/RBrython-all";
 

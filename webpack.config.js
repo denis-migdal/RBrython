@@ -1,8 +1,8 @@
 import webpack from 'webpack';
+import CircularDependencyPlugin from 'circular-dependency-plugin';
 
 import buildConfigs from "./build/WebpackFramework/index.js";
-
-import CircularDependencyPlugin from 'circular-dependency-plugin';
+import genTestSuite   from "./build/gen/testSuite.js";
 
 export default async function(...args) {
 
@@ -33,15 +33,15 @@ export default async function(...args) {
 	}
 
 	// only require it once.
-	cfg.plugins.push(/*{
+	cfg.plugins.push({
 		apply: (compiler) => {
 			compiler.hooks.compile.tap("MyPlugin_compile", async () => {
 				await Promise.all([
-					// genX()
+					genTestSuite()
 				]);
 			});
 		},
-	},*/ new CircularDependencyPlugin({
+	}, new CircularDependencyPlugin({
 		// exclude detection of files based on a RegExp
 		exclude: /node_modules/,
 		// include specific files based on a RegExp

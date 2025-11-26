@@ -1,9 +1,9 @@
 ## Current TODOs
 
-- webpack include tests...
 - complete documentation
+    - and/or bug...
     - bool() opti.
-    - toBool() helper.
+        - bool() type call... (TODO...) -> use __new__
     - macro + emit + EmitContext (?).
     - debug: include inline srcmap vs prod : separate file (srcmap url)
 - runlib
