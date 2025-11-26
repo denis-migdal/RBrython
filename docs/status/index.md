@@ -9,7 +9,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
         <tr>
             <td>$\color{orange}{if/elif/else}$</td>
             <td>$\color{orange}{for/while}$</td>
-            <td>$\color{orange}{break/continue/pass}$</td>
+            <td>$\color{green}{pass/}\color{orange}{continue}\color{green}{/break}$</td>
             <td>$\color{orange}{match/case}$</td>
         </tr>
         <tr>
