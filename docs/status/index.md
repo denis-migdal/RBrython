@@ -42,21 +42,21 @@ https://www.w3schools.com/python/python_ref_keywords.asp
     <tbody>
         <tr>
             <td>$\color{orange}{Assignments: =, :=}$</td>
-            <td>$\color{orange}{Rich assignments}$</td>
+            <td>$\color{orange}{Rich~assignments}$</td>
             <td>$\color{orange}{Arithmetic: +, -, *, /, //, %, **}$</td>
             <td>$\color{orange}{Bitwise: &, |, ^, ~, <<, >>}$</td>
         </tr>
         <tr>
-            <td>$\color{orange}{Compare: >, <, ==, !=, <=, >=}$</td>
+            <td>$\color{orange}{Compare:~>, <, ==, !=, <=, >=}$</td>
             <td>$\color{orange}{Logical: and/or/not}$</td>
             <td>$\color{red}{Identity: is/is~not}$</td>
-            <td>$\color{red}{Identity: in/not~in}$</td>
+            <td>$\color{red}{in/not~in}$</td>
         </tr>
         <tr>
-            <td>$\color{red}{[]}</td>
-            <td>$\color{red}{.}</td>
-            <td>$\color{red}{ternary op}</td>
-            <td>$\color{red}{list comprehension}</td>
+            <td>$\color{red}{[]}$</td>
+            <td>$\color{red}{.}$</td>
+            <td>$\color{red}{ternary op}$</td>
+            <td>$\color{red}{list comprehension}$</td>
         </tr>
     </tbody>
 </table>
