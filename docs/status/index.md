@@ -13,7 +13,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
             <td>$\color{orange}{match/case}$</td>
         </tr>
         <tr>
-            <td>$\color{green}{and/or}/\color{orange}{not}$<sup>2</sup></td>
+            <td>$\color{orange}{and/or}/\color{orange}{not}$<sup>2</sup></td>
             <td>$\color{green}{is/is~not}$</td>
             <td>$\color{red}{in/not~in}$</td>
             <td>$\color{red}{del}$</td>
@@ -51,7 +51,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
         </tr>
         <tr>
             <td>$\color{orange}{>, <, ==, !=, <=, >=}$</td>
-            <td>$\color{green}{and/or}/\color{orange}{not}$<sup>2</sup></td>
+            <td>$\color{orange}{and/or}/\color{orange}{not}$<sup>2</sup></td>
             <td>$\color{green}{is/is~not}$</td>
             <td>$\color{red}{in/not~in}$</td>
         </tr>

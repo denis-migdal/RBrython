@@ -1,14 +1,12 @@
 ## Current TODOs
 
-- complete documentation
+- bug
+    - bool() type call... (TODO...) -> use __new__
     - and/or bug...
+- complete documentation
     - bool() opti.
-        - bool() type call... (TODO...) -> use __new__
     - macro + emit + EmitContext (?).
     - debug: include inline srcmap vs prod : separate file (srcmap url)
-- runlib
-    - bool() helper
-    - getClass -> do not rely on type ?
 
 Mail
 - target opts
