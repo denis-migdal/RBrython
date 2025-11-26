@@ -11,28 +11,28 @@ https://www.w3schools.com/python/python_ref_keywords.asp
     <tbody>
         <tr>
             <td>$\color{orange}{if/elif/else}$</td>
-            <td style="background-color:orange">for/while</td>
-            <td style="background-color:orange">break/continue/pass</td>
-            <td style="background-color:orange">match/case</td>
+            <td>$\color{orange}{for/while}$</td>
+            <td>$\color{orange}{break/continue/pass}$</td>
+            <td>$\color{orange}{match/case}$</td>
         </tr>
         <tr>
-            <td style="background-color:orange">and/not/or</td>
-            <td style="background-color:red">is/is not</td>
-            <td style="background-color:red">in/not in</td>
-            <td style="background-color:red">del</td>
+            <td>$\color{orange}{and/not/or}$</td>
+            <td>$\color{red}{is/is not}$</td>
+            <td>$\color{red}{in/not in}$</td>
+            <td>$\color{red}{del}$</td>
         </tr>
         <tr>
-            <td style="background-color:orange">class/def/lambda/return</td>
-            <td style="background-color:orange">assert</td>
-            <td style="background-color:red">try/except/finally/raise</td>
-            <td style="background-color:red">with</td>
+            <td>$\color{orange}{class/def/lambda/return}$</td>
+            <td>$\color{orange}{assert}$</td>
+            <td>$\color{red}{try/except/finally/raise}$</td>
+            <td>$\color{red}{with}$</td>
         </tr>
         <tr>
-            <td style="background-color:orange">imports
-    import/from/as</td>
-            <td style="background-color:red">global/nonlocal</td>
-            <td style="background-color:red">async/await</td>
-            <td style="background-color:red">yield</td>
+            <td>$\color{orange}{imports
+    import/from/as}$</td>
+            <td>$\color{red}{global/nonlocal}$</td>
+            <td>$\color{red}{async/await}$</td>
+            <td>$\color{red}{yield}$</td>
         </tr>
     </tbody>
 </table>
