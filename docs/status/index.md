@@ -13,7 +13,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
             <td>$\color{orange}{match/case}$</td>
         </tr>
         <tr>
-            <td>$\color{orange}{and/not/or}$</td>
+            <td>$\color{orange}{and/not/or}$<sup>2</sup></td>
             <td>$\color{green}{is/is~not}$</td>
             <td>$\color{red}{in/not~in}$</td>
             <td>$\color{red}{del}$</td>
@@ -35,6 +35,10 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 
 - <sup>1</sup> requires exceptions
 - <sup>2</sup> requires bool()
+
+for
+    - do not use iterator when possible, e.g. with range()...
+    - check if key used outside of loop or not.
 
 ### Operators (1/12)
 
