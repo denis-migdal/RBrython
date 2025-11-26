@@ -7,5 +7,5 @@ export default function BoolOp(node: BoolOpNode, ctx: EmitContext) {
     const op = getOp(node.op);
 
     const jsop = op.toLowerCase();
-    return ctx.w`$RB.${jsop}(${node.values[0]}, ${node.values[1]})`
+    return ctx.w`$RB.op(${node.values[0]}, "${jsop}", ${node.values[1]})`
 }

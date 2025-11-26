@@ -1,15 +1,20 @@
-+ webpack include tests...
-+ add and/or to runlib doc...
+## Current TODOs
 
+- webpack include tests...
+- complete documentation
+    - bool() opti.
+    - toBool() helper.
+    - macro + emit + EmitContext (?).
+    - debug: include inline srcmap vs prod : separate file (srcmap url)
+- runlib
+    - bool() helper
+    - getClass -> do not rely on type ?
+
+Mail
 - target opts
     - not really tested everything correctly.
     - all import features not propertly tested.
 - ident code.
-
-- doc
-    - macro + emit + EmitContext (?).
-    - debug: include srcmap
-    - test/prod : src map url.
 
 ## TODO
 
