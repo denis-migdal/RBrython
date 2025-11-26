@@ -7,8 +7,8 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 <table>
     <tbody>
         <tr>
-            <td>$\color{orange}{if/elif/else}<sup>2</sup>$</td>
-            <td>$\color{green}{for}/\color{orange}{while}<sup>2</sup>$</td>
+            <td>$\color{orange}{if/elif/else}$<sup>2</sup></td>
+            <td>$\color{green}{for}/\color{orange}{while}$<sup>2</sup></td>
             <td>$\color{green}{pass/continue/break}$</td>
             <td>$\color{orange}{match/case}$</td>
         </tr>
