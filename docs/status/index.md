@@ -20,7 +20,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
         </tr>
         <tr>
             <td>$\color{orange}{class/def/lambda/return}$</td>
-            <td>$\color{orange}{assert}$</td>
+            <td>$\color{orange}{assert}$<sup>1</sup></td>
             <td>$\color{red}{try/except/finally/raise}$</td>
             <td>$\color{red}{with}$</td>
         </tr>
@@ -32,6 +32,8 @@ https://www.w3schools.com/python/python_ref_keywords.asp
         </tr>
     </tbody>
 </table>
+
+- <sup>1</sup> requires exceptions
 
 ### Operators (1/12)
 
