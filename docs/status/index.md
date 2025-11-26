@@ -7,8 +7,8 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 <table>
     <tbody>
         <tr>
-            <td>$\color{orange}{if/elif/else}$</td>
-            <td>$\color{orange}{for/while}$</td>
+            <td>$\color{orange}{if/elif/else}<sup>2</sup>$</td>
+            <td>$\color{green}{for}/\color{orange}{while}<sup>2</sup>$</td>
             <td>$\color{green}{pass/continue/break}$</td>
             <td>$\color{orange}{match/case}$</td>
         </tr>
@@ -20,7 +20,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
         </tr>
         <tr>
             <td>$\color{orange}{class/def/lambda/return}$</td>
-            <td>$\color{orange}{assert}$<sup>1</sup></td>
+            <td>$\color{orange}{assert}$<sup>1</sup><sup>2</sup></td>
             <td>$\color{red}{try/except/finally/raise}$</td>
             <td>$\color{red}{with}$</td>
         </tr>
@@ -34,6 +34,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 </table>
 
 - <sup>1</sup> requires exceptions
+- <sup>2</sup> requires bool()
 
 ### Operators (1/12)
 
