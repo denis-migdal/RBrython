@@ -174,10 +174,10 @@ export type MatchNode = ASTNode<{
 }>
 
 export type ImportNode = ASTNode<{
-    names: {name: string}[]
+    names: {name: string, asname?: string}[]
 }>
 
 export type ImportFromNode = ASTNode<{
     module: string
-    names: {name: string}[]
+    names: {name: string, asname?: string}[]
 }>

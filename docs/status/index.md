@@ -1,6 +1,6 @@
 ## Kernel
 
-### Keywords (6/16)
+### Keywords (7/16)
 
 https://www.w3schools.com/python/python_ref_keywords.asp
 
@@ -25,7 +25,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
             <td>$\color{red}{with}$</td>
         </tr>
         <tr>
-            <td>$\color{orange}{import/from/as}$</td>
+            <td>$\color{green}{import/from/as}$<sup>4</sup></td>
             <td>$\color{red}{global/nonlocal}$</td>
             <td>$\color{red}{async/await}$</td>
             <td>$\color{red}{yield}$</td>
@@ -36,6 +36,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 - <sup>1</sup> requires exceptions
 - <sup>2</sup> requires bool()
 - <sup>3</sup> else not implemented
+- <sup>4</sup> resolver non implemented
 
 
 ### Operators (2/12)

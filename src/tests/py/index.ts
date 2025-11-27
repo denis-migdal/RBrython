@@ -4,6 +4,7 @@ const test_suite = {
 	"kernel/op/is":	require("!!raw-loader!./kernel/op/is.py").default,
 	"kernel/op/and":	require("!!raw-loader!./kernel/op/and.py").default,
 	"kernel/match/classes":	require("!!raw-loader!./kernel/match/classes.py").default,
+	"kernel/import/index":	require("!!raw-loader!./kernel/import/index.py").default,
 	"kernel/ctrlflow/continue":	require("!!raw-loader!./kernel/ctrlflow/continue.py").default,
 	"kernel/ctrlflow/break":	require("!!raw-loader!./kernel/ctrlflow/break.py").default,
 	"core/int/op":	require("!!raw-loader!./core/int/op.py").default,

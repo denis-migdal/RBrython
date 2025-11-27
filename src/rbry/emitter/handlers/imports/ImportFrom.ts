@@ -16,13 +16,18 @@ export default function ImportFrom(node: ImportFromNode, ctx: EmitContext) {
     }
     ctx.w`const {`;
 
-    for(let i = 0; i < node.names.length; ++i)
-        ctx.w`${node.names[i].name},`;
+    for(let i = 0; i < node.names.length; ++i) {
+        const imported = node.names[i];
+        let as = "";
+        if( imported.asname !== undefined)
+            as = `: ${imported.asname}`
 
-    if( ctx.isTopLevel() && ! ctx.sync ) {
-        ctx.w`} = await $RB.getModule("${module}")`;
-        return;
+        ctx.w`${imported.name}${as},`;
     }
 
-    ctx.w`} = $RB.getModuleSync("${module}")`;
+    const importfct = ctx.isTopLevel() && ! ctx.sync
+                            ? "await $RB.getModule"
+                            : "$RB.getModuleSync"
+
+    ctx.w`} = ${importfct}("${module}")`;
 }

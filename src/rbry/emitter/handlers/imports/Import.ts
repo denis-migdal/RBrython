@@ -3,15 +3,23 @@ import { EmitContext } from "../../EmitContext";
 
 export default function Import(node: ImportNode, ctx: EmitContext) {
 
-    const module = node.names[0].name;
+    for(let i = 0; i < node.names.length; ++i) {
+        
+        const module = node.names[i];
 
-    if( module === "RBM" )
-        return; // RBrython macros...
+        const moduleName = module.name;
 
-    if( ctx.isTopLevel() && ! ctx.sync ) {
-        ctx.w`const ${module} = await $RB.getModule("${module}")`;
-        return
+        if( moduleName === "RBM" )
+            continue; // RBrython macros...
+
+        let asname = module.asname;
+        if( asname === undefined)
+            asname = moduleName;
+
+        const importfct = ctx.isTopLevel() && ! ctx.sync
+                            ? "await $RB.getModule"
+                            : "$RB.getModuleSync"
+        
+        ctx.w`const ${asname} = ${importfct}("${moduleName}")`;
     }
-
-    ctx.w`const ${module} = $RB.getModuleSync("${module}")`;
 }
