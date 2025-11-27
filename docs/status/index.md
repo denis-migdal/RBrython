@@ -1,13 +1,13 @@
 ## Kernel
 
-### Keywords (5/16)
+### Keywords (6/16)
 
 https://www.w3schools.com/python/python_ref_keywords.asp
 
 <table>
     <tbody>
         <tr>
-            <td>$\color{orange}{if/elif/else}$<sup>2</sup></td>
+            <td>$\color{green}{if/elif/else}$<sup>2</sup></td>
             <td>$\color{green}{for/while}$<sup>2</sup><sup>3</sup></td>
             <td>$\color{green}{pass/continue/break}$</td>
             <td>$\color{orange}{match/case}$</td>
