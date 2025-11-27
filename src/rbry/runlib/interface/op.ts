@@ -1,5 +1,4 @@
 import { getClass } from "../helpers/getClass";
-import toBool from "../helpers/toBool";
 
 // @ts-ignore
 const NotImplemented = globalThis.NotImplemented = Symbol();

@@ -1,13 +1,14 @@
 ## Current TODOs
 
 - complete documentation
+    - locals.$test
     - bool() opti.
+        - in: if/while/or/and/not/assert
+        - avoid conversion if already boolean or compatible...
     - macro + emit + EmitContext (?).
+    - call/mcall - direct call.
+    - idem operators (JS op).
     - debug: include inline srcmap vs prod : separate file (srcmap url)
-- bug
-    - bool() type call... (TODO...) -> use __new__
-    - and/or bug...
-- color failed unittest
 
 Mail
 - target opts
@@ -17,8 +18,8 @@ Mail
 
 ## TODO
 
+- --export: Brython support
 - ~100 unittest/semaine.
-- Brython support in export
 - Exception trace + sourcemap
 - clean JS / no runtime.
 
@@ -56,6 +57,11 @@ Mail
         - observer DP for class multi-inheritance.
     - dict/list/tuple (seulement op de bases ?)
     - async fct / generators
+
+X. Editor
+    - URL &test= (change)
+    - code in base64 (share)
+    - show errors (assert)
 
 1. importmap
     a. fetch/AJAX for functions.

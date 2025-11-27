@@ -9,6 +9,16 @@ import __JS_LOG__ from "@RBrython/rbry/macros/__JS_LOG__";
 import __JS_AS_STRING__ from "@RBrython/rbry/macros/__JS_AS_STRING__";
 import __JS_AS_NUMBER__ from "@RBrython/rbry/macros/__JS_AS_NUMBER__";
 
+export const builtins = {
+
+    type : require("!!raw-loader!../../corelib/type.py"  ).default,
+    int  : require("!!raw-loader!../../corelib/int.py"   ).default,
+    bool : require("!!raw-loader!../../corelib/bool.py"  ).default,
+    float: require("!!raw-loader!../../corelib/float.py" ).default,
+    str  : require("!!raw-loader!../../corelib/str.py"   ).default,
+    //    require("!!raw-loader!../../corelib/mfct.py"  ).default
+}
+
 export default function RBrythonEngineFactory() {
 
     const emitter = new RBrythonEmitter();
@@ -26,15 +36,7 @@ export default function RBrythonEngineFactory() {
 
     engine.registerModule("JS", globalThis);
 
-    const builtins = [
-        require("!!raw-loader!../../corelib/type.py"  ).default,
-        require("!!raw-loader!../../corelib/int.py"  ).default,
-        require("!!raw-loader!../../corelib/float.py").default,
-        require("!!raw-loader!../../corelib/bool.py" ).default,
-        require("!!raw-loader!../../corelib/str.py"  ).default,
-        require("!!raw-loader!../../corelib/mfct.py"  ).default
-    ]
-    for(let builtin of builtins)
+    for(let builtin of Object.values(builtins))
         engine.registerBuiltins(builtin);
 
     return engine;

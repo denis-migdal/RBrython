@@ -8,8 +8,12 @@ export default function ClassDef(node: ClassDefNode, ctx: EmitContext) {
 
     // JS cstr
     ctx.w`var ${name} = (() =>{${ctx.BB}`
-        ctx.w`function ${name}() {${ctx.BB}`
-            ctx.w`return Object.create(${name}.prototype);`
+        ctx.w`function ${name}(...args) {${ctx.BB}`
+            ctx.w`return type.prototype.__call__.call(${name}, ...args)`;
+            //ctx.w`return Object.create(${name}.prototype);`
+        ctx.w`${ctx.EB}}${ctx.NL}`
+        ctx.w`${name}.prototype.__new__ = function __new__(...args) {${ctx.BB}`
+            ctx.w`return Object.create(${name}.prototype)`;
         ctx.w`${ctx.EB}}${ctx.EB}`;
 
     // inheritance

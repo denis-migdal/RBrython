@@ -12,8 +12,12 @@
     <body>
     <div class="editor">
             <div>
-                <strong>Input <select id="tests"></select></strong>
-                <textarea id="python" spellcheck="false"></textarea>
+                <strong>Input
+                <select id="tests"></select></strong>
+                <div class="python">
+                    <pre class="python_ouput"></pre>
+                    <pre id="python" spellcheck="false" contenteditable="true"></pre>
+                </div>
             </div>
             <div>
                 <strong>Output (RBryton)</strong>
@@ -22,10 +26,6 @@
             <div>
                 <strong>Output (Brython)</strong>
                 <pre class="brython_output"></pre>
-            </div>
-            <div style="display: none">
-                <strong>Python code</strong>
-                <pre class="python_ouput"></pre>
             </div>
             <div>
                 <strong>Generated AST</strong>

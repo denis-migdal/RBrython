@@ -7,13 +7,13 @@ import assert from "./interface/assert";
 import attr   from "./interface/attr";
 import setattr from "./interface/setattr";
 import getModule from "./interface/getModule";
+import { saveTmp, tmp, withTmp } from "./interface/tmp";
 import { getKW, setKW } from "./interface/KW";
 
 // @ts-ignore
 const $RB = globalThis.$RB = {
     // interface
     op,
-    bop,
     uop,
     call,
     mcall,
@@ -22,6 +22,9 @@ const $RB = globalThis.$RB = {
     setattr,
     getKW,
     setKW,
+    tmp,
+    saveTmp,
+    withTmp,
     getModule,
     getModuleSync,
     getClass
@@ -31,7 +34,6 @@ export {$RB};
 //TODO: corelib
 import { getClass } from "./helpers/getClass";
 import getModuleSync from "./interface/getModuleSync";
-import bop from "./interface/bop";
 
 // @ts-ignore
 globalThis.abs = function( a: unknown) {

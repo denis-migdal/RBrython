@@ -94,6 +94,7 @@ export default class BenchRunner {
                 resultOne.stats[this.stats[i].name] = this.stats[i].fct(ctx);
 
         } catch(e: unknown) {
+            console.warn(e);
             resultOne.errors.push( e as Error );
         }
 

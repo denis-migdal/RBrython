@@ -4,7 +4,7 @@ export default function uop(op:string, a: unknown) {
 
     if( op === "not") {
         // @ts-ignore
-        return ! a;
+        return ! bool(a);
     }
 
     const ka = getClass(a);

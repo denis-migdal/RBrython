@@ -1,6 +1,6 @@
 ## Kernel
 
-### Keywords (2/16)
+### Keywords (3/16)
 
 https://www.w3schools.com/python/python_ref_keywords.asp
 
@@ -13,7 +13,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
             <td>$\color{orange}{match/case}$</td>
         </tr>
         <tr>
-            <td>$\color{orange}{and/or}/\color{orange}{not}$<sup>2</sup></td>
+            <td>$\color{green}{and/or/not}$</td>
             <td>$\color{green}{is/is~not}$</td>
             <td>$\color{red}{in/not~in}$</td>
             <td>$\color{red}{del}$</td>
@@ -38,7 +38,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 - <sup>3</sup> else not implemented
 
 
-### Operators (1/12)
+### Operators (2/12)
 
 <table>
     <tbody>
@@ -51,7 +51,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
         </tr>
         <tr>
             <td>$\color{orange}{>, <, ==, !=, <=, >=}$</td>
-            <td>$\color{orange}{and/or}/\color{orange}{not}$<sup>2</sup></td>
+            <td>$\color{green}{and/or/not}$</td>
             <td>$\color{green}{is/is~not}$</td>
             <td>$\color{red}{in/not~in}$</td>
         </tr>

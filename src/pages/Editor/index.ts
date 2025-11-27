@@ -5,6 +5,8 @@ import printBenchStats from "./utils/printBenchStats";
 import test_suite from "../../tests/py";
 import { $RB } from "@RBrython/rbry/runlib";
 import { Targets } from "@RBrython/libs/RBrython-all";
+import { builtins } from "@RBrython/rbry/engines/RBrython";
+import { hl } from "./hl";
 
 const NB_REPEAT = 3;
 
@@ -132,6 +134,10 @@ function printResult( target: Element,
     target.classList.toggle("success", !hasError); 
 }
 
+function setCode(target: Element, code: string, lang: string) {
+    target.innerHTML = hl(code, lang);
+}
+
 function run(pycodes: string[]|Record<string,string>) {
 
     resetGUI();
@@ -163,8 +169,9 @@ function run(pycodes: string[]|Record<string,string>) {
         const RBryCtx = results.RBrython.tests[0].ctx;
         const  BryCtx = results. Brython.tests[0].ctx;
           python_input.textContent = RBryCtx.pycode;
-         bry_js_output.textContent =  BryCtx.jscode;
-        sbry_js_output.textContent = RBryCtx.jscode;
+        setCode(python_output, RBryCtx.pycode, "py");
+        setCode( bry_js_output,  BryCtx.jscode, "ts");
+        setCode(sbry_js_output, RBryCtx.jscode, "ts");
     }
 
     printResult(bry_output , results[ "Brython"], results["RBrython"]);
@@ -391,13 +398,30 @@ python_input.addEventListener('keydown', (ev) => {
 
 const select = document.querySelector<HTMLSelectElement>('#tests')!;
 
-const defaultOpt = new Option("----", undefined, true, true);
+const defaultOpt = new Option("", undefined, true, true);
 defaultOpt.toggleAttribute('disabled');
+defaultOpt.toggleAttribute('hidden');
 select.append( defaultOpt );
 
-for(let name in test_suite)
-    select.append( new Option(name, test_suite[name as keyof typeof test_suite]) );
+// test suite.
+const RBrython_suite = new Option("RBrython test suite", "test:rbrython");
+RBrython_suite.classList.add("hopt");
+select.append( RBrython_suite );
+for(let name in test_suite) {
+    const opt = new Option("", test_suite[name as keyof typeof test_suite])
+    opt.innerHTML = `&nbsp;&nbsp;&nbsp;${name}`;
+    select.append( opt );
+}
 
+// builtins
+const RBrython_builtins = new Option("RBrython builtins", "test:builtins");
+RBrython_builtins.classList.add("hopt");
+select.append( RBrython_builtins );
+for(let name in builtins) {
+    const opt = new Option("", builtins[name as keyof typeof builtins])
+    opt.innerHTML = `&nbsp;&nbsp;&nbsp;${name}`;
+    select.append( opt );
+}
 
 function filterCode(code: string) {
 
@@ -406,11 +430,13 @@ function filterCode(code: string) {
         const idx = codes[l].indexOf('#');
         if( idx <= 0)
             continue;
-        const config = JSON.parse( codes[l].slice(idx+1).trim());
-        if( config.COMPAT !== DEFAULT_COMPAT )
-            codes[l] = "#" + codes[l];
-        else
-            codes[l] = codes[l].slice(0, idx).trimEnd();
+        try { //TODO: better filters...
+            const config = JSON.parse( codes[l].slice(idx+1).trim());
+            if( config.COMPAT !== DEFAULT_COMPAT )
+                codes[l] = "#" + codes[l];
+            else
+                codes[l] = codes[l].slice(0, idx).trimEnd();
+        } catch {}
     }
 
     return codes.join('\n');
@@ -418,13 +444,29 @@ function filterCode(code: string) {
 
 select.addEventListener('change', () => {
 
-    const code = filterCode(select.value);
+    const test = select.value;
+    if( test.startsWith("test:")) {
+        if( test === "test:rbrython" )
+            run( test_suite );
+        if( test === "test:builtins")
+            run( builtins );
+        if( test === "test:brython")
+            run( generateTestSuite("brython", merge) );
+        return;
+    }
+
+    const code = filterCode(test);
 
     python_input.value = code;
+    setCode(python_output, code, "py");
     localStorage.setItem('rbrython_code', code);
     run([code]);
     
 });
+
+const Brython_suite = new Option("Brython test suite", "test:brython");
+Brython_suite.classList.add("hopt");
+select.append( Brython_suite );
 
 for(let i = 0; i < brython_tests.length; ++i) {
 
@@ -439,8 +481,9 @@ for(let i = 0; i < brython_tests.length; ++i) {
 
         const name = code.slice(2 , code.indexOf("\n") );
 
-        const opts = new Option(name, code);
-        select!.append( opts );
+        const opts = new Option("", code);
+        opts.innerHTML = `&nbsp;&nbsp;&nbsp;${name}`;
+        select.append( opts );
     }
 }
 
@@ -453,7 +496,10 @@ if( test_name === "rbrython" ) {
     initialRun = test_suite;
 } else if( test_name !== null )
     initialRun = generateTestSuite(test_name, merge);
-else
-    initialRun = [python_input.value = localStorage.getItem('rbrython_code') ?? ""];
+else {
+    const code = localStorage.getItem('rbrython_code') ?? "";
+    setCode(python_output, code, "py");
+    initialRun = [python_input.value = code];
+}
 
 run( initialRun );
