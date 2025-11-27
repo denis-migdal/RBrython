@@ -19,7 +19,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
             <td>$\color{red}{del}$</td>
         </tr>
         <tr>
-            <td>$\color{orange}{class/def/lambda/return}$</td>
+            <td>$\color{orange}{class/def/lambda}/\color{green}{return}$</td>
             <td>$\color{green}{assert}$<sup>1</sup></td>
             <td>$\color{red}{try/except/finally/raise}$</td>
             <td>$\color{red}{with}$</td>
