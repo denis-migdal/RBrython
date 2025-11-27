@@ -89,10 +89,12 @@ function createBench() {
     let assert_fail  = 0;
 
     // @ts-ignore
-    $RB.assert = function(cond) {
+    $RB.assert = function(cond, msg: string = "") {
         ++assert_count;
-        if( ! cond )
+        if( ! cond ) {
             ++assert_fail;
+            console.warn(`Assertion failed: ${msg}`);
+        }
     }
 
     bench.resetStats();
@@ -168,7 +170,11 @@ function run(pycodes: string[]|Record<string,string>) {
     if( pycodes.length === 1) {
         const RBryCtx = results.RBrython.tests[0].ctx;
         const  BryCtx = results. Brython.tests[0].ctx;
-          python_input.textContent = RBryCtx.pycode;
+
+        // prevents issue when editing
+        if( python_input.textContent !== RBryCtx.pycode )
+            python_input.textContent = RBryCtx.pycode;
+
         setCode(python_output, RBryCtx.pycode, "py");
         setCode( bry_js_output,  BryCtx.jscode, "ts");
         setCode(sbry_js_output, RBryCtx.jscode, "ts");
@@ -372,7 +378,7 @@ const sbry_print = (...args: any[]) => {
 
 python_input.addEventListener("input",
     () => {
-        const code = python_input.value;
+        const code = python_input.textContent!;
         localStorage.setItem('rbrython_code', code);
         run([code]);
     });
@@ -385,11 +391,11 @@ python_input.addEventListener('keydown', (ev) => {
             let beg = python_input.selectionStart!;
             let end = python_input.selectionEnd!;
     
-            const txt = python_input.value;
+            const txt = python_input.textContent!;
             const preText  = txt.slice(0  , beg);
             const postText = txt.slice(end, txt.length);
     
-            python_input.value = preText + "    " + postText; // input tab key
+            python_input.textContent = preText + "    " + postText; // input tab key
             
             const pos = beg+4;
             python_input.setSelectionRange(pos, pos);
@@ -457,7 +463,8 @@ select.addEventListener('change', () => {
 
     const code = filterCode(test);
 
-    python_input.value = code;
+    python_input.textContent = code;
+
     setCode(python_output, code, "py");
     localStorage.setItem('rbrython_code', code);
     run([code]);
@@ -499,7 +506,7 @@ if( test_name === "rbrython" ) {
 else {
     const code = localStorage.getItem('rbrython_code') ?? "";
     setCode(python_output, code, "py");
-    initialRun = [python_input.value = code];
+    initialRun = [python_input.textContent = code];
 }
 
 run( initialRun );

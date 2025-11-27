@@ -41,7 +41,8 @@ export type StringNode = ASTNode<{
 }>
 
 export type AssertNode = ASTNode<{
-    test: ASTNode
+    test : ASTNode
+    msg ?: string
 }>
 
 export type OperatorNode = unknown; // better to shadow it...

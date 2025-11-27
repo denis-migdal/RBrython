@@ -1,6 +1,6 @@
 ## Kernel
 
-### Keywords (3/16)
+### Keywords (4/16)
 
 https://www.w3schools.com/python/python_ref_keywords.asp
 
@@ -20,7 +20,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
         </tr>
         <tr>
             <td>$\color{orange}{class/def/lambda/return}$</td>
-            <td>$\color{orange}{assert}$<sup>1</sup><sup>2</sup></td>
+            <td>$\color{green}{assert}$<sup>1</sup></td>
             <td>$\color{red}{try/except/finally/raise}$</td>
             <td>$\color{red}{with}$</td>
         </tr>
