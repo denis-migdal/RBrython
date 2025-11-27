@@ -93,7 +93,10 @@ function createBench() {
         ++assert_count;
         if( ! cond ) {
             ++assert_fail;
-            console.warn(`Assertion failed: ${msg}`);
+            try{ throw new Error() } catch(e) {
+                const line = (e as Error).stack!.split("\n")[1].split(":")[3]
+                console.warn(`Assertion failed at line ${line} (JS): ${msg}`);
+            }
         }
     }
 
