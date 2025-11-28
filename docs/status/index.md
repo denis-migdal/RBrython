@@ -15,7 +15,6 @@ https://www.w3schools.com/python/python_ref_keywords.asp
             <td>$\color{green}{and/or/not}$</td>
             <td>$\color{green}{is/is~not}$</td>
             <td>$\color{red}{in/not~in/del}$</td>
-            <td></td>
         </tr>
         <tr>
             <td>$\color{orange}{class/def/lambda}/\color{green}{return/pass}$</td>
