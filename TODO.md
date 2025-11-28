@@ -15,6 +15,8 @@ Mail
     - not really tested everything correctly.
     - all import features not propertly tested.
 - ident code.
+- status
+- decl why can't write clean JS.
 
 ## TODO
 

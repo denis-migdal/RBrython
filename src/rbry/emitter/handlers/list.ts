@@ -18,6 +18,10 @@ Handlers["Global"] = Global as Handler;
 import {default as Nonlocal} from "./vars/Nonlocal";
 Handlers["Nonlocal"] = Nonlocal as Handler;
 
+
+import {default as Subscript} from "./operators/Subscript";
+Handlers["Subscript"] = Subscript as Handler;
+
 import {default as Assert} from "./keywords/Assert";
 Handlers["Assert"] = Assert as Handler;
 

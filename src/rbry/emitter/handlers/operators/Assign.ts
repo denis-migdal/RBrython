@@ -11,8 +11,6 @@ export default function Assign(node: AssignNode, ctx: EmitContext) {
         return;
     }
 
-    console.warn( ctx.getName(), node.targets[0].id, ctx.getScope(node.targets[0].id).toString(2).padStart(15, " ") )
-
     for(let i = 1; i < node.targets.length; ++i)
         // @ts-ignore
         if( ctx.getScope(node.targets[i].id) & LOCAL_VAR || ctx.isTopLevel() )

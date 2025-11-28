@@ -110,6 +110,12 @@ export type ClassDefNode = ASTNode<{
 export type ArgsDefNode = ASTNode<{
     posonlyargs: ArgDefNode[];
     args       : ArgDefNode[];
+    vararg    ?: ArgDefNode;
+    kwonlyargs : ArgDefNode[];
+    kwarg     ?: ArgDefNode;
+
+    defaults   : ASTNode[];
+    kw_defaults: ASTNode[];
 }>
 
 export type ArgDefNode = ASTNode<{
@@ -180,4 +186,9 @@ export type ImportNode = ASTNode<{
 export type ImportFromNode = ASTNode<{
     module: string
     names: {name: string, asname?: string}[]
+}>
+
+export type SubscriptNode = ASTNode<{
+    value: ASTNode,
+    slice: ASTNode
 }>

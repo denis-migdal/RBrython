@@ -15,17 +15,9 @@ export default function FunctionDef(node: FunctionDefNode, ctx: EmitContext) {
     for( let i = 0; i < node.decorator_list.length ; ++i )
         ctx.w`${node.decorator_list[i]}(`;
 
-    ctx.w`function ${name}(${node.args}){`;
+    ctx.w`function ${name} ${node.args}`;
 
-    //TODO: prefer var renaming...
-    if( isMethod ) {
-        let selfname = "";
-        if( node.args.posonlyargs.length > 0)
-            selfname = node.args.posonlyargs[0].arg;
-        else
-            selfname = node.args.args[0].arg;
-        ctx.w`${ctx.BB}const ${selfname} = this;${ctx.EB}`;
-    }
+    // start of the function/lambda is included in the arguments...
 
     ctx.w_body(body);
     ctx.w`}`;
