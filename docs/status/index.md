@@ -1,6 +1,6 @@
 ## Kernel
 
-### Keywords (8/16)
+### Keywords (8/14)
 
 https://www.w3schools.com/python/python_ref_keywords.asp
 
@@ -15,14 +15,14 @@ https://www.w3schools.com/python/python_ref_keywords.asp
         <tr>
             <td>$\color{green}{and/or/not}$</td>
             <td>$\color{green}{is/is~not}$</td>
-            <td>$\color{red}{in/not~in}$</td>
-            <td>$\color{red}{del}$</td>
+            <td>$\color{red}{in/not~in/del}$</td>
+            <td></td>
         </tr>
         <tr>
             <td>$\color{orange}{class/def/lambda}/\color{green}{return}$</td>
             <td>$\color{green}{assert}$<sup>1</sup></td>
-            <td>$\color{red}{try/except/finally/raise}$</td>
-            <td>$\color{red}{with}$</td>
+            <td>$\color{red}{raise/try/except/finally/with}$</td>
+            <td></td>
         </tr>
         <tr>
             <td>$\color{green}{import/from/as}$<sup>4</sup></td>
@@ -76,4 +76,3 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 ## Core
 
 - object as py object + inheritance
-    - int / type -> check __call__...

@@ -22,7 +22,6 @@ status work
 - def/lambda
     - arg parsing
     - decorator
-- global/non-local
 - operators
 - class
     - doc init
