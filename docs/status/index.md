@@ -9,7 +9,6 @@ https://www.w3schools.com/python/python_ref_keywords.asp
         <tr>
             <td>$\color{green}{if/elif/else/assert}$<sup>1</sup></td>
             <td>$\color{green}{for/while/continue/break}$<sup>3</sup></td>
-            <td></td>
             <td>$\color{orange}{match/case}$</td>
         </tr>
         <tr>
@@ -20,14 +19,12 @@ https://www.w3schools.com/python/python_ref_keywords.asp
         </tr>
         <tr>
             <td>$\color{orange}{class/def/lambda}/\color{green}{return/pass}$</td>
-            <td></td>
             <td>$\color{red}{raise/try/except/finally/with}$</td>
-            <td></td>
+            <td>$\color{red}{async/await}$</td>
         </tr>
         <tr>
             <td>$\color{green}{import/from/as}$<sup>4</sup></td>
             <td>$\color{green}{global/nonlocal}$<sup>2</sup></td>
-            <td>$\color{red}{async/await}$</td>
             <td>$\color{red}{yield}$</td>
         </tr>
     </tbody>
