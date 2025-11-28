@@ -1,6 +1,6 @@
 ## Kernel
 
-### Keywords (7/16)
+### Keywords (8/16)
 
 https://www.w3schools.com/python/python_ref_keywords.asp
 
@@ -26,7 +26,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
         </tr>
         <tr>
             <td>$\color{green}{import/from/as}$<sup>4</sup></td>
-            <td>$\color{red}{global/nonlocal}$</td>
+            <td>$\color{green}{global/nonlocal}$<sup>2</sup></td>
             <td>$\color{red}{async/await}$</td>
             <td>$\color{red}{yield}$</td>
         </tr>
@@ -34,6 +34,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 </table>
 
 - <sup>1</sup> requires exceptions
+- <sup>2</sup> global shadowed by a non local not implemented.
 - <sup>3</sup> else not implemented
 - <sup>4</sup> resolver non implemented
 
@@ -74,5 +75,5 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 
 ## Core
 
-- object + type as py object + inheritance
+- object as py object + inheritance
     - int / type -> check __call__...

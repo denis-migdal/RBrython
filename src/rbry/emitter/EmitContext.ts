@@ -5,6 +5,8 @@ import Handlers from "./handlers";
 
 export type Macro = (ctx: EmitContext, ...args: ASTNode[]) => void;
 
+export const LOCAL_VAR = 0x1000;
+
 export class EmitContext {
 
     readonly macros: Record<string, Macro> = {};
@@ -19,6 +21,10 @@ export class EmitContext {
         this.mode     = mode;
         this.macros   = macros;
         this.sync     = sync;
+    }
+
+    getScope(name: string) {
+        return this.symtab.symbols.$strings[name];
     }
 
     // a little h4cky
@@ -73,7 +79,9 @@ export class EmitContext {
     indent_level = 0;
 
     w_line() {
-        this.jscode += "\n" + "  ".repeat(this.indent_level);
+        const nl = "\n" + "  ".repeat(this.indent_level);
+        if( ! this.jscode.endsWith(nl) )
+            this.jscode += nl;
     }
 
     readonly NL = Symbol();
@@ -87,11 +95,7 @@ export class EmitContext {
 
         ++this.indent_level;
 
-        this.w_line();
-
-        this.w_node(nodes[0]);
-
-        for(let i = 1; i < nodes.length; ++i) {
+        for(let i = 0; i < nodes.length; ++i) {
             this.w_line();
             this.w_node(nodes[i]);
         }

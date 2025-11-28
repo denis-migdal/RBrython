@@ -12,6 +12,12 @@ Handlers["Lambda"] = Lambda as Handler;
 import {default as Arguments} from "./definitions/Arguments";
 Handlers["arguments"] = Arguments as Handler;
 
+import {default as Global} from "./vars/Global";
+Handlers["Global"] = Global as Handler;
+
+import {default as Nonlocal} from "./vars/Nonlocal";
+Handlers["Nonlocal"] = Nonlocal as Handler;
+
 import {default as Assert} from "./keywords/Assert";
 Handlers["Assert"] = Assert as Handler;
 

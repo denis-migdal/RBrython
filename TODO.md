@@ -18,6 +18,19 @@ Mail
 
 ## TODO
 
+status work
+- def/lambda
+    - arg parsing
+    - decorator
+- global/non-local
+- operators
+- class
+    - doc init
+    - __new__ / () arg parsing
+    - class decorator
+    - method decorator
+    - ?
+
 - --export: Brython support
 - ~100 unittest/semaine.
 - Exception trace + sourcemap
