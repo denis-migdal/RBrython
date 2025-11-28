@@ -40,7 +40,25 @@ export default function op(a: unknown, op: string, b: unknown) {
     return result;
 }
 
+function NI(b: unknown) { return NotImplemented }
+
 //TODO: move to corelib ?
 const defaults = {
-    eq: function(b: unknown) { return this == b }
+    eq: function(b: unknown) { return this == b },
+
+    add: NI,
+    sub: NI,
+    mul: NI,
+    truediv: NI,
+    floordiv: NI,
+    mod: NI,
+    pow: NI,
+
+    radd: NI,
+    rsub: NI,
+    rmul: NI,
+    rtruediv: NI,
+    rfloordiv: NI,
+    rmod: NI,
+    rpow: NI,
 }

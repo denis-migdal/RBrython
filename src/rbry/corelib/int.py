@@ -64,14 +64,14 @@ class int(bigint):
             case int  (): return __JS_OP__(o, "**", self)
             case _      : return NotImplemented
 
-    def __div__(self, o: object, /) -> NotImplementedType|float:
+    def __truediv__(self, o: object, /) -> NotImplementedType|float:
         match o:
             case int  (): return __JS_OP__(__JS_AS_NUMBER__(self),
                                            "/",
                                            __JS_AS_NUMBER__(o))
             case _      : return NotImplemented
     
-    def __rdiv__(self, o: object, /) -> NotImplementedType|float:
+    def __rtruediv__(self, o: object, /) -> NotImplementedType|float:
         match o:
             case int  (): return __JS_OP__(__JS_AS_NUMBER__(o),
                                            "*",

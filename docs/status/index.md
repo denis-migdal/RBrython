@@ -1,6 +1,6 @@
 ## Kernel
 
-### Keywords (7/12)
+### Keywords (8/12)
 
 https://www.w3schools.com/python/python_ref_keywords.asp
 
@@ -35,13 +35,13 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 - <sup>4</sup> resolver non implemented
 
 
-### Operators (2/12)
+### Operators (3/12)
 
 <table>
     <tbody>
         <tr>
             <td>$\color{orange}{Rich~assignments}$</td>
-            <td>$\color{orange}{+, -, *, /, \text{//}, \%, **}$</td>
+            <td>$\color{green}{+, -, *, /, \text{//}, \%, **}$</td>
             <td>$\color{orange}{\&, |, \textasciicircum, \textasciitilde
 , <<, >>}$</td>
             <td>$\color{orange}{>, <, ==, !=, <=, >=}$</td>

@@ -4,6 +4,7 @@ const test_suite = {
 	"kernel/op/or":	require("!!raw-loader!./kernel/op/or.py").default,
 	"kernel/op/not":	require("!!raw-loader!./kernel/op/not.py").default,
 	"kernel/op/is":	require("!!raw-loader!./kernel/op/is.py").default,
+	"kernel/op/bin":	require("!!raw-loader!./kernel/op/bin.py").default,
 	"kernel/op/and":	require("!!raw-loader!./kernel/op/and.py").default,
 	"kernel/match/classes":	require("!!raw-loader!./kernel/match/classes.py").default,
 	"kernel/import/index":	require("!!raw-loader!./kernel/import/index.py").default,

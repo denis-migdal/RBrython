@@ -18,7 +18,8 @@ export const binops = {
     Add : "add",
     Sub : "sub",
     Mult: "mul",
-    Div : "div",
+    Div : "truediv",
+    FloorDiv: "floordiv",
     Pow : "pow",
     Mod : "mod",
     // bits
