@@ -1,6 +1,7 @@
 const test_suite = {
 	"kernel/scope/nonlocal":	require("!!raw-loader!./kernel/scope/nonlocal.py").default,
 	"kernel/scope/global":	require("!!raw-loader!./kernel/scope/global.py").default,
+	"kernel/op/unary":	require("!!raw-loader!./kernel/op/unary.py").default,
 	"kernel/op/or":	require("!!raw-loader!./kernel/op/or.py").default,
 	"kernel/op/not":	require("!!raw-loader!./kernel/op/not.py").default,
 	"kernel/op/is":	require("!!raw-loader!./kernel/op/is.py").default,

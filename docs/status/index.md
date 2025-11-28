@@ -35,15 +35,14 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 - <sup>4</sup> resolver non implemented
 
 
-### Operators (4/12)
+### Operators (5/12)
 
 <table>
     <tbody>
         <tr>
-            <td>$\color{orange}{-/+/\textasciitilde}$</td>
+            <td>$\color{green}{-, +, \textasciitilde}$</td>
             <td>$\color{green}{+, -, *, /, \text{//}, \%, \text{**}}$</td>
-            <td>$\color{green}{\&, |, \textasciicircum,
-, <<, >>}$</td>
+            <td>$\color{green}{\&, |, \textasciicircum, <<, >>}$</td>
             <td>$\color{orange}{>, <, ==, \text{!=}, <=, >=}$</td>
         </tr>
         <tr>

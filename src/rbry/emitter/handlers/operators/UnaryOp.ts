@@ -16,8 +16,8 @@ export default function(node: UnaryOpNode, ctx: EmitContext) {
 
 const uops = {
     Invert: "invert",
-    USub: "neg",
-    // pos
+    USub  : "neg",
+    UAdd  : "pos",
 
     // special:
     Not: "not", // use __len__ or __bool__
