@@ -1,6 +1,6 @@
 ## Kernel
 
-### Keywords (7/12)
+### Keywords (6/12)
 
 https://www.w3schools.com/python/python_ref_keywords.asp
 
