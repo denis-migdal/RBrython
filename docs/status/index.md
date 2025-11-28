@@ -17,7 +17,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
             <td>$\color{red}{in/not~in/del}$</td>
         </tr>
         <tr>
-            <td>$\color{orange}{class/def/lambda}/\color{green}{return/pass}$</td>
+            <td>$\color{orange}{def/lambda}/\color{green}{return/pass}$</td>
             <td>$\color{red}{raise/try/except/finally/with}$</td>
             <td>$\color{red}{async/await}$</td>
         </tr>
@@ -61,7 +61,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
     </tbody>
 </table>
 
-### Functions/Classes
+### Classes
 
 - methods
 - attributes
