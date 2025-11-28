@@ -54,6 +54,12 @@ const defaults = {
     mod: NI,
     pow: NI,
 
+    and: NI,
+    or : NI,
+    xor: NI,
+    lshift: NI,
+    rshift: NI,
+
     radd: NI,
     rsub: NI,
     rmul: NI,
@@ -61,4 +67,10 @@ const defaults = {
     rfloordiv: NI,
     rmod: NI,
     rpow: NI,
+
+    rand: NI,
+    ror : NI,
+    rxor: NI,
+    rlshift: NI,
+    rrshift: NI,
 }

@@ -31,6 +31,28 @@ class Op:
         return "__rmod__"
     def __rpow__(self, o: object):
         return "__rpow__"
+    
+    def __and__(self, o: object):
+        return "__and__"
+    def __or__(self, o: object):
+        return "__or__"
+    def __xor__(self, o: object):
+        return "__xor__"
+    def __lshift__(self, o: object):
+        return "__lshift__"
+    def __rshift__(self, o: object):
+        return "__rshift__"
+    
+    def __rand__(self, o: object):
+        return "__rand__"
+    def __ror__(self, o: object):
+        return "__ror__"
+    def __rxor__(self, o: object):
+        return "__rxor__"
+    def __rlshift__(self, o: object):
+        return "__rlshift__"
+    def __rrshift__(self, o: object):
+        return "__rrshift__"
 
 op = Op()
 em = Empty()
@@ -50,3 +72,15 @@ assert em /  op is "__rtruediv__"
 assert em // op is "__rfloordiv__"
 assert em %  op is "__rmod__"
 assert em ** op is "__rpow__"
+
+assert op &  em is "__and__"
+assert op |  em is "__or__"
+assert op ^  em is "__xor__"
+assert op >> em is "__rshift__"
+assert op << em is "__lshift__"
+
+assert em &  op is "__rand__"
+assert em |  op is "__ror__"
+assert em ^  op is "__rxor__"
+assert em >> op is "__rrshift__"
+assert em << op is "__rlshift__"

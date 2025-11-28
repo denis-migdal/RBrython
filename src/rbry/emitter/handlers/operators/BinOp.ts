@@ -25,6 +25,7 @@ export const binops = {
     // bits
     BitOr: "or",
     BitAnd: "and",
+    BitXor: "xor",
     LShift: "lshift",
     RShift: "rshift"
 }

@@ -35,21 +35,21 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 - <sup>4</sup> resolver non implemented
 
 
-### Operators (3/12)
+### Operators (4/12)
 
 <table>
     <tbody>
         <tr>
-            <td>$\color{orange}{Rich~assignments}$</td>
+            <td>$\color{orange}{-/+/\textasciitilde}</td>
             <td>$\color{green}{+, -, *, /, \text{//}, \%, \text{**}}$</td>
-            <td>$\color{orange}{\&, |, \textasciicircum, \textasciitilde
+            <td>$\color{green}{\&, |, \textasciicircum,
 , <<, >>}$</td>
-            <td>$\color{orange}{>, <, ==, !=, <=, >=}$</td>
+            <td>$\color{orange}{>, <, ==, \text{!=}, <=, >=}$</td>
         </tr>
         <tr>
+            <td>$\color{orange}{Rich~assignments}$</td>
             <td>$\color{orange}{=, :=}$</td>
-            <td>$\color{orange}{[]}$</td>
-            <td>$\color{orange}{.}$</td>
+            <td>$\color{orange}{./[]}$</td>
             <td>$\color{red}{in/not~in}$</td>
         </tr>
         <tr>
@@ -60,6 +60,8 @@ https://www.w3schools.com/python/python_ref_keywords.asp
         </tr>
     </tbody>
 </table>
+
++ 3 unary ops...
 
 ### Classes
 
