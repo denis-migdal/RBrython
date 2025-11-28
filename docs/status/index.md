@@ -41,15 +41,15 @@ https://www.w3schools.com/python/python_ref_keywords.asp
     <tbody>
         <tr>
             <td>$\color{orange}{Rich~assignments}$</td>
-            <td>$\color{green}{+, -, *, /, \text{//}, \%, **}$</td>
+            <td>$\color{green}{+, -, *, /, \text{//}, \%, \text{**}}$</td>
             <td>$\color{orange}{\&, |, \textasciicircum, \textasciitilde
 , <<, >>}$</td>
             <td>$\color{orange}{>, <, ==, !=, <=, >=}$</td>
         </tr>
         <tr>
             <td>$\color{orange}{=, :=}$</td>
-            <td>$\color{red}{[]}$</td>
-            <td>$\color{red}{.}$</td>
+            <td>$\color{orange}{[]}$</td>
+            <td>$\color{orange}{.}$</td>
             <td>$\color{red}{in/not~in}$</td>
         </tr>
         <tr>
