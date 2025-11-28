@@ -40,21 +40,21 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 <table>
     <tbody>
         <tr>
-            <td>$\color{orange}{=, :=}$</td>
             <td>$\color{orange}{Rich~assignments}$</td>
             <td>$\color{orange}{+, -, *, /, \text{//}, \%, **}$</td>
             <td>$\color{orange}{\&, |, \textasciicircum, \textasciitilde
 , <<, >>}$</td>
+            <td>$\color{orange}{>, <, ==, !=, <=, >=}$</td>
         </tr>
         <tr>
-            <td>$\color{orange}{>, <, ==, !=, <=, >=}$</td>
-            <td>$\color{green}{and/or/not}$</td>
-            <td>$\color{green}{is/is~not}$</td>
+            <td>$\color{orange}{=, :=}$</td>
+            <td>$\color{red}{[]}$</td>
+            <td>$\color{red}{.}$</td>
             <td>$\color{red}{in/not~in}$</td>
         </tr>
         <tr>
-            <td>$\color{red}{[]}$</td>
-            <td>$\color{red}{.}$</td>
+            <td>$\color{green}{and/or/not}$</td>
+            <td>$\color{green}{is/is~not}$</td>
             <td>$\color{red}{ternary~op}$</td>
             <td>$\color{red}{list~comprehension}$</td>
         </tr>
