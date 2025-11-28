@@ -40,7 +40,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 <table>
     <tbody>
         <tr>
-            <td>$\color{orange}{-/+/\textasciitilde}</td>
+            <td>$\color{orange}{-/+/\textasciitilde}$</td>
             <td>$\color{green}{+, -, *, /, \text{//}, \%, \text{**}}$</td>
             <td>$\color{green}{\&, |, \textasciicircum,
 , <<, >>}$</td>
