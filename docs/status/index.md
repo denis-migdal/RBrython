@@ -1,15 +1,15 @@
 ## Kernel
 
-### Keywords (8/14)
+### Keywords (7/12)
 
 https://www.w3schools.com/python/python_ref_keywords.asp
 
 <table>
     <tbody>
         <tr>
-            <td>$\color{green}{if/elif/else}$</td>
-            <td>$\color{green}{for/while}$<sup>3</sup></td>
-            <td>$\color{green}{pass/continue/break}$</td>
+            <td>$\color{green}{if/elif/else/assert}$<sup>1</sup></td>
+            <td>$\color{green}{for/while/continue/break}$<sup>3</sup></td>
+            <td></td>
             <td>$\color{orange}{match/case}$</td>
         </tr>
         <tr>
@@ -19,8 +19,8 @@ https://www.w3schools.com/python/python_ref_keywords.asp
             <td></td>
         </tr>
         <tr>
-            <td>$\color{orange}{class/def/lambda}/\color{green}{return}$</td>
-            <td>$\color{green}{assert}$<sup>1</sup></td>
+            <td>$\color{orange}{class/def/lambda}/\color{green}{return/pass}$</td>
+            <td></td>
             <td>$\color{red}{raise/try/except/finally/with}$</td>
             <td></td>
         </tr>
