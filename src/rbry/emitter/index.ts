@@ -10,6 +10,8 @@ import returnExport from "./exports/return";
 import moduleExport from "./exports/module";
 import brythonExport from "./exports/brython";
 import RawTarget from "./targets/raw";
+import { walk } from "../checker/Walker";
+import Optimizers, { Optimizer } from "../optimizers";
 
 export type Target = {
     defaults : Partial<EmitterOptions>
@@ -40,6 +42,7 @@ export const enum EXPORT {
 export type EmitterOptions = {
     mode   : MODE,
     target : Target,
+    opti   : Optimizer,
     exports: EXPORT,
     sync   : boolean
 }
@@ -47,6 +50,7 @@ export type EmitterOptions = {
 const EmitterDefaults: EmitterOptions = {
     mode   : MODE.DEBUG,
     target : RawTarget,
+    opti   : Optimizers.safe,
     exports: EXPORT.NONE,
     sync   : false
 }
@@ -78,8 +82,12 @@ export default class RBrythonEmitter extends Emitter {
                                         EmitterDefaults,
                                         options.target?.defaults,
                                         options);
-
-        const ctx = new EmitContext(parsed.symtable,
+                                        
+        if( opts.opti.require_typechecker )
+            walk(parsed); //TODO
+        
+        const ctx = new EmitContext(opts.opti.handlers,
+                                    parsed.symtable,
                                     opts.mode,
                                     this.macros,
                                     opts.sync);

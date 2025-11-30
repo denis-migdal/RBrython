@@ -1,7 +1,7 @@
 import { MODE } from ".";
 import { isASTNode, nodeType } from "../ast";
 import { ASTNode, CLASS, ClassDefNode, FUNCTION, FunctionDefNode, SymTab } from "../ast/types";
-import Handlers from "./handlers";
+import { Handler } from "./handlers";
 
 export type Macro = (ctx: EmitContext, ...args: ASTNode[]) => void;
 
@@ -13,10 +13,18 @@ export class EmitContext {
     readonly mode;
     readonly sync;
 
+    readonly handlers;
+
     jscode: string = "";
 
     #symtabs;
-    constructor(symtab: SymTab, mode: MODE, macros: Record<string, Macro>, sync: boolean) {
+    constructor(handlers: Record<string, Handler>,
+                symtab  : SymTab,
+                mode    : MODE,
+                macros  : Record<string, Macro>,
+                sync    : boolean) {
+
+        this.handlers = handlers;
         this.#symtabs = [symtab];
         this.mode     = mode;
         this.macros   = macros;
@@ -105,9 +113,9 @@ export class EmitContext {
 
     w_node(node: ASTNode) {
 
-        const type = nodeType(node) as keyof typeof Handlers;
+        const type = nodeType(node);
 
-        const handler = Handlers[type];
+        const handler = this.handlers[type];
         if( handler === undefined) {
             console.warn(node);
             throw new Error(`Node type ${nodeType(node)} is unknown`);

@@ -34,6 +34,13 @@ You can however change this behavior by providing an output directory in which t
 ./tools/rbc --outDir $DST_DIR -
 ```
 
+### Brython
+
+- `--emitter brython`: use [brython](https://github.com/brython-dev/brython):
+    - fully python-compliant, but slower.
+    - interactions with JavaScript might not behave well in some edge cases.
+    - might not be compatible with all the other options.
+
 ### Mode
 
 `--mode debug|test|prod`: (default: `debug`).
@@ -59,21 +66,11 @@ See [RBrython export](../../../?tab=readme-ov-file#export).
 
 See [RBrython sync](../../../?tab=readme-ov-file#sync).
 
-### Compatibility and performances
+### Optimizations
 
-`--compat brython`: (default: "").
+`--opti none|safe|unsafe`: (default: `safe`).
 
-- `brython`: use [brython](https://github.com/brython-dev/brython):
-    - fully python-compliant, but slower.
-    - interactions with JavaScript might not behave well in some edge cases.
-
-
-<b><i>Not implemented:</i></b>
-- `--compat NONE|PERF|FULL|BRYTHON`: the level of Python compliance (default: `NONE`).
-- `compat`: compatibility level with the Python standard:
-   - `NONE`: generate clean and fastest JS/TS code, doesn't require a runtime library (***default***).
-   - `PERF`: generate unclean and fast JS/TS code, requires a small runtime library.
-   - `FULL`: fully compliant with the Python standard (**not implemented yet**).
+See [RBrython optimizations](../../../?tab=readme-ov-file#optimizations).
 
 ## Note: For Brython ?
 

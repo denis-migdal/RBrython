@@ -1,6 +1,6 @@
 ## Kernel
 
-### Keywords (8/12)
+### Keywords (7/12)
 
 https://www.w3schools.com/python/python_ref_keywords.asp
 
@@ -60,15 +60,16 @@ https://www.w3schools.com/python/python_ref_keywords.asp
     </tbody>
 </table>
 
-+ 3 unary ops...
-
 ### Classes
 
 - methods
 - attributes
 - decorators
-- argument parsing
 - etc.
+
+### Others
+
+- fstring
 
 ## Core
 

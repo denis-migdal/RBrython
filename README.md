@@ -153,7 +153,16 @@ The `prod` mode is similar to the `-OO` Python options:
 
 💡 You can also use existing JavaScript minifier, uglifier, or optimizer on the generated files.
 
-### Compatibility and performances (not implemented)
+### Optimizations
+
+RBrython enables to trade compliance for performances, using 3 modes:
+- `Optimizers.disabled`: disable optimizations.
+- `Optimizers.safe`: enable safe optimizations, uses the type checker (<i><b>default</b></i>).
+- `Optimizers.unsafe`: disable some of Python features to achieve cleaner and faster code.
+
+💡 In the future options could be used to enable/disable options individually.
+
+See [this page](./docs/optimizers/index.md) to learn more about optimizations.
 
 ### Target
 

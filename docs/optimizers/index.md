@@ -1,5 +1,7 @@
 ## Optimizations ideas (not implemented)
 
+fct call if type is good
+
 for
     - do not use iterator when possible, e.g. with range()...
     - check if key used outside of loop or not.
@@ -12,11 +14,9 @@ for
 - split some AST node when it performs conversions (some might cancel out each other).
     - could be node.input_conversion / node.output_conversion attribute on the AST.
 
+- virtual types : fint, ffloat, fstr, etc -> can inline operators...
 - lit as JS types /!\ héritage ! -> valueOf() (and we're good)
 - https://groups.google.com/g/brython/c/4P4mvgH02UI/m/bUpB9BUTAQAJ
-
-- prod/dev version: dev version performs checks, prod version assume there is no error in code.
-    - remove asserts
 
 - JIT: instantiation - create the JS function/class upon first usage ?
 - JIT: parser - parse upon first usage (avoid).

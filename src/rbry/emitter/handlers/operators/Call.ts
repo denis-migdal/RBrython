@@ -4,8 +4,6 @@ import { EmitContext } from "../../EmitContext";
 
 export default function Call(node: CallNode, ctx: EmitContext) {
     const f        = node.func;
-    const args     = node.args;
-    const keywords = node.keywords;
 
     // @ts-ignore
     const fid: string = f.id;
@@ -22,6 +20,16 @@ export default function Call(node: CallNode, ctx: EmitContext) {
         ctx.w`$RB.call(${f}, `;
     }
 
+    writeArgs(node, ctx);
+
+    ctx.w_str(")");
+}
+
+export function writeArgs(node: CallNode, ctx: EmitContext) {
+
+    const args     = node.args;
+    const keywords = node.keywords;
+
     //TODO: args parsing...
     for(let i = 0; i < args.length; ++i)
         ctx.w`${args[i]}, `;
@@ -32,6 +40,4 @@ export default function Call(node: CallNode, ctx: EmitContext) {
                 ctx.w`${keywords[i].arg}: ${keywords[i].value},`;
         ctx.w`})`;
     }
-
-    ctx.w_str(")");
 }

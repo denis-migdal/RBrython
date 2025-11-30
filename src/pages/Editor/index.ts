@@ -4,7 +4,7 @@ import printBenchStats from "./utils/printBenchStats";
 
 import test_suite from "../../tests/py";
 import { $RB } from "@RBrython/rbry/runlib";
-import { Targets } from "@RBrython/libs/RBrython-all";
+import { Optimizers, Targets } from "@RBrython/libs/RBrython-all";
 import { builtins } from "@RBrython/rbry/engines/RBrython";
 import { hl } from "./hl";
 
@@ -29,7 +29,8 @@ const search = new URLSearchParams( location.search );
 const test_name = search.get("test");
 //const merge     = __SBRY_MODE__ === "test"; // Benchmark
 const merge     = search.get("merge") === "true" ? true : false;
-const parser    = search.get("parser") === "false" ? false : true;
+const opti      = (search.get("opti") ?? "safe") as keyof typeof Optimizers;
+
 const DEFAULT_COMPAT = (search.get("compat") ?? "NONE");// as typeof __SBRY_COMPAT__;
 
 ////////////////////////////////////////////////////////////////:
@@ -56,7 +57,8 @@ function createBench() {
     })
             .addStep("emit",  (engine, ctx) => {
         ctx.jscode = engine.emit(ctx.ast, {target: Targets.function,
-                                             sync: true});
+                                             sync: true,
+                                             opti: Optimizers[opti]});
     })
             .addStep("load",  (engine, ctx) => {
         ctx.fct = engine.loadAsSyncFunction(ctx.jscode);

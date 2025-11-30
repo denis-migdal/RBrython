@@ -8,6 +8,7 @@ Generate JavaScript code from parsed Python code:
 Options:
 - mode: see [RBrython mode](../../../?tab=readme-ov-file#mode).
 - target: see [RBrython target](../../../?tab=readme-ov-file#target).
+- opti: see [RBrython optimizer](../../../?tab=readme-ov-file#optimizer).
 - exports: see [RBrython export](../../../?tab=readme-ov-file#export).
 - sync: see [RBrython sync](../../../?tab=readme-ov-file#sync).
 

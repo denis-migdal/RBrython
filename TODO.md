@@ -1,16 +1,26 @@
 ## Current TODOs
 
+- opti (see kernel tests)
+    - doc
+    - refactor
+    - option (enable/disable)
+        - editor
+        - CLI
+
 - complete documentation
+    - rewrite opti
     - locals.$test
     - bool() opti.
         - in: if/while/or/and/not/assert
         - avoid conversion if already boolean or compatible...
+        - safe vs unsafe.
     - macro + emit + EmitContext (?).
     - call/mcall - direct call.
     - idem operators (JS op).
     - debug: include inline srcmap vs prod : separate file (srcmap url)
 
 Mail
+- JS code highligh
 - target opts
     - not really tested everything correctly.
     - all import features not propertly tested.
@@ -20,11 +30,8 @@ Mail
 
 ## TODO
 
-status work
-- def/lambda
-    - arg parsing
-    - decorator
-- operators
+- compare
+- exceptions
 - class
     - doc init
     - __new__ / () arg parsing
