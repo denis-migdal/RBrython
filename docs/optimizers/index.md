@@ -24,18 +24,29 @@ Otherwise, we'd need to make some assumptions (unsafe):
 - calls on ES6 classes are make explicit (e.g. `JS.new(Foo)`) ;
 - callable object are either implemented as a function, or called explicitly (e.g. `foo.__call__()`).
 
-## Booleans
+## Boolean coercion
 
-- bool() opti.
-    - in: if/while/or/and/not/assert
-    - avoid conversion if already boolean or compatible...
-    - safe vs unsafe.
+In Python, objects are coerced into boolean through `bool()`.  This coercion is required when using `if`, `while`, `not`, `or`, `and`, `assert`, etc.
+```ts
+if( bool(condition) ) { ... }
+```
+
+This coercion can be safely removed if we know that `condition` is already a boolean (note: `bool` cannot be inherited). 
+
+Otherwise, we'd need to make the following assumptions (<i>unsafe</i>):
+- objects are explicitly coerced.
+- `int`, `float`, `str` subclasses doesn't redefined `__bool__`.
+
+We can also, in some cases remplace `bool()` by `len()`, but we'd need to assume (<i>unsafe</i>):
+- objects with length subclasses doesn't redefined `__bool__`.
 
 ## Operators
 
 - idem operators (JS op).
 
 ## Old notes (TODO)
+
++ cstes
 
 fct call if type is good
 
