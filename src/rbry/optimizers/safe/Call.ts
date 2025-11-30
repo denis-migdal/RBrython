@@ -1,9 +1,9 @@
 import { nodeType } from "@RBrython/rbry/ast";
 import { CallNode } from "@RBrython/rbry/ast/types";
-import { FunctionType } from "@RBrython/rbry/checker/Walker";
+import { FunctionType, isInstance } from "@RBrython/rbry/checker/types";
 import { EmitContext } from "@RBrython/rbry/emitter/EmitContext";
-import { Handler } from "@RBrython/rbry/emitter/handlers";
-import { writeArgs } from "@RBrython/rbry/emitter/handlers/operators/Call";
+import { Handler     } from "@RBrython/rbry/emitter/handlers";
+import { writeArgs   } from "@RBrython/rbry/emitter/handlers/operators/Call";
 
 export default function Call(node    : CallNode,
                              ctx     : EmitContext,
@@ -18,7 +18,7 @@ export default function Call(node    : CallNode,
 
         // @ts-ignore
         const type = ctx.symtab.typedSymbols[name];
-        if( type === FunctionType) {
+        if( isInstance(type, FunctionType) ) {
             ctx.w`${name}(`;
             writeArgs(node, ctx);
             ctx.w`)`;

@@ -43,7 +43,7 @@ Otherwise, we'd need to make some assumptions (unsafe):
 ES6 JavaScript classes cannot be used to implement Python classes as it misses some features.
 
 It would be possible to use them if:
-- multi-inheritance is forbidden.
+- the class dosn't use multi-inheritance (else need prototype manipulations).
 - `__new__` doesn't return a primitive.
 - initialization can be performed without calling the constructor.
 

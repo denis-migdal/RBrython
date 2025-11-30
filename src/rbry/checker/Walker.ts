@@ -1,17 +1,17 @@
 import { nodeType } from "../ast";
-import { ASTNode, FunctionDefNode, ParsedCode, SymTab } from "../ast/types";
+import { ASTNode, ParsedCode, SymTab } from "../ast/types";
+import handlers from "./handlers";
+import { TypeDesc } from "./types";
 
-type Type = {}
+export type TypedASTNode<T> = ASTNode<T> & {result_type: TypeDesc}
+export type TypedSymTab     = SymTab & {typedSymbols: Record<string, TypeDesc>}
 
-type TypedASTNode<T> = ASTNode<T> & {result_type: Type}
-type TypedSymTab     = SymTab & {typedSymbols: Record<string, Type>}
-
-type Entry<T extends ASTNode = ASTNode> = {
+export type Entry<T extends ASTNode = ASTNode> = {
     node  : T,
     symtab: SymTab
 }
-type TypedEntry<T extends ASTNode = ASTNode> = Entry<TypedASTNode<T>>
-                                            & {symtab: TypedSymTab};
+export type TypedEntry<T extends ASTNode = ASTNode> = Entry<TypedASTNode<T>>
+                                                    & {symtab: TypedSymTab};
 
 export function walk(parsed: ParsedCode) {
 
@@ -60,11 +60,13 @@ export function walk(parsed: ParsedCode) {
     let entry: TypedEntry|undefined;
     while( entry = toProcess.pop() ) {
 
-        const x = nodeType(entry.node);
-
-        if( x === "FunctionDef" )
-            // @ts-ignore
-            processFunctionDef(entry);
+        const handler = handlers[nodeType(entry.node) as keyof typeof handlers];
+        if( handler === undefined) {
+            //
+            continue;
+        }
+        
+        handler(entry);
     }
 }
 
@@ -72,10 +74,4 @@ function getChildren(elem: ASTNode): ASTNode[] {
     return [...Object.values(elem)].filter(e => typeof e === "object"
                                             // @ts-ignore
                                         && e.constructor.$name !== undefined);
-}
-
-export const FunctionType = Symbol();
-
-function processFunctionDef(entry: TypedEntry<FunctionDefNode>) {
-    (entry.symtab.typedSymbols ||= {})[entry.node.name] = FunctionType;
 }

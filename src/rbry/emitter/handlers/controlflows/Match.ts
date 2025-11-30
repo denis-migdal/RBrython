@@ -3,11 +3,11 @@ import { EmitContext } from "../../EmitContext";
 
 export default function Match(node: MatchNode, ctx: EmitContext) {
 
-    ctx.w`{${ctx.BB}`; // we want a special scope for the match.
+    ctx.w`{${ctx.hm.BB()}`; // we want a special scope for the match.
 
     //TODO: indent...
 
-    ctx.w`const tname = $RB.getClass(${node.subject}).name;${ctx.NL}`
+    ctx.w`const tname = $RB.getClass(${node.subject}).name;${ctx.hm.NL()}`
 
     for(let i = 0; i < node.cases.length -1; ++i) {
         if( i !== 0)
@@ -18,5 +18,5 @@ export default function Match(node: MatchNode, ctx: EmitContext) {
         ctx.w`if( tname === "${c.pattern.cls.id}"){${c.body}}`;
     }
     ctx.w`else {${node.cases[node.cases.length-1].body}}`;
-    ctx.w`${ctx.EB}}`;
+    ctx.w`${ctx.hm.BE()}}`;
 }

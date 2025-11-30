@@ -1,5 +1,5 @@
-- ES6 classes
-- 
+- hidden macro (boolean coercion)
+- how to use with ctx.w`` ? -> symbols ?
 
 Mail
 - status page
@@ -10,6 +10,8 @@ Mail
     - not really tested everything correctly.
     - all import features not propertly tested.
 - directions
+    - ES6 classes
+- saveTmp() .tmp().
 
 ## Directions
 

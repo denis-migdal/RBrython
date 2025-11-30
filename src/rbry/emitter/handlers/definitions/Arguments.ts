@@ -53,9 +53,9 @@ export default function Arguments(node: ArgsDefNode, ctx: EmitContext) {
     ctx.w`){`;
 
     if( hasKW && hasVararg ) {
-        ctx.w`${ctx.BB}var `;
+        ctx.w`${ctx.hm.BB()}var `;
         writeKW(node, ctx, arg_offset);
-        ctx.w`;${ctx.EB}`;
+        ctx.w`;${ctx.hm.BE()}`;
     }
 
     //TODO: prefer var renaming...
@@ -65,7 +65,7 @@ export default function Arguments(node: ArgsDefNode, ctx: EmitContext) {
             selfname = node.posonlyargs[0].arg;
         else
             selfname = node.args[0].arg;
-        ctx.w`${ctx.BB}const ${selfname} = this;${ctx.EB}`;
+        ctx.w`${ctx.hm.BB()}const ${selfname} = this;${ctx.hm.BE()}`;
     }
 }
 

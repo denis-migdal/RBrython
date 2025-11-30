@@ -82,15 +82,13 @@ export default class RBrythonEmitter extends Emitter {
                                         EmitterDefaults,
                                         options.target?.defaults,
                                         options);
-                                        
+
         if( opts.opti.require_typechecker )
             walk(parsed); //TODO
         
-        const ctx = new EmitContext(opts.opti.handlers,
-                                    parsed.symtable,
-                                    opts.mode,
+        const ctx = new EmitContext(opts,
                                     this.macros,
-                                    opts.sync);
+                                    parsed.symtable);
 
         const exported = this.extractExportedSymbols(parsed);
         ctx.w_body(parsed.ast.body);

@@ -1,15 +1,27 @@
 import { MODE } from ".";
 import { isASTNode, nodeType } from "../ast";
 import { ASTNode, CLASS, ClassDefNode, FUNCTION, FunctionDefNode, SymTab } from "../ast/types";
-import { Handler } from "./handlers";
+import { HMacros } from "../optimizers";
+import { Handlers } from "./handlers";
+import hmacros from "./hmacros/list";
 
 export type Macro = (ctx: EmitContext, ...args: ASTNode[]) => void;
 
 export const LOCAL_VAR = 0x1000;
 
+type EmitContextOpts = {
+    opti: {
+        handlers: Handlers,
+        hmacros : HMacros
+    }
+    mode: MODE,
+    sync: boolean
+}
+
 export class EmitContext {
 
-    readonly macros: Record<string, Macro> = {};
+    readonly macros : Record<string, Macro> = {};
+    readonly hm     : typeof hmacros;
     readonly mode;
     readonly sync;
 
@@ -18,16 +30,23 @@ export class EmitContext {
     jscode: string = "";
 
     #symtabs;
-    constructor(handlers: Record<string, Handler>,
-                symtab  : SymTab,
-                mode    : MODE,
+    constructor({
+                    opti: {
+                        handlers,
+                        hmacros,
+                    },
+                    mode,
+                    sync,
+                }: EmitContextOpts,
+                
                 macros  : Record<string, Macro>,
-                sync    : boolean) {
+                symtab  : SymTab) {
 
         this.handlers = handlers;
         this.#symtabs = [symtab];
         this.mode     = mode;
         this.macros   = macros;
+        this.hm       = hmacros as any;
         this.sync     = sync;
     }
 
@@ -59,15 +78,9 @@ export class EmitContext {
             this.w_str(strings[i]);
 
             const e = exprs[i];
-            if( e === this.BB) {
-                ++this.indent_level;
-                this.w_line();
-            } else if (e === this.EB) {
-                --this.indent_level;
-                this.w_line();
-            }  else if (e === this.NL) {
-                this.w_line();
-            } else if( isASTNode(e) )
+            if( typeof e === "function") // HMacro
+                e(this);
+            else if( isASTNode(e) )
                 this.w_node(e)
             else if( Array.isArray(e) )
                 this.w_body(e);
@@ -91,10 +104,6 @@ export class EmitContext {
         if( ! this.jscode.endsWith(nl) )
             this.jscode += nl;
     }
-
-    readonly NL = Symbol();
-    readonly BB = Symbol();
-    readonly EB = Symbol();
 
     w_body(nodes: ASTNode[]) {
 

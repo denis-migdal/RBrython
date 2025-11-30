@@ -1,10 +1,17 @@
 import { ASTNode } from "../ast/types";
-import { EmitContext } from "../emitter/EmitContext";
+import { EmitContext, Macro } from "../emitter/EmitContext";
 import handlers, { Handler, Handlers } from "../emitter/handlers"
+import hmacros from "../emitter/hmacros/list";
 import SafeOpti from "./safe"
 
+// delayed by default in order to be used with ctx.w``.
+export type HMacro = (...args: any[]) => ( (ctx: EmitContext) => void);
+
+export type HMacros = Record<string, HMacro>;
+
 export type Optimizer = {
-    handlers           : Record<string, Handler>,
+    handlers           : Handlers,
+    hmacros            : HMacros,
     require_typechecker: boolean
 }
 
@@ -31,14 +38,17 @@ const safeHandlers = patchHandlers(handlers, SafeOpti);
 const Optimizers = {
     disabled: {
         handlers,
+        hmacros: hmacros,
         require_typechecker: false
     },
     safe    : {
         handlers: safeHandlers,
+        hmacros : hmacros,
         require_typechecker: true
     },
     unsafe  : {
         handlers: safeHandlers, //TODO...
+        hmacros : hmacros,
         require_typechecker: true
     }
 } satisfies Record<string, Optimizer>
