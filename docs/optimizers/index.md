@@ -42,7 +42,27 @@ We can also, in some cases remplace `bool()` by `len()`, but we'd need to assume
 
 ## Operators
 
-- idem operators (JS op).
+Contrary to Python, in JavaScript, operators cannot be overloaded requiring to evaluate them at runtime:
+```ts
+$RB.op(a, "op", b)
+```
+
+We can remove that if we have the guarantee that we are manipulating primitive types. However this is hard to safely assert.
+
+We could provide "fast" final types corresponding to primitives. Primitives can be assigned to these "fast" types as long as they do not override the relevant type coercion function(s). But again, this is hard to safely assert.
+```python
+def foo(a: fint, b: ffloat) {
+    return a+b
+}
+```
+
+Otherwise, we need to assume that primitive types can't be inherited (unsafe).
+
+## Constant expressions
+
+Constant expressions can safely be precomputed. However, we might want to avoid to precompute expressions that'd result in too many characters (e.g. `[0]*1000`).
+
+We could also provide a `@constexpr` decorator to mark a function/method as pre-computable as built time (if the parameter are themselves constants expressions).
 
 ## Old notes (TODO)
 
@@ -74,10 +94,4 @@ for
 Requires some assumptions (behind a flag) ?
 
 - can't inherit from literal -> JS & Python type would be the same internal data structure.
-- or "use fast primitives" in file assumptions ?
-
-## ?
-
-- operations on literals.
-- remove runners (or reduce it as much as possible).
-- remove non-common features / compatibility...
+- or "use fast primitives" in file assumptions ?..
