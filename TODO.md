@@ -1,19 +1,25 @@
+- ES6 classes
+- 
+
 Mail
-- JS code highligh/ident.
 - status page
 - opti level + page.
-- decl why can't write clean JS.
+    - decl why can't write clean JS.
+- JS code highligh/ident.
 - target opts
     - not really tested everything correctly.
     - all import features not propertly tested.
+- directions
 
-## TODO
+## Directions
 
-- complete status
-- --export: Brython support
-- ~100 unittest/semaine.
-- Exception trace + sourcemap
-- implement opti / type check
+1. Complete features (cf status).
+2. Optimizations / type checker.
+3. Pass unit tests (~100/weeks).
+4. Implement corelib.
+5. Other features
+   1. --export support for Brython
+   2. sourcemap + exception trace.
 
 ## Status
 
@@ -72,9 +78,6 @@ X. Editor
     c. add module name somewhere ?
     - Import map : (sys.meta_path)
 
-3. Compat mode / cf optimisations (?) [per file...]
-    - operations on constants might be precomputed (<i>not implemented</i>).
-         -> ou use Terser ?
 TS/WASM generation possible.
 
 ## Tests

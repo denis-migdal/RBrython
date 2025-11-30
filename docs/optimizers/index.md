@@ -18,7 +18,9 @@ function X(node: ASTNode, ctx: Emitter, fallback: Handler) {
 
 See below the list of RBrython optimizations.
 
-## Calls
+## Optimisations
+
+### Calls
 
 In Python, 3 kinds of objects are callable:
 - functions/methods ;
@@ -36,7 +38,16 @@ Otherwise, we'd need to make some assumptions (unsafe):
 - calls on ES6 classes are make explicit (e.g. `JS.new(Foo)`) ;
 - callable object are either implemented as a function, or called explicitly (e.g. `foo.__call__()`).
 
-## Boolean coercion
+### Classes
+
+ES6 JavaScript classes cannot be used to implement Python classes as it misses some features.
+
+It would be possible to use them if:
+- multi-inheritance is forbidden.
+- `__new__` doesn't return a primitive.
+- initialization can be performed without calling the constructor.
+
+### Boolean coercion
 
 In Python, objects are coerced into boolean through `bool()`.  This coercion is required when using `if`, `while`, `not`, `or`, `and`, `assert`, etc.
 ```ts
@@ -52,7 +63,7 @@ Otherwise, we'd need to make the following assumptions (<i>unsafe</i>):
 We can also, in some cases remplace `bool()` by `len()`, but we'd need to assume (<i>unsafe</i>):
 - objects with length subclasses doesn't redefined `__bool__`.
 
-## Operators
+### Operators
 
 Contrary to Python, in JavaScript, operators cannot be overloaded requiring to evaluate them at runtime:
 ```ts
@@ -70,19 +81,19 @@ def foo(a: fint, b: ffloat) {
 
 Otherwise, we need to assume that primitive types can't be inherited (unsafe).
 
-## Constant expressions
+### Constant expressions
 
 Constant expressions can safely be precomputed. However, we might want to avoid to precompute expressions that'd result in too many characters (e.g. `[0]*1000`).
 
 We could also provide a `@constexpr` decorator to mark a function/method as pre-computable during built time (if the parameter are themselves constants expressions).
 
-## For
+### For
 
 - avoid using JS iterators (poorly designed):
     - `for i in range(...)` could be transform into a `for( i = a; i < b, i+=c)`. If the index isn't used, could be converted into `float`.
     - use our own iterator system when possible ?
     - when we produce an iterator, reuse the object ?
 
-## self
+### self
 
-`self` could internally renamed as `this`.
+`self` could internally be renamed as `this`.
