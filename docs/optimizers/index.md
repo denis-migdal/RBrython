@@ -62,7 +62,7 @@ Otherwise, we need to assume that primitive types can't be inherited (unsafe).
 
 Constant expressions can safely be precomputed. However, we might want to avoid to precompute expressions that'd result in too many characters (e.g. `[0]*1000`).
 
-We could also provide a `@constexpr` decorator to mark a function/method as pre-computable as built time (if the parameter are themselves constants expressions).
+We could also provide a `@constexpr` decorator to mark a function/method as pre-computable during built time (if the parameter are themselves constants expressions).
 
 ## Old notes (TODO)
 
