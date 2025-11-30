@@ -4,6 +4,18 @@ RBrython provides several optimization levels enabling to trade Python complianc
 
 Currently RBrython does not enable to enable/disable optimizations individually.
 
+Optimization are mainly implemented as special emission handlers:
+```ts
+function X(node: ASTNode, ctx: Emitter, fallback: Handler) {
+    if( canOptimize )
+        return ctx.w`....`;
+
+    // can't optimize, fallback to original behavior.
+    fallback(node, ctx);
+}
+```
+
+
 See below the list of RBrython optimizations.
 
 ## Calls
