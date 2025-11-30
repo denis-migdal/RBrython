@@ -1,19 +1,18 @@
 ## Current TODOs
 
 - complete documentation
-    - rewrite opti
     - locals.$test / vs getTmp()
     - macro + emit + EmitContext (?).
     - debug: include inline srcmap vs prod : separate file (srcmap url)
 
 Mail
-- JS code highligh
+- JS code highligh/ident.
+- status page
+- opti level + page.
+- decl why can't write clean JS.
 - target opts
     - not really tested everything correctly.
     - all import features not propertly tested.
-- ident code.
-- status
-- decl why can't write clean JS.
 
 ## TODO
 

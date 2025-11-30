@@ -8,7 +8,21 @@ See below the list of RBrython optimizations.
 
 ## Calls
 
+In Python, 3 kinds of objects are callable:
+- functions/methods ;
+- classes: requires `new` for JavaScript ES6 classes.
+- callable objects: doesn't exists in JavaScript.
 
+`$RB.call(foo)` is therefore needed to assess, at runtime, how to perform the call operation on `foo`.
+
+If the type of the object is known at build time, we can directly (and safely) perform the call:
+- `foo()`
+- `new Foo()`
+- `foo.__call__()`
+
+Otherwise, we'd need to make some assumptions (unsafe):
+- calls on ES6 classes are make explicit (e.g. `JS.new(Foo)`) ;
+- callable object are either implemented as a function, or called explicitly (e.g. `foo.__call__()`).
 
 ## Booleans
 
