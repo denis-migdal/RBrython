@@ -1,22 +1,9 @@
 ## Current TODOs
 
-- opti (see kernel tests)
-    - doc
-    - refactor
-    - option (enable/disable)
-        - editor
-        - CLI
-
 - complete documentation
     - rewrite opti
-    - locals.$test
-    - bool() opti.
-        - in: if/while/or/and/not/assert
-        - avoid conversion if already boolean or compatible...
-        - safe vs unsafe.
+    - locals.$test / vs getTmp()
     - macro + emit + EmitContext (?).
-    - call/mcall - direct call.
-    - idem operators (JS op).
     - debug: include inline srcmap vs prod : separate file (srcmap url)
 
 Mail

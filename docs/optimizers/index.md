@@ -1,4 +1,27 @@
-## Optimizations ideas (not implemented)
+RBrython provides several optimization levels enabling to trade Python compliance for performances:
+- `safe`: uses the type checker to perform some optimizations that should remain Python compliant.
+- `unsafe`: make some assumptions on the code or take some liberties with Python.
+
+Currently RBrython does not enable to enable/disable optimizations individually.
+
+See below the list of RBrython optimizations.
+
+## Calls
+
+
+
+## Booleans
+
+- bool() opti.
+    - in: if/while/or/and/not/assert
+    - avoid conversion if already boolean or compatible...
+    - safe vs unsafe.
+
+## Operators
+
+- idem operators (JS op).
+
+## Old notes (TODO)
 
 fct call if type is good
 
