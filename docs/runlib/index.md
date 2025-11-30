@@ -14,13 +14,16 @@ RBrython helpers are usually in found the `$RB` JavaScript object (`$B` for Bryt
 | `setattr(obj, attr, value)` | `$setattr1(obj, attr, value)` | |
 | `call(callable, ...args)` | `$call(callable)(...args)` |  |
 | `mcall(obj, attr, ...args)` | attr+call | Method call |
-| `assert(cond)` | `assert(cond, msg)` | |
+| `assert(cond, msg)` | `assert(cond, msg)` | |
 | NotImpl | `$raise(e)` ||
 | `setKW(kw)` | | in a call, set kw args |
 | `getKW(): kw` | | in a call, get kw args |
-| `getModule(name)` | ? | get loaded module (sync) |
+| `getModule(name)` | ? | get loaded module (async) |
+| `getModuleSync(name)` | ? | get loaded module (sync) |
+| `saveTmp(x)` | `locals.$test = x` | Save a temporary value |
+| `tmp()` | `locals.$test` | Use a temporary value |
+| `withTmp(expr)` | | Return the result of `expr` and clear the temporary value |
 
-TODO: add helper
 
 ## Internal helpers
 
@@ -28,6 +31,8 @@ TODO: add helper
 |---|---|---|
 | `getClass(o)` | `get_class(o)` | |
 | `isClass(o)` | ? | assert if should be called with `new` |
+
+Note: `getClass` is included in `$RB` (verify is really needed).
 
 ## Recommandations for Brython
 

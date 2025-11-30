@@ -8,8 +8,8 @@ RBrython provides macros to access native JS features. You can see macros as a k
 
 A macro is a simple JavaScript function receiving its arguments as AST nodes, and returning the JavaScript code to write:
 ```ts
-__JS_ADD__ = (a: ASTNode, b: ASTNode) => {
-    return `${node2js(a)}+${node2js(b)}`;
+__JS_ADD__ = (ctx: EmitContext, a: ASTNode, b: ASTNode) => {
+    ctx.w`${a}+${b}`;
 }
 ```
 

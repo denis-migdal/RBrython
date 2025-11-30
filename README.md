@@ -150,6 +150,7 @@ The `prod` mode is similar to the `-OO` Python options:
 - assertions are removed ;
 - `__debug__` is set to false.
 - docstrings are discarded (<i>not implemented</i>).
+- sourcemap is provided as a separate file instead of being inlined in the generated JavaScript.
 
 💡 You can also use existing JavaScript minifier, uglifier, or optimizer on the generated files.
 

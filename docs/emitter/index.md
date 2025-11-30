@@ -20,10 +20,20 @@ You can register a [macro](../macros/index.md) with:
 
 ## Implementation
 
-Each node of the AST tree is converted into JavaScript code by a file in `/src/rbry/emitter/handlers/` corresponding to the AST node type.
+Each node of the AST tree is converted into JavaScript code by a file in `/src/rbry/emitter/handlers/` corresponding to the AST node type:
+```ts
+function X(node: ASTNode, ctx: EmitContext) {
+    ctx.w`...`
+}
+```
 
-Internal API:
-- `node2js(node: ASTNode)` : converts a node into JS string.
+`EmitContext` enables to write to the output, i.e. into the generated JavaScript "file". To that extends, it provides several methods:
+- `ctx.w`: used to write from a template string.
+- `ctx.w_str(s)`: writes a raw string.
+- `ctx.w_body(b)`: writes a body.
+- `ctx.w_node(n)`: calls the handler associated to the node.
+
+`EmitContext` also provides other helper methods.
 
 💡 RBrython provides helper to facilitate AST node manipulations in the directory `/src/rbry/ast/`:
 - `nodeType(node: ASTNode): string`: extract the AST node type.

@@ -1,10 +1,5 @@
 ## Current TODOs
 
-- complete documentation
-    - locals.$test / vs getTmp()
-    - macro + emit + EmitContext (?).
-    - debug: include inline srcmap vs prod : separate file (srcmap url)
-
 Mail
 - JS code highligh/ident.
 - status page
