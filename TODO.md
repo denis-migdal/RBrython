@@ -1,5 +1,3 @@
-## Current TODOs
-
 Mail
 - JS code highligh/ident.
 - status page
@@ -11,6 +9,14 @@ Mail
 
 ## TODO
 
+- complete status
+- --export: Brython support
+- ~100 unittest/semaine.
+- Exception trace + sourcemap
+- implement opti / type check
+
+## Status
+
 - compare
 - exceptions
 - class
@@ -19,11 +25,6 @@ Mail
     - class decorator
     - method decorator
     - ?
-
-- --export: Brython support
-- ~100 unittest/semaine.
-- Exception trace + sourcemap
-- clean JS / no runtime.
 
 ## Features
 
