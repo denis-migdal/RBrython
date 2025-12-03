@@ -23,6 +23,7 @@ See below the list of RBrython optimizations.
 Partially implemented:
 - calls
 - boolean coercion
+- repeat of temporary values
 
 Not implemented:
 - operators
@@ -93,6 +94,17 @@ def foo(a: fint, b: ffloat) {
 ```
 
 Otherwise, we need to assume that primitive types can't be inherited (unsafe).
+
+### Repeat of temporary values
+
+Some Python operators requires a repetition of an expression, e.g.:
+- `0 < foo() < 1` becomes `0 < foo() && foo() < 1` in JS.
+- `a and b` becomes `bool(a) ? a : b` in JS.
+- `a or b` becomes `bool(a) ? b : a` in JS.
+
+For that, RBrython provides `saveTmp()` and `getTmp()` in order to save and reuse the result of the expression.
+
+However, we can safely repeat the expression if it is simple enough (e.g. a constant or a variable name).
 
 ### Constant expressions
 

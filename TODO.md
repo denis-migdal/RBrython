@@ -14,7 +14,7 @@ Mail:
 
 ## Roadmap
 
-- repeat only if "complex" op (opti).
+- repeat in or/and...
 
 X. Assign/Rich assign (?) (+= redefine or using + op ?)
 

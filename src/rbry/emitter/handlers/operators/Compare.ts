@@ -4,6 +4,7 @@ import { EmitContext } from "../../EmitContext";
 
 export default function Compare(node: CompareNode, ctx: EmitContext) {
 
+    let prev = node.left;
     for(let i = 0; i < node.ops.length; ++i) {
 
         const isFirst = i === 0;
@@ -11,11 +12,11 @@ export default function Compare(node: CompareNode, ctx: EmitContext) {
 
         const op = getOp(node.ops[i]) as keyof typeof cmpops | "Is" | "IsNot";
 
-        let a: any = node.left;
+        let a: any = prev;
         if( ! isFirst )
-            a = ctx.hm.getTmp();
+            a = ctx.hm.getTmp(prev);
 
-        let b: any = node.comparators[i];
+        let b: any = prev = node.comparators[i];
         if( ! isLast )
             b = ctx.hm.saveTmp(b);
 

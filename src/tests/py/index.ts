@@ -1,7 +1,6 @@
 const test_suite = {
 	"kernel/scope/nonlocal":	require("!!raw-loader!./kernel/scope/nonlocal.py").default,
 	"kernel/scope/global":	require("!!raw-loader!./kernel/scope/global.py").default,
-	"kernel/match/classes":	require("!!raw-loader!./kernel/match/classes.py").default,
 	"kernel/op/walrus":	require("!!raw-loader!./kernel/op/walrus.py").default,
 	"kernel/op/unary":	require("!!raw-loader!./kernel/op/unary.py").default,
 	"kernel/op/or":	require("!!raw-loader!./kernel/op/or.py").default,
@@ -10,6 +9,7 @@ const test_suite = {
 	"kernel/op/cmp":	require("!!raw-loader!./kernel/op/cmp.py").default,
 	"kernel/op/bin":	require("!!raw-loader!./kernel/op/bin.py").default,
 	"kernel/op/and":	require("!!raw-loader!./kernel/op/and.py").default,
+	"kernel/match/classes":	require("!!raw-loader!./kernel/match/classes.py").default,
 	"kernel/import/index":	require("!!raw-loader!./kernel/import/index.py").default,
 	"kernel/fct/index":	require("!!raw-loader!./kernel/fct/index.py").default,
 	"kernel/ctrlflow/continue":	require("!!raw-loader!./kernel/ctrlflow/continue.py").default,
