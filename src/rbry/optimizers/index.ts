@@ -68,7 +68,7 @@ const Optimizers = {
     },
     unsafe  : {
         handlers: safeHandlers, //TODO...
-        hmacros : safeHmacros,
+        hmacros : safeHmacros,  //TODO...
         require_typechecker: true
     }
 } satisfies Record<string, Optimizer>

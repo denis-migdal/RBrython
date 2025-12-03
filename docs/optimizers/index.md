@@ -20,6 +20,17 @@ See below the list of RBrython optimizations.
 
 ## Optimisations
 
+Partially implemented:
+- calls
+- boolean coercion
+
+Not implemented:
+- operators
+- constant expression
+- ES6 classes
+- for
+- self
+
 ### Calls
 
 In Python, 3 kinds of objects are callable:

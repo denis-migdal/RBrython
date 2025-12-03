@@ -1,5 +1,7 @@
 const handlers = {
-    "FunctionDef": require("./definitions/FunctionDef").default
+    "FunctionDef": require("./definitions/FunctionDef").default,
+
+    "Compare": require("./operators/Compare").default
 }
 
 export default handlers

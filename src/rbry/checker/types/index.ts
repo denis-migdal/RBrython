@@ -5,6 +5,7 @@ export type TypeDesc = {
 }
 
 export const FunctionType = {};
+export const BoolType = {};
 
 export function isInstance(v: TypeDesc, t: object) {
     return v !== undefined && v.type === t;
