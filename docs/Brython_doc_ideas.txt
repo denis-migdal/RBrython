@@ -1,0 +1,24 @@
+- https://github.com/brython-dev/brython/issues/2257
+Getting started:
+	+ Introduction / Installation / Limitations protocole "file"
+
+Particularités: (syntaxes, mots clefs et fcts intégrés)
+- Options d'éxécutions / Test et débogage
+
+Modules
+	- browser (Interface avec le navigateur).
+		- recettes (x2)
+	- javascript
+		- Interactions avec JS
+	- interpreter
+	- distribution standard
+
+- déploiement
+	- distribuer modules: implémentation de import / Packages Brython
+	- déploier une application
+
+- contribuer
+	- https://github.com/brython-dev/brython/wiki/Brython-development
+	- https://github.com/brython-dev/brython/wiki/How-Brython-works
+
+FAQ

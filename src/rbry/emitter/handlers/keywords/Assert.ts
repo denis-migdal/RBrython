@@ -7,5 +7,5 @@ export default function Assert(node: AssertNode, ctx: EmitContext) {
     if( ctx.mode === MODE.PROD )
         return;
 
-    ctx.w`$RB.assert(bool(${node.test}), ${node.msg ?? ""})`;
+    ctx.w`$RB.assert( ${ctx.hm.bool(node.test)}, ${node.msg ?? ""})`;
 }

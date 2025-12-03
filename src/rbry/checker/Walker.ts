@@ -3,7 +3,7 @@ import { ASTNode, ParsedCode, SymTab } from "../ast/types";
 import handlers from "./handlers";
 import { TypeDesc } from "./types";
 
-export type TypedASTNode<T> = ASTNode<T> & {result_type: TypeDesc}
+export type TypedASTNode<T extends ASTNode = ASTNode> = T & {result_type: TypeDesc}
 export type TypedSymTab     = SymTab & {typedSymbols: Record<string, TypeDesc>}
 
 export type Entry<T extends ASTNode = ASTNode> = {

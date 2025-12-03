@@ -5,7 +5,12 @@ import { EmitContext } from "../../EmitContext";
 export default function(node: UnaryOpNode, ctx: EmitContext) {
 
     const a = node.operand;
-    const op = getOp(node.op) as keyof typeof uops;
+    const op = getOp(node.op) as keyof typeof uops | "Not";
+
+    if( op === "Not") {
+        ctx.w`! ${ctx.hm.bool(a)}`;
+        return;
+    }
 
     const opname = uops[op];
     if( opname === undefined) 
@@ -18,7 +23,4 @@ const uops = {
     Invert: "invert",
     USub  : "neg",
     UAdd  : "pos",
-
-    // special:
-    Not: "not", // use __len__ or __bool__
 }

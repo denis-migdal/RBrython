@@ -1,5 +1,4 @@
 - hidden macro (boolean coercion)
-- how to use with ctx.w`` ? -> symbols ?
 
 Mail
 - status page
@@ -12,6 +11,7 @@ Mail
 - directions
     - ES6 classes
 - saveTmp() .tmp().
+- HMacro.
 
 ## Directions
 
@@ -21,7 +21,7 @@ Mail
 4. Implement corelib.
 5. Other features
    1. --export support for Brython
-   2. sourcemap + exception trace.
+   2. sourcemap + exception trace (require for exceptions)
 
 ## Status
 

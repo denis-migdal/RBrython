@@ -63,6 +63,8 @@ Otherwise, we'd need to make the following assumptions (<i>unsafe</i>):
 We can also, in some cases remplace `bool()` by `len()`, but we'd need to assume (<i>unsafe</i>):
 - objects with length subclasses doesn't redefined `__bool__`.
 
+Note: issue with and/or boolean operator (conflict with `saveTmp()`).
+
 ### Operators
 
 Contrary to Python, in JavaScript, operators cannot be overloaded requiring to evaluate them at runtime:

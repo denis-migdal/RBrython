@@ -2,7 +2,8 @@ import { ASTNode } from "../ast/types";
 import { EmitContext, Macro } from "../emitter/EmitContext";
 import handlers, { Handler, Handlers } from "../emitter/handlers"
 import hmacros from "../emitter/hmacros/list";
-import SafeOpti from "./safe"
+import SafeOpti_handlers from "./safe/handlers";
+import SafeOpti_hmacros from "./safe/hmacros";
 
 // delayed by default in order to be used with ctx.w``.
 export type HMacro = (...args: any[]) => ( (ctx: EmitContext) => void);
@@ -33,7 +34,26 @@ function patchHandlers(handlers: Handlers, patch: PatchHandler[]) {
     return patchedHandlers;
 }
 
-const safeHandlers = patchHandlers(handlers, SafeOpti);
+type PatchHMacros = (fallback: HMacro, ...args: any[]) => ((ctx: EmitContext) => void)
+
+function patchHMacros(hmacros: HMacros, patch: PatchHMacros[]) {
+
+    const patchedHMacros = {...hmacros};
+
+    for(let i = 0; i < patch.length; ++i ) {
+        const name = patch[i].name;
+
+        const fallback = hmacros[name];
+        patchedHMacros[name] = (...args: any[]) => {
+            return patch[i](fallback, ...args);
+        }
+    }
+
+    return patchedHMacros;
+}
+
+const safeHandlers = patchHandlers(handlers, SafeOpti_handlers);
+const safeHmacros  = patchHMacros(hmacros, SafeOpti_hmacros);
 
 const Optimizers = {
     disabled: {
@@ -43,12 +63,12 @@ const Optimizers = {
     },
     safe    : {
         handlers: safeHandlers,
-        hmacros : hmacros,
+        hmacros : safeHmacros,
         require_typechecker: true
     },
     unsafe  : {
         handlers: safeHandlers, //TODO...
-        hmacros : hmacros,
+        hmacros : safeHmacros,
         require_typechecker: true
     }
 } satisfies Record<string, Optimizer>
