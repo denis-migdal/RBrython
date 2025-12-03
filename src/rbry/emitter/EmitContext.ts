@@ -115,6 +115,7 @@ export class EmitContext {
         for(let i = 0; i < nodes.length; ++i) {
             this.w_line();
             this.w_node(nodes[i]);
+            this.w_str(";");
         }
         --this.indent_level;
         this.w_line();

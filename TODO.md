@@ -1,6 +1,8 @@
 Mail:
     - async: normal fct async, call that differs...
     - why does FormattedValue : format_spec is also a FormattedStr ?
+    - locals.$op / locals.$test : do not need if the repeated thing is Constant or Name.
+    - $B.bool() not needed if arg is compare or not or already a boolean cste.
 
 ## Directions
 
@@ -13,10 +15,6 @@ Mail:
    2. sourcemap + exception trace (require for exceptions)
 
 ## Roadmap
-
-- repeat in or/and...
-
-X. Assign/Rich assign (?) (+= redefine or using + op ?)
 
 X. Classes
     - doc init
