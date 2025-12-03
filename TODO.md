@@ -13,10 +13,7 @@
 X. Comparators.
 X. Assign/Rich assign (?) (+= redefine or using + op ?)
 
-X. F-string / format.
-    - __format__
 X. Ternary op.
-
 
 X. Classes
     - doc init
@@ -27,13 +24,13 @@ X. Classes
 X. Attribute manipulations (del/in/not in/./[])
 
 X. Exceptions (+source map)
-
-X. Iterator + Generators + for opti + list comprehension (requiert except)
+X. Iterator + Generators + for opti + list comprehension + yield (requiert except)
     - https://www.w3schools.com/python/python_iterators.asp
     __iter__ -> use generator (yield)
     __reversed__
     __next__
     __getitem__ (fallback de __iter__)
+
 X. Match/case
 
 Y. typechecker improvements

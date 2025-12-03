@@ -163,8 +163,15 @@ export type TryNode = ASTNode<{
     handlers: {body: BodyNode}[];
 }>
 
+export type FormattedValueNode = ASTNode<{
+    value: ASTNode,
+    format_spec?: {
+        values: StringNode[]
+    }
+}>;
+
 export type JoinedStrNode = ASTNode<{
-    values: (ASTNode<{value: ASTNode}>|StringNode)[]
+    values: (FormattedValueNode|StringNode)[]
 }>
 
 export type MatchNode = ASTNode<{

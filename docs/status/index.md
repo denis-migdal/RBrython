@@ -61,16 +61,14 @@ https://www.w3schools.com/python/python_ref_keywords.asp
     </tbody>
 </table>
 
+- f-string: done too.
+
 ### Classes
 
 - methods
 - attributes
 - decorators
 - etc.
-
-### Others
-
-- fstring
 
 ## Core
 

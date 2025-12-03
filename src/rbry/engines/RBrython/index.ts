@@ -5,11 +5,12 @@ import RBrythonEmitter from "@RBrython/rbry/emitter";
 
 export const builtins = {
 
-    type : require("!!raw-loader!../../corelib/type.py"  ).default,
-    int  : require("!!raw-loader!../../corelib/int.py"   ).default,
-    bool : require("!!raw-loader!../../corelib/bool.py"  ).default,
-    float: require("!!raw-loader!../../corelib/float.py" ).default,
-    str  : require("!!raw-loader!../../corelib/str.py"   ).default,
+    type  : require("!!raw-loader!../../corelib/type.py"  ).default,
+    int   : require("!!raw-loader!../../corelib/int.py"   ).default,
+    bool  : require("!!raw-loader!../../corelib/bool.py"  ).default,
+    float : require("!!raw-loader!../../corelib/float.py" ).default,
+    str   : require("!!raw-loader!../../corelib/str.py"   ).default,
+    format: require("!!raw-loader!../../corelib/format.py").default,
     //    require("!!raw-loader!../../corelib/mfct.py"  ).default
 }
 
