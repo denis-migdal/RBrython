@@ -24,8 +24,8 @@ X. Classes
     - ?
 X. Attribute manipulations (del/in/not in/./[])
 
-X. Exceptions (+source map)
-X. Iterator + Generators + for opti + list comprehension + yield (requiert except)
+X. Exceptions (+source map) [+ runlib exception]
+X. Iterator + Generators + for opti + list comprehension + yield (requiert except) [+ runlib range]
     - https://www.w3schools.com/python/python_iterators.asp
     __iter__ -> use generator (yield)
     __reversed__

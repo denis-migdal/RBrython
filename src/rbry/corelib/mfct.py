@@ -1,3 +1,3 @@
-#BUG
-#def abs(o: float|int, /) -> float|int:
-#    return o.__abs__()
+
+def abs(o: float|int, /) -> float|int:
+    return type(o).__abs__(o) # pyright: ignore[reportArgumentType]

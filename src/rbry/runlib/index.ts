@@ -37,10 +37,11 @@ import { getClass } from "./helpers/getClass";
 import getModuleSync from "./interface/getModuleSync";
 
 // @ts-ignore
+/*
 globalThis.abs = function( a: unknown) {
     const ka = getClass(a);
     return ka.prototype[`__abs__`].call(a);
-}
+}*/
 
 // @ts-ignore
 globalThis.range = function*(...args: bigint[]) {
