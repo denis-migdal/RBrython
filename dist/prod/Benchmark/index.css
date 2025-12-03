@@ -1,3 +1,77 @@
+
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
 html {
     /*filter: hue-rotate(180deg);*/
     background-color: black;
@@ -10,6 +84,14 @@ body {
     width: 100vw;
     height: 100vh;
     margin:0px;
+}
+
+select > .hopt {
+    font-weight: bold;
+    font-style: italic;
+}
+select > :not(.hopt) {
+    padding-left: 50px;
 }
 
 .success {
@@ -32,6 +114,8 @@ body {
         min-height: 0;
         min-width: 0;
 
+        position: relative;
+
         & > strong {
             display: block;
             width: 100%;
@@ -52,14 +136,37 @@ body {
             }
         }
 
-        & > textarea {
-            box-sizing: border-box;
+        & > div.python {
 
-            width: 100%;
-            padding: 15px;
-
-            height: calc(100% - 2rem);
             overflow-y: auto;
+            height: calc(100% - 2rem);
+            position: relative;
+
+            & > #python {
+                background-color: black;
+            }
+
+            & > :is(#python, .python_ouput) {
+
+                overflow-y: visible;
+
+                box-sizing: border-box;
+
+                width: 100%;
+                padding: 15px;
+
+                min-height: 100%;
+
+                &.python_ouput {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: -1;
+                }
+            }
+        }
+        & > div.python > #python:not(:focus) {
+            opacity: 0;
         }
     }
 

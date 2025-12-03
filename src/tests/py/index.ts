@@ -12,7 +12,7 @@ const test_suite = {
 	"kernel/fct/index":	require("!!raw-loader!./kernel/fct/index.py").default,
 	"kernel/ctrlflow/continue":	require("!!raw-loader!./kernel/ctrlflow/continue.py").default,
 	"kernel/ctrlflow/break":	require("!!raw-loader!./kernel/ctrlflow/break.py").default,
-	"core/float/op":	require("!!raw-loader!./core/float/op.py").default,
 	"core/int/op":	require("!!raw-loader!./core/int/op.py").default,
+	"core/float/op":	require("!!raw-loader!./core/float/op.py").default,
 }
 export default test_suite
