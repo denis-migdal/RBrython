@@ -63,7 +63,7 @@ export default class BenchRunner {
         return this.#results!;
     }
 
-    protected benchOne(engineId: number, ctx: Record<string, any>) {
+    protected async benchOne(engineId: number, ctx: Record<string, any>) {
 
         const engine = this.engines[engineId].engine;
 
@@ -81,7 +81,7 @@ export default class BenchRunner {
                 const f = this.steps[i].fct;
 
                 const beg = performance.now();
-                f(engine, ctx);
+                await f(engine, ctx);
                 const end = performance.now();
                 
                 resultOne.steps[i] = {
@@ -101,7 +101,7 @@ export default class BenchRunner {
         return resultOne;
     }
 
-    bench(ctx: Record<string, any>) {
+    async bench(ctx: Record<string, any>) {
 
         if( this.#results === null )
             this.resetStats();
@@ -111,7 +111,7 @@ export default class BenchRunner {
         for(let r = 0; r < this.engines.length; ++r) {
             const resultEngine = results[this.engines[r].name];
 
-            const resultOne = this.benchOne(r, {...ctx});
+            const resultOne = await this.benchOne(r, {...ctx});
 
             // merge
             resultEngine.tests.push(resultOne);

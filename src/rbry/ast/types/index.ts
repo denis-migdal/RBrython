@@ -192,3 +192,7 @@ export type SubscriptNode = ASTNode<{
     value: ASTNode,
     slice: ASTNode
 }>
+
+export type AwaitNode = ASTNode<{
+    value: ASTNode
+}>

@@ -20,6 +20,8 @@ __JS_ADD__ = (ctx: EmitContext, a: ASTNode, b: ASTNode) => {
 RBrython gives access to JavaScript operators through the following macros:
 - `__JS_OP__(a, op, b)` : perform the JavaScript <i>binary</i> operation `a [op] b`.
 - `__JS_OP__(op, a)` : perform the JavaScript <i>prefix unary</i> operation `[op] a`.
+- `__JS_AWAIT__(a)` : await the promise `a` (works only in async context).
+
 
 ### Conversions
 

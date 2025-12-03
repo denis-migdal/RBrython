@@ -1,18 +1,3 @@
-- hidden macro (boolean coercion)
-
-Mail
-- status page
-- opti level + page.
-    - decl why can't write clean JS.
-- JS code highligh/ident.
-- target opts
-    - not really tested everything correctly.
-    - all import features not propertly tested.
-- directions
-    - ES6 classes
-- saveTmp() .tmp().
-- HMacro.
-
 ## Directions
 
 1. Complete features (cf status).
@@ -23,16 +8,39 @@ Mail
    1. --export support for Brython
    2. sourcemap + exception trace (require for exceptions)
 
-## Status
+## Roadmap
 
-- compare
-- exceptions
-- class
+X. Comparators.
+X. Assign/Rich assign (?) (+= redefine or using + op ?)
+
+X. F-string / format.
+    - __format__
+X. Ternary op.
+
+
+X. Classes
     - doc init
     - __new__ / () arg parsing
     - class decorator
     - method decorator
     - ?
+X. Attribute manipulations (del/in/not in/./[])
+
+X. Exceptions (+source map)
+
+X. Iterator + Generators + for opti + list comprehension (requiert except)
+    - https://www.w3schools.com/python/python_iterators.asp
+    __iter__ -> use generator (yield)
+    __reversed__
+    __next__
+    __getitem__ (fallback de __iter__)
+X. Match/case
+
+Y. typechecker improvements
+Y. opti improvements
+
+Z. corelib
+Z. import resolver
 
 ## Features
 

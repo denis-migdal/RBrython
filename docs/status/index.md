@@ -1,6 +1,6 @@
 ## Kernel
 
-### Keywords (7/12)
+### Keywords (8/12)
 
 https://www.w3schools.com/python/python_ref_keywords.asp
 
@@ -19,7 +19,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
         <tr>
             <td>$\color{green}{def/lambda/return/pass}$</td>
             <td>$\color{red}{raise/try/except/finally/with}$</td>
-            <td>$\color{red}{async/await}$</td>
+            <td>$\color{green}{async/await}$<sup>5</sup></td>
         </tr>
         <tr>
             <td>$\color{green}{import/from/as}$<sup>4</sup></td>
@@ -33,6 +33,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 - <sup>2</sup> global shadowed by a non local not implemented.
 - <sup>3</sup> else not implemented
 - <sup>4</sup> resolver non implemented
+- <sup>5</sup> upon call should not run immediately.
 
 
 ### Operators (5/12)

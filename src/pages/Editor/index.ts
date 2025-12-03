@@ -57,15 +57,14 @@ function createBench() {
     })
             .addStep("emit",  (engine, ctx) => {
         ctx.jscode = engine.emit(ctx.ast, {target: Targets.function,
-                                             sync: true,
                                              opti: Optimizers[opti]});
     })
             .addStep("load",  (engine, ctx) => {
-        ctx.fct = engine.loadAsSyncFunction(ctx.jscode);
+        ctx.fct = engine.loadAsFunction(ctx.jscode);
     });
 
     for(let i = 0; i < NB_REPEAT; ++i)
-        bench.addStep(`execute${i}`,  (_, ctx) => { ctx.fct($RB); }); // own $RB
+        bench.addStep(`execute${i}`,  async (_, ctx) => { await ctx.fct($RB); }); // own $RB
     
     bench.addStat("nbTokens", (ctx) => {
         return $B.tokenizer(ctx.pycode, '_').length;
@@ -145,7 +144,7 @@ function setCode(target: Element, code: string, lang: string) {
     target.innerHTML = hl(code, lang);
 }
 
-function run(pycodes: string[]|Record<string,string>) {
+async function run(pycodes: string[]|Record<string,string>) {
 
     resetGUI();
 
@@ -155,7 +154,7 @@ function run(pycodes: string[]|Record<string,string>) {
     const keys = Object.keys(pycodes);
     for(let i = 0; i < keys.length; ++i) {
         // @ts-ignore
-        bench.bench({pycode: pycodes[keys[i]]});
+        await bench.bench({pycode: pycodes[keys[i]]});
     }
 
     const results = bench.getStats();
