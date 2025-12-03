@@ -6,71 +6,65 @@ const NotImplemented = globalThis.NotImplemented = Symbol();
 export default function op(a: unknown, op: string, b: unknown) {
 
     const ka = getClass(a);
-
     if( ka === undefined ) {
         console.warn(a, op);
         throw new Error("?")
     }
 
+    let result = NotImplemented;
+
     let fct = ka.prototype[`__${op}__`];
+    if( fct !== undefined )
+        result = fct.call(a, b);
 
-    if( fct === undefined ) {
-        if( op === "ne" )
-            return ! ka.prototype["__eq__"].call(a, b);
-        if( op[0] === "i")
-            fct = ka.prototype[`__${op.slice(1)}__`];
-        if( fct === undefined)
-            fct = defaults[op as keyof typeof defaults];
-    }
+    if( result !== NotImplemented)
+        return result;
     
-    let result = fct.call(a, b);
+    // iop
+    if( op[0] === "i" ) {
 
-    if( result === NotImplemented) {
+        op = op.slice(1);
+        fct = ka.prototype[`__${op}__`];
+        
+        if( fct !== undefined)
+            result = fct.call(a, b)
 
-        const kb = getClass(b);
-        if( kb === undefined ) {
-            console.warn(b, "r" + op);
-            throw new Error("?");
-        }
-
-        let fct = kb.prototype[`__r${op}__`];
-        result = fct.call(b, a);
+        if( result !== NotImplemented)
+            return result;
     }
 
-    return result;
+    // try to reverse
+    const kb = getClass(b);
+    if( kb === undefined ) {
+        console.warn(b, "r" + op);
+        throw new Error("?");
+    }
+
+    let rop;
+    if( op.length == 2 && op !== "or" ) // cmp
+        rop = cmp_reversed[op as keyof typeof cmp_reversed];
+    else
+        rop = `r${op}`;
+    
+    fct = kb.prototype[`__${rop}__`];
+    if( fct !== undefined )
+        result = fct.call(b, a);
+
+    if( result !== NotImplemented)
+        return result;
+
+    // fallbacks
+    if( op === "eq" ) return a === b;
+    if( op === "ne" ) return a !== b;
+    
+    throw new Error(`Operation not implemented ${ka.name} ${op} ${kb.name}`);
 }
 
-function NI(b: unknown) { return NotImplemented }
-
-//TODO: move to corelib ?
-const defaults = {
-    eq: function(b: unknown) { return this == b },
-
-    add: NI,
-    sub: NI,
-    mul: NI,
-    truediv: NI,
-    floordiv: NI,
-    mod: NI,
-    pow: NI,
-
-    and: NI,
-    or : NI,
-    xor: NI,
-    lshift: NI,
-    rshift: NI,
-
-    radd: NI,
-    rsub: NI,
-    rmul: NI,
-    rtruediv: NI,
-    rfloordiv: NI,
-    rmod: NI,
-    rpow: NI,
-
-    rand: NI,
-    ror : NI,
-    rxor: NI,
-    rlshift: NI,
-    rrshift: NI,
+const cmp_reversed = {
+    "lt": "gt",
+    "gt": "lt",
+    "le": "ge",
+    "ge": "le",
+    "ne": "ne",
+    "eq": "eq"
 }

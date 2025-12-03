@@ -7,7 +7,7 @@ import assert from "./interface/assert";
 import attr   from "./interface/attr";
 import setattr from "./interface/setattr";
 import getModule from "./interface/getModule";
-import { saveTmp, tmp, withTmp } from "./interface/tmp";
+import { getTmp, saveTmp, tmp, withTmp } from "./interface/tmp";
 import { getKW, setKW } from "./interface/KW";
 
 // @ts-ignore
@@ -23,6 +23,7 @@ const $RB = globalThis.$RB = {
     getKW,
     setKW,
     tmp,
+    getTmp,
     saveTmp,
     withTmp,
     getModule,

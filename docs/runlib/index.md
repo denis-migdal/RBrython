@@ -20,8 +20,9 @@ RBrython helpers are usually in found the `$RB` JavaScript object (`$B` for Bryt
 | `getKW(): kw` | | in a call, get kw args |
 | `getModule(name)` | ? | get loaded module (async) |
 | `getModuleSync(name)` | ? | get loaded module (sync) |
-| `saveTmp(x)` | `locals.$test = x` | Save a temporary value |
-| `tmp()` | `locals.$test` | Use a temporary value |
+| `saveTmp(x)` | `locals.$test/$op = x` | Save a temporary value |
+| `tmp()` | `locals.$test/$op` | Use a temporary value |
+| `getTmp()` | `locals.$test/$op` | Use and clear a temporary value |
 | `withTmp(expr)` | | Return the result of `expr` and clear the temporary value |
 
 

@@ -14,7 +14,10 @@ Mail:
 
 ## Roadmap
 
-X. Comparators.
+- not op. produces bool (type checker)
+- repeat only if "complex" op (opti).
+- + variables types (type checker)
+
 X. Assign/Rich assign (?) (+= redefine or using + op ?)
 
 X. Classes

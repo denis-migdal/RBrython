@@ -36,7 +36,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 - <sup>5</sup> upon call should not run immediately.
 
 
-### Operators (7/12)
+### Operators (8/12)
 
 <table>
     <tbody>
@@ -44,7 +44,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
             <td>$\color{green}{-, +, \textasciitilde}$</td>
             <td>$\color{green}{+, -, *, /, \text{//}, \%, \text{**}}$</td>
             <td>$\color{green}{\&, |, \textasciicircum, <<, >>}$</td>
-            <td>$\color{orange}{>, <, ==, \text{!=}, <=, >=}$</td>
+            <td>$\color{green}{>, <, ==, \text{!=}, <=, >=}$</td>
         </tr>
         <tr>
             <td>$\color{orange}{Rich~assignments}$</td>

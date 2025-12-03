@@ -4,29 +4,51 @@ import { EmitContext } from "../../EmitContext";
 
 export default function Compare(node: CompareNode, ctx: EmitContext) {
 
-    const a = node.left;
-    const op = getOp(node.ops[0]) as keyof typeof cmpops | "Is" | "IsNot";
-    const b  = node.comparators[0];
+    for(let i = 0; i < node.ops.length; ++i) {
 
-    if( op === 'Is' ) {
-        ctx.w`${a} === ${b}`;
-        return;
-    }
-    if( op === 'IsNot' ) {
-        ctx.w`${a} !== ${b}`;
-        return;
-    }
-    
-    const opname = cmpops[op];
-    if( opname === undefined) {
-        console.warn(op);
-        throw new Error(`CmpOp ${op} not impl`);
-    }
+        const isFirst = i === 0;
+        const isLast  = i === node.ops.length - 1
 
-    ctx.w`$RB.op(${a}, "${opname}", ${b})`;
+        const op = getOp(node.ops[i]) as keyof typeof cmpops | "Is" | "IsNot";
+
+        let a: any = node.left;
+        if( ! isFirst )
+            a = ctx.hm.getTmp();
+
+        let b: any = node.comparators[i];
+        if( ! isLast )
+            b = ctx.hm.saveTmp(b);
+
+        if(! isFirst)
+            ctx.w` && `;
+
+        // TODO: if has next... (saveTmp())
+        // TODO: if has prev... (getTmp())
+
+        if( op === 'Is' ) {
+            ctx.w`${a} === ${b}`;
+            continue;
+        }
+        if( op === 'IsNot' ) {
+            ctx.w`${a} !== ${b}`;
+            continue;
+        }
+        
+        const opname = cmpops[op];
+        if( opname === undefined) {
+            console.warn(op);
+            throw new Error(`CmpOp ${op} not impl`);
+        }
+
+        ctx.w`$RB.op(${a}, "${opname}", ${b})`;
+    }
 }
 
 const cmpops = {
     Eq   : "eq",
     NotEq: "ne",
+    Gt   : "gt",
+    GtE  : "ge",
+    Lt   : "lt",
+    LtE  : "le"
 }

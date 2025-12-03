@@ -7,6 +7,13 @@ export function saveTmp(v: any): any {
 export function tmp(): any { // may reuse many time ?
     return _tmp;
 }
+
+export function getTmp(): any {
+    const tmp = _tmp;
+    _tmp = null
+    return tmp;
+}
+
 export function withTmp(value: any): any {
     _tmp = null;
     return value;

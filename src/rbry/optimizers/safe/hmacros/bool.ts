@@ -6,7 +6,7 @@ import { BoolType, isInstance } from "@RBrython/rbry/checker/types";
 export default function bool(fallback: HMacro, node: TypedASTNode) {
 
     if( isInstance(node.result_type, BoolType ) )
-        return (ctx: EmitContext) => ctx.w_node(node);
+        return (ctx: EmitContext) => ctx.w`(${node})`;
 
     return fallback(node);
 
