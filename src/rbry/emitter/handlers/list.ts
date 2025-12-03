@@ -8,6 +8,7 @@ Handlers["FunctionDef"] = FunctionDef as Handler;
 
 Handlers["AsyncFunctionDef"] = require("./definitions/AsyncFunctionDef").default;
 Handlers["Await"] = require("./keywords/Await").default;
+Handlers["IfExp"] = require("./controlflows/IfExp").default;
 
 import {default as Lambda} from "./definitions/Lambda";
 Handlers["Lambda"] = Lambda as Handler;

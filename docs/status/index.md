@@ -36,7 +36,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 - <sup>5</sup> upon call should not run immediately.
 
 
-### Operators (5/12)
+### Operators (6/12)
 
 <table>
     <tbody>
@@ -55,7 +55,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
         <tr>
             <td>$\color{green}{and/or/not}$</td>
             <td>$\color{green}{is/is~not}$</td>
-            <td>$\color{red}{ternary~op}$</td>
+            <td>$\color{green}{ternary~op}$</td>
             <td>$\color{red}{list~comprehension}$</td>
         </tr>
     </tbody>

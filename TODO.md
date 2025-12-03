@@ -1,3 +1,7 @@
+Mail:
+    - async: normal fct async, call that differs...
+    - why does FormattedValue : format_spec is also a FormattedStr ?
+
 ## Directions
 
 1. Complete features (cf status).
@@ -12,8 +16,6 @@
 
 X. Comparators.
 X. Assign/Rich assign (?) (+= redefine or using + op ?)
-
-X. Ternary op.
 
 X. Classes
     - doc init

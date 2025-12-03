@@ -141,6 +141,13 @@ export type IfNode = ASTNode<{
     orelse: ASTNode[];
 }>
 
+
+export type IfExpNode = ASTNode<{
+    test  : ASTNode;
+    body  : ASTNode;
+    orelse: ASTNode;
+}>
+
 export type WhileNode = ASTNode<{
     test: ASTNode;
     body: BodyNode;
