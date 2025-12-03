@@ -14,9 +14,7 @@ Mail:
 
 ## Roadmap
 
-- not op. produces bool (type checker)
 - repeat only if "complex" op (opti).
-- + variables types (type checker)
 
 X. Assign/Rich assign (?) (+= redefine or using + op ?)
 
@@ -39,6 +37,8 @@ X. Iterator + Generators + for opti + list comprehension + yield (requiert excep
 X. Match/case
 
 Y. typechecker improvements
+    - variables types
+    - fct return type (+switch)
 Y. opti improvements
 
 Z. corelib
