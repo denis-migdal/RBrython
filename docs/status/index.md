@@ -36,7 +36,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 - <sup>5</sup> upon call should not run immediately.
 
 
-### Operators (6/12)
+### Operators (7/12)
 
 <table>
     <tbody>
@@ -48,7 +48,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
         </tr>
         <tr>
             <td>$\color{orange}{Rich~assignments}$</td>
-            <td>$\color{orange}{=, :=}$</td>
+            <td>$\color{green}{=, :=}$<sup>6</sup></td>
             <td>$\color{orange}{./[]}$</td>
             <td>$\color{red}{in/not~in}$</td>
         </tr>
@@ -62,6 +62,8 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 </table>
 
 - f-string: done too.
+
+- <sup>6</sup> : walrus op, need to pre-declare variable if not declared.
 
 ### Classes
 

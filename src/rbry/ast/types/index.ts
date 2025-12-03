@@ -161,6 +161,11 @@ export type ForNode = ASTNode<{
     //TODO: orelse
 }>
 
+export type NamedExprNode = ASTNode<{
+    target: ASTNode,
+    value : ASTNode
+}>
+
 export type RaiseNode = ASTNode<{
     exc: ASTNode;
 }>
