@@ -16,6 +16,12 @@ export function getClass(o: unknown) {
     }
 
     if( typename === "object" ) {
+
+        // @ts-ignore;
+        if( o.constructor === Error )
+            // @ts-ignore
+            return Exception;
+
         // @ts-ignore;
         return o.constructor;
     }

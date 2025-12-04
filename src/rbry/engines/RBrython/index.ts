@@ -11,7 +11,9 @@ export const builtins = {
     float : require("!!raw-loader!../../corelib/float.py" ).default,
     str   : require("!!raw-loader!../../corelib/str.py"   ).default,
     format: require("!!raw-loader!../../corelib/format.py").default,
-    mfct  : require("!!raw-loader!../../corelib/mfct.py"  ).default
+    Exception: require("!!raw-loader!../../corelib/Exception.py"  ).default,
+    isinstance: require("!!raw-loader!../../corelib/isinstance.py"  ).default,
+    mfct  : require("!!raw-loader!../../corelib/mfct.py"  ).default,
 }
 
 export default function RBrythonEngineFactory() {

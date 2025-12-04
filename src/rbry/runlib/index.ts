@@ -54,11 +54,6 @@ globalThis.range = function*(...args: bigint[]) {
         yield i;
 }
 
-// @ts-ignore
-globalThis.Exception = function(msg: string) {
-    throw new Error(msg);
-}
-
 // =====================================================
 
 //TODO: as macro...

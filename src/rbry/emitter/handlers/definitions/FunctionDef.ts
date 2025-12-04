@@ -1,7 +1,6 @@
-import { getChildren, nodeType } from "@RBrython/rbry/ast";
+import { nodeType } from "@RBrython/rbry/ast";
 import { ASTNode, BodyNode, FunctionDefNode } from "../../../ast/types";
 import { EmitContext } from "../../EmitContext";
-import { node } from "webpack";
 
 function hasYield(body: BodyNode) {
 
@@ -34,8 +33,6 @@ export default function FunctionDef(node: FunctionDefNode, ctx: EmitContext) {
     const body = node.body;
 
     const genSym = hasYield(body) ? "*" : "";
-
-    console.warn( hasYield(body) );
 
     if( isMethod )
         ctx.w`${ctx.getName(-1)}.prototype.${name} = `;

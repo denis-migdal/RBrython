@@ -4,16 +4,14 @@ import { EmitContext } from "../../EmitContext";
 export default function With(node: WithNode, ctx: EmitContext) {
     
     ctx.w`{${ctx.hm.BB()}`;
-    ctx.w`const _w_ = [${ctx.hm.BB()}`;
     for(let i = 0; i < node.items.length; ++i )
-        ctx.w`${node.items[i].context_expr},${ctx.hm.NL()}`
-    ctx.w`${ctx.hm.BE()}];${ctx.hm.NL()}`;
+        ctx.w`const _w${i}_ = ${node.items[i].context_expr};${ctx.hm.NL()}`
 
     for(let i = 0; i < node.items.length; ++i) {
         const r = node.items[i];
         if( r.optional_vars !== undefined)
             ctx.w`var ${r.optional_vars} = `;
-        ctx.w`$RB.mcall(_w_[${i}], '__enter__');${ctx.hm.NL()}`
+        ctx.w`$RB.mcall(_w${i}_, '__enter__');${ctx.hm.NL()}`
     }
 
     ctx.w`let _err_ = null;${ctx.hm.NL()}`
@@ -33,12 +31,9 @@ export default function With(node: WithNode, ctx: EmitContext) {
     ctx.w`let _ok_ = true;${ctx.hm.NL()}`
     for(let i = node.items.length - 1; i >= 0; --i) {
         const r = node.items[i];
-        ctx.w`_ok_ &&= $RB.mcall(_w_[${i}], '__exit__', _et_, _ee_, _ex_);${ctx.hm.NL()}`
+        ctx.w`_ok_ &&= $RB.mcall(_w${i}_, '__exit__', _et_, _ee_, _ex_);${ctx.hm.NL()}`
     }
     ctx.w`if( _err_ !== null && ! _ok_ ) throw _err_;`;
 
     ctx.w`${ctx.hm.BE()}}${ctx.hm.BE()}}`;
-    //TODO: leave...
-    //TODO: exceptions
-    // body
 }

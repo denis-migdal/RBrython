@@ -13,12 +13,10 @@ export default function Try(node: TryNode, ctx: EmitContext) {
             // TODO: as cond.
             const except = node.handlers[i];
 
-            console.warn(except);
-
             if( i !== 0)
                 ctx.w`else `;
-            if( except.type !== null)
-                ctx.w`if(_e_ instanceof Error)`;
+            if( except.type !== undefined)
+                ctx.w`if( isinstance(_e_, ${except.type}) )`;
 
             ctx.w`{`;
 

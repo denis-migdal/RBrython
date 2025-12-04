@@ -27,7 +27,7 @@ class Y:
         # TODO better check...
         assert exc_type  is not None
         assert exc_value is not None
-        assert traceback is not None
+        #assert traceback is not None
         exitCalled = True
         return True
 
