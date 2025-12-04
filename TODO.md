@@ -16,13 +16,13 @@ Mail:
 
 ## Roadmap
 
+X. Attribute manipulations (del/in/not in/./[])
 X. Classes
     - doc init
     - __new__ / () arg parsing
     - class decorator
     - method decorator
     - ?
-X. Attribute manipulations (del/in/not in/./[])
 
 Y. typechecker improvements
     - variables types
