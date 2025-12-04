@@ -1,4 +1,4 @@
-import { nodeType } from "../ast";
+import { getChildren, nodeType } from "../ast";
 import { ASTNode, ParsedCode, SymTab } from "../ast/types";
 import handlers from "./handlers";
 import { TypeDesc } from "./types";
@@ -68,10 +68,4 @@ export function walk(parsed: ParsedCode) {
         
         handler(entry);
     }
-}
-
-function getChildren(elem: ASTNode): ASTNode[] {
-    return [...Object.values(elem)].filter(e => typeof e === "object"
-                                            // @ts-ignore
-                                        && e.constructor.$name !== undefined);
 }

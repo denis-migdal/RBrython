@@ -15,3 +15,9 @@ export function getOp(op: OperatorNode): string {
     // @ts-ignore
     return op.constructor.$name
 }
+
+export function getChildren(elem: ASTNode): ASTNode[] {
+    return [...Object.values(elem)].filter(e => typeof e === "object"
+                                            // @ts-ignore
+                                        && e.constructor.$name !== undefined);
+}

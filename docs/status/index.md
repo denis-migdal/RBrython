@@ -18,22 +18,24 @@ https://www.w3schools.com/python/python_ref_keywords.asp
         </tr>
         <tr>
             <td>$\color{green}{def/lambda/return/pass}$</td>
-            <td>$\color{red}{raise/try/except/finally/with}$</td>
+            <td>$\color{green}{raise/try}/\color{orange}{except}/\color{green}{finally}/\color{red}{with}$<sup>1,3,6,7</sup></td>
             <td>$\color{green}{async/await}$<sup>5</sup></td>
         </tr>
         <tr>
             <td>$\color{green}{import/from/as}$<sup>4</sup></td>
             <td>$\color{green}{global/nonlocal}$<sup>2</sup></td>
-            <td>$\color{red}{yield}$</td>
+            <td>$\color{red}{yield/yield from}$</td>
         </tr>
     </tbody>
 </table>
 
-- <sup>1</sup> requires exceptions
+- <sup>1</sup> stacktrace not implemented (with source map).
 - <sup>2</sup> global shadowed by a non local not implemented.
 - <sup>3</sup> else not implemented
 - <sup>4</sup> resolver non implemented
 - <sup>5</sup> upon call should not run immediately.
+- <sup>6</sup> requires better class system.
+- <sup>7</sup> finalbody need to be checked (for yield and typecheck)
 
 
 ### Operators (9/12)

@@ -161,6 +161,10 @@ export type ForNode = ASTNode<{
     //TODO: orelse
 }>
 
+export type YieldNode = ASTNode<{
+    value : ASTNode
+}>
+
 export type NamedExprNode = ASTNode<{
     target: ASTNode,
     value : ASTNode
@@ -172,7 +176,8 @@ export type RaiseNode = ASTNode<{
 
 export type TryNode = ASTNode<{
     body: BodyNode;
-    handlers: {body: BodyNode}[];
+    finalbody: BodyNode;
+    handlers: {body: BodyNode, type?: ASTNode, name?:string}[];
 }>
 
 export type FormattedValueNode = ASTNode<{

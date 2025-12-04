@@ -16,6 +16,27 @@ Mail:
 
 ## Roadmap
 
+X. Generators
+    - test yield
+        - inter() / next()
+    - unpack operator (*) [iterator proto]
+    - (**) => mapping proto (.keys() + getitem ?)
+    - runlib range
+        - for opti
+    - list comprehension
+        - + async for comprehension
+        - + await in for comprehension
+        - + set comprehension + dict comprehension.
+    - handmade generator (sync/async)
+        __iter__ -> use generator (yield)
+        __reversed__
+        __getitem__ (fallback de __iter__)
+        __aiter__() (async)
+    - handmade iterator (sync/asyc)
+        - __next__
+        - __anext__() (async)
+    - async for (async generator)X
+
 X. Classes
     - doc init
     - __new__ / () arg parsing
@@ -24,13 +45,6 @@ X. Classes
     - ?
 X. Attribute manipulations (del/in/not in/./[])
 
-X. Exceptions (+source map) [+ runlib exception]
-X. Iterator + Generators + for opti + list comprehension + yield (requiert except) [+ runlib range]
-    - https://www.w3schools.com/python/python_iterators.asp
-    __iter__ -> use generator (yield)
-    __reversed__
-    __next__
-    __getitem__ (fallback de __iter__)
 
 X. Match/case
 
@@ -40,6 +54,8 @@ Y. typechecker improvements
 Y. opti improvements
 
 Z. corelib
+    - dict/set/list/tuple...
+    - ** operator
 Z. import resolver
 
 ## Features

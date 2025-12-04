@@ -14,6 +14,7 @@ const test_suite = {
 	"kernel/match/classes":	require("!!raw-loader!./kernel/match/classes.py").default,
 	"kernel/import/index":	require("!!raw-loader!./kernel/import/index.py").default,
 	"kernel/fct/index":	require("!!raw-loader!./kernel/fct/index.py").default,
+	"kernel/exceptions/index":	require("!!raw-loader!./kernel/exceptions/index.py").default,
 	"kernel/ctrlflow/continue":	require("!!raw-loader!./kernel/ctrlflow/continue.py").default,
 	"kernel/ctrlflow/break":	require("!!raw-loader!./kernel/ctrlflow/break.py").default,
 	"kernel/async/index":	require("!!raw-loader!./kernel/async/index.py").default,
