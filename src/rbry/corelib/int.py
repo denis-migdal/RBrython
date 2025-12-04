@@ -21,6 +21,9 @@ class int(bigint):
     
     def __eq__(self, o: object, /) -> bool:
         return __JS_OP__(self, "==", o)
+    
+    def __ge__(self, o: object, /) -> bool:
+        return __JS_OP__(self, ">=", o)
 
 
     def __add__(self, o: object, /) -> NotImplementedType|int:

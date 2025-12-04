@@ -13,6 +13,7 @@ export const builtins = {
     format: require("!!raw-loader!../../corelib/format.py").default,
     Exception: require("!!raw-loader!../../corelib/Exception.py"  ).default,
     isinstance: require("!!raw-loader!../../corelib/isinstance.py"  ).default,
+    range     : require("!!raw-loader!../../corelib/range.py"  ).default,
     mfct  : require("!!raw-loader!../../corelib/mfct.py"  ).default,
 }
 
@@ -31,6 +32,7 @@ export default function RBrythonEngineFactory() {
         __JS_LOG__      : require("@RBrython/rbry/macros/__JS_LOG__").default,
         __JS_AS_STRING__: require("@RBrython/rbry/macros/__JS_AS_STRING__").default,
         __JS_AS_NUMBER__: require("@RBrython/rbry/macros/__JS_AS_NUMBER__").default,
+        __JS_AS_BIGINT__: require("@RBrython/rbry/macros/__JS_AS_BIGINT__").default,
     })
 
     engine.registerModule("JS", globalThis);

@@ -1,8 +1,8 @@
 Mail:
-    - async: normal fct async, call that differs...
     - why does FormattedValue : format_spec is also a FormattedStr ?
-    - locals.$op / locals.$test : do not need if the repeated thing is Constant or Name.
-    - $B.bool() not needed if arg is compare or not or already a boolean cste.
+    - async: normal fct async, call that differs...
+    - locals.$op / locals.$test : do not need if the repeated thing is Constant or Name ASTNode.
+    - $B.bool() not needed if arg is compare ASTNode or not or already a boolean cste ASTNode.
 
 ## Directions
 
@@ -16,31 +16,10 @@ Mail:
 
 ## Roadmap
 
-X. with
-ctx = obj
-value = ctx.__enter__()
-
-try:
-    faire_des_trucs()
-except Exception as e:
-    # si __exit__ retourne True → l’exception est SUPPRIMÉE
-    # si __exit__ retourne False → l’exception est RELANCÉE
-    suppress = ctx.__exit__(type(e), e, e.__traceback__)
-    if not suppress:
-        raise
-else:
-    # pas d’exception
-    ctx.__exit__(None, None, None)
-
-
-
 X. Generators
     - test yield
         - inter() / next()
-    - unpack operator (*) [iterator proto]
-    - (**) => mapping proto (.keys() + getitem ?)
-    - runlib range
-        - for opti
+    - test yield from
     - list comprehension
         - + async for comprehension
         - + await in for comprehension
@@ -54,6 +33,7 @@ X. Generators
         - __next__
         - __anext__() (async)
     - async for (async generator)X
+    - for opti (range)
 
 X. Classes
     - doc init
@@ -63,9 +43,6 @@ X. Classes
     - ?
 X. Attribute manipulations (del/in/not in/./[])
 
-
-X. Match/case
-
 Y. typechecker improvements
     - variables types
     - fct return type (+switch)
@@ -73,7 +50,10 @@ Y. opti improvements
 
 Z. corelib
     - dict/set/list/tuple...
-    - ** operator
+    - unpack operator (*) [iterator proto]
+    - ** operator => mapping proto (.keys() + getitem ?)
+    - unpack variables.
+Z. Match/case
 Z. import resolver
 
 ## Features

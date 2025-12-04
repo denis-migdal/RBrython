@@ -7,8 +7,10 @@ import assert from "./interface/assert";
 import attr   from "./interface/attr";
 import setattr from "./interface/setattr";
 import getModule from "./interface/getModule";
+import getModuleSync from "./interface/getModuleSync";
 import { getTmp, saveTmp, tmp, withTmp } from "./interface/tmp";
 import { getKW, setKW } from "./interface/KW";
+import { getClass } from "./helpers/getClass";
 
 // @ts-ignore
 const $RB = globalThis.$RB = {
@@ -31,28 +33,6 @@ const $RB = globalThis.$RB = {
     getClass
 }
 export {$RB};
-
-//TODO: corelib
-import { getClass } from "./helpers/getClass";
-import getModuleSync from "./interface/getModuleSync";
-
-// @ts-ignore
-globalThis.range = function*(...args: bigint[]) {
-    let beg = 0n;
-    let end = args[0];
-    let inc = 1n;
-
-    if( args.length >= 2) {
-        beg = args[0]
-        end = args[1]
-
-        if( args.length === 3)
-            inc = args[2];
-    }
-
-    for(let i = beg; i < end; i+= inc)
-        yield i;
-}
 
 // =====================================================
 
