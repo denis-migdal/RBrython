@@ -1,6 +1,6 @@
 ## Kernel
 
-### Keywords (9/12)
+### Keywords (10/12)
 
 https://www.w3schools.com/python/python_ref_keywords.asp
 
@@ -24,7 +24,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
         <tr>
             <td>$\color{green}{import/from/as}$<sup>4</sup></td>
             <td>$\color{green}{global/nonlocal}$<sup>2</sup></td>
-            <td>$\color{red}{yield/yield from}$</td>
+            <td>$\color{green}{yield/yield from}$</td>
         </tr>
     </tbody>
 </table>

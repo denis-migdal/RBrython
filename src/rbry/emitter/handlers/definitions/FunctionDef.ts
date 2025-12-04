@@ -13,7 +13,7 @@ function hasYield(body: BodyNode) {
             // @ts-ignore
             elem = elem.value;
 
-        if( nodeType(elem) === "Yield" )
+        if( nodeType(elem) === "Yield" || nodeType(elem) === "YieldFrom" )
             return true;
 
         // can only be in a body.

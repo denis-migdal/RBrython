@@ -16,25 +16,6 @@ Mail:
 
 ## Roadmap
 
-X. Generators
-    - test yield
-        - inter() / next()
-    - test yield from
-    - list comprehension
-        - + async for comprehension
-        - + await in for comprehension
-        - + set comprehension + dict comprehension.
-    - handmade generator (sync/async)
-        __iter__ -> use generator (yield)
-        __reversed__
-        __getitem__ (fallback de __iter__)
-        __aiter__() (async)
-    - handmade iterator (sync/asyc)
-        - __next__
-        - __anext__() (async)
-    - async for (async generator)X
-    - for opti (range)
-
 X. Classes
     - doc init
     - __new__ / () arg parsing
@@ -47,12 +28,32 @@ Y. typechecker improvements
     - variables types
     - fct return type (+switch)
 Y. opti improvements
+    - for opti (range)
 
 Z. corelib
     - dict/set/list/tuple...
     - unpack operator (*) [iterator proto]
     - ** operator => mapping proto (.keys() + getitem ?)
     - unpack variables.
+    - + set comprehension + dict comprehension.
+    - list/tuple comprehension
+Z. Generators (for list/tuple/others)
+        - inter()
+    - handmade generator (sync/async)
+        __iter__ -> use generator (yield)
+        __getitem__ (fallback de __iter__)
+        ~> JS [Symbol.iterator]
+    - handmade iterator (sync/asyc)
+        ~> instanceof Iterator.
+        - __next__
+    - __reversed__
+    - async gen/iter
+        - __aiter__() (async)
+        - __anext__() (async)
+    - for comprehension with async
+        - + async for comprehension
+        - + await in for comprehension
+
 Z. Match/case
 Z. import resolver
 

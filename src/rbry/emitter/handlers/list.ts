@@ -9,6 +9,7 @@ Handlers["FunctionDef"] = FunctionDef as Handler;
 Handlers["AsyncFunctionDef"] = require("./definitions/AsyncFunctionDef").default;
 Handlers["Await"] = require("./keywords/Await").default;
 Handlers["Yield"] = require("./keywords/Yield").default;
+Handlers["YieldFrom"] = require("./keywords/YieldFrom").default;
 
 Handlers["IfExp"] = require("./controlflows/IfExp").default;
 Handlers["With"] = require("./controlflows/With").default;

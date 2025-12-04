@@ -15,6 +15,7 @@ export const builtins = {
     isinstance: require("!!raw-loader!../../corelib/isinstance.py"  ).default,
     range     : require("!!raw-loader!../../corelib/range.py"  ).default,
     mfct  : require("!!raw-loader!../../corelib/mfct.py"  ).default,
+    next: require("!!raw-loader!../../corelib/next.py"  ).default,
 }
 
 export default function RBrythonEngineFactory() {
