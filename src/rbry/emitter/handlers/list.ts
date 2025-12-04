@@ -11,6 +11,8 @@ Handlers["Await"] = require("./keywords/Await").default;
 Handlers["Yield"] = require("./keywords/Yield").default;
 
 Handlers["IfExp"] = require("./controlflows/IfExp").default;
+Handlers["With"] = require("./controlflows/With").default;
+
 Handlers["NamedExpr"] = require("./operators/NamedExpr").default;
 
 import {default as Lambda} from "./definitions/Lambda";

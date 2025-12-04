@@ -16,6 +16,24 @@ Mail:
 
 ## Roadmap
 
+X. with
+ctx = obj
+value = ctx.__enter__()
+
+try:
+    faire_des_trucs()
+except Exception as e:
+    # si __exit__ retourne True → l’exception est SUPPRIMÉE
+    # si __exit__ retourne False → l’exception est RELANCÉE
+    suppress = ctx.__exit__(type(e), e, e.__traceback__)
+    if not suppress:
+        raise
+else:
+    # pas d’exception
+    ctx.__exit__(None, None, None)
+
+
+
 X. Generators
     - test yield
         - inter() / next()

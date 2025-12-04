@@ -180,6 +180,14 @@ export type TryNode = ASTNode<{
     handlers: {body: BodyNode, type?: ASTNode, name?:string}[];
 }>
 
+export type WithNode = ASTNode<{
+    body: BodyNode,
+    items: {
+        context_expr  : ASTNode,
+        optional_vars?: ASTNode,
+    }[]
+}>
+
 export type FormattedValueNode = ASTNode<{
     value: ASTNode,
     format_spec?: {

@@ -18,7 +18,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
         </tr>
         <tr>
             <td>$\color{green}{def/lambda/return/pass}$</td>
-            <td>$\color{green}{raise/try}/\color{orange}{except}/\color{green}{finally}/\color{red}{with}$<sup>1,3,6,7</sup></td>
+            <td>$\color{green}{raise/try}/\color{orange}{except}/\color{green}{finally/with}$<sup>1,3,6,7,8</sup></td>
             <td>$\color{green}{async/await}$<sup>5</sup></td>
         </tr>
         <tr>
@@ -36,6 +36,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 - <sup>5</sup> upon call should not run immediately.
 - <sup>6</sup> requires better class system.
 - <sup>7</sup> finalbody need to be checked (for yield and typecheck)
+- <sup>8</sup> with __exit__ not properly implemented when exception.
 
 
 ### Operators (9/12)
