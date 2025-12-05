@@ -1,5 +1,5 @@
 import { nodeType } from "@RBrython/rbry/ast";
-import { AssignNode, AttributeNode } from "../../../ast/types";
+import { AssignNode, AttributeNode, SubscriptNode } from "../../../ast/types";
 import { EmitContext, LOCAL_VAR } from "../../EmitContext";
 
 export default function Assign(node: AssignNode, ctx: EmitContext) {
@@ -8,6 +8,11 @@ export default function Assign(node: AssignNode, ctx: EmitContext) {
     if( type === "Attribute" ) {
         const attr = node.targets[0] as AttributeNode;
         ctx.w`$RB.setattr(${attr.value}, "${attr.attr}", ${node.value})`;
+        return;
+    }
+    if( type === "Subscript") {
+        const snode = node.targets[0] as SubscriptNode;
+        ctx.w`$RB.setitem(${snode.value}, ${snode.slice}, ${node.value})`;
         return;
     }
 

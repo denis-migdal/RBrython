@@ -34,8 +34,11 @@ export default function FunctionDef(node: FunctionDefNode, ctx: EmitContext) {
 
     const genSym = hasYield(body) ? "*" : "";
 
-    if( isMethod )
+    if( isMethod ) {
         ctx.w`${ctx.getName(-1)}.prototype.${name} = `;
+        if( name === "__iter__")
+            ctx.w`${ctx.getName(-1)}.prototype[Symbol.iterator] = `;
+    }
 
     // open decorator
     for( let i = 0; i < node.decorator_list.length ; ++i )

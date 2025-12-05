@@ -12,6 +12,7 @@ const test_suite = {
 	"kernel/op/bin":	require("!!raw-loader!./kernel/op/bin.py").default,
 	"kernel/op/asignbin":	require("!!raw-loader!./kernel/op/asignbin.py").default,
 	"kernel/op/and":	require("!!raw-loader!./kernel/op/and.py").default,
+	"kernel/op/[]":	require("!!raw-loader!./kernel/op/[].py").default,
 	"kernel/match/classes":	require("!!raw-loader!./kernel/match/classes.py").default,
 	"kernel/iterator/index":	require("!!raw-loader!./kernel/iterator/index.py").default,
 	"kernel/import/index":	require("!!raw-loader!./kernel/import/index.py").default,

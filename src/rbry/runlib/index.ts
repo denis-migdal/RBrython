@@ -12,6 +12,9 @@ import { getTmp, saveTmp, tmp, withTmp } from "./interface/tmp";
 import { getKW, setKW } from "./interface/KW";
 import { getClass } from "./helpers/getClass";
 import _in from "./interface/in";
+import getitem from "./interface/getitem";
+import setitem from "./interface/setitem";
+import delitem from "./interface/delitem";
 
 // @ts-ignore
 const $RB = globalThis.$RB = {
@@ -23,6 +26,9 @@ const $RB = globalThis.$RB = {
     assert,
     attr,
     setattr,
+    getitem,
+    setitem,
+    delitem,
     getKW,
     setKW,
     tmp,

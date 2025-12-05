@@ -13,6 +13,9 @@ RBrython helpers are usually in found the `$RB` JavaScript object (`$B` for Bryt
 | `in(elem, container)` | `$is_member(elem, container)` | |
 | `attr(obj, attr)` | `$getattr_pep657(obj, attr)` | |
 | `setattr(obj, attr, value)` | `$setattr1(obj, attr, value)` | |
+| `getitem(obj, idx)` | `$getitem(obj, attr)` | |
+| `setitem(obj, idx, value)` | `$setitem(obj, attr, value)` | |
+| `delitem(obj, idx)` | `$delitem(obj, attr, value)` | |
 | `call(callable, ...args)` | `$call(callable)(...args)` |  |
 | `mcall(obj, attr, ...args)` | attr+call | Method call |
 | `assert(cond, msg)` | `assert(cond, msg)` | |

@@ -1,17 +1,14 @@
-def range(*args):
+def range(a1: int, a2: int|None = None, a3: int|None = None):
     beg = 0
-    end = args[0];
+    end = a1
     inc = 1
 
-    # len() not impl yet
-    len = __JS_AS_BIGINT__(__JS_WRITE__("args.length"))
+    if a2 is not None:
+        beg = a1
+        end = a2
 
-    if len >= 2:
-        beg = args[0]
-        end = args[1]
-
-        if len == 3:
-            inc = args[2]
+        if a3 is not None:
+            inc = a3
 
     i = beg
     while i != end:

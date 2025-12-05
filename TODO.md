@@ -4,23 +4,27 @@ Mail:
     - locals.$op / locals.$test : do not need if the repeated thing is Constant or Name ASTNode.
     - $B.bool() not needed if arg is compare ASTNode or not or already a boolean cste ASTNode.
 
+    - __iter__ also creates [Symbol.iterator]
+
+    - 6.5x smaller / 3x faster
+    - corelib + unit test
+        - ~100 line/weeks 1year.
+    - then ES6 classes.
+
 ## Directions
 
 1. Complete features (cf status).
+
+1. Pass unit tests (~100/weeks).
 2. Optimizations / type checker.
-3. Pass unit tests (~100/weeks).
-4. Implement corelib.
-5. Other features
+3. Implement corelib.
+4. Other features
    1. --export support for Brython
    2. sourcemap + exception trace (require for exceptions)
 
 ## Roadmap
 
-X. Attribute manipulations (del/in/not in/./[])
-    - in/not in
-        - __contains__
-        - or iterator
-        - or __getitem__
+X. Attribute manipulations (del/./[])
     - []
         - __getitem__ / __setitem__ / __delitem__
         - slice(start, stop, step) / tuple
@@ -97,9 +101,8 @@ Z. import resolver
 
 - features
     - builtins (write in Python)
-        - functions (abs/etc) in runlib
-        - object + type + NotImplemented
-        - isinstance
+        - functions
+        - object + NotImplemented
     - /!\ circular deps.
         - runner <-> RBrythonGlobalRunner (give it as fct parameter ~= context)
     - classes

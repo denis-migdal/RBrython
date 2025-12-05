@@ -31,7 +31,7 @@ export default function Arguments(node: ArgsDefNode, ctx: EmitContext) {
     d_idx -= node.posonlyargs.length;
     for(let i = arg_offset; i < node.args.length; ++i) {
         ctx.w`_${node.args[i].arg}`;
-        if( d_idx >= i)
+        if( i >= d_idx)
             ctx.w` = ${node.defaults[node.posonlyargs.length + i - d_idx]}`;
         ctx.w`,`;
     }

@@ -180,6 +180,10 @@ export type TryNode = ASTNode<{
     handlers: {body: BodyNode, type?: ASTNode, name?:string}[];
 }>
 
+export type DeleteNode = ASTNode<{
+    targets: ASTNode[];
+}>
+
 export type WithNode = ASTNode<{
     body: BodyNode,
     items: {

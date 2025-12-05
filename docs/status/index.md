@@ -51,7 +51,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
         <tr>
             <td>$\color{green}{Rich~assignments}$</td>
             <td>$\color{green}{=, :=}$<sup>6</sup></td>
-            <td>$\color{orange}{./[]/del}$</td>
+            <td>$\color{green}{[]}/\color{orange}{./del}$</td>
             <td>$\color{green}{in/not~in}$</td>
         </tr>
         <tr>
