@@ -4,6 +4,8 @@ Mail:
     - locals.$op / locals.$test : do not need if the repeated thing is Constant or Name ASTNode.
     - $B.bool() not needed if arg is compare ASTNode or not or already a boolean cste ASTNode.
 
+    - more kernel unittest.
+
     - __iter__ also creates [Symbol.iterator]
 
     - 6.5x smaller / 3x faster
@@ -13,23 +15,25 @@ Mail:
 
 ## Directions
 
-1. Complete features (cf status).
-
 1. Pass unit tests (~100/weeks).
-2. Optimizations / type checker.
-3. Implement corelib.
-4. Other features
+2. Remove limitations (status)
+3. Optimizations / type checker.
+4. Implement corelib.
+5. Other features
    1. --export support for Brython
    2. sourcemap + exception trace (require for exceptions)
 
 ## Roadmap
 
-X. Attribute manipulations (del/./[])
-    - .
-        - __getattribute__
-            - __dict__ (instance)
-            - __dict__ (parent)
-            - __getattr__/__setattr__/__delattr__ (si def)
+- inherit object + how to type ?
+    - type hérite object et auto-ref fait après ?
+    - pas un héritage classique, auto-référence faite manuellement
+        - object.__class__ = type
+        - type.__class__ = type (métaclasse d’elle-même)
+        - type.__bases__ = (object,)
+        - object.__bases__ = () (c’est la racine)
+    - __le__ => même implémentation, mais en réalité 2 méthodes différentes.
+
 X. Classes
     - doc init
     - __new__ / () arg parsing

@@ -18,6 +18,3 @@ class type:
                         init.call(self, ...args)
                      """)
         return instance # type: ignore
-
-    def __eq__(self, b: object, /):
-        return __JS_OP__(self, "===", b)

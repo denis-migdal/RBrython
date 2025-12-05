@@ -4,7 +4,7 @@ import parse from "@RBrython/rbry/parser";
 import RBrythonEmitter from "@RBrython/rbry/emitter";
 
 export const builtins = {
-
+    object: require("!!raw-loader!../../corelib/object.py"  ).default,
     type  : require("!!raw-loader!../../corelib/type.py"  ).default,
     int   : require("!!raw-loader!../../corelib/int.py"   ).default,
     bool  : require("!!raw-loader!../../corelib/bool.py"  ).default,

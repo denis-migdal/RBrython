@@ -2,6 +2,7 @@ number  = float
 bigint  = int
 string  = str
 boolean = bool
+obj     = object
 
 from __JS_OP__        import __JS_OP__
 from __JS_AS_NUMBER__ import __JS_AS_NUMBER__

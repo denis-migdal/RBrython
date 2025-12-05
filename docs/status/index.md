@@ -79,5 +79,89 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 
 ## Core
 
+### Object (1/10)
+
+<table>
+    <tbody>
+        <tr>
+            <td>${\color{green}{eq/ne/lt/gt/le/ge}}$</td>
+            <td>${\color{red}{getattribute/setattr/delattr}}$</td>
+        </tr>
+        <tr>
+            <td>${\color{red}{format/repr/str}}$</td>
+            <td>${\color{red}{dir/doc}}$</td>
+        </tr>
+        <tr>
+            <td>${\color{red}{new/init/class}}$</td>
+            <td>${\color{red}{class/mro}}$</td>
+        </tr>
+        <tr>
+            <td>${\color{red}{init_subclass/hash}}$</td>
+            <td>${\color{red}{reduce/reduce_ex/getstate}}$</td>
+        </tr>
+        <tr>
+            <td>${\color{red}{subclasshook}}$</td>
+            <td>${\color{red}{sizeof}}$</td>
+        </tr>
+    </tbody>
+</table>
+
+### Type
+
+(some are inherited from object)
+
+- attr defined in type
+    - __abstractmethods__
+    - __annotations__
+    - __basicsize__
+    - __dict__
+    - __dictoffset__
+    - __doc__
+    - __flags__
+    - __itemsize__
+    - __module__
+    - __mro__
+    - __name__
+    - __qualname__
+    - __text_signature__
+    - __type_params__
+    - __weakrefoffset__
+- method in type
+    - __base__
+    - __call__
+    - __class__
+
+
+- Object prop. likely from type.
+    - __call__
+    - __instancecheck__ : isinstance()
+    - __subclasscheck__ : issubclass()
+    - __prepare__ (?)
+    - __or__ /__ror__
+    - __bases__
+    - + static attributes.
+
+- overriden
+    - __new__
+    - __init__
+    - __getattribute__
+    - __delattr__
+    - __dir__
+    - __init_subclass__
+    - __instancecheck__
+    - __or__
+    - __ror__
+    - __prepare__
+    - __repr__
+    - __setattr__
+    - __sizeof__
+    - __subclasscheck__
+    - __subclasses__
+    - __subclasshook__
+    - mro
+
+
+### Others
+
+- bool inherit int
 - f-string: done.
-- object as py object + inheritance

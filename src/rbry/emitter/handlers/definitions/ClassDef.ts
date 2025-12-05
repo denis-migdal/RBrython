@@ -1,4 +1,4 @@
-import { ClassDefNode, SymTab } from "../../../ast/types";
+import { ASTNode, ClassDefNode, SymTab } from "../../../ast/types";
 import { EmitContext } from "../../EmitContext";
 
 export default function ClassDef(node: ClassDefNode, ctx: EmitContext) {
@@ -12,24 +12,33 @@ export default function ClassDef(node: ClassDefNode, ctx: EmitContext) {
             ctx.w`return type.prototype.__call__.call(${name}, ...args)`;
             //ctx.w`return Object.create(${name}.prototype);`
         ctx.w`${ctx.hm.BE()}}${ctx.hm.NL()}`
-        ctx.w`${name}.prototype.__new__ = function __new__(...args) {${ctx.hm.BB()}`
-            ctx.w`return Object.create(${name}.prototype)`;
-        ctx.w`${ctx.hm.BE()}}${ctx.hm.BE()}`;
 
     // inheritance
+    let bases: (ASTNode|string)[] = node.bases;
 
     // @ts-ignore
-    const isH4ck = node.bases.length === 1 && ["number", "bigint", "boolean", "string"].includes(node.bases[0].id);
+    const isH4ck = bases.length === 1 && ["number", "bigint", "boolean", "string", "obj"].includes(bases[0].id);
 
-    if( !isH4ck && node.bases.length >= 1) {
-        ctx.w`${name}.prototype = Object.create(${node.bases[0]}.prototype);\n`;
-    
-        for(let i = 1; i < node.bases.length; ++i) {
-            ctx.w`Object.assign(${name}.prototype, ${node.bases[i]}.prototype);`;
+    if( isH4ck )
+        bases = bases.slice(1);
+
+    if( bases.length === 0 )
+        bases = ["object"];
+
+    // avoid auto-inheritance.
+    if( name !== "object" ) {
+        ctx.w`${name}.prototype = Object.create(${bases[0]}.prototype);${ctx.hm.NL()}`;
+
+        for(let i = 1; i < bases.length; ++i) {
+            ctx.w`Object.assign(${name}.prototype, ${bases[i]}.prototype);`;
         }
-
-        ctx.w`${name}.prototype.constructor = ${name};\n`;
+    
+        ctx.w`${name}.prototype.constructor = ${name};${ctx.hm.NL()}`;
     }
+
+    ctx.w`${name}.prototype.__new__ = function __new__(...args) {${ctx.hm.BB()}`
+        ctx.w`return Object.create(${name}.prototype)`;
+    ctx.w`${ctx.hm.BE()}}${ctx.hm.BE()}`;
 
     // body...
     ctx.w_body(body);
