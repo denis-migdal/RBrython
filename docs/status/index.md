@@ -63,16 +63,12 @@ https://www.w3schools.com/python/python_ref_keywords.asp
     </tbody>
 </table>
 
-- f-string: done too.
-
 - <sup>6</sup> : walrus op, need to pre-declare variable if not declared.
 - <sup>9</sup> : slice not implemented.
 - <sup>10</sup> : many subscript/attr as target not implemented.
 - <sup>11</sup> : properties descriptor not implemented.
 - <sup>12</sup> : __getattribute__ not implemented.
 - <sup>13</sup> : fallbacks not implemented.
-
-
 
 ### Classes
 
@@ -83,4 +79,5 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 
 ## Core
 
+- f-string: done.
 - object as py object + inheritance
