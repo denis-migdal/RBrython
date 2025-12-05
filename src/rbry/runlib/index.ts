@@ -11,6 +11,7 @@ import getModuleSync from "./interface/getModuleSync";
 import { getTmp, saveTmp, tmp, withTmp } from "./interface/tmp";
 import { getKW, setKW } from "./interface/KW";
 import { getClass } from "./helpers/getClass";
+import _in from "./interface/in";
 
 // @ts-ignore
 const $RB = globalThis.$RB = {
@@ -30,7 +31,8 @@ const $RB = globalThis.$RB = {
     withTmp,
     getModule,
     getModuleSync,
-    getClass
+    getClass,
+    in: _in
 }
 export {$RB};
 

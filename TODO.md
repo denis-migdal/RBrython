@@ -17,6 +17,20 @@ Mail:
 ## Roadmap
 
 X. Attribute manipulations (del/in/not in/./[])
+    - in/not in
+        - __contains__
+        - or iterator
+        - or __getitem__
+    - []
+        - __getitem__ / __setitem__ / __delitem__
+        - slice(start, stop, step) / tuple
+    - .
+        delattr()/other
+        - __getattribute__
+            - __get__/__set__/__delete__ si property/descriptor
+            - __dict__ (instance)
+            - __dict__ (parent)
+            - __getattr__/__setattr__/__delattr__ (si def)
 X. Classes
     - doc init
     - __new__ / () arg parsing
@@ -29,8 +43,11 @@ Y. typechecker improvements
     - fct return type (+switch)
 Y. opti improvements
     - for opti (range)
+    - operators/inline
+    - self
 
 Z. corelib
+    - t-string
     - dict/set/list/tuple...
     - unpack operator (*) [iterator proto]
     - ** operator => mapping proto (.keys() + getitem ?)

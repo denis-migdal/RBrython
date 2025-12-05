@@ -6,6 +6,7 @@ const test_suite = {
 	"kernel/op/or":	require("!!raw-loader!./kernel/op/or.py").default,
 	"kernel/op/not":	require("!!raw-loader!./kernel/op/not.py").default,
 	"kernel/op/is":	require("!!raw-loader!./kernel/op/is.py").default,
+	"kernel/op/in":	require("!!raw-loader!./kernel/op/in.py").default,
 	"kernel/op/ibin":	require("!!raw-loader!./kernel/op/ibin.py").default,
 	"kernel/op/cmp":	require("!!raw-loader!./kernel/op/cmp.py").default,
 	"kernel/op/bin":	require("!!raw-loader!./kernel/op/bin.py").default,

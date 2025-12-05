@@ -10,7 +10,7 @@ export default function Compare(node: CompareNode, ctx: EmitContext) {
         const isFirst = i === 0;
         const isLast  = i === node.ops.length - 1
 
-        const op = getOp(node.ops[i]) as keyof typeof cmpops | "Is" | "IsNot";
+        let op = getOp(node.ops[i]) as keyof typeof cmpops | "Is" | "IsNot" | "NotIn";
 
         let a: any = prev;
         if( ! isFirst )
@@ -34,6 +34,14 @@ export default function Compare(node: CompareNode, ctx: EmitContext) {
             ctx.w`${a} !== ${b}`;
             continue;
         }
+        if( op === "NotIn") {
+            ctx.w_str("!");
+            op = "In";
+        }
+        if( op === "In") {
+            ctx.w`$RB.in(${a}, ${b})`
+            continue;
+        }
         
         const opname = cmpops[op];
         if( opname === undefined) {
@@ -51,5 +59,6 @@ const cmpops = {
     Gt   : "gt",
     GtE  : "ge",
     Lt   : "lt",
-    LtE  : "le"
+    LtE  : "le",
+    In   : "contains"
 }

@@ -500,6 +500,12 @@ for(let i = 0; i < brython_tests.length; ++i) {
 
 // =====================================================================
 
+$B.imported["RBM"] = $B.jsobj2pyobj({
+    __JS_AWAIT__: () => {}
+});
+
+// =====================================================================
+
 const bench = createBench();
 let initialRun: string[]|Record<string, string>;
 

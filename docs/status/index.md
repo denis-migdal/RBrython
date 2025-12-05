@@ -1,6 +1,6 @@
 ## Kernel
 
-### Keywords (10/12)
+### Keywords (11/12)
 
 https://www.w3schools.com/python/python_ref_keywords.asp
 
@@ -14,7 +14,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
         <tr>
             <td>$\color{green}{and/or/not}$</td>
             <td>$\color{green}{is/is~not}$</td>
-            <td>$\color{red}{in/not~in/del}$</td>
+            <td>$\color{green}{in/not~in}$</td>
         </tr>
         <tr>
             <td>$\color{green}{def/lambda/return/pass}$</td>
@@ -38,7 +38,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 - <sup>8</sup> with __exit__ not properly implemented when exception.
 
 
-### Operators (9/12)
+### Operators (10/12)
 
 <table>
     <tbody>
@@ -51,8 +51,8 @@ https://www.w3schools.com/python/python_ref_keywords.asp
         <tr>
             <td>$\color{green}{Rich~assignments}$</td>
             <td>$\color{green}{=, :=}$<sup>6</sup></td>
-            <td>$\color{orange}{./[]}$</td>
-            <td>$\color{red}{in/not~in}$</td>
+            <td>$\color{orange}{./[]/del}$</td>
+            <td>$\color{green}{in/not~in}$</td>
         </tr>
         <tr>
             <td>$\color{green}{and/or/not}$</td>
