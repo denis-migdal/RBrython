@@ -38,7 +38,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 - <sup>8</sup> with __exit__ not properly implemented when exception.
 
 
-### Operators (10/12)
+### Operators (11/12)
 
 <table>
     <tbody>
@@ -49,9 +49,9 @@ https://www.w3schools.com/python/python_ref_keywords.asp
             <td>$\color{green}{>, <, ==, \text{!=}, <=, >=}$</td>
         </tr>
         <tr>
-            <td>$\color{green}{Rich~assignments}$</td>
-            <td>$\color{green}{=, :=}$<sup>6</sup></td>
-            <td>$\color{green}{[]}/\color{orange}{./del}$</td>
+            <td>$\color{green}{Rich~assignments}$<sup>10</sup></td>
+            <td>$\color{green}{=, :=}$<sup>6,10</sup></td>
+            <td>$\color{green}{[]/./del}$<sup>9,11,12,13</sup></td>
             <td>$\color{green}{in/not~in}$</td>
         </tr>
         <tr>
@@ -66,6 +66,13 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 - f-string: done too.
 
 - <sup>6</sup> : walrus op, need to pre-declare variable if not declared.
+- <sup>9</sup> : slice not implemented.
+- <sup>10</sup> : many subscript/attr as target not implemented.
+- <sup>11</sup> : properties descriptor not implemented.
+- <sup>12</sup> : __getattribute__ not implemented.
+- <sup>13</sup> : fallbacks not implemented.
+
+
 
 ### Classes
 

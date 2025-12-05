@@ -4,8 +4,6 @@ import uop    from "./interface/uop";
 import call   from "./interface/call";
 import mcall  from "./interface/mcall";
 import assert from "./interface/assert";
-import attr   from "./interface/attr";
-import setattr from "./interface/setattr";
 import getModule from "./interface/getModule";
 import getModuleSync from "./interface/getModuleSync";
 import { getTmp, saveTmp, tmp, withTmp } from "./interface/tmp";
@@ -15,6 +13,9 @@ import _in from "./interface/in";
 import getitem from "./interface/getitem";
 import setitem from "./interface/setitem";
 import delitem from "./interface/delitem";
+import getattr from "./interface/getattr";
+import delattr from "./interface/delattr";
+import setattr from "./interface/setattr";
 
 // @ts-ignore
 const $RB = globalThis.$RB = {
@@ -24,11 +25,12 @@ const $RB = globalThis.$RB = {
     call,
     mcall,
     assert,
-    attr,
-    setattr,
     getitem,
     setitem,
     delitem,
+    getattr,
+    setattr,
+    delattr,
     getKW,
     setKW,
     tmp,

@@ -1,4 +1,4 @@
-import { DeleteNode, SubscriptNode } from "@RBrython/rbry/ast/types";
+import { AttributeNode, DeleteNode, SubscriptNode } from "@RBrython/rbry/ast/types";
 import { EmitContext } from "../../EmitContext";
 import { nodeType } from "@RBrython/rbry/ast";
 
@@ -11,6 +11,12 @@ export default function Delete(node: DeleteNode, ctx: EmitContext) {
             ctx.w`$RB.delitem(${snode.value}, ${snode.slice});${ctx.hm.NL}`
             continue;
         }
+        if( type === "Attribute") {
+            const snode = node.targets[i] as AttributeNode;
+            ctx.w`$RB.delattr(${snode.value}, "${snode.attr}");${ctx.hm.NL}`
+            continue;
+        }
+        console.warn(type);
+        throw new Error("Not implemented");
     }
-    console.warn(node);
 }

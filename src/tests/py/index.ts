@@ -10,6 +10,7 @@ const test_suite = {
 	"kernel/op/ibin":	require("!!raw-loader!./kernel/op/ibin.py").default,
 	"kernel/op/cmp":	require("!!raw-loader!./kernel/op/cmp.py").default,
 	"kernel/op/bin":	require("!!raw-loader!./kernel/op/bin.py").default,
+	"kernel/op/attr":	require("!!raw-loader!./kernel/op/attr.py").default,
 	"kernel/op/asignbin":	require("!!raw-loader!./kernel/op/asignbin.py").default,
 	"kernel/op/and":	require("!!raw-loader!./kernel/op/and.py").default,
 	"kernel/op/[]":	require("!!raw-loader!./kernel/op/[].py").default,

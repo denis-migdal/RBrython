@@ -1,4 +1,5 @@
-export default function setattr(obj: object, key: string, value:unknown) {
-    // @ts-ignore
-    return obj[key] = value;
+import { getClass } from "../helpers/getClass";
+
+export default function setattr(o: any, key: any, v: any) {
+    return getClass(o).prototype.__setattr__.call(o, key, v);
 }

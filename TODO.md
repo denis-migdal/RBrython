@@ -25,13 +25,8 @@ Mail:
 ## Roadmap
 
 X. Attribute manipulations (del/./[])
-    - []
-        - __getitem__ / __setitem__ / __delitem__
-        - slice(start, stop, step) / tuple
     - .
-        delattr()/other
         - __getattribute__
-            - __get__/__set__/__delete__ si property/descriptor
             - __dict__ (instance)
             - __dict__ (parent)
             - __getattr__/__setattr__/__delattr__ (si def)

@@ -4,9 +4,9 @@ _marker = __JS_WRITE__("Symbol()") #object()
 
 def next(it, defaultVal: object = _marker):
     val = __JS_WRITE__("it.next()") #TODO: we use JS iterator
-    if val.done == True:
+    if __JS_WRITE__("val.done") == True:
         if defaultVal is _marker:
             raise Exception("StopIteration")
         return defaultVal
     
-    return val.value
+    return __JS_WRITE__("val.value")
