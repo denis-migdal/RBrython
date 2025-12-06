@@ -83,14 +83,14 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 
 https://docs.python.org/3/library/functions.html
 
-- Primitives: object / type / str / float / int / bool / complex / list / tuple / slice / bytearray / bytes / memoryview / set / frozenset / dict
-- Print & strings: print / format / repr / dir / id / chr /ord / ascii / bin / hex / oct
-- Operators: help / len / divmod / pow / abs / round /  hash
-- Iterators: range /iter / aiter / next() / anext / reversed
-- Lists: enumerate / sorted / sum / max / min / all / any / map / filter / zip
-- Class op.: classmethod / staticmethod / property / isinstance / issubclass / super
-- Attr: getattr / setattr / delattr / hasattr
-- Debug & system: callable / breakpoint / compile / eval / exec / input / open / __import__ / globals / vars / locals
+- <b>Primitives:</b> object / type / str / float / int / bool / complex / list / tuple / slice / bytearray / bytes / memoryview / set / frozenset / dict
+- <b>Print & strings:</b> print / format / repr / dir / id / chr /ord / ascii / bin / hex / oct
+- <b>Operators:</b> help / len / divmod / pow / abs / round /  hash
+- <b>Iterators:</b> range /iter / aiter / next() / anext / reversed
+- <b>Lists:</b> enumerate / sorted / sum / max / min / all / any / map / filter / zip
+- <b>Class op.:</b> classmethod / staticmethod / property / isinstance / issubclass / super
+- <b>Attr:</b> getattr / setattr / delattr / hasattr
+- <b>Debug & system:</b> callable / breakpoint / compile / eval / exec / input / open / __import__ / globals / vars / locals
 
 ### Object (1/10)
 
