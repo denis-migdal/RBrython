@@ -1,3 +1,7 @@
+- inline + pecompte
+- primitive[int]
+
+
 Mail:
     - why does FormattedValue : format_spec is also a FormattedStr ?
     - async: normal fct async, call that differs...
@@ -25,14 +29,13 @@ Mail:
 
 ## Roadmap
 
-- inherit object + how to type ?
-    - type hérite object et auto-ref fait après ?
-    - pas un héritage classique, auto-référence faite manuellement
-        - object.__class__ = type
-        - type.__class__ = type (métaclasse d’elle-même)
-        - type.__bases__ = (object,)
-        - object.__bases__ = () (c’est la racine)
-    - __le__ => même implémentation, mais en réalité 2 méthodes différentes.
+- getPrototypeOf / setPrototypeOf instead of cstr.prototype
+- tuple = frozen Array.
+
+- list builtin fcts (dont print)
+- put in different dirs ?
+- auto gen ?
+
 
 X. Classes
     - doc init

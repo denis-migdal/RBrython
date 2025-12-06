@@ -36,10 +36,6 @@ export default function ClassDef(node: ClassDefNode, ctx: EmitContext) {
         ctx.w`${name}.prototype.constructor = ${name};${ctx.hm.NL()}`;
     }
 
-    ctx.w`${name}.prototype.__new__ = function __new__(...args) {${ctx.hm.BB()}`
-        ctx.w`return Object.create(${name}.prototype)`;
-    ctx.w`${ctx.hm.BE()}}${ctx.hm.BE()}`;
-
     // body...
     ctx.w_body(body);
 

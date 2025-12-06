@@ -79,7 +79,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 
 ## Core
 
-### Object (1/10)
+### Object (1/10)
 
 <table>
     <tbody>
