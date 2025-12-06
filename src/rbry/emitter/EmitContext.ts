@@ -110,6 +110,9 @@ export class EmitContext {
         if( nodes.length === 0)
             return;
 
+        if( nodes.length === 1 && nodeType(nodes[0]) === "Pass")
+            return;
+
         ++this.indent_level;
 
         for(let i = 0; i < nodes.length; ++i) {

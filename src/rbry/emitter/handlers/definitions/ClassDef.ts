@@ -30,14 +30,16 @@ export default function ClassDef(node: ClassDefNode, ctx: EmitContext) {
         ctx.w`${name}.prototype = Object.create(${bases[0]}.prototype);${ctx.hm.NL()}`;
 
         for(let i = 1; i < bases.length; ++i) {
-            ctx.w`Object.assign(${name}.prototype, ${bases[i]}.prototype);`;
+            ctx.w`Object.assign(${name}.prototype, ${bases[i]}.prototype);${ctx.hm.NL()}`;
         }
     
-        ctx.w`${name}.prototype.constructor = ${name};${ctx.hm.NL()}`;
+        ctx.w`${name}.prototype.constructor = ${name};`;
     }
+
+    ctx.w`${ctx.hm.BE()}`;
 
     // body...
     ctx.w_body(body);
 
-    ctx.w`${ctx.hm.BB()}return ${name};${ctx.hm.BE()}})();`;
+    ctx.w`${ctx.hm.BB()}return ${name};${ctx.hm.BE()}})()`;
 }
