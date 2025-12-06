@@ -83,92 +83,14 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 
 https://docs.python.org/3/library/functions.html
 
-Operators
-- divmod()
-- hash()
-- help()
-- len()
-- pow()
-- abs()
-- round()
-
-Iterators
-- range()
-- aiter()
-- anext()
-- iter()
-- next()
-- reversed()
-
-Lists
-- sorted()
-- enumerate()
-- sum()
-- max()
-- min()
-- all()
-- any()
-- filter()
-- zip()
-
-Print & strings
-- print()
-- format()
-- repr()
-- ascii()
-- chr()
-- ord()
-- id()
-- bin()
-- hex()
-- oct()
-- dir()
-
-Primitives
-- object()
-- bool()
-- bytearray()
-- bytes()
-- complex()
-- dict()
-- float()
-- frozenset()
-- int()
-- list()
-- map()
-- memoryview()
-- tuple()
-- type()
-- set()
-- slice()
-- str()
-
-Debug & system
-- breakpoint()
-- callable()
-- compile()
-- eval()
-- exec()
-- input()
-- open()
-- __import__()
-- globals()
-- vars()
-- locals()
-
-Class op.
-- classmethod()
-- staticmethod()
-- property()
-- isinstance()
-- issubclass()
-- super()
-
-Attr
-- getattr()
-- setattr()
-- delattr()
-- hasattr()
+- Primitives: object()/bool()/bytearray()/bytes()/complex()/dict()/float()/frozenset()/int()/list()/map()/memoryview()/tuple()/type()/set()/slice()/str()
+- Print & strings: print()/format()/repr()/ascii()/chr()/ord()/id()/bin()/hex()/oct()/dir()
+- Operators: hash()/help()/len()/divmod()/pow()/abs()/round()
+- Iterators: range()/aiter()/anext()/iter()/next()/reversed()
+- Lists: sorted()/enumerate()/sum()/max()/min()/all()/any()/filter()/zip()
+- Class op.: classmethod()/staticmethod()/property()/isinstance()/issubclass()/super()
+- Attr: getattr()/setattr()/delattr()/hasattr()
+- Debug & system: breakpoint()/callable()/compile()/eval()/exec()/input()/open()/__import__()/globals()/vars()/locals()
 
 ### Object (1/10)
 
