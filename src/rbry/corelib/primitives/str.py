@@ -9,6 +9,11 @@ class str(string):
     
     def __eq__(self, o: object, /) -> bool:
         return __JS_OP__(self, "==", o)
+    
+    def __add__(self, o: object, /) -> NotImplementedType|str:
+        match o:
+            case str  (): return __JS_OP__(self, "+", o) # type: ignore
+            case _      : return NotImplemented
 
     def __mul__(self, o: object, /) -> NotImplementedType|str:
         match o:

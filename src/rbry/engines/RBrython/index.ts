@@ -14,12 +14,16 @@ export const builtins = {
 
     format: require("!!raw-loader!../../corelib/print/format.py").default,
     repr: require("!!raw-loader!../../corelib/print/repr.py").default,
+    print: require("!!raw-loader!../../corelib/print/print.py").default,
+
+    abs  : require("!!raw-loader!../../corelib/operators/abs.py"  ).default,
+    len  : require("!!raw-loader!../../corelib/operators/len.py"  ).default,
+
+    range     : require("!!raw-loader!../../corelib/iterators/range.py"  ).default,
+    next: require("!!raw-loader!../../corelib/iterators/next.py"  ).default,
 
     Exception: require("!!raw-loader!../../corelib/Exception.py"  ).default,
     isinstance: require("!!raw-loader!../../corelib/isinstance.py"  ).default,
-    range     : require("!!raw-loader!../../corelib/range.py"  ).default,
-    mfct  : require("!!raw-loader!../../corelib/mfct.py"  ).default,
-    next: require("!!raw-loader!../../corelib/next.py"  ).default,
 }
 
 export default function RBrythonEngineFactory() {
