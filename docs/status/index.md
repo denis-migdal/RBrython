@@ -69,7 +69,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 - <sup>11</sup> : properties descriptor not implemented.
 - <sup>12</sup> : __getattribute__ not implemented.
 - <sup>13</sup> : fallbacks not implemented.
-- <sup>14</sup> : not tested, only generator for now.
+- <sup>14</sup> : not tested, only generator+list comp for now.
 
 ### Classes
 

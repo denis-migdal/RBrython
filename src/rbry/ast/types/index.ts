@@ -110,6 +110,8 @@ export type GeneratorExpNode = ASTNode<{
     }[]
 }>
 
+export type ListCompNode = GeneratorExpNode;
+
 export type TupleNode = ASTNode<{
     elts: ASTNode[]
 }>

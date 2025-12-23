@@ -19,6 +19,7 @@ Handlers["NamedExpr"] = require("./operators/NamedExpr").default;
 
 Handlers["Tuple"] = require("./vars/Tuple").default;
 Handlers["GeneratorExp"] = require("./vars/GeneratorExp").default;
+Handlers["ListComp"] = require("./vars/ListComp").default;
 
 import {default as Lambda} from "./definitions/Lambda";
 Handlers["Lambda"] = Lambda as Handler;

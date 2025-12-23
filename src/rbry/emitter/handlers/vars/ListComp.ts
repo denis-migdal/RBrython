@@ -1,9 +1,11 @@
-import { GeneratorExpNode } from "@RBrython/rbry/ast/types";
+import { ListCompNode } from "@RBrython/rbry/ast/types";
 import { EmitContext } from "../../EmitContext";
 
-export default function GeneratorExp(node: GeneratorExpNode, ctx: EmitContext) {
+export default function ListComp(node: ListCompNode, ctx: EmitContext) {
 
-    ctx.w`(function*(){${ctx.hm.BB()}`;
+    ctx.w`(function(){${ctx.hm.BB()}`;
+
+    ctx.w`const _r_ = [];${ctx.hm.NL()}`
 
     for(let i = 0; i < node.generators.length; ++i) {
         const gen = node.generators[i];
@@ -14,7 +16,7 @@ export default function GeneratorExp(node: GeneratorExpNode, ctx: EmitContext) {
         }
     }
 
-    ctx.w`yield ${node.elt}`;
+    ctx.w`_r_.push(${node.elt})`;
 
     for(let i = 0; i < node.generators.length; ++i) {
         ctx.w`${ctx.hm.BE()}}`;
@@ -23,6 +25,8 @@ export default function GeneratorExp(node: GeneratorExpNode, ctx: EmitContext) {
             ctx.w`${ctx.hm.BE()}}`;
         }
     }
+
+    ctx.w`${ctx.hm.NL()}return _r_;`;
 
     ctx.w`${ctx.hm.BE()}})()`
 }
