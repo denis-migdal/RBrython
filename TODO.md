@@ -29,7 +29,6 @@ Mail:
 
 ## Roadmap
 
-- tuple inherit object.
 - tuple = frozen Array.
 - @shadow(type, isRO)
 - put in different dirs ?

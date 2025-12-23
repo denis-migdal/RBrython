@@ -4,12 +4,13 @@ import parse from "@RBrython/rbry/parser";
 import RBrythonEmitter from "@RBrython/rbry/emitter";
 
 export const builtins = {
-    object: require("!!raw-loader!../../corelib/object.py"  ).default,
-    type  : require("!!raw-loader!../../corelib/type.py"  ).default,
-    int   : require("!!raw-loader!../../corelib/int.py"   ).default,
-    bool  : require("!!raw-loader!../../corelib/bool.py"  ).default,
-    float : require("!!raw-loader!../../corelib/float.py" ).default,
-    str   : require("!!raw-loader!../../corelib/str.py"   ).default,
+    object: require("!!raw-loader!../../corelib/primitives/object.py"  ).default,
+    type  : require("!!raw-loader!../../corelib/primitives/type.py"  ).default,
+    int   : require("!!raw-loader!../../corelib/primitives/int.py"   ).default,
+    bool  : require("!!raw-loader!../../corelib/primitives/bool.py"  ).default,
+    float : require("!!raw-loader!../../corelib/primitives/float.py" ).default,
+    str   : require("!!raw-loader!../../corelib/primitives/str.py"   ).default,
+
     format: require("!!raw-loader!../../corelib/format.py").default,
     Exception: require("!!raw-loader!../../corelib/Exception.py"  ).default,
     isinstance: require("!!raw-loader!../../corelib/isinstance.py"  ).default,
