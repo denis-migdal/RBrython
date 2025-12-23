@@ -1,12 +1,10 @@
-- inline + precompute
-- primitive[int] (type)
-
-
 Mail:
     - why does FormattedValue : format_spec is also a FormattedStr ?
     - async: normal fct async, call that differs...
     - locals.$op / locals.$test : do not need if the repeated thing is Constant or Name ASTNode.
     - $B.bool() not needed if arg is compare ASTNode or not or already a boolean cste ASTNode.
+
+    - inline + precompute
 
     - more kernel unittest.
 
@@ -30,11 +28,12 @@ Mail:
 
 ## Roadmap
 
-- tuple = frozen Array.
-- print
+- for comprehension list + tuple
+- dict (+ comprension)
 
 - move list out of engines (dirty) / autogen if possible.
 - getPrototypeOf / setPrototypeOf instead of cstr.prototype
+
 
 
 X. Classes
@@ -51,6 +50,8 @@ Y. opti improvements
     - for opti (range)
     - operators/inline
     - self
+    - inline + precompute
+    - primitive[int] (type)
 
 Z. corelib
     - t-string

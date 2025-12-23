@@ -101,6 +101,14 @@ export type CallNode = ASTNode<{
     keywords: {arg: string, value: ASTNode}[]
 }>
 
+export type GeneratorExpNode = ASTNode<{
+    elt: ASTNode,
+    generators: {
+        iter  : ASTNode,
+        target: ASTNode,
+        ifs   : ASTNode[]
+    }[]
+}>
 
 export type TupleNode = ASTNode<{
     elts: ASTNode[]

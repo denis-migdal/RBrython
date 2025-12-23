@@ -18,6 +18,7 @@ Handlers["With"] = require("./controlflows/With").default;
 Handlers["NamedExpr"] = require("./operators/NamedExpr").default;
 
 Handlers["Tuple"] = require("./vars/Tuple").default;
+Handlers["GeneratorExp"] = require("./vars/GeneratorExp").default;
 
 import {default as Lambda} from "./definitions/Lambda";
 Handlers["Lambda"] = Lambda as Handler;

@@ -58,7 +58,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
             <td>$\color{green}{and/or/not}$</td>
             <td>$\color{green}{is/is~not}$</td>
             <td>$\color{green}{ternary~op}$</td>
-            <td>$\color{red}{list~comprehension}$</td>
+            <td>$\color{orange}{list~comprehension}$<sup>14</sup></td>
         </tr>
     </tbody>
 </table>
@@ -69,6 +69,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 - <sup>11</sup> : properties descriptor not implemented.
 - <sup>12</sup> : __getattribute__ not implemented.
 - <sup>13</sup> : fallbacks not implemented.
+- <sup>14</sup> : not tested, only generator for now.
 
 ### Classes
 
