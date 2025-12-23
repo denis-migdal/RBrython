@@ -58,6 +58,10 @@ export default function Arguments(node: ArgsDefNode, ctx: EmitContext) {
         ctx.w`;${ctx.hm.BE()}`;
     }
 
+    if( hasVararg ) {
+        ctx.w`${ctx.hm.BB()}${node.vararg!.arg} = $RB.ro(${node.vararg!.arg});${ctx.hm.BE()}`;
+    }
+
     //TODO: prefer var renaming...
     if( isMethod ) {
         let selfname = "";

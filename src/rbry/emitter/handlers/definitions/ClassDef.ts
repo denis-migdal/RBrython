@@ -1,6 +1,8 @@
 import { ASTNode, ClassDefNode, SymTab } from "../../../ast/types";
 import { EmitContext } from "../../EmitContext";
 
+const hacked = ["number", "bigint", "boolean", "string", "obj", "ROArray", "Array"]
+
 export default function ClassDef(node: ClassDefNode, ctx: EmitContext) {
 
     const name = node.name;
@@ -24,7 +26,7 @@ export default function ClassDef(node: ClassDefNode, ctx: EmitContext) {
     let bases: (ASTNode|string)[] = node.bases;
 
     // @ts-ignore
-    const isH4ck = bases.length >= 1 && ["number", "bigint", "boolean", "string", "obj"].includes(bases[0].id);
+    const isH4ck = bases.length >= 1 && hacked.includes(bases[0].id);
 
     if( isH4ck )
         bases = bases.slice(1);

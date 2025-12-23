@@ -31,7 +31,7 @@ Mail:
 ## Roadmap
 
 - tuple = frozen Array.
-- @shadow(type, isRO)
+- print
 
 - auto gen (some ?) ?
 - getPrototypeOf / setPrototypeOf instead of cstr.prototype

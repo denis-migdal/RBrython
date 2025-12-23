@@ -10,6 +10,7 @@ export const builtins = {
     bool  : require("!!raw-loader!../../corelib/primitives/bool.py"  ).default,
     float : require("!!raw-loader!../../corelib/primitives/float.py" ).default,
     str   : require("!!raw-loader!../../corelib/primitives/str.py"   ).default,
+    tuple : require("!!raw-loader!../../corelib/primitives/tuple.py" ).default,
 
     format: require("!!raw-loader!../../corelib/format.py").default,
     Exception: require("!!raw-loader!../../corelib/Exception.py"  ).default,

@@ -12,6 +12,15 @@ export function getClass(o: unknown) {
 
     if( typename === "object" ) {
 
+        // @ts-ignore
+        const klassname = o.constructor.name;
+
+        if( klassname in SHADOW_JS)
+            return SHADOW_JS[klassname];
+
+        if( Object.isFrozen(o) && `RO${klassname}` in SHADOW_JS)
+            return SHADOW_JS[`RO${klassname}`];
+
         // @ts-ignore;
         if( o.constructor === Error )
             // @ts-ignore

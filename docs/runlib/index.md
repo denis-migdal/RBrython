@@ -30,6 +30,7 @@ RBrython helpers are usually in found the `$RB` JavaScript object (`$B` for Bryt
 | `getTmp()` | `locals.$test/$op` | Use and clear a temporary value |
 | `withTmp(expr)` | | Return the result of `expr` and clear the temporary value |
 | `shadowJS(name)(cls)` | NA | cls shadow the JS type "name" |
+| `ro(o)` | NA | make object read-only |
 
 
 ## Internal helpers

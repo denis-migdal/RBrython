@@ -17,6 +17,7 @@ import getattr from "./interface/getattr";
 import delattr from "./interface/delattr";
 import setattr from "./interface/setattr";
 import shadowJS from "./interface/shadowJS";
+import ro from "./interface/ro";
 
 // @ts-ignore
 const $RB = globalThis.$RB = {
@@ -42,7 +43,8 @@ const $RB = globalThis.$RB = {
     getModuleSync,
     getClass,
     in: _in,
-    shadowJS
+    shadowJS,
+    ro
 }
 export {$RB};
 

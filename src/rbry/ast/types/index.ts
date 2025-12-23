@@ -101,6 +101,11 @@ export type CallNode = ASTNode<{
     keywords: {arg: string, value: ASTNode}[]
 }>
 
+
+export type TupleNode = ASTNode<{
+    elts: ASTNode[]
+}>
+
 export type ClassDefNode = ASTNode<{
     name: string;
     body: BodyNode;
