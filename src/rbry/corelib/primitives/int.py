@@ -1,6 +1,7 @@
 from types import NotImplementedType
-from RBM import __JS_AS_NUMBER__, __JS_OP__, bigint
+from RBM import __JS_AS_NUMBER__, __JS_OP__, __JS_SHADOW__, bigint
 
+@__JS_SHADOW__("bigint")
 class int(bigint):
 
     def __new__(cls, o: object, base: int, /) -> int:

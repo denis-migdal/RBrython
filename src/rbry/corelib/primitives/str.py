@@ -1,6 +1,7 @@
 from types import NotImplementedType
-from RBM import __JS_OP__, string
+from RBM import __JS_OP__, __JS_SHADOW__, string
 
+@__JS_SHADOW__("string")
 class str(string):
     def __new__(cls, o: object, /) -> str:
         return __JS_AS_STRING__(o) # type: ignore

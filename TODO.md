@@ -16,6 +16,7 @@ Mail:
     - corelib + unit test
         - ~100 line/weeks 1year.
     - then ES6 classes.
+    - __JS_SHADOW__
 
 ## Directions
 
@@ -31,12 +32,9 @@ Mail:
 
 - tuple = frozen Array.
 - @shadow(type, isRO)
-- put in different dirs ?
 
 - auto gen (some ?) ?
-
 - getPrototypeOf / setPrototypeOf instead of cstr.prototype
-
 
 
 X. Classes

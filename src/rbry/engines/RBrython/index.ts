@@ -35,6 +35,7 @@ export default function RBrythonEngineFactory() {
         __JS_AS_STRING__: require("@RBrython/rbry/macros/__JS_AS_STRING__").default,
         __JS_AS_NUMBER__: require("@RBrython/rbry/macros/__JS_AS_NUMBER__").default,
         __JS_AS_BIGINT__: require("@RBrython/rbry/macros/__JS_AS_BIGINT__").default,
+        __JS_SHADOW__: require("@RBrython/rbry/macros/__JS_SHADOW__").default,
     })
 
     engine.registerModule("JS", globalThis);

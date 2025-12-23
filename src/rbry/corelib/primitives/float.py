@@ -1,6 +1,7 @@
 from types import NotImplementedType
-from RBM import __JS_OP__, __JS_AS_NUMBER__, __JS_WRITE__, number
+from RBM import __JS_OP__, __JS_AS_NUMBER__, __JS_SHADOW__, __JS_WRITE__, number
 
+@__JS_SHADOW__("number")
 class float(number):
     def __new__(cls, o: object, /) -> float:
         if type(o) is str:

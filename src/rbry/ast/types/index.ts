@@ -105,6 +105,7 @@ export type ClassDefNode = ASTNode<{
     name: string;
     body: BodyNode;
     bases: ASTNode[];
+    decorator_list: ASTNode[];
 }>
 
 export type ArgsDefNode = ASTNode<{

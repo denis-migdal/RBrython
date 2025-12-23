@@ -1,9 +1,4 @@
-const mapper = {
-    "bigint" : "int",
-    "number" : "float",
-    "string" : "str",
-    "boolean": "bool"
-}
+import { SHADOW_JS } from "../interface/shadowJS";
 
 export function getClass(o: unknown) {
 
@@ -27,7 +22,8 @@ export function getClass(o: unknown) {
     }
 
     // @ts-ignore
-    const lit_class = globalThis[mapper[typename]];
+    //TODO: remove globalThis[]
+    const lit_class = SHADOW_JS[typename];
     if( lit_class !== undefined)
         return lit_class;
 

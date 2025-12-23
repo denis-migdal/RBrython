@@ -7,7 +7,14 @@ export default function ClassDef(node: ClassDefNode, ctx: EmitContext) {
     const body = node.body;
 
     // JS cstr
-    ctx.w`var ${name} = (() =>{${ctx.hm.BB()}`
+    ctx.w`var ${name} = `;
+
+    for(let i = 0; i < node.decorator_list.length; ++i) {
+        ctx.w_node(node.decorator_list[i]);
+        ctx.w_str("(");
+    }
+    
+    ctx.w`(() =>{${ctx.hm.BB()}`
         ctx.w`function ${name}(...args) {${ctx.hm.BB()}`
             ctx.w`return type.prototype.__call__.call(${name}, ...args)`;
             //ctx.w`return Object.create(${name}.prototype);`
@@ -42,4 +49,8 @@ export default function ClassDef(node: ClassDefNode, ctx: EmitContext) {
     ctx.w_body(body);
 
     ctx.w`${ctx.hm.BB()}return ${name};${ctx.hm.BE()}})()`;
+
+
+    for(let i = 0; i < node.decorator_list.length; ++i)
+        ctx.w_str(")");
 }

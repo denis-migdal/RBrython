@@ -1,0 +1,3 @@
+from typing import Callable
+
+def __JS_SHADOW__(name: str) -> Callable[[object], object] : ...

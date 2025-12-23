@@ -28,6 +28,10 @@ RBrython gives access to JavaScript operators through the following macros:
 - `__JS_AS_NUMBER__(o)` : convert `o` into a JavaScript number.
 - `__JS_AS_STRING__(o)` : convert `o` into a JavaScript string.
 
+### Shadowing a JS type
+
+- `@__JS_SHADOW__(name)` : decorator used to define a class shadowing a JS type.
+
 ### Log
 
 `__JS_LOG__(...)` print its parameters in the console. This function is used for quick debugs when Python `print()` isn't working/available.
