@@ -84,7 +84,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 
 https://docs.python.org/3/library/functions.html
 
-- <b>Primitives:</b> $\color{orange}{object}$ / $\color{orange}{type}$ / $\color{orange}{str}$ / $\color{orange}{float}$ / $\color{orange}{int}$ / $\color{orange}{bool}$ / $\color{gray}{complex}$ / $\color{red}{list}$ / $\color{orange}{tuple}$ / $\color{red}{slice}$ / $\color{gray}{bytearray}$ / $\color{gray}{bytes}$ / $\color{gray}{memoryview}$ / $\color{red}{set}$ / $\color{red}{frozenset}$ / $\color{red}{dict}$
+- <b>Primitives:</b> $\color{orange}{object}$ / $\color{orange}{type}$ / $\color{orange}{str}$ / $\color{orange}{float}$ / $\color{orange}{int}$ / $\color{orange}{bool}$ / $\color{gray}{complex}$ / $\color{orange}{list}$ / $\color{orange}{tuple}$ / $\color{red}{slice}$ / $\color{gray}{bytearray}$ / $\color{gray}{bytes}$ / $\color{gray}{memoryview}$ / $\color{red}{set}$ / $\color{red}{frozenset}$ / $\color{red}{dict}$
 - <b>Print:</b> $\color{orange}{print}$ / $\color{orange}{format}$ / $\color{orange}{repr}$ / $\color{gray}{dir}$ / $\color{gray}{id}$ / $\color{gray}{chr}$ / $\color{gray}{ord}$ / $\color{gray}{ascii}$ / $\color{gray}{bin}$ / $\color{gray}{hex}$ / $\color{gray}{oct}$
 - <b>Operators:</b> $\color{gray}{help}$ / $\color{orange}{len}$ / $\color{gray}{divmod}$ / $\color{gray}{pow}$ / $\color{orange}{abs}$ / $\color{gray}{round}$ /  $\color{gray}{hash}$
 - <b>Iterators:</b> $\color{orange}{range}$ / $\color{red}{iter}$ / $\color{red}{aiter}$ / $\color{orange}{next}$ / $\color{red}{anext}$ / $\color{gray}{reversed}$

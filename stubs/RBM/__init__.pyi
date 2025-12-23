@@ -5,6 +5,7 @@ boolean = bool
 obj     = object
 
 ROArray = tuple
+Array = list
 
 from __JS_OP__        import __JS_OP__
 from __JS_AS_NUMBER__ import __JS_AS_NUMBER__

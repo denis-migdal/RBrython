@@ -18,6 +18,7 @@ Handlers["With"] = require("./controlflows/With").default;
 Handlers["NamedExpr"] = require("./operators/NamedExpr").default;
 
 Handlers["Tuple"] = require("./vars/Tuple").default;
+Handlers["List"] = require("./vars/List").default;
 Handlers["GeneratorExp"] = require("./vars/GeneratorExp").default;
 Handlers["ListComp"] = require("./vars/ListComp").default;
 

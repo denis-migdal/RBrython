@@ -116,6 +116,8 @@ export type TupleNode = ASTNode<{
     elts: ASTNode[]
 }>
 
+export type ListNode = TupleNode;
+
 export type ClassDefNode = ASTNode<{
     name: string;
     body: BodyNode;
