@@ -17,7 +17,7 @@ export default function ClassDef(node: ClassDefNode, ctx: EmitContext) {
     let bases: (ASTNode|string)[] = node.bases;
 
     // @ts-ignore
-    const isH4ck = bases.length === 1 && ["number", "bigint", "boolean", "string", "obj"].includes(bases[0].id);
+    const isH4ck = bases.length >= 1 && ["number", "bigint", "boolean", "string", "obj"].includes(bases[0].id);
 
     if( isH4ck )
         bases = bases.slice(1);

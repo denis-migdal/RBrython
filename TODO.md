@@ -1,5 +1,5 @@
-- inline + pecompte
-- primitive[int]
+- inline + precompute
+- primitive[int] (type)
 
 
 Mail:
@@ -29,12 +29,15 @@ Mail:
 
 ## Roadmap
 
-- getPrototypeOf / setPrototypeOf instead of cstr.prototype
+- tuple inherit object.
 - tuple = frozen Array.
-
-- list builtin fcts (dont print)
+- @shadow(type, isRO)
 - put in different dirs ?
-- auto gen ?
+
+- auto gen (some ?) ?
+
+- getPrototypeOf / setPrototypeOf instead of cstr.prototype
+
 
 
 X. Classes
