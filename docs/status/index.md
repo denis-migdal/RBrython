@@ -83,7 +83,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 
 https://docs.python.org/3/library/functions.html
 
-- <b>Primitives:</b> $\color{orange}{object}$ / $\color{orange}{type}$ / $\color{orange}{str}$ / $\color{orange}{float}$ / $\color{orange}{int}$ / $\color{orange}{bool}$ / $\color{gray}{complex}$ / list / tuple / slice / bytearray / bytes / memoryview / set / frozenset / dict
+- <b>Primitives:</b> $\color{orange}{object}$ / $\color{orange}{type}$ / $\color{orange}{str}$ / $\color{orange}{float}$ / $\color{orange}{int}$ / $\color{orange}{bool}$ / $\color{gray}{complex}$ / $\color{red}{list}$ / $\color{red}{tuple}$ / $\color{red}{slice}$ / $\color{gray}{bytearray}$ / $\color{gray}{bytes}$ / $\color{gray}{memoryview}$ / $\color{red}{set}$ / $\color{red}{frozenset}$ / $\color{red}{dict}$
 - <b>Print & strings:</b> print / format / repr / dir / id / chr /ord / ascii / bin / hex / oct
 - <b>Operators:</b> help / len / divmod / pow / abs / round /  hash
 - <b>Iterators:</b> range /iter / aiter / next() / anext / reversed
