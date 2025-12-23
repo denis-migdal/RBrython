@@ -33,7 +33,7 @@ Mail:
 - tuple = frozen Array.
 - print
 
-- auto gen (some ?) ?
+- move list out of engines (dirty) / autogen if possible.
 - getPrototypeOf / setPrototypeOf instead of cstr.prototype
 
 

@@ -84,7 +84,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 https://docs.python.org/3/library/functions.html
 
 - <b>Primitives:</b> $\color{orange}{object}$ / $\color{orange}{type}$ / $\color{orange}{str}$ / $\color{orange}{float}$ / $\color{orange}{int}$ / $\color{orange}{bool}$ / $\color{gray}{complex}$ / $\color{red}{list}$ / $\color{orange}{tuple}$ / $\color{red}{slice}$ / $\color{gray}{bytearray}$ / $\color{gray}{bytes}$ / $\color{gray}{memoryview}$ / $\color{red}{set}$ / $\color{red}{frozenset}$ / $\color{red}{dict}$
-- <b>Print:</b> $\color{red}{print}$ / $\color{red}{format}$ / $\color{red}{repr}$ / $\color{gray}{dir}$ / $\color{gray}{id}$ / $\color{gray}{chr}$ / $\color{gray}{ord}$ / $\color{gray}{ascii}$ / $\color{gray}{bin}$ / $\color{gray}{hex}$ / $\color{gray}{oct}$
+- <b>Print:</b> $\color{red}{print}$ / $\color{orange}{format}$ / $\color{orange}{repr}$ / $\color{gray}{dir}$ / $\color{gray}{id}$ / $\color{gray}{chr}$ / $\color{gray}{ord}$ / $\color{gray}{ascii}$ / $\color{gray}{bin}$ / $\color{gray}{hex}$ / $\color{gray}{oct}$
 - <b>Operators:</b> help / len / divmod / pow / abs / round /  hash
 - <b>Iterators:</b> range /iter / aiter / next() / anext / reversed
 - <b>Lists:</b> enumerate / sorted / sum / max / min / all / any / map / filter / zip

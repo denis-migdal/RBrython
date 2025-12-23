@@ -12,7 +12,9 @@ export const builtins = {
     str   : require("!!raw-loader!../../corelib/primitives/str.py"   ).default,
     tuple : require("!!raw-loader!../../corelib/primitives/tuple.py" ).default,
 
-    format: require("!!raw-loader!../../corelib/format.py").default,
+    format: require("!!raw-loader!../../corelib/print/format.py").default,
+    repr: require("!!raw-loader!../../corelib/print/repr.py").default,
+
     Exception: require("!!raw-loader!../../corelib/Exception.py"  ).default,
     isinstance: require("!!raw-loader!../../corelib/isinstance.py"  ).default,
     range     : require("!!raw-loader!../../corelib/range.py"  ).default,
