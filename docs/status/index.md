@@ -58,7 +58,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
             <td>$\color{green}{and/or/not}$</td>
             <td>$\color{green}{is/is~not}$</td>
             <td>$\color{green}{ternary~op}$</td>
-            <td>$\color{orange}{list~comprehension}$<sup>14</sup></td>
+            <td>$\color{orange}{comprehension}/\color{red}{unpack}$<sup>14</sup></td>
         </tr>
     </tbody>
 </table>
