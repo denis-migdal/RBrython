@@ -28,15 +28,25 @@ Mail:
 
 ## Roadmap
 
-- for comprehension list + tuple
-- dict (+ comprension)
-
+- object
+    - repr object (need module name)
+    - format/repr/str
+    - getattr/setattr/delattr
+    - use __getattribute__ instead of ....
 - move list out of engines (dirty) / autogen if possible.
-- getPrototypeOf / setPrototypeOf instead of cstr.prototype
 
+- dict
+    - shadow method (JS manip)
+    - hash() : bucket (utilise == pour collisions)
+        - entier = lui même
+        - obj = id() => addr mémoire
+        - float ?
+        - str :  seed then -> (h * 31 + ord(c)) & 0xFFFFFFFFFFFFFFF
+        - tuple: hash(a) * 1000003 ^ hash(b) * 1000003 ^ hash(c)
 
 
 X. Classes
+    - getPrototypeOf / setPrototypeOf instead of cstr.prototype
     - doc init
     - __new__ / () arg parsing
     - class decorator

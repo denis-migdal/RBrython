@@ -12,6 +12,7 @@ export const builtins = {
     str   : require("!!raw-loader!../../corelib/primitives/str.py"   ).default,
     tuple : require("!!raw-loader!../../corelib/primitives/tuple.py" ).default,
     list  : require("!!raw-loader!../../corelib/primitives/list.py"  ).default,
+    dict  : require("!!raw-loader!../../corelib/primitives/dict.py"  ).default,
 
     format: require("!!raw-loader!../../corelib/print/format.py").default,
     repr: require("!!raw-loader!../../corelib/print/repr.py").default,

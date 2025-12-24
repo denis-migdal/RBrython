@@ -15,6 +15,6 @@ class type:
                      
                      const init = this.prototype.__init__;
                      if( init !== undefined)
-                        init.call(self, ...args)
+                        init.call(instance, ...args)
                      """)
         return instance # type: ignore

@@ -101,22 +101,36 @@ export type CallNode = ASTNode<{
     keywords: {arg: string, value: ASTNode}[]
 }>
 
+type Generator = {
+    iter  : ASTNode,
+    target: ASTNode,
+    ifs   : ASTNode[]
+};
+
 export type GeneratorExpNode = ASTNode<{
     elt: ASTNode,
-    generators: {
-        iter  : ASTNode,
-        target: ASTNode,
-        ifs   : ASTNode[]
-    }[]
+    generators: Generator[]
 }>
 
 export type ListCompNode = GeneratorExpNode;
+
+export type DictCompNode = ASTNode<{
+    key  : ASTNode,
+    value: ASTNode,
+    generators: Generator[]
+}>;
 
 export type TupleNode = ASTNode<{
     elts: ASTNode[]
 }>
 
 export type ListNode = TupleNode;
+
+export type DictNode = ASTNode<{
+    keys  : ASTNode[],
+    values: ASTNode[]
+}>
+
 
 export type ClassDefNode = ASTNode<{
     name: string;
