@@ -91,7 +91,7 @@ https://docs.python.org/3/library/functions.html
 - <b>Lists:</b> $\color{gray}{enumerate / sorted / sum / max / min / all / any / map / filter / zip}$
 - <b>Class op.:</b> $\color{red}{classmethod / staticmethod / property / isinstance / issubclass / super}$
 - <b>Attr:</b> $\color{red}{getattr / setattr / delattr / hasattr}$
-- <b>Debug & system:</b> $\color{gray}{callable / breakpoint / compile / eval / exec / input / open / \_\_import\_\_ / globals / vars / locals}$
+- <b>Debug & system:</b> $\color{gray}{callable / breakpoint / compile / eval / exec / input / open / import / globals / vars / locals}$
 
 ### Object (1/10)
 
