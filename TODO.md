@@ -1,21 +1,3 @@
-Mail:
-    - why does FormattedValue : format_spec is also a FormattedStr ?
-    - async: normal fct async, call that differs...
-    - locals.$op / locals.$test : do not need if the repeated thing is Constant or Name ASTNode.
-    - $B.bool() not needed if arg is compare ASTNode or not or already a boolean cste ASTNode.
-
-    - inline + precompute
-
-    - more kernel unittest.
-
-    - __iter__ also creates [Symbol.iterator]
-
-    - 6.5x smaller / 3x faster
-    - corelib + unit test
-        - ~100 line/weeks 1year.
-    - then ES6 classes.
-    - __JS_SHADOW__
-
 ## Directions
 
 1. Pass unit tests (~100/weeks).
@@ -28,10 +10,10 @@ Mail:
 
 ## Roadmap
 
-1. get/set/has/del attr (dont __getattribute__)
-2. test object repr (need module name + qualname)
-3. unpack operators + unpack variables.
-4. Exception stacktrace...
+1. get/set/has/del attr (dont __getattribute__) [12]
+1. unpack operators + unpack variables + test comprehension. [10]
+3. test object repr (need module name + qualname)
+4. Exception stacktrace... [1]
 
 - move list out of engines (dirty) / autogen if possible.
 - dict
@@ -138,40 +120,40 @@ TS/WASM generation possible.
 Tests from : https://github.com/brython-dev/brython/tree/master/www/tests
 See src/unittests
 
-Kernel (4453 ~= 86/w):
+Kernel (6245):
 - classes (1176)
     - descriptor (27)
     - decorators (99)
     - reflected method (95)
     - special methods (108)
-    - test rmethod (+120)
+    - test rmethod (120)
 - functions
-    - packed_argument (+12)
+    - packed_argument (12)
 - imports (112)
-    - test_from_import (+26)
-    - global_in_imported.py (+19)
+    - test_from_import (26)
+    - global_in_imported.py (19)
 
-- test_types (+129)
+- test_types (129)
 
 - f-string (138)
 
 - exceptions (210)
-    - exceptions_trace (+257)
+    - exceptions_trace (257)
     + src map...
 
 - iterators (94)
     - generator (1262)
 
-- simple (+15) (no asserts...)
+- simple (15) (no asserts...)
 - basic test suite (1132)
-- test_suite (+1214)
+- test_suite (1214)
 
-Core (3144 ~= 60/w):
+Core (3218):
 - numbers (827)
 - bytes (301)
 - dicts (288)
 - list (496)
-- test_list_methods (+74)
+- test_list_methods (74)
 - memory view (17)
 - sets (319)
 - string format (289)
