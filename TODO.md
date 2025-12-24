@@ -28,13 +28,12 @@ Mail:
 
 ## Roadmap
 
-- object
-    - repr object (need module name)
-    - format/repr/str
-    - getattr/setattr/delattr
-    - use __getattribute__ instead of ....
-- move list out of engines (dirty) / autogen if possible.
+1. get/set/has/del attr (dont __getattribute__)
+2. test object repr (need module name + qualname)
+3. unpack operators + unpack variables.
+4. Exception stacktrace...
 
+- move list out of engines (dirty) / autogen if possible.
 - dict
     - shadow method (JS manip)
     - hash() : bucket (utilise == pour collisions)
@@ -43,7 +42,6 @@ Mail:
         - float ?
         - str :  seed then -> (h * 31 + ord(c)) & 0xFFFFFFFFFFFFFFF
         - tuple: hash(a) * 1000003 ^ hash(b) * 1000003 ^ hash(c)
-
 
 X. Classes
     - getPrototypeOf / setPrototypeOf instead of cstr.prototype
@@ -69,8 +67,7 @@ Z. corelib
     - unpack operator (*) [iterator proto]
     - ** operator => mapping proto (.keys() + getitem ?)
     - unpack variables.
-    - + set comprehension + dict comprehension.
-    - list/tuple comprehension
+    - + set comprehension
 Z. Generators (for list/tuple/others)
         - inter()
     - handmade generator (sync/async)
@@ -120,10 +117,8 @@ Z. import resolver
         - runner <-> RBrythonGlobalRunner (give it as fct parameter ~= context)
     - classes
         - better attr operation (on classes)
-        - bool inherit from int...
         - observer DP for class multi-inheritance.
-    - dict/list/tuple (seulement op de bases ?)
-    - async fct / generators
+    - async generators
 
 X. Editor
     - URL &test= (change)

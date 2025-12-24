@@ -177,4 +177,5 @@ https://docs.python.org/3/library/functions.html
 
 ### Others
 
-- f-string: done.
+- f-string: done (format is itself an f-string).
+- t-string: not implemented

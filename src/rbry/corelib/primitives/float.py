@@ -12,6 +12,9 @@ class float(number):
             return __JS_AS_NUMBER__(o)
         return type(o).__float__(o) # type: ignore
     
+    def __str__(self):
+        return __JS_WRITE__("`${this}`")
+    
     def __eq__(self, o: object, /) -> bool:
         return __JS_OP__(self, "==", o)    
 
