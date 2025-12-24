@@ -89,9 +89,9 @@ https://docs.python.org/3/library/functions.html
 - <b>Operators:</b> $\color{gray}{help}$ / $\color{orange}{len}$ / $\color{gray}{divmod}$ / $\color{gray}{pow}$ / $\color{orange}{abs}$ / $\color{gray}{round}$ /  $\color{gray}{hash}$
 - <b>Iterators:</b> $\color{orange}{range}$ / $\color{red}{iter}$ / $\color{red}{aiter}$ / $\color{orange}{next}$ / $\color{red}{anext}$ / $\color{gray}{reversed}$
 - <b>Lists:</b> $\color{gray}{enumerate / sorted / sum / max / min / all / any / map / filter / zip}$
-- <b>Class op.:</b> classmethod / staticmethod / property / isinstance / issubclass / super
-- <b>Attr:</b> getattr / setattr / delattr / hasattr
-- <b>Debug & system:</b> callable / breakpoint / compile / eval / exec / input / open / __import__ / globals / vars / locals
+- <b>Class op.:</b> $\color{red}{classmethod / staticmethod / property / isinstance / issubclass / super}$
+- <b>Attr:</b> $\color{red}{getattr / setattr / delattr / hasattr}$
+- <b>Debug & system:</b> $\color{gray}{callable / breakpoint / compile / eval / exec / input / open / __import__ / globals / vars / locals}$
 
 ### Object (1/10)
 
