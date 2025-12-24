@@ -1,7 +1,7 @@
 item = True
 
 class X:
-    def __getattr__(self, i: str):
+    def __getattribute__(self, i: str):
         return item
     def __setattr__(self, i: str, v: object):
         global item

@@ -51,7 +51,7 @@ https://www.w3schools.com/python/python_ref_keywords.asp
         <tr>
             <td>$\color{green}{Rich~assignments}$<sup>10</sup></td>
             <td>$\color{green}{=, :=}$<sup>6,10</sup></td>
-            <td>$\color{green}{[]/./del}$<sup>9,11,12,13</sup></td>
+            <td>$\color{green}{[]/./del}$<sup>9,11,13</sup></td>
             <td>$\color{green}{in/not~in}$</td>
         </tr>
         <tr>
@@ -67,7 +67,6 @@ https://www.w3schools.com/python/python_ref_keywords.asp
 - <sup>9</sup> : slice not implemented.
 - <sup>10</sup> : many subscript/attr as target not implemented.
 - <sup>11</sup> : properties descriptor not implemented.
-- <sup>12</sup> : __getattribute__ not implemented.
 - <sup>13</sup> : fallbacks not implemented.
 - <sup>14</sup> : not tested, set comp not implemented.
 

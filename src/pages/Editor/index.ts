@@ -5,8 +5,8 @@ import printBenchStats from "./utils/printBenchStats";
 import test_suite from "../../tests/py";
 import { $RB } from "@RBrython/rbry/runlib";
 import { Optimizers, Targets } from "@RBrython/libs/RBrython-all";
-import { builtins } from "@RBrython/rbry/engines/RBrython";
 import { hl } from "./hl";
+import corelib from "@RBrython/rbry/corelib/list";
 
 const NB_REPEAT = 3;
 
@@ -427,8 +427,8 @@ for(let name in test_suite) {
 const RBrython_builtins = new Option("RBrython builtins", "test:builtins");
 RBrython_builtins.classList.add("hopt");
 select.append( RBrython_builtins );
-for(let name in builtins) {
-    const opt = new Option("", builtins[name as keyof typeof builtins])
+for(let name in corelib) {
+    const opt = new Option("", corelib[name as keyof typeof corelib])
     opt.innerHTML = `&nbsp;&nbsp;&nbsp;${name}`;
     select.append( opt );
 }
@@ -459,7 +459,7 @@ select.addEventListener('change', () => {
         if( test === "test:rbrython" )
             run( test_suite );
         if( test === "test:builtins")
-            run( builtins );
+            run( corelib );
         if( test === "test:brython")
             run( generateTestSuite("brython", merge) );
         return;

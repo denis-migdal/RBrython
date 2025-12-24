@@ -10,20 +10,10 @@
 
 ## Roadmap
 
-1. get/set/has/del attr (dont __getattribute__) [12]
 1. unpack operators + unpack variables + test comprehension. [10]
-3. test object repr (need module name + qualname)
-4. Exception stacktrace... [1]
-
-- move list out of engines (dirty) / autogen if possible.
-- dict
-    - shadow method (JS manip)
-    - hash() : bucket (utilise == pour collisions)
-        - entier = lui même
-        - obj = id() => addr mémoire
-        - float ?
-        - str :  seed then -> (h * 31 + ord(c)) & 0xFFFFFFFFFFFFFFF
-        - tuple: hash(a) * 1000003 ^ hash(b) * 1000003 ^ hash(c)
+2. test object repr (need module name + qualname)
+3. Exception stacktrace... [1]
+4. get/set/has/del attr
 
 X. Classes
     - getPrototypeOf / setPrototypeOf instead of cstr.prototype
@@ -50,6 +40,14 @@ Z. corelib
     - ** operator => mapping proto (.keys() + getitem ?)
     - unpack variables.
     - + set comprehension
+    - dict
+        - shadow method (JS manip)
+        - hash() : bucket (utilise == pour collisions)
+            - entier = lui même
+            - obj = id() => addr mémoire
+            - float ?
+            - str :  seed then -> (h * 31 + ord(c)) & 0xFFFFFFFFFFFFFFF
+            - tuple: hash(a) * 1000003 ^ hash(b) * 1000003 ^ hash(c)
 Z. Generators (for list/tuple/others)
         - inter()
     - handmade generator (sync/async)
