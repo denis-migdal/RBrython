@@ -88,7 +88,7 @@ https://docs.python.org/3/library/functions.html
 - <b>Print:</b> $\color{orange}{print}$ / $\color{orange}{format}$ / $\color{orange}{repr}$ / $\color{gray}{dir}$ / $\color{gray}{id}$ / $\color{gray}{chr}$ / $\color{gray}{ord}$ / $\color{gray}{ascii}$ / $\color{gray}{bin}$ / $\color{gray}{hex}$ / $\color{gray}{oct}$
 - <b>Operators:</b> $\color{gray}{help}$ / $\color{orange}{len}$ / $\color{gray}{divmod}$ / $\color{gray}{pow}$ / $\color{orange}{abs}$ / $\color{gray}{round}$ /  $\color{gray}{hash}$
 - <b>Iterators:</b> $\color{orange}{range}$ / $\color{red}{iter}$ / $\color{red}{aiter}$ / $\color{orange}{next}$ / $\color{red}{anext}$ / $\color{gray}{reversed}$
-- <b>Lists:</b> enumerate / sorted / sum / max / min / all / any / map / filter / zip
+- <b>Lists:</b> $\color{gray}{enumerate / sorted / sum / max / min / all / any / map / filter / zip}$
 - <b>Class op.:</b> classmethod / staticmethod / property / isinstance / issubclass / super
 - <b>Attr:</b> getattr / setattr / delattr / hasattr
 - <b>Debug & system:</b> callable / breakpoint / compile / eval / exec / input / open / __import__ / globals / vars / locals
@@ -102,11 +102,11 @@ https://docs.python.org/3/library/functions.html
             <td>${\color{red}{getattribute/setattr/delattr}}$</td>
         </tr>
         <tr>
-            <td>${\color{red}{format/repr/str}}$</td>
+            <td>${\color{orange}{format/repr/str}}$</td>
             <td>${\color{red}{dir/doc}}$</td>
         </tr>
         <tr>
-            <td>${\color{orange}{new}/\color{red}{init/class}}$</td>
+            <td>${\color{orange}{new/init}/\color{red}{class}}$</td>
             <td>${\color{red}{class/mro}}$</td>
         </tr>
         <tr>
