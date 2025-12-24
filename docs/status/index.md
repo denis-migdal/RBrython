@@ -103,19 +103,19 @@ https://docs.python.org/3/library/functions.html
         </tr>
         <tr>
             <td>${\color{orange}{format/repr/str}}$</td>
-            <td>${\color{red}{dir/doc}}$</td>
+            <td>${\color{gray}{dir/doc}}$</td>
         </tr>
         <tr>
-            <td>${\color{orange}{new/init}/\color{red}{class}}$</td>
-            <td>${\color{red}{class/mro}}$</td>
+            <td>${\color{orange}{new/init}}$</td>
+            <td>${\color{gray}{class/mro}}$</td>
         </tr>
         <tr>
-            <td>${\color{red}{init\_subclass/hash}}$</td>
-            <td>${\color{red}{reduce/reduce\_ex/getstate}}$</td>
+            <td>${\color{gray}{init\_subclass/hash}}$</td>
+            <td>${\color{gray}{reduce/reduce\_ex/getstate}}$</td>
         </tr>
         <tr>
-            <td>${\color{red}{subclasshook}}$</td>
-            <td>${\color{red}{sizeof}}$</td>
+            <td>${\color{gray}{subclasshook}}$</td>
+            <td>${\color{gray}{sizeof}}$</td>
         </tr>
     </tbody>
 </table>
