@@ -11,9 +11,7 @@
 ## Roadmap
 
 1. unpack operators + unpack variables + test comprehension. [10]
-2. test object repr (need module name + qualname)
-3. Exception stacktrace... [1]
-4. get/set/has/del attr
+2. Exception stacktrace... [1]
 
 X. Classes
     - getPrototypeOf / setPrototypeOf instead of cstr.prototype
@@ -22,6 +20,8 @@ X. Classes
     - class decorator
     - method decorator
     - ?
+    - better qualname & module name (builtin no module name)
+        - fct (static bloc for methods)
 
 Y. typechecker improvements
     - variables types

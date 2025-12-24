@@ -21,11 +21,14 @@ class object(obj): # typecheck h4ck
     def __ge__(self, o: obj, /):
         return NotImplemented
     
+    def __getattribute__(self, attr: string, /):
+        return __JS_OP__(self, "[]", attr) #TODO: better
+    
     # print
     def __repr__(self):
-        # TODO: __module__ not implemented
-        # TODO: __qualname__ not implemented
-        return "<? object>" # using f"" = infinite loop.
+        cls = type(self)
+        return "<"+ cls.__module__ + "." + cls.__qualname__ + " object>"
+        # using f"" = infinite loop.
     
     def __str__(self):
         return type(self).__repr__(self)

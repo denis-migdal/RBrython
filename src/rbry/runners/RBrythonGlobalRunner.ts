@@ -21,6 +21,8 @@ export default class RBrythonGlobalRunner extends Runner {
         return eval(jscode) as (runlib: any) => Promise<PyModule>;
     }
     override async runFunction( fct: (runlib: any) => Promise<PyModule> ) {
+        // @ts-ignore
+        $RB.__import_name__ = "__main__";
         return await fct($RB);
     }
 
@@ -28,6 +30,8 @@ export default class RBrythonGlobalRunner extends Runner {
         return eval(jscode) as (runlib: any) => PyModule;
     }
     override runSyncFunction( fct: (runlib: any) => PyModule ) {
+        // @ts-ignore
+        $RB.__import_name__ = "__main__";
         return fct($RB);
     }
 

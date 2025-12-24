@@ -50,7 +50,11 @@ export default function ClassDef(node: ClassDefNode, ctx: EmitContext) {
     // body...
     ctx.w_body(body);
 
-    ctx.w`${ctx.hm.BB()}return ${name};${ctx.hm.BE()}})()`;
+    ctx.w`${ctx.hm.BB()}`;
+    //TODO...
+    ctx.w`${name}.__qualname__ = "${name}";${ctx.hm.NL()}`;
+    ctx.w`${name}.__module__   = __name__;${ctx.hm.NL()}`;
+    ctx.w`return ${name};${ctx.hm.BE()}})()`;
 
 
     for(let i = 0; i < node.decorator_list.length; ++i)

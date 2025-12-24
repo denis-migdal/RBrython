@@ -91,6 +91,8 @@ export default class RBrythonEmitter extends Emitter {
                                     parsed.symtable);
 
         const exported = this.extractExportedSymbols(parsed);
+
+        ctx.w`${ctx.hm.BB()}const __name__ = $RB.__import_name__;${ctx.hm.BE()}`;
         ctx.w_body(parsed.ast.body);
 
         let jscode = ctx.jscode;

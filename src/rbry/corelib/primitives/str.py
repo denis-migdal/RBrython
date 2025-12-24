@@ -7,6 +7,9 @@ class str(string):
         #return __JS_AS_STRING__(o) # type: ignore
         return type(o).__str__(o) # type: ignore
     
+    def __str__(self, /):
+        return self
+    
     def __eq__(self, o: object, /) -> bool:
         return __JS_OP__(self, "==", o)
     
