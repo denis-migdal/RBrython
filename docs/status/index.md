@@ -1,19 +1,20 @@
 ## Kernel
 
 - green: done and tested.
+- yellow
 - orange: partially done or not tested.
 - red: todo
 - gray: don't care for now
 
 ###  Brython unit tests (120/6150)
 
-Target: 200 lines/week (started the 2025/12/25).
-
+Target: 200 lines/week (started the 2025/12/25).<br/>
+For now the goal is to rewrite the unit test, not to pass the originals (that might require unimplemented features).
 
 Cf https://github.com/brython-dev/brython/tree/master/www/tests<br/>
 Original tests stored in /src/assets/unittests, tests are rewritten in /src/tests/py, test to be rewritten are stored in /src/test/brython.
 
-- <b>classes:</b> classes (1176), descriptor (27), decorators (99), $\color{green}{test~rmethod (120)}$, special methods (108)
+- <b>classes:</b> classes (1176), descriptor (27), decorators (99), $\color{yellow}{test~rmethod (120)}$, special methods (108)
 - <b>functions:</b> packed_argument (12)
 - <b>imports:</b> imports (112), test_from_import (26), global_in_imported.py (19)
 - <b>test_types</b> (129)
