@@ -12,8 +12,10 @@
 
 1. unpack operators + unpack variables + test comprehension. [10]
 2. Exception stacktrace... [1]
+3. call on unmodified fct stuff / methods of RO classes + extra ",".
 
 X. Classes
+    -> JSClass / JSType / JSFunction shadow (also shadow __name__) ?
     - getPrototypeOf / setPrototypeOf instead of cstr.prototype
     - doc init
     - __new__ / () arg parsing
@@ -114,37 +116,6 @@ X. Editor
 TS/WASM generation possible.
 
 ## Tests
-
-Tests from : https://github.com/brython-dev/brython/tree/master/www/tests
-See src/unittests
-
-Kernel (6245):
-- classes (1176)
-    - descriptor (27)
-    - decorators (99)
-    - reflected method (95)
-    - special methods (108)
-    - test rmethod (120)
-- functions
-    - packed_argument (12)
-- imports (112)
-    - test_from_import (26)
-    - global_in_imported.py (19)
-
-- test_types (129)
-
-- f-string (138)
-
-- exceptions (210)
-    - exceptions_trace (257)
-    + src map...
-
-- iterators (94)
-    - generator (1262)
-
-- simple (15) (no asserts...)
-- basic test suite (1132)
-- test_suite (1214)
 
 Core (3218):
 - numbers (827)
