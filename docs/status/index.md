@@ -5,12 +5,15 @@
 - red: todo
 - gray: don't care for now
 
-###  Brython unit tests (95/6245)
+###  Brython unit tests (120/6150)
+
+Target: 200 lines/week (started the 2025/12/25).
+
 
 Cf https://github.com/brython-dev/brython/tree/master/www/tests<br/>
 Original tests stored in /src/assets/unittests, tests are rewritten in /src/tests/py, test to be rewritten are stored in /src/test/brython.
 
-- <b>classes:</b> classes (1176), descriptor (27), decorators (99), $\color{green}{reflected~method (95)}$, special methods (108), test rmethod (120)
+- <b>classes:</b> classes (1176), descriptor (27), decorators (99), $\color{green}{test~rmethod (120)}$, special methods (108)
 - <b>functions:</b> packed_argument (12)
 - <b>imports:</b> imports (112), test_from_import (26), global_in_imported.py (19)
 - <b>test_types</b> (129)
