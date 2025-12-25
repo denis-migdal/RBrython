@@ -10,14 +10,14 @@
 Cf https://github.com/brython-dev/brython/tree/master/www/tests<br/>
 Original tests stored in /src/assets/unittests, tests are rewritten in /src/tests/py, test to be rewritten are stored in /src/test/brython.
 
-- classes: classes (1176), descriptor (27), decorators (99), $\color{green}{reflected method (95)}$, special methods (108), test rmethod (120)
-- functions: packed_argument (12)
-- imports: imports (112), test_from_import (26), global_in_imported.py (19)
-- test_types (129)
-- f-string (138)
-- iterators: iterators (94), generator (1262)
-- exceptions: exceptions (210), exceptions_trace (257)
-- misc: simple (15) (no asserts...), basic test suite (1132), test_suite (1214)
+- <b>classes:</b> classes (1176), descriptor (27), decorators (99), $\color{green}{reflected~method (95)}$, special methods (108), test rmethod (120)
+- <b>functions:</b> packed_argument (12)
+- <b>imports:</b> imports (112), test_from_import (26), global_in_imported.py (19)
+- <b>test_types</b> (129)
+- <b>f-string</b> (138)
+- <b>iterators:</b> iterators (94), generator (1262)
+- <b>exceptions:</b> exceptions (210), exceptions_trace (257)
+- <b>misc:</b> simple (15) (no asserts...), basic test suite (1132), test_suite (1214)
 
 ### Keywords (11/12)
 
